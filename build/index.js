@@ -1,34 +1,8 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var jsxRuntime = require('react/jsx-runtime');
-var React = require('react');
-var react = require('@emotion/react');
-var reactDom = require('react-dom');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () { return e[k]; }
-        });
-      }
-    });
-  }
-  n["default"] = e;
-  return Object.freeze(n);
-}
-
-var React__namespace = /*#__PURE__*/_interopNamespace(React);
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+import { jsx, jsxs, Fragment as Fragment$1 } from 'react/jsx-runtime';
+import * as React from 'react';
+import React__default, { createContext as createContext$2, useContext, useLayoutEffect, useEffect, useState, useMemo, useCallback, useRef, forwardRef as forwardRef$1, isValidElement, cloneElement, createElement, useReducer, useImperativeHandle, Fragment as Fragment$2, useInsertionEffect as useInsertionEffect$1, useId, Children, memo as memo$1, useSyncExternalStore as useSyncExternalStore$1 } from 'react';
+import { ThemeContext, withEmotionCache, ThemeProvider as ThemeProvider$2, Global, keyframes as keyframes$1, CacheProvider } from '@emotion/react';
+import { createPortal } from 'react-dom';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -19586,22 +19560,22 @@ function createContext$1(options = {}) {
     errorMessage,
     defaultValue
   } = options;
-  const Context = React.createContext(defaultValue);
+  const Context = createContext$2(defaultValue);
   Context.displayName = name;
-  function useContext() {
+  function useContext$1() {
     var _a;
-    const context = React.useContext(Context);
+    const context = useContext(Context);
     if (!context && strict) {
       const error = new Error(
         errorMessage != null ? errorMessage : getErrorMessage(hookName, providerName)
       );
       error.name = "ContextError";
-      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext);
+      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext$1);
       throw error;
     }
     return context;
   }
-  return [Context.Provider, useContext, Context];
+  return [Context.Provider, useContext$1, Context];
 }
 
 var [ButtonGroupProvider, useButtonGroup] = createContext$1({
@@ -19610,8 +19584,8 @@ var [ButtonGroupProvider, useButtonGroup] = createContext$1({
 });
 
 function useTheme() {
-  const theme = React.useContext(
-    react.ThemeContext
+  const theme = useContext(
+    ThemeContext
   );
   if (!theme) {
     throw Error(
@@ -19621,10 +19595,10 @@ function useTheme() {
   return theme;
 }
 
-var ColorModeContext = React.createContext({});
+var ColorModeContext = createContext$2({});
 ColorModeContext.displayName = "ColorModeContext";
 function useColorMode() {
-  const context = React.useContext(ColorModeContext);
+  const context = useContext(ColorModeContext);
   if (context === void 0) {
     throw new Error("useColorMode must be used within a ColorModeProvider");
   }
@@ -19720,7 +19694,7 @@ function createLocalStorageManager(key) {
 }
 var localStorageManager = createLocalStorageManager(STORAGE_KEY$1);
 
-var useSafeLayoutEffect = Boolean(globalThis == null ? void 0 : globalThis.document) ? React.useLayoutEffect : React.useEffect;
+var useSafeLayoutEffect = Boolean(globalThis == null ? void 0 : globalThis.document) ? useLayoutEffect : useEffect;
 
 var noop$2 = () => {
 };
@@ -19739,18 +19713,18 @@ function ColorModeProvider(props) {
     colorModeManager = localStorageManager
   } = props;
   const defaultColorMode = initialColorMode === "dark" ? "dark" : "light";
-  const [colorMode, rawSetColorMode] = React.useState(
+  const [colorMode, rawSetColorMode] = useState(
     () => getTheme(colorModeManager, defaultColorMode)
   );
-  const [resolvedColorMode, setResolvedColorMode] = React.useState(
+  const [resolvedColorMode, setResolvedColorMode] = useState(
     () => getTheme(colorModeManager)
   );
-  const { getSystemTheme, setClassName, setDataset, addListener } = React.useMemo(
+  const { getSystemTheme, setClassName, setDataset, addListener } = useMemo(
     () => getColorModeUtils({ preventTransition: disableTransitionOnChange }),
     [disableTransitionOnChange]
   );
   const resolvedValue = initialColorMode === "system" && !colorMode ? resolvedColorMode : colorMode;
-  const setColorMode = React.useCallback(
+  const setColorMode = useCallback(
     (value2) => {
       const resolved = value2 === "system" ? getSystemTheme() : value2;
       rawSetColorMode(resolved);
@@ -19765,7 +19739,7 @@ function ColorModeProvider(props) {
       setResolvedColorMode(getSystemTheme());
     }
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     const managerValue = colorModeManager.get();
     if (managerValue) {
       setColorMode(managerValue);
@@ -19777,15 +19751,15 @@ function ColorModeProvider(props) {
     }
     setColorMode(defaultColorMode);
   }, [colorModeManager, defaultColorMode, initialColorMode, setColorMode]);
-  const toggleColorMode = React.useCallback(() => {
+  const toggleColorMode = useCallback(() => {
     setColorMode(resolvedValue === "dark" ? "light" : "dark");
   }, [resolvedValue, setColorMode]);
-  React.useEffect(() => {
+  useEffect(() => {
     if (!useSystemColorMode)
       return;
     return addListener(setColorMode);
   }, [useSystemColorMode, addListener, setColorMode]);
-  const context = React.useMemo(
+  const context = useMemo(
     () => ({
       colorMode: value != null ? value : resolvedValue,
       toggleColorMode: value ? noop$2 : toggleColorMode,
@@ -19794,7 +19768,7 @@ function ColorModeProvider(props) {
     }),
     [resolvedValue, toggleColorMode, setColorMode, value]
   );
-  return /* @__PURE__ */ jsxRuntime.jsx(ColorModeContext.Provider, { value: context, children });
+  return /* @__PURE__ */ jsx(ColorModeContext.Provider, { value: context, children });
 }
 ColorModeProvider.displayName = "ColorModeProvider";
 
@@ -28104,7 +28078,7 @@ function useStyleConfigImpl(themeKey, props = {}) {
     (_a = styleConfig == null ? void 0 : styleConfig.defaultProps) != null ? _a : {},
     filterUndefined(omit(rest, ["children"]))
   );
-  const stylesRef = React.useRef({});
+  const stylesRef = useRef({});
   if (styleConfig) {
     const getStyles = resolveStyleConfig(styleConfig);
     const styles = getStyles(mergedProps);
@@ -28672,7 +28646,7 @@ var syncFallback = function syncFallback(create) {
   return create();
 };
 
-var useInsertionEffect = React__namespace['useInsertion' + 'Effect'] ? React__namespace['useInsertion' + 'Effect'] : false;
+var useInsertionEffect = React['useInsertion' + 'Effect'] ? React['useInsertion' + 'Effect'] : false;
 var useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect || syncFallback;
 
 var testOmitPropsOnStringTag = isPropValid;
@@ -28767,7 +28741,7 @@ var createStyled = function createStyled(tag, options) {
     } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
 
 
-    var Styled = react.withEmotionCache(function (props, cache, ref) {
+    var Styled = withEmotionCache(function (props, cache, ref) {
       var FinalTag = shouldUseAs && props.as || baseTag;
       var className = '';
       var classInterpolations = [];
@@ -28780,7 +28754,7 @@ var createStyled = function createStyled(tag, options) {
           mergedProps[key] = props[key];
         }
 
-        mergedProps.theme = React__namespace.useContext(react.ThemeContext);
+        mergedProps.theme = React.useContext(ThemeContext);
       }
 
       if (typeof props.className === 'string') {
@@ -28810,11 +28784,11 @@ var createStyled = function createStyled(tag, options) {
 
       newProps.className = className;
       newProps.ref = ref;
-      return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement(Insertion, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Insertion, {
         cache: cache,
         serialized: serialized,
         isStringTag: typeof FinalTag === 'string'
-      }), /*#__PURE__*/React__namespace.createElement(FinalTag, newProps));
+      }), /*#__PURE__*/React.createElement(FinalTag, newProps));
     });
     Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
     Styled.defaultProps = tag.defaultProps;
@@ -28878,9 +28852,9 @@ function styled(component, options) {
     component,
     styledOptions
   )(styleObject);
-  const chakraComponent = React__default["default"].forwardRef(function ChakraComponent(props, ref) {
+  const chakraComponent = React__default.forwardRef(function ChakraComponent(props, ref) {
     const { colorMode, forced } = useColorMode();
-    return React__default["default"].createElement(Component, {
+    return React__default.createElement(Component, {
       ref,
       "data-theme": forced ? colorMode : void 0,
       ...props
@@ -28916,7 +28890,7 @@ function factory() {
 var chakra = factory();
 
 function forwardRef(component) {
-  return React.forwardRef(component);
+  return forwardRef$1(component);
 }
 
 // src/context.ts
@@ -28926,37 +28900,37 @@ function createContext(options = {}) {
     errorMessage = "useContext: `context` is undefined. Seems you forgot to wrap component within the Provider",
     name
   } = options;
-  const Context = React.createContext(void 0);
+  const Context = createContext$2(void 0);
   Context.displayName = name;
-  function useContext() {
+  function useContext$1() {
     var _a;
-    const context = React.useContext(Context);
+    const context = useContext(Context);
     if (!context && strict) {
       const error = new Error(errorMessage);
       error.name = "ContextError";
-      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext);
+      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext$1);
       throw error;
     }
     return context;
   }
   return [
     Context.Provider,
-    useContext,
+    useContext$1,
     Context
   ];
 }
 
 function ThemeProvider$1(props) {
   const { cssVarsRoot, theme, children } = props;
-  const computedTheme = React.useMemo(() => toCSSVar(theme), [theme]);
-  return /* @__PURE__ */ jsxRuntime.jsxs(react.ThemeProvider, { theme: computedTheme, children: [
-    /* @__PURE__ */ jsxRuntime.jsx(CSSVars, { root: cssVarsRoot }),
+  const computedTheme = useMemo(() => toCSSVar(theme), [theme]);
+  return /* @__PURE__ */ jsxs(ThemeProvider$2, { theme: computedTheme, children: [
+    /* @__PURE__ */ jsx(CSSVars, { root: cssVarsRoot }),
     children
   ] });
 }
 function CSSVars({ root = ":host, :root" }) {
   const selector = [root, `[data-theme]`].join(",");
-  return /* @__PURE__ */ jsxRuntime.jsx(react.Global, { styles: (theme) => ({ [selector]: theme.__cssVars }) });
+  return /* @__PURE__ */ jsx(Global, { styles: (theme) => ({ [selector]: theme.__cssVars }) });
 }
 createContext({
   name: "StylesContext",
@@ -28964,8 +28938,8 @@ createContext({
 });
 function GlobalStyle() {
   const { colorMode } = useColorMode();
-  return /* @__PURE__ */ jsxRuntime.jsx(
-    react.Global,
+  return /* @__PURE__ */ jsx(
+    Global,
     {
       styles: (theme) => {
         const styleObjectOrFn = memoizedGet(theme, "styles.global");
@@ -28980,8 +28954,8 @@ function GlobalStyle() {
 }
 
 function useButtonType(value) {
-  const [isButton, setIsButton] = React.useState(!value);
-  const refCallback = React.useCallback((node) => {
+  const [isButton, setIsButton] = useState(!value);
+  const refCallback = useCallback((node) => {
     if (!node)
       return;
     setIsButton(node.tagName === "BUTTON");
@@ -28992,12 +28966,12 @@ function useButtonType(value) {
 
 function ButtonIcon(props) {
   const { children, className, ...rest } = props;
-  const _children = React.isValidElement(children) ? React.cloneElement(children, {
+  const _children = isValidElement(children) ? cloneElement(children, {
     "aria-hidden": true,
     focusable: false
   }) : children;
   const _className = cx("chakra-button__icon", className);
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(
     chakra.span,
     {
       display: "inline-flex",
@@ -29011,7 +28985,7 @@ function ButtonIcon(props) {
 }
 ButtonIcon.displayName = "ButtonIcon";
 
-var spin = react.keyframes({
+var spin = keyframes$1({
   "0%": {
     transform: "rotate(0deg)"
   },
@@ -29041,14 +29015,14 @@ var Spinner = forwardRef((props, ref) => {
     animation: `${spin} ${speed} linear infinite`,
     ...styles
   };
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(
     chakra.div,
     {
       ref,
       __css: spinnerStyles,
       className: _className,
       ...rest,
-      children: label && /* @__PURE__ */ jsxRuntime.jsx(chakra.span, { srOnly: true, children: label })
+      children: label && /* @__PURE__ */ jsx(chakra.span, { srOnly: true, children: label })
     }
   );
 });
@@ -29059,14 +29033,14 @@ function ButtonSpinner(props) {
     label,
     placement,
     spacing = "0.5rem",
-    children = /* @__PURE__ */ jsxRuntime.jsx(Spinner, { color: "currentColor", width: "1em", height: "1em" }),
+    children = /* @__PURE__ */ jsx(Spinner, { color: "currentColor", width: "1em", height: "1em" }),
     className,
     __css,
     ...rest
   } = props;
   const _className = cx("chakra-button__spinner", className);
   const marginProp = placement === "start" ? "marginEnd" : "marginStart";
-  const spinnerStyles = React.useMemo(
+  const spinnerStyles = useMemo(
     () => ({
       display: "flex",
       alignItems: "center",
@@ -29078,7 +29052,7 @@ function ButtonSpinner(props) {
     }),
     [__css, label, marginProp, spacing]
   );
-  return /* @__PURE__ */ jsxRuntime.jsx(chakra.div, { className: _className, ...rest, __css: spinnerStyles, children });
+  return /* @__PURE__ */ jsx(chakra.div, { className: _className, ...rest, __css: spinnerStyles, children });
 }
 ButtonSpinner.displayName = "ButtonSpinner";
 
@@ -29103,7 +29077,7 @@ function mergeRefs(...refs) {
   };
 }
 function useMergeRefs(...refs) {
-  return React.useMemo(() => mergeRefs(...refs), refs);
+  return useMemo(() => mergeRefs(...refs), refs);
 }
 
 var Button$1 = forwardRef((props, ref) => {
@@ -29125,7 +29099,7 @@ var Button$1 = forwardRef((props, ref) => {
     as,
     ...rest
   } = omitThemingProps(props);
-  const buttonStyles = React.useMemo(() => {
+  const buttonStyles = useMemo(() => {
     const _focus = { ...styles == null ? void 0 : styles["_focus"], zIndex: 1 };
     return {
       display: "inline-flex",
@@ -29143,7 +29117,7 @@ var Button$1 = forwardRef((props, ref) => {
   }, [styles, group]);
   const { ref: _ref, type: defaultType } = useButtonType(as);
   const contentProps = { rightIcon, leftIcon, iconSpacing, children };
-  return /* @__PURE__ */ jsxRuntime.jsxs(
+  return /* @__PURE__ */ jsxs(
     chakra.button,
     {
       ref: useMergeRefs(ref, _ref),
@@ -29156,7 +29130,7 @@ var Button$1 = forwardRef((props, ref) => {
       ...rest,
       disabled: isDisabled || isLoading,
       children: [
-        isLoading && spinnerPlacement === "start" && /* @__PURE__ */ jsxRuntime.jsx(
+        isLoading && spinnerPlacement === "start" && /* @__PURE__ */ jsx(
           ButtonSpinner,
           {
             className: "chakra-button__spinner--start",
@@ -29166,8 +29140,8 @@ var Button$1 = forwardRef((props, ref) => {
             children: spinner
           }
         ),
-        isLoading ? loadingText || /* @__PURE__ */ jsxRuntime.jsx(chakra.span, { opacity: 0, children: /* @__PURE__ */ jsxRuntime.jsx(ButtonContent, { ...contentProps }) }) : /* @__PURE__ */ jsxRuntime.jsx(ButtonContent, { ...contentProps }),
-        isLoading && spinnerPlacement === "end" && /* @__PURE__ */ jsxRuntime.jsx(
+        isLoading ? loadingText || /* @__PURE__ */ jsx(chakra.span, { opacity: 0, children: /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }) }) : /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }),
+        isLoading && spinnerPlacement === "end" && /* @__PURE__ */ jsx(
           ButtonSpinner,
           {
             className: "chakra-button__spinner--end",
@@ -29184,10 +29158,10 @@ var Button$1 = forwardRef((props, ref) => {
 Button$1.displayName = "Button";
 function ButtonContent(props) {
   const { leftIcon, rightIcon, children, iconSpacing } = props;
-  return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-    leftIcon && /* @__PURE__ */ jsxRuntime.jsx(ButtonIcon, { marginEnd: iconSpacing, children: leftIcon }),
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    leftIcon && /* @__PURE__ */ jsx(ButtonIcon, { marginEnd: iconSpacing, children: leftIcon }),
     children,
-    rightIcon && /* @__PURE__ */ jsxRuntime.jsx(ButtonIcon, { marginStart: iconSpacing, children: rightIcon })
+    rightIcon && /* @__PURE__ */ jsx(ButtonIcon, { marginStart: iconSpacing, children: rightIcon })
   ] });
 }
 
@@ -29195,11 +29169,11 @@ var IconButton = forwardRef(
   (props, ref) => {
     const { icon, children, isRound, "aria-label": ariaLabel, ...rest } = props;
     const element = icon || children;
-    const _children = React.isValidElement(element) ? React.cloneElement(element, {
+    const _children = isValidElement(element) ? cloneElement(element, {
       "aria-hidden": true,
       focusable: false
     }) : null;
-    return /* @__PURE__ */ jsxRuntime.jsx(
+    return /* @__PURE__ */ jsx(
       Button$1,
       {
         padding: "0",
@@ -29273,7 +29247,7 @@ var DefaultContext = {
   style: undefined,
   attr: undefined
 };
-var IconContext = React__default["default"].createContext && React__default["default"].createContext(DefaultContext);
+var IconContext = React__default.createContext && React__default.createContext(DefaultContext);
 
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
@@ -29295,7 +29269,7 @@ var __rest = undefined && undefined.__rest || function (s, e) {
 };
 function Tree2Element(tree) {
   return tree && tree.map(function (node, i) {
-    return React__default["default"].createElement(node.tag, __assign({
+    return React__default.createElement(node.tag, __assign({
       key: i
     }, node.attr), Tree2Element(node.child));
   });
@@ -29303,7 +29277,7 @@ function Tree2Element(tree) {
 function GenIcon(data) {
   // eslint-disable-next-line react/display-name
   return function (props) {
-    return React__default["default"].createElement(IconBase, __assign({
+    return React__default.createElement(IconBase, __assign({
       attr: __assign({}, data.attr)
     }, props), Tree2Element(data.child));
   };
@@ -29318,7 +29292,7 @@ function IconBase(props) {
     var className;
     if (conf.className) className = conf.className;
     if (props.className) className = (className ? className + " " : "") + props.className;
-    return React__default["default"].createElement("svg", __assign({
+    return React__default.createElement("svg", __assign({
       stroke: "currentColor",
       fill: "currentColor",
       strokeWidth: "0"
@@ -29330,9 +29304,9 @@ function IconBase(props) {
       height: computedSize,
       width: computedSize,
       xmlns: "http://www.w3.org/2000/svg"
-    }), title && React__default["default"].createElement("title", null, title), props.children);
+    }), title && React__default.createElement("title", null, title), props.children);
   };
-  return IconContext !== undefined ? React__default["default"].createElement(IconContext.Consumer, null, function (conf) {
+  return IconContext !== undefined ? React__default.createElement(IconContext.Consumer, null, function (conf) {
     return elem(conf);
   }) : elem(DefaultContext);
 }
@@ -29358,7 +29332,7 @@ function PiCheckBold (props) {
 
 function Errors(_a) {
     var error = _a.error, _b = _a.centered, centered = _b === void 0 ? false : _b;
-    return error ? (jsxRuntime.jsx("div", __assign$1({ className: classes([style$a.errors, centered ? style$a.centered : undefined]) }, { children: jsxRuntime.jsxs("p", { children: [jsxRuntime.jsx(PiInfo, { size: sizes$1.icon.small }), error.toString()] }) }))) : null;
+    return error ? (jsx("div", __assign$1({ className: classes([style$a.errors, centered ? style$a.centered : undefined]) }, { children: jsxs("p", { children: [jsx(PiInfo, { size: sizes$1.icon.small }), error.toString()] }) }))) : null;
 }
 
 var css_248z$c = ".Stepper-module_stepper__2HBhf {\n  display: flex;\n  gap: var(--m);\n  margin: var(--m-xs) auto;\n  justify-content: center; }\n  .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz {\n    display: flex;\n    gap: var(--m-xxs);\n    align-items: center;\n    transition: all 0.3s ease-out; }\n    .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz .Stepper-module_badge__hPxie {\n      border-radius: 50%;\n      border: 1px solid var(--color-border);\n      aspect-ratio: 1;\n      width: 2em;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      transition: all 0.3s ease-out; }\n    .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_active__b7mrZ {\n      color: var(--color-primary); }\n      .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_active__b7mrZ .Stepper-module_badge__hPxie {\n        background-color: var(--color-primary);\n        color: var(--color-text-on-primary);\n        border: none; }\n    .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_done__1tk5O .Stepper-module_badge__hPxie {\n      border-color: var(--color-primary); }\n    .Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz:not(:first-of-type):before {\n      content: \"\";\n      height: 1px;\n      width: calc(min(140px, 4vw));\n      background-color: var(--color-border);\n      border-radius: 2px;\n      margin-right: var(--m-xs); }\n  .Stepper-module_stepper__2HBhf .Stepper-module_stepWide__3ULer:not(:first-of-type):before {\n    width: calc(min(120px, 10vw)); }\n";
@@ -29367,7 +29341,7 @@ styleInject(css_248z$c);
 
 function Stepper(_a) {
     var steps = _a.steps, current = _a.current, clickable = _a.clickable, setCurrent = _a.setCurrent, skipHeader = _a.skipHeader;
-    return (jsxRuntime.jsx("div", __assign$1({ className: style$9.stepper }, { children: steps.map(function (step, i) {
+    return (jsx("div", __assign$1({ className: style$9.stepper }, { children: steps.map(function (step, i) {
             if (step.disabled)
                 return null;
             var done = i < current;
@@ -29382,12 +29356,12 @@ function Stepper(_a) {
             if (skipHeader && displayNumber > 1) {
                 displayNumber--;
             }
-            return (jsxRuntime.jsxs(Element, __assign$1({ className: classes([style$9.step, i === current ? style$9.active : done && style$9.done, steps.length < 4 && style$9.stepWide]) }, buttonProps, { children: [jsxRuntime.jsx("div", __assign$1({ className: style$9.badge }, { children: done ? jsxRuntime.jsx(PiCheckBold, { color: colors$1.primary }) : displayNumber })), jsxRuntime.jsx("div", __assign$1({ className: style$9.label }, { children: step.label }))] }), i));
+            return (jsxs(Element, __assign$1({ className: classes([style$9.step, i === current ? style$9.active : done && style$9.done, steps.length < 4 && style$9.stepWide]) }, buttonProps, { children: [jsx("div", __assign$1({ className: style$9.badge }, { children: done ? jsx(PiCheckBold, { color: colors$1.primary }) : displayNumber })), jsx("div", __assign$1({ className: style$9.label }, { children: step.label }))] }), i));
         }) })));
 }
 
 function useCustomStyles(customStyles) {
-    React.useEffect(function () {
+    useEffect(function () {
         if (customStyles) {
             var parsedStyles_1 = JSON.parse(customStyles);
             if (parsedStyles_1) {
@@ -29533,8 +29507,8 @@ function convertRawTemplate(rawTemplate) {
 
 function useStepper(steps, initialStep, skipHeader) {
     if (initialStep === void 0) { initialStep = 0; }
-    var _a = React.useState(initialStep), current = _a[0], setCurrent = _a[1];
-    var step = React.useMemo(function () { return steps[current]; }, [current, steps]);
+    var _a = useState(initialStep), current = _a[0], setCurrent = _a[1];
+    var step = useMemo(function () { return steps[current]; }, [current, steps]);
     return { steps: steps, current: current, step: step, setCurrent: setCurrent, skipHeader: skipHeader };
 }
 
@@ -29564,8 +29538,8 @@ function useMutableLocalStorage(key, initialValue) {
             return initialValue;
         }
     };
-    var _a = React.useState(getLocalStorage()), storedValue = _a[0], setStoredValue = _a[1];
-    React.useEffect(function () {
+    var _a = useState(getLocalStorage()), storedValue = _a[0], setStoredValue = _a[1];
+    useEffect(function () {
         setStoredValue(getLocalStorage());
     }, [key]);
     // Return a wrapped version of useState's setter function that ...
@@ -29619,7 +29593,7 @@ function useStepNavigation(initialStep, skipHeader) {
     var _a;
     var stepper = useStepper(getStepConfig(skipHeader), StepEnum.Upload, skipHeader);
     var _b = useMutableLocalStorage("tf_steps", ""), storageStep = _b[0], setStorageStep = _b[1];
-    var _c = React.useState(initialStep), currentStep = _c[0], setCurrentStep = _c[1];
+    var _c = useState(initialStep), currentStep = _c[0], setCurrentStep = _c[1];
     var goBack = function (backStep) {
         if (backStep === void 0) { backStep = 0; }
         backStep = backStep || currentStep - 1 || 0;
@@ -29636,7 +29610,7 @@ function useStepNavigation(initialStep, skipHeader) {
         setStorageStep(newStep);
         stepper.setCurrent(newStep);
     };
-    React.useEffect(function () {
+    useEffect(function () {
         stepper.setCurrent(storageStep || 0);
         setCurrentStep(storageStep || 0);
     }, [storageStep]);
@@ -29663,7 +29637,7 @@ function Box$1(_a) {
     var className = _a.className, _b = _a.variants, variants = _b === void 0 ? [] : _b, props = __rest$1(_a, ["className", "variants"]);
     var variantStyles = classes(variants.map(function (c) { return style$7[c]; }));
     var containerClasses = classes([style$7.box, variantStyles, className]);
-    return jsxRuntime.jsx("div", __assign$1({}, props, { className: containerClasses }));
+    return jsx("div", __assign$1({}, props, { className: containerClasses }));
 }
 
 var css_248z$9 = ".Complete-module_content__3m2G3.Complete-module_content__3m2G3 {\n  max-width: 1000px;\n  padding-top: var(--m);\n  height: 100%;\n  flex: 1 0 100px;\n  box-shadow: none;\n  background-color: transparent;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: var(--font-size-xl);\n  flex-direction: column;\n  gap: var(--m);\n  text-align: center;\n  position: relative; }\n  .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_icon__2C54U {\n    width: 64px;\n    height: 64px;\n    isolation: isolate;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n    .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_icon__2C54U::before {\n      content: \"\";\n      position: absolute;\n      inset: 0;\n      border-radius: 50%;\n      background-color: var(--color-green-ui);\n      z-index: -1; }\n    .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_icon__2C54U svg {\n      width: 38%;\n      height: 38%;\n      object-fit: contain;\n      color: var(--color-text-on-primary); }\n  .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_actions__2VXSV {\n    display: flex;\n    gap: var(--m-l);\n    align-items: center;\n    justify-content: center;\n    margin-top: var(--m-xxl); }\n    .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_actions__2VXSV > * {\n      flex: 1 0 190px; }\n    .Complete-module_content__3m2G3.Complete-module_content__3m2G3 .Complete-module_actions__2VXSV button {\n      width: 50%; }\n\n.Complete-module_spinner__3Jh8z {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1); }\n";
@@ -29672,7 +29646,7 @@ styleInject(css_248z$9);
 
 function Complete(_a) {
     var reload = _a.reload, close = _a.close, isModal = _a.isModal;
-    return (jsxRuntime.jsx(Box$1, __assign$1({ className: style$6.content }, { children: jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx("span", __assign$1({ className: style$6.icon }, { children: jsxRuntime.jsx(PiCheckBold, {}) })), jsxRuntime.jsx("div", { children: "Import Successful" }), jsxRuntime.jsxs("div", __assign$1({ className: style$6.actions }, { children: [jsxRuntime.jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", leftIcon: jsxRuntime.jsx(PiArrowCounterClockwise, {}), onClick: reload }, { children: "Upload another file" })), isModal && (jsxRuntime.jsx(Button$1, __assign$1({ type: "button", colorScheme: "primary", leftIcon: jsxRuntime.jsx(PiCheckBold, {}), onClick: close }, { children: "Done" })))] }))] }) })));
+    return (jsx(Box$1, __assign$1({ className: style$6.content }, { children: jsxs(Fragment$1, { children: [jsx("span", __assign$1({ className: style$6.icon }, { children: jsx(PiCheckBold, {}) })), jsx("div", { children: "Import Successful" }), jsxs("div", __assign$1({ className: style$6.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", leftIcon: jsx(PiArrowCounterClockwise, {}), onClick: reload }, { children: "Upload another file" })), isModal && (jsx(Button$1, __assign$1({ type: "button", colorScheme: "primary", leftIcon: jsx(PiCheckBold, {}), onClick: close }, { children: "Done" })))] }))] }) })));
 }
 
 var css_248z$8 = ".Default-module_table__1Y-0l {\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n  width: 100%;\n  border-collapse: collapse;\n  border-spacing: 0;\n  border-radius: var(--border-radius-2);\n  outline: 1px solid var(--color-border);\n  table-layout: fixed;\n  overflow: hidden; }\n  .Default-module_table__1Y-0l .Default-module_thead__317_t {\n    display: table-header-group; }\n  .Default-module_table__1Y-0l .Default-module_tbody__HWi6H {\n    display: block;\n    overflow: auto;\n    width: 100%; }\n  .Default-module_table__1Y-0l .Default-module_tr__48AXI {\n    display: flex;\n    width: 100%;\n    overflow: hidden;\n    flex-wrap: nowrap; }\n  .Default-module_table__1Y-0l .Default-module_td__35N_U {\n    display: inline-flex;\n    align-items: center;\n    height: 44px;\n    flex-shrink: 0; }\n  .Default-module_table__1Y-0l .Default-module_caption__AlaHF {\n    display: table-caption;\n    border-bottom: 1px solid var(--color-border);\n    background-color: var(--color-background-modal);\n    padding: 0 var(--m-s);\n    border-radius: var(--border-radius-2) var(--border-radius-2) 0 0; }\n  .Default-module_table__1Y-0l .Default-module_thead__317_t .Default-module_tr__48AXI .Default-module_td__35N_U {\n    font-weight: 400;\n    white-space: nowrap;\n    padding: var(--m-xxxs) var(--m-s);\n    border-bottom: 1px solid var(--color-border);\n    color: var(--color-text-secondary); }\n    .Default-module_table__1Y-0l .Default-module_thead__317_t .Default-module_tr__48AXI .Default-module_td__35N_U:first-of-type {\n      border-radius: var(--border-radius-2) 0 0 0; }\n    .Default-module_table__1Y-0l .Default-module_thead__317_t .Default-module_tr__48AXI .Default-module_td__35N_U:last-child {\n      border-radius: 0 var(--border-radius-2) 0 0; }\n  .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI .Default-module_td__35N_U {\n    vertical-align: middle;\n    padding: var(--m-xxxs) var(--m-s);\n    font-weight: 400; }\n    .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI .Default-module_td__35N_U > span,\n    .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI .Default-module_td__35N_U > small {\n      text-overflow: ellipsis;\n      white-space: nowrap;\n      display: block;\n      overflow: hidden; }\n    .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI .Default-module_td__35N_U.Default-module_highlight__2DfrT {\n      font-weight: 500; }\n    .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI .Default-module_td__35N_U.Default-module_element__2yoCQ {\n      padding: 0 var(--m-s); }\n  .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI:hover {\n    box-shadow: 0 0 0 2px var(--color-border);\n    position: relative; }\n  .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-child {\n    border-radius: 0 0 var(--border-radius-2) var(--border-radius-2); }\n    .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-child .Default-module_td__35N_U {\n      border-bottom-color: transparent; }\n      .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-child .Default-module_td__35N_U:first-of-type {\n        border-radius: 0 0 0 var(--border-radius-2); }\n      .Default-module_table__1Y-0l .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-child .Default-module_td__35N_U:last-child {\n        border-radius: 0 0 var(--border-radius-2) 0; }\n  .Default-module_table__1Y-0l.Default-module_zebra__j674h {\n    background-color: var(--color-background-modal); }\n    .Default-module_table__1Y-0l.Default-module_zebra__j674h .Default-module_tbody__HWi6H .Default-module_tr__48AXI:nth-child(odd) .Default-module_td__35N_U {\n      background-color: var(--color-background); }\n  .Default-module_table__1Y-0l.Default-module_dark__sv4Lb {\n    background-color: var(--color-background); }\n    .Default-module_table__1Y-0l.Default-module_dark__sv4Lb .Default-module_thead__317_t .Default-module_tr__48AXI .Default-module_td__35N_U {\n      background-color: var(--color-background-modal); }\n  .Default-module_table__1Y-0l.Default-module_light__2ydXR {\n    background-color: var(--color-background-modal); }\n  .Default-module_table__1Y-0l.Default-module_transparent__1j6bz .Default-module_thead__317_t {\n    background-color: var(--color-background-modal); }\n  .Default-module_table__1Y-0l.Default-module_transparent__1j6bz .Default-module_tbody__HWi6H .Default-module_tr__48AXI:hover {\n    box-shadow: none;\n    position: static; }\n  .Default-module_table__1Y-0l.Default-module_dark__sv4Lb .Default-module_tbody__HWi6H .Default-module_tr__48AXI:hover, .Default-module_table__1Y-0l.Default-module_light__2ydXR .Default-module_tbody__HWi6H .Default-module_tr__48AXI:hover {\n    box-shadow: none;\n    position: static; }\n  .Default-module_table__1Y-0l.Default-module_dark__sv4Lb .Default-module_tbody__HWi6H .Default-module_tr__48AXI:first-of-type .Default-module_td__35N_U, .Default-module_table__1Y-0l.Default-module_light__2ydXR .Default-module_tbody__HWi6H .Default-module_tr__48AXI:first-of-type .Default-module_td__35N_U {\n    padding-top: var(--m-s);\n    height: calc(44px + var(--m-s) - var(--m-xxxs)); }\n  .Default-module_table__1Y-0l.Default-module_dark__sv4Lb .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-of-type .Default-module_td__35N_U, .Default-module_table__1Y-0l.Default-module_light__2ydXR .Default-module_tbody__HWi6H .Default-module_tr__48AXI:last-of-type .Default-module_td__35N_U {\n    padding-bottom: var(--m-s);\n    height: calc(44px + var(--m-s) - var(--m-xxxs)); }\n\n.Default-module_emptyMsg__2UoCI {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-top: 15vh;\n  text-align: center; }\n";
@@ -29685,7 +29659,7 @@ function getStringLengthOfChildren(children) {
     if (Array.isArray(children))
         return children.reduce(function (sum, child) { return sum + getStringLengthOfChildren(child); }, 0);
     // If child is a React element, process its children recursively
-    if (React.isValidElement(children))
+    if (isValidElement(children))
         return getStringLengthOfChildren(children.props.children);
     // If none of the above, return 0
     return 0;
@@ -29696,16 +29670,16 @@ var style$5 = {"tooltip":"Tooltip-module_tooltip__20Ksd","icon":"Tooltip-module_
 styleInject(css_248z$7);
 
 function Tooltip(_a) {
-    var as = _a.as, className = _a.className, title = _a.title, children = _a.children, _b = _a.icon, icon = _b === void 0 ? jsxRuntime.jsx(PiInfo, {}) : _b, props = __rest$1(_a, ["as", "className", "title", "children", "icon"]);
+    var as = _a.as, className = _a.className, title = _a.title, children = _a.children, _b = _a.icon, icon = _b === void 0 ? jsx(PiInfo, {}) : _b, props = __rest$1(_a, ["as", "className", "title", "children", "icon"]);
     var Tag = as || "span";
     var length = getStringLengthOfChildren(title);
     var wrapperClasses = classes([style$5.tooltip, className, length > 30 && style$5.multiline]);
-    var _c = React.useState(false), tooltipVisible = _c[0], setTooltipVisible = _c[1];
-    var _d = React.useState({ top: 0, left: 0 }), position = _d[0], setPosition = _d[1];
-    var targetRef = React.useRef(null);
+    var _c = useState(false), tooltipVisible = _c[0], setTooltipVisible = _c[1];
+    var _d = useState({ top: 0, left: 0 }), position = _d[0], setPosition = _d[1];
+    var targetRef = useRef(null);
     // Create a ref to attach the tooltip portal to
-    var tooltipContainer = React.useRef(document.createElement("div"));
-    React.useEffect(function () {
+    var tooltipContainer = useRef(document.createElement("div"));
+    useEffect(function () {
         // Appending the tooltip container to the body on mount
         document.body.appendChild(tooltipContainer.current);
         // Removing the tooltip container from the body on unmount
@@ -29726,11 +29700,11 @@ function Tooltip(_a) {
     var hideTooltip = function () {
         setTooltipVisible(false);
     };
-    var tooltipMessage = tooltipVisible && (jsxRuntime.jsx("span", __assign$1({ className: style$5.message, style: { position: "fixed", top: "".concat(position.top, "px"), left: "".concat(position.left, "px") } }, { children: title })));
-    return (jsxRuntime.jsxs(Tag, __assign$1({}, props, { className: wrapperClasses }, { children: [children, jsxRuntime.jsxs("span", __assign$1({ className: style$5.icon, onMouseEnter: showTooltip, onMouseLeave: hideTooltip, ref: targetRef }, { children: [icon, tooltipMessage] }))] })));
+    var tooltipMessage = tooltipVisible && (jsx("span", __assign$1({ className: style$5.message, style: { position: "fixed", top: "".concat(position.top, "px"), left: "".concat(position.left, "px") } }, { children: title })));
+    return (jsxs(Tag, __assign$1({}, props, { className: wrapperClasses }, { children: [children, jsxs("span", __assign$1({ className: style$5.icon, onMouseEnter: showTooltip, onMouseLeave: hideTooltip, ref: targetRef }, { children: [icon, tooltipMessage] }))] })));
 }
 
-var TableContext = React.createContext({});
+var TableContext = createContext$2({});
 function Table(_a) {
     // THEME
     // Tables receive a full CSS module as theme or applies default styles
@@ -29770,20 +29744,20 @@ function Table(_a) {
         columnAlignments: columnAlignments,
     };
     if (!data || !(data === null || data === void 0 ? void 0 : data.length))
-        return jsxRuntime.jsx("div", __assign$1({ className: style.emptyMsg }, { children: emptyState || null }));
+        return jsx("div", __assign$1({ className: style.emptyMsg }, { children: emptyState || null }));
     var tableStyle = classes([style === null || style === void 0 ? void 0 : style.table, style === null || style === void 0 ? void 0 : style[background], fixHeader && (style === null || style === void 0 ? void 0 : style.fixHeader)]);
-    var headingContent = heading ? (jsxRuntime.jsx("div", __assign$1({ className: style.caption }, { children: heading }))) : (jsxRuntime.jsx("div", __assign$1({ className: style.thead, role: "rowgroup" }, { children: jsxRuntime.jsx(Row, { datum: thead, isHeading: true }) })));
-    return (jsxRuntime.jsxs(TableContext.Provider, __assign$1({ value: context }, { children: [jsxRuntime.jsxs("div", __assign$1({ className: tableStyle, role: "table" }, { children: [headingContent, jsxRuntime.jsx("div", __assign$1({ className: style.tbody, role: "rowgroup" }, { children: data.map(function (d, i) {
+    var headingContent = heading ? (jsx("div", __assign$1({ className: style.caption }, { children: heading }))) : (jsx("div", __assign$1({ className: style.thead, role: "rowgroup" }, { children: jsx(Row, { datum: thead, isHeading: true }) })));
+    return (jsxs(TableContext.Provider, __assign$1({ value: context }, { children: [jsxs("div", __assign$1({ className: tableStyle, role: "table" }, { children: [headingContent, jsx("div", __assign$1({ className: style.tbody, role: "rowgroup" }, { children: data.map(function (d, i) {
                             var key = keyAsId && (d === null || d === void 0 ? void 0 : d[keyAsId]) ? d[keyAsId] : i;
                             var props = { datum: d, onClick: onRowClick };
-                            return React.createElement(Row, __assign$1({}, props, { key: key === null || key === void 0 ? void 0 : key.toString() }));
-                        }) }))] })), !data.length && (jsxRuntime.jsx("div", __assign$1({ className: style.emptyMsg, role: "empty-query" }, { children: jsxRuntime.jsx("p", { children: "Empty" }) })))] })));
+                            return createElement(Row, __assign$1({}, props, { key: key === null || key === void 0 ? void 0 : key.toString() }));
+                        }) }))] })), !data.length && (jsx("div", __assign$1({ className: style.emptyMsg, role: "empty-query" }, { children: jsx("p", { children: "Empty" }) })))] })));
 }
 var Row = function (_a) {
     var datum = _a.datum, onClick = _a.onClick, isHeading = _a.isHeading;
-    var _b = React.useContext(TableContext), style = _b.style, highlightColumns = _b.highlightColumns, hideColumns = _b.hideColumns, columnWidths = _b.columnWidths, columnAlignments = _b.columnAlignments;
+    var _b = useContext(TableContext), style = _b.style, highlightColumns = _b.highlightColumns, hideColumns = _b.hideColumns, columnWidths = _b.columnWidths, columnAlignments = _b.columnAlignments;
     var className = classes([style === null || style === void 0 ? void 0 : style.tr]);
-    return (jsxRuntime.jsx("div", __assign$1({ className: className, role: "row", onClick: function () { return onClick === null || onClick === void 0 ? void 0 : onClick(datum); } }, { children: Object.keys(datum)
+    return (jsx("div", __assign$1({ className: className, role: "row", onClick: function () { return onClick === null || onClick === void 0 ? void 0 : onClick(datum); } }, { children: Object.keys(datum)
             .filter(function (k) { return !hideColumns.includes(datum[k]) && !hideColumns.includes(k); })
             .map(function (k, i) {
             var _a, _b, _c, _d;
@@ -29795,22 +29769,22 @@ var Row = function (_a) {
             var tooltip = (_b = datum[k]) === null || _b === void 0 ? void 0 : _b.tooltip;
             var captionInfo = isHeading ? (_c = datum[k]) === null || _c === void 0 ? void 0 : _c.captionInfo : null;
             var headingKey = isHeading ? (_d = datum[k]) === null || _d === void 0 ? void 0 : _d.key : null;
-            content = isHeading && captionInfo ? jsxRuntime.jsx(Tooltip, __assign$1({ title: captionInfo }, { children: headingKey })) : content;
-            var wrappedContent = content && typeof content === "string" ? jsxRuntime.jsx("span", { children: content }) : content;
+            content = isHeading && captionInfo ? jsx(Tooltip, __assign$1({ title: captionInfo }, { children: headingKey })) : content;
+            var wrappedContent = content && typeof content === "string" ? jsx("span", { children: content }) : content;
             var cellClass = classes([
                 (highlightColumns === null || highlightColumns === void 0 ? void 0 : highlightColumns.includes(k)) && style.highlight,
                 !wrappedContent && style.empty,
                 typeof content !== "string" && style.element,
             ]);
             var cellStyle = { width: (columnWidths === null || columnWidths === void 0 ? void 0 : columnWidths[i]) || "auto", textAlign: (columnAlignments === null || columnAlignments === void 0 ? void 0 : columnAlignments[i]) || "left" };
-            return (jsxRuntime.jsx(Cell, __assign$1({ cellClass: cellClass, cellStyle: cellStyle, tooltip: tooltip || "" }, { children: wrappedContent }), k));
+            return (jsx(Cell, __assign$1({ cellClass: cellClass, cellStyle: cellStyle, tooltip: tooltip || "" }, { children: wrappedContent }), k));
         }) })));
 };
 var Cell = function (_a) {
     var children = _a.children, cellClass = _a.cellClass, cellStyle = _a.cellStyle, tooltip = _a.tooltip;
-    var style = React.useContext(TableContext).style;
+    var style = useContext(TableContext).style;
     var cellProps = __assign$1({ className: classes([style === null || style === void 0 ? void 0 : style.td, cellClass, !children && (style === null || style === void 0 ? void 0 : style.empty)]), role: "cell", style: cellStyle }, (tooltip ? { title: tooltip } : {}));
-    return jsxRuntime.jsx("div", __assign$1({}, cellProps, { children: children }));
+    return jsx("div", __assign$1({}, cellProps, { children: children }));
 };
 
 var css_248z$6 = ".Checkbox-module_container__3vMh6 {\n  display: inline-block;\n  gap: var(--m-xs);\n  align-items: center; }\n  .Checkbox-module_container__3vMh6:has(input:not(:disabled)) {\n    cursor: pointer; }\n  .Checkbox-module_container__3vMh6 input[type=\"checkbox\"] {\n    -webkit-appearance: none;\n    appearance: none;\n    background-color: transparent;\n    margin: 0;\n    color: var(--color-primary);\n    width: var(--m);\n    height: var(--m);\n    border: 2px solid var(--color-border);\n    display: grid;\n    place-content: center;\n    border-radius: var(--border-radius-1);\n    cursor: pointer; }\n    .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]::before {\n      content: \"\";\n      width: var(--m-xs);\n      height: var(--m-xs); }\n    .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]:checked {\n      background-color: var(--color-primary);\n      border-color: var(--color-primary); }\n    .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]:checked::before {\n      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\n      box-shadow: inset 1em 1em var(--color-text-on-primary); }\n    .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]:not(:disabled):focus-visible {\n      outline: 1px solid var(--color-border);\n      outline-offset: 3px; }\n    .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]:disabled {\n      --container-color: var(--container-disabled);\n      color: var(--container-disabled);\n      cursor: default;\n      background-color: var(--color-input-disabled);\n      border-color: var(--color-border-soft); }\n      .Checkbox-module_container__3vMh6 input[type=\"checkbox\"]:disabled:checked::before {\n        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\n        box-shadow: inset 1em 1em var(--color-border-soft); }\n";
@@ -29820,12 +29794,12 @@ styleInject(css_248z$6);
 function Checkbox(_a) {
     var label = _a.label, className = _a.className, props = __rest$1(_a, ["label", "className"]);
     var containerClasses = classes([style$4.container, className]);
-    return (jsxRuntime.jsxs("label", __assign$1({ className: containerClasses }, { children: [jsxRuntime.jsx("input", __assign$1({ type: "checkbox" }, props)), jsxRuntime.jsx("span", { children: label })] })));
+    return (jsxs("label", __assign$1({ className: containerClasses }, { children: [jsx("input", __assign$1({ type: "checkbox" }, props)), jsx("span", { children: label })] })));
 }
 
 function useClickOutside(ref, callback) {
-    var staticCallback = React.useCallback(callback, []);
-    React.useEffect(function () {
+    var staticCallback = useCallback(callback, []);
+    useEffect(function () {
         var handleClickOutside = function (event) {
             if (ref && (ref === null || ref === void 0 ? void 0 : ref.current) && !ref.current.contains(event.target))
                 staticCallback(false);
@@ -29837,15 +29811,15 @@ function useClickOutside(ref, callback) {
     }, [ref, staticCallback]);
 }
 
-var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 function useEventListener(eventName, handler, element) {
     // Create a ref that stores handler
-    var savedHandler = React.useRef(handler);
+    var savedHandler = useRef(handler);
     useIsomorphicLayoutEffect$1(function () {
         savedHandler.current = handler;
     }, [handler]);
-    React.useEffect(function () {
+    useEffect(function () {
         // Define the listening target
         var targetElement = (element === null || element === void 0 ? void 0 : element.current) || window;
         if (!(targetElement && targetElement.addEventListener)) {
@@ -29865,17 +29839,17 @@ function useRect() {
     // Mutable values like 'ref.current' aren't valid dependencies
     // because mutating them doesn't re-render the component.
     // Instead, we use a state as a ref to be reactive.
-    var _a = React.useState(null), ref = _a[0], setRef = _a[1];
-    var _b = React.useState({ x: 0, y: 0, width: 0, height: 0, top: 0, right: 0, bottom: 0, left: 0 }), size = _b[0], setSize = _b[1];
+    var _a = useState(null), ref = _a[0], setRef = _a[1];
+    var _b = useState({ x: 0, y: 0, width: 0, height: 0, top: 0, right: 0, bottom: 0, left: 0 }), size = _b[0], setSize = _b[1];
     // Prevent too many rendering using useCallback
-    var updateRect = React.useCallback(function () {
+    var updateRect = useCallback(function () {
         ref && setSize(ref.getBoundingClientRect());
     }, [ref === null || ref === void 0 ? void 0 : ref.offsetHeight, ref === null || ref === void 0 ? void 0 : ref.offsetWidth]);
     useEventListener("resize", updateRect);
     useIsomorphicLayoutEffect$1(function () {
         updateRect();
     }, [ref === null || ref === void 0 ? void 0 : ref.offsetHeight, ref === null || ref === void 0 ? void 0 : ref.offsetWidth]);
-    React.useLayoutEffect(function () {
+    useLayoutEffect(function () {
         window.addEventListener("mresize", updateRect);
         return function () { return window.removeEventListener("mresize", updateRect); };
     }, []);
@@ -29883,8 +29857,8 @@ function useRect() {
 }
 
 function useWindowSize() {
-    var _a = React.useState([0, 0]), size = _a[0], setSize = _a[1];
-    React.useLayoutEffect(function () {
+    var _a = useState([0, 0]), size = _a[0], setSize = _a[1];
+    useLayoutEffect(function () {
         function updateSize() {
             setSize([window.innerWidth, window.innerHeight]);
         }
@@ -29904,16 +29878,16 @@ function Input(_a) {
     var Element = as;
     var variantStyles = classes(variants.map(function (c) { return style$3[c]; }));
     var containerClassName = classes([style$3.container, variantStyles, className]);
-    var icon1 = icon && jsxRuntime.jsx("span", __assign$1({ className: style$3.icon }, { children: icon }));
-    var icon2 = iconAfter ? (jsxRuntime.jsx("span", __assign$1({ className: style$3.icon }, { children: iconAfter }))) : (error && (jsxRuntime.jsx("span", __assign$1({ className: style$3.icon }, { children: jsxRuntime.jsx(PiInfo, {}) }))));
-    var iconSelect = options && (jsxRuntime.jsx("span", __assign$1({ className: classes([style$3.icon, style$3.dropdownIcon]) }, { children: jsxRuntime.jsx(PiCaretDown, {}) })));
-    var selectElement = options && options && jsxRuntime.jsx(Select, __assign$1({ options: options }, props));
-    var inputWrapper = (jsxRuntime.jsxs("div", __assign$1({ className: classes([style$3.inputWrapper, error && style$3.hasError]) }, { children: [icon1, selectElement || jsxRuntime.jsx(Element, __assign$1({}, props, (options ? { type: "text" } : {}))), iconSelect, icon2] })));
-    return (jsxRuntime.jsxs("div", __assign$1({ className: containerClassName }, { children: [jsxRuntime.jsxs("label", { children: [label ? jsxRuntime.jsx("span", __assign$1({ className: style$3.label }, { children: label })) : null, inputWrapper] }), error && jsxRuntime.jsx("div", __assign$1({ className: style$3.error }, { children: error })), children && jsxRuntime.jsx("div", __assign$1({ className: style$3.footer }, { children: children }))] })));
+    var icon1 = icon && jsx("span", __assign$1({ className: style$3.icon }, { children: icon }));
+    var icon2 = iconAfter ? (jsx("span", __assign$1({ className: style$3.icon }, { children: iconAfter }))) : (error && (jsx("span", __assign$1({ className: style$3.icon }, { children: jsx(PiInfo, {}) }))));
+    var iconSelect = options && (jsx("span", __assign$1({ className: classes([style$3.icon, style$3.dropdownIcon]) }, { children: jsx(PiCaretDown, {}) })));
+    var selectElement = options && options && jsx(Select, __assign$1({ options: options }, props));
+    var inputWrapper = (jsxs("div", __assign$1({ className: classes([style$3.inputWrapper, error && style$3.hasError]) }, { children: [icon1, selectElement || jsx(Element, __assign$1({}, props, (options ? { type: "text" } : {}))), iconSelect, icon2] })));
+    return (jsxs("div", __assign$1({ className: containerClassName }, { children: [jsxs("label", { children: [label ? jsx("span", __assign$1({ className: style$3.label }, { children: label })) : null, inputWrapper] }), error && jsx("div", __assign$1({ className: style$3.error }, { children: error })), children && jsx("div", __assign$1({ className: style$3.footer }, { children: children }))] })));
 }
 function Select(_a) {
     var _b = _a.options, options = _b === void 0 ? {} : _b, placeholder = _a.placeholder, props = __rest$1(_a, ["options", "placeholder"]);
-    var _c = React.useState(false), open = _c[0], setOpen = _c[1];
+    var _c = useState(false), open = _c[0], setOpen = _c[1];
     var onChangeOption = function (e) {
         var value = e.target.value;
         (props === null || props === void 0 ? void 0 : props.onChange) && (props === null || props === void 0 ? void 0 : props.onChange(value));
@@ -29939,19 +29913,19 @@ function Select(_a) {
     var onBlur = function () {
         setOpen(false);
     };
-    var ref = React.useRef(null);
+    var ref = useRef(null);
     useClickOutside(ref, onBlur);
-    return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx("input", __assign$1({}, props, { value: selectedKey, className: classes([style$3.select, open && style$3.open]), readOnly: true, onFocus: onFocus, placeholder: placeholder })), jsxRuntime.jsx("div", { className: style$3.optionsRef, ref: setRef }), open && (jsxRuntime.jsx("div", __assign$1({ className: style$3.options, style: optionsPosition, ref: setRefPortal }, { children: jsxRuntime.jsxs("div", __assign$1({ className: style$3.inner, ref: ref }, { children: [placeholder && (jsxRuntime.jsx("button", __assign$1({ className: classes([style$3.option, style$3.placeholder]), onClick: onChangeOption }, { children: placeholder }), -1)), Object.keys(options).map(function (k, i) { return (jsxRuntime.jsxs("button", __assign$1({ className: classes([style$3.option, options[k].value === props.value && style$3.selected]), type: "button" }, options[k], { onClick: onChangeOption, autoFocus: i === 0 }, { children: [k, " ", options[k].required && jsxRuntime.jsx("span", __assign$1({ className: style$3.requiredMark }, { children: "*" }))] }), k)); })] })) })))] }));
+    return (jsxs(Fragment$1, { children: [jsx("input", __assign$1({}, props, { value: selectedKey, className: classes([style$3.select, open && style$3.open]), readOnly: true, onFocus: onFocus, placeholder: placeholder })), jsx("div", { className: style$3.optionsRef, ref: setRef }), open && (jsx("div", __assign$1({ className: style$3.options, style: optionsPosition, ref: setRefPortal }, { children: jsxs("div", __assign$1({ className: style$3.inner, ref: ref }, { children: [placeholder && (jsx("button", __assign$1({ className: classes([style$3.option, style$3.placeholder]), onClick: onChangeOption }, { children: placeholder }), -1)), Object.keys(options).map(function (k, i) { return (jsxs("button", __assign$1({ className: classes([style$3.option, options[k].value === props.value && style$3.selected]), type: "button" }, options[k], { onClick: onChangeOption, autoFocus: i === 0 }, { children: [k, " ", options[k].required && jsx("span", __assign$1({ className: style$3.requiredMark }, { children: "*" }))] }), k)); })] })) })))] }));
 }
 
 function DropdownFields(_a) {
     var options = _a.options, value = _a.value, placeholder = _a.placeholder, onChange = _a.onChange, selectedValues = _a.selectedValues, updateSelectedValues = _a.updateSelectedValues;
-    var _b = React.useState(value), selectedOption = _b[0], setSelectedOption = _b[1];
-    var _c = React.useState({}), filteredOptions = _c[0], setFilteredOptions = _c[1];
-    React.useEffect(function () {
+    var _b = useState(value), selectedOption = _b[0], setSelectedOption = _b[1];
+    var _c = useState({}), filteredOptions = _c[0], setFilteredOptions = _c[1];
+    useEffect(function () {
         setSelectedOption(value);
     }, [selectedValues]);
-    React.useEffect(function () {
+    useEffect(function () {
         filterOptions();
     }, [options, selectedValues]);
     var handleInputChange = function (event) {
@@ -29983,7 +29957,7 @@ function DropdownFields(_a) {
         }
         setFilteredOptions(newFilteredOptions);
     };
-    return (jsxRuntime.jsx(Input, { options: filteredOptions, value: selectedOption, placeholder: placeholder, variants: ["small"], onChange: handleInputChange, disabled: Object.keys(filteredOptions).length === 0 }));
+    return (jsx(Input, { options: filteredOptions, value: selectedOption, placeholder: placeholder, variants: ["small"], onChange: handleInputChange, disabled: Object.keys(filteredOptions).length === 0 }));
 }
 
 var css_248z$4 = ".MapColumns-module_content__20ZZ4 {\n  height: 100%; }\n  .MapColumns-module_content__20ZZ4 form {\n    display: flex;\n    flex-direction: column;\n    height: 100%;\n    gap: var(--m); }\n    .MapColumns-module_content__20ZZ4 form .MapColumns-module_tableWrapper___b5Fy {\n      display: flex;\n      height: 100%;\n      overflow-y: auto;\n      padding: 1px;\n      margin-right: -20px;\n      padding-right: 21px; }\n    .MapColumns-module_content__20ZZ4 form .MapColumns-module_actions__YEtCJ {\n      display: flex;\n      justify-content: space-between; }\n\n.MapColumns-module_samples__3WzLx {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1;\n  white-space: nowrap; }\n  .MapColumns-module_samples__3WzLx > small {\n    background-color: var(--color-input-background);\n    font-family: monospace;\n    padding: var(--m-xxxxs);\n    border-radius: var(--border-radius-1);\n    font-size: var(--font-size-xs);\n    display: inline-block; }\n    .MapColumns-module_samples__3WzLx > small + small {\n      margin-left: var(--m-xxxxs); }\n\n.MapColumns-module_spinner__2-3WS {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1); }\n\n.MapColumns-module_errorContainer__1FAaD {\n  display: flex;\n  justify-content: center;\n  max-width: 60vw; }\n\n.MapColumns-module_schemalessTextInput__2JguD {\n  width: 210px; }\n";
@@ -30043,7 +30017,7 @@ function editDistance(s1, s2) {
 
 function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoading) {
     if (templateColumns === void 0) { templateColumns = []; }
-    React.useEffect(function () {
+    useEffect(function () {
         Object.keys(columnsValues).map(function (uploadColumnIndexStr) {
             var uploadColumnIndex = Number(uploadColumnIndexStr);
             var templateKey = columnsValues[uploadColumnIndex].key;
@@ -30060,7 +30034,7 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
         }
         return templateColumn.suggested_mappings.some(function (suggestion) { return suggestion.toLowerCase() === uploadColumnName.toLowerCase(); });
     };
-    var _a = React.useState(function () {
+    var _a = useState(function () {
         var usedTemplateColumns = new Set();
         var initialObject = {};
         return uploadColumns.reduce(function (acc, uc) {
@@ -30085,11 +30059,11 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
             return acc;
         }, initialObject);
     }), values = _a[0], setValues = _a[1];
-    var _b = React.useState(Object.values(values).map(function (_a) {
+    var _b = useState(Object.values(values).map(function (_a) {
         var key = _a.key, selected = _a.selected;
         return ({ key: key, selected: selected });
     })), selectedValues = _b[0], setSelectedValues = _b[1];
-    var templateFields = React.useMemo(function () { return templateColumns.reduce(function (acc, tc) {
+    var templateFields = useMemo(function () { return templateColumns.reduce(function (acc, tc) {
         var _a;
         return (__assign$1(__assign$1({}, acc), (_a = {}, _a[tc.name] = { value: tc.key, required: tc.required }, _a)));
     }, {}); }, [JSON.stringify(templateColumns)]);
@@ -30111,7 +30085,7 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
             return (__assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, prev[id]), { include: !!prev[id].key && value }), _a)));
         });
     };
-    var rows = React.useMemo(function () {
+    var rows = useMemo(function () {
         return uploadColumns.map(function (uc, index) {
             var name = uc.name, sample_data = uc.sample_data;
             var suggestion = (values === null || values === void 0 ? void 0 : values[index]) || {};
@@ -30119,19 +30093,19 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
             return {
                 "Your File Column": {
                     raw: name || false,
-                    content: name || jsxRuntime.jsx("em", { children: "- empty -" }),
+                    content: name || jsx("em", { children: "- empty -" }),
                 },
                 "Your Sample Data": {
                     raw: "",
-                    content: (jsxRuntime.jsx("div", __assign$1({ title: samples.join(", "), className: style$2.samples }, { children: samples.map(function (d, i) { return (jsxRuntime.jsx("small", { children: d }, i)); }) }))),
+                    content: (jsx("div", __assign$1({ title: samples.join(", "), className: style$2.samples }, { children: samples.map(function (d, i) { return (jsx("small", { children: d }, i)); }) }))),
                 },
                 "Destination Column": {
                     raw: "",
-                    content: (jsxRuntime.jsx(DropdownFields, { options: templateFields, value: suggestion.key, placeholder: "- Select one -", onChange: function (key) { return handleTemplateChange(index, key); }, selectedValues: selectedValues, updateSelectedValues: setSelectedValues })),
+                    content: (jsx(DropdownFields, { options: templateFields, value: suggestion.key, placeholder: "- Select one -", onChange: function (key) { return handleTemplateChange(index, key); }, selectedValues: selectedValues, updateSelectedValues: setSelectedValues })),
                 },
                 Include: {
                     raw: false,
-                    content: (jsxRuntime.jsx(Checkbox, { checked: suggestion.include, disabled: !suggestion.key || isLoading, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
+                    content: (jsx(Checkbox, { checked: suggestion.include, disabled: !suggestion.key || isLoading, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
                 },
             };
         });
@@ -30156,7 +30130,7 @@ function MapColumns(_a) {
         };
     });
     var _c = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting), rows = _c.rows, formValues = _c.formValues;
-    var _d = React.useState(null), error = _d[0], setError = _d[1];
+    var _d = useState(null), error = _d[0], setError = _d[1];
     var verifyRequiredColumns = function (template, formValues) {
         var requiredColumns = template.columns.filter(function (column) { return column.required; });
         var includedValues = Object.values(formValues).filter(function (value) { return value.include; });
@@ -30178,12 +30152,12 @@ function MapColumns(_a) {
         }
         onSuccess(columns);
     };
-    return (jsxRuntime.jsx("div", __assign$1({ className: style$2.content }, { children: jsxRuntime.jsxs("form", __assign$1({ onSubmit: onSubmit }, { children: [data ? (jsxRuntime.jsx("div", __assign$1({ className: style$2.tableWrapper }, { children: jsxRuntime.jsx(Table, { data: rows, background: "dark", fixHeader: true, columnWidths: ["20%", "30%", "30%", "20%"], columnAlignments: ["", "", "", "center"] }) }))) : (jsxRuntime.jsx(jsxRuntime.Fragment, { children: "Loading..." })), jsxRuntime.jsxs("div", __assign$1({ className: style$2.actions }, { children: [jsxRuntime.jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isSubmitting }, { children: skipHeaderRowSelection ? "Cancel" : "Back" })), !!error && (jsxRuntime.jsx("div", __assign$1({ className: style$2.errorContainer }, { children: jsxRuntime.jsx(Errors, { error: error }) }))), jsxRuntime.jsx(Button$1, __assign$1({ colorScheme: "primary", isLoading: isSubmitting, type: "submit" }, { children: "Submit" }))] }))] })) })));
+    return (jsx("div", __assign$1({ className: style$2.content }, { children: jsxs("form", __assign$1({ onSubmit: onSubmit }, { children: [data ? (jsx("div", __assign$1({ className: style$2.tableWrapper }, { children: jsx(Table, { data: rows, background: "dark", fixHeader: true, columnWidths: ["20%", "30%", "30%", "20%"], columnAlignments: ["", "", "", "center"] }) }))) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$2.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isSubmitting }, { children: skipHeaderRowSelection ? "Cancel" : "Back" })), !!error && (jsx("div", __assign$1({ className: style$2.errorContainer }, { children: jsx(Errors, { error: error }) }))), jsx(Button$1, __assign$1({ colorScheme: "primary", isLoading: isSubmitting, type: "submit" }, { children: "Submit" }))] }))] })) })));
 }
 
 var fallbackIcon = {
-  path: /* @__PURE__ */ jsxRuntime.jsxs("g", { stroke: "currentColor", strokeWidth: "1.5", children: [
-    /* @__PURE__ */ jsxRuntime.jsx(
+  path: /* @__PURE__ */ jsxs("g", { stroke: "currentColor", strokeWidth: "1.5", children: [
+    /* @__PURE__ */ jsx(
       "path",
       {
         strokeLinecap: "round",
@@ -30191,7 +30165,7 @@ var fallbackIcon = {
         d: "M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx(
+    /* @__PURE__ */ jsx(
       "path",
       {
         fill: "currentColor",
@@ -30199,7 +30173,7 @@ var fallbackIcon = {
         d: "M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsx("circle", { fill: "none", strokeMiterlimit: "10", cx: "12", cy: "12", r: "11.25" })
+    /* @__PURE__ */ jsx("circle", { fill: "none", strokeMiterlimit: "10", cx: "12", cy: "12", r: "11.25" })
   ] }),
   viewBox: "0 0 24 24"
 };
@@ -30234,15 +30208,15 @@ var Icon = forwardRef((props, ref) => {
   };
   const _viewBox = viewBox != null ? viewBox : fallbackIcon.viewBox;
   if (element && typeof element !== "string") {
-    return /* @__PURE__ */ jsxRuntime.jsx(chakra.svg, { as: element, ...shared, ...rest });
+    return /* @__PURE__ */ jsx(chakra.svg, { as: element, ...shared, ...rest });
   }
   const _path = children != null ? children : fallbackIcon.path;
-  return /* @__PURE__ */ jsxRuntime.jsx(chakra.svg, { verticalAlign: "middle", viewBox: _viewBox, ...shared, ...rest, children: _path });
+  return /* @__PURE__ */ jsx(chakra.svg, { verticalAlign: "middle", viewBox: _viewBox, ...shared, ...rest, children: _path });
 });
 Icon.displayName = "Icon";
 
 function CheckIcon(props) {
-  return /* @__PURE__ */ jsxRuntime.jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30251,7 +30225,7 @@ function CheckIcon(props) {
   ) });
 }
 function InfoIcon(props) {
-  return /* @__PURE__ */ jsxRuntime.jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30260,7 +30234,7 @@ function InfoIcon(props) {
   ) });
 }
 function WarningIcon(props) {
-  return /* @__PURE__ */ jsxRuntime.jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30301,7 +30275,7 @@ var AlertDescription = forwardRef(
       display: "inline",
       ...styles.description
     };
-    return /* @__PURE__ */ jsxRuntime.jsx(
+    return /* @__PURE__ */ jsx(
       chakra.div,
       {
         ref,
@@ -30320,7 +30294,7 @@ function AlertIcon(props) {
   const BaseIcon = getStatusIcon(status);
   const styles = useAlertStyles();
   const css = status === "loading" ? styles.spinner : styles.icon;
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(
     chakra.span,
     {
       display: "inherit",
@@ -30328,7 +30302,7 @@ function AlertIcon(props) {
       ...props,
       className: cx("chakra-alert__icon", props.className),
       __css: css,
-      children: props.children || /* @__PURE__ */ jsxRuntime.jsx(BaseIcon, { h: "100%", w: "100%" })
+      children: props.children || /* @__PURE__ */ jsx(BaseIcon, { h: "100%", w: "100%" })
     }
   );
 }
@@ -30338,7 +30312,7 @@ var AlertTitle = forwardRef(
   function AlertTitle2(props, ref) {
     const styles = useAlertStyles();
     const { status } = useAlertContext();
-    return /* @__PURE__ */ jsxRuntime.jsx(
+    return /* @__PURE__ */ jsx(
       chakra.div,
       {
         ref,
@@ -30365,7 +30339,7 @@ var Alert$1 = forwardRef(function Alert2(props, ref) {
     overflow: "hidden",
     ...styles.container
   };
-  return /* @__PURE__ */ jsxRuntime.jsx(AlertProvider, { value: { status }, children: /* @__PURE__ */ jsxRuntime.jsx(AlertStylesProvider, { value: styles, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(AlertProvider, { value: { status }, children: /* @__PURE__ */ jsx(AlertStylesProvider, { value: styles, children: /* @__PURE__ */ jsx(
     chakra.div,
     {
       "data-status": status,
@@ -30386,21 +30360,21 @@ styleInject(css_248z$3);
 function RowSelection(_a) {
     var _b, _c;
     var data = _a.data, onSuccess = _a.onSuccess, onCancel = _a.onCancel, selectedHeaderRow = _a.selectedHeaderRow, setSelectedHeaderRow = _a.setSelectedHeaderRow;
-    var _d = React.useState(false), isLoading = _d[0], setIsLoading = _d[1];
+    var _d = useState(false), isLoading = _d[0], setIsLoading = _d[1];
     var handleRadioChange = function (e) {
         setSelectedHeaderRow(Number(e.target.value));
     };
     var rowLimit = 50;
     var dataWithRadios = data.rows.slice(0, rowLimit).map(function (row) {
         var _a;
-        var nameWithRadio = (jsxRuntime.jsxs("span", { children: [jsxRuntime.jsx("input", { type: "radio", id: "radio-".concat(row.index), className: style$1.inputRadio, name: "rowSelection", value: row.index, checked: selectedHeaderRow === row.index, onChange: handleRadioChange }), (_a = row.values) === null || _a === void 0 ? void 0 : _a[0]] }));
+        var nameWithRadio = (jsxs("span", { children: [jsx("input", { type: "radio", id: "radio-".concat(row.index), className: style$1.inputRadio, name: "rowSelection", value: row.index, checked: selectedHeaderRow === row.index, onChange: handleRadioChange }), (_a = row.values) === null || _a === void 0 ? void 0 : _a[0]] }));
         var mappedRow = Object.entries(row.values).map(function (_a) {
             var key = _a[0], value = _a[1];
             return [
                 key,
                 {
                     raw: value,
-                    content: key === "0" ? nameWithRadio : jsxRuntime.jsx("span", { children: value }),
+                    content: key === "0" ? nameWithRadio : jsx("span", { children: value }),
                     tooltip: value,
                 },
             ];
@@ -30419,7 +30393,7 @@ function RowSelection(_a) {
         onSuccess();
         setIsLoading(false);
     };
-    return (jsxRuntime.jsx("div", __assign$1({ className: style$1.content }, { children: jsxRuntime.jsxs("form", { children: [data ? (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [hasMultipleExcelSheets ? (jsxRuntime.jsxs(Alert$1, __assign$1({ status: "info" }, { children: [jsxRuntime.jsx(PiWarningCircle, { className: style$1.warningIcon }), "Only the first sheet (\"", data.sheetList[0], "\") of the Excel file will be imported. To import multiple sheets, please upload each sheet individually."] }))) : null, jsxRuntime.jsx("div", __assign$1({ className: style$1.tableWrapper }, { children: jsxRuntime.jsx(Table, { fixHeader: true, mergeThemes: true, data: dataWithRadios || [], heading: jsxRuntime.jsx("div", __assign$1({ className: style$1.headingCaption }, { children: jsxRuntime.jsx(Tooltip, __assign$1({ title: "Select the row which contains the column headers" }, { children: "Select Header Row" })) })), keyAsId: "index", background: "zebra", columnWidths: columnWidths, columnAlignments: Array(numberOfColumns).fill("left"), onRowClick: function (row) { return setSelectedHeaderRow((dataWithRadios === null || dataWithRadios === void 0 ? void 0 : dataWithRadios.indexOf(row)) || 0); } }) }))] })) : (jsxRuntime.jsx(jsxRuntime.Fragment, { children: "Loading..." })), jsxRuntime.jsxs("div", __assign$1({ className: style$1.actions }, { children: [jsxRuntime.jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isLoading }, { children: "Cancel" })), jsxRuntime.jsx(Button$1, __assign$1({ colorScheme: "primary", onClick: handleNextClick, isLoading: isLoading, type: "submit" }, { children: "Continue" }))] }))] }) })));
+    return (jsx("div", __assign$1({ className: style$1.content }, { children: jsxs("form", { children: [data ? (jsxs(Fragment$1, { children: [hasMultipleExcelSheets ? (jsxs(Alert$1, __assign$1({ status: "info" }, { children: [jsx(PiWarningCircle, { className: style$1.warningIcon }), "Only the first sheet (\"", data.sheetList[0], "\") of the Excel file will be imported. To import multiple sheets, please upload each sheet individually."] }))) : null, jsx("div", __assign$1({ className: style$1.tableWrapper }, { children: jsx(Table, { fixHeader: true, mergeThemes: true, data: dataWithRadios || [], heading: jsx("div", __assign$1({ className: style$1.headingCaption }, { children: jsx(Tooltip, __assign$1({ title: "Select the row which contains the column headers" }, { children: "Select Header Row" })) })), keyAsId: "index", background: "zebra", columnWidths: columnWidths, columnAlignments: Array(numberOfColumns).fill("left"), onRowClick: function (row) { return setSelectedHeaderRow((dataWithRadios === null || dataWithRadios === void 0 ? void 0 : dataWithRadios.indexOf(row)) || 0); } }) }))] })) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$1.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isLoading }, { children: "Cancel" })), jsx(Button$1, __assign$1({ colorScheme: "primary", onClick: handleNextClick, isLoading: isLoading, type: "submit" }, { children: "Continue" }))] }))] }) })));
 }
 
 /** @license React v16.13.1
@@ -32273,7 +32247,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * ```
  */
 
-var Dropzone = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
+var Dropzone = /*#__PURE__*/forwardRef$1(function (_ref, ref) {
   var children = _ref.children,
       params = _objectWithoutProperties(_ref, _excluded);
 
@@ -32281,13 +32255,13 @@ var Dropzone = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       open = _useDropzone.open,
       props = _objectWithoutProperties(_useDropzone, _excluded2);
 
-  React.useImperativeHandle(ref, function () {
+  useImperativeHandle(ref, function () {
     return {
       open: open
     };
   }, [open]); // TODO: Figure out why react-styleguidist cannot create docs if we don't return a jsx element
 
-  return /*#__PURE__*/React__default["default"].createElement(React.Fragment, null, children(_objectSpread(_objectSpread({}, props), {}, {
+  return /*#__PURE__*/React__default.createElement(Fragment$2, null, children(_objectSpread(_objectSpread({}, props), {}, {
     open: open
   })));
 });
@@ -32686,16 +32660,16 @@ function useDropzone() {
       onError = _defaultProps$props.onError,
       validator = _defaultProps$props.validator;
 
-  var acceptAttr = React.useMemo(function () {
+  var acceptAttr = useMemo(function () {
     return acceptPropAsAcceptAttr(accept);
   }, [accept]);
-  var pickerTypes = React.useMemo(function () {
+  var pickerTypes = useMemo(function () {
     return pickerOptionsFromAccept(accept);
   }, [accept]);
-  var onFileDialogOpenCb = React.useMemo(function () {
+  var onFileDialogOpenCb = useMemo(function () {
     return typeof onFileDialogOpen === "function" ? onFileDialogOpen : noop$1;
   }, [onFileDialogOpen]);
-  var onFileDialogCancelCb = React.useMemo(function () {
+  var onFileDialogCancelCb = useMemo(function () {
     return typeof onFileDialogCancel === "function" ? onFileDialogCancel : noop$1;
   }, [onFileDialogCancel]);
   /**
@@ -32703,17 +32677,17 @@ function useDropzone() {
    * @type {React.MutableRefObject<HTMLElement>}
    */
 
-  var rootRef = React.useRef(null);
-  var inputRef = React.useRef(null);
+  var rootRef = useRef(null);
+  var inputRef = useRef(null);
 
-  var _useReducer = React.useReducer(reducer, initialState$1),
+  var _useReducer = useReducer(reducer, initialState$1),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
   var isFocused = state.isFocused,
       isFileDialogActive = state.isFileDialogActive;
-  var fsAccessApiWorksRef = React.useRef(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && canUseFileSystemAccessAPI()); // Update file dialog active state when the window is focused on
+  var fsAccessApiWorksRef = useRef(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && canUseFileSystemAccessAPI()); // Update file dialog active state when the window is focused on
 
   var onWindowFocus = function onWindowFocus() {
     // Execute the timeout only if the file dialog is opened in the browser
@@ -32733,13 +32707,13 @@ function useDropzone() {
     }
   };
 
-  React.useEffect(function () {
+  useEffect(function () {
     window.addEventListener("focus", onWindowFocus, false);
     return function () {
       window.removeEventListener("focus", onWindowFocus, false);
     };
   }, [inputRef, isFileDialogActive, onFileDialogCancelCb, fsAccessApiWorksRef]);
-  var dragTargetsRef = React.useRef([]);
+  var dragTargetsRef = useRef([]);
 
   var onDocumentDrop = function onDocumentDrop(event) {
     if (rootRef.current && rootRef.current.contains(event.target)) {
@@ -32751,7 +32725,7 @@ function useDropzone() {
     dragTargetsRef.current = [];
   };
 
-  React.useEffect(function () {
+  useEffect(function () {
     if (preventDropOnDocument) {
       document.addEventListener("dragover", onDocumentDragOver, false);
       document.addEventListener("drop", onDocumentDrop, false);
@@ -32765,14 +32739,14 @@ function useDropzone() {
     };
   }, [rootRef, preventDropOnDocument]); // Auto focus the root when autoFocus is true
 
-  React.useEffect(function () {
+  useEffect(function () {
     if (!disabled && autoFocus && rootRef.current) {
       rootRef.current.focus();
     }
 
     return function () {};
   }, [rootRef, autoFocus, disabled]);
-  var onErrCb = React.useCallback(function (e) {
+  var onErrCb = useCallback(function (e) {
     if (onError) {
       onError(e);
     } else {
@@ -32780,7 +32754,7 @@ function useDropzone() {
       console.error(e);
     }
   }, [onError]);
-  var onDragEnterCb = React.useCallback(function (event) {
+  var onDragEnterCb = useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
     event.persist();
@@ -32819,7 +32793,7 @@ function useDropzone() {
       });
     }
   }, [getFilesFromEvent, onDragEnter, onErrCb, noDragEventsBubbling, acceptAttr, minSize, maxSize, multiple, maxFiles, validator]);
-  var onDragOverCb = React.useCallback(function (event) {
+  var onDragOverCb = useCallback(function (event) {
     event.preventDefault();
     event.persist();
     stopPropagation(event);
@@ -32839,7 +32813,7 @@ function useDropzone() {
 
     return false;
   }, [onDragOver, noDragEventsBubbling]);
-  var onDragLeaveCb = React.useCallback(function (event) {
+  var onDragLeaveCb = useCallback(function (event) {
     event.preventDefault();
     event.persist();
     stopPropagation(event); // Only deactivate once the dropzone and all children have been left
@@ -32872,7 +32846,7 @@ function useDropzone() {
       onDragLeave(event);
     }
   }, [rootRef, onDragLeave, noDragEventsBubbling]);
-  var setFiles = React.useCallback(function (files, event) {
+  var setFiles = useCallback(function (files, event) {
     var acceptedFiles = [];
     var fileRejections = [];
     files.forEach(function (file) {
@@ -32935,7 +32909,7 @@ function useDropzone() {
       onDropAccepted(acceptedFiles, event);
     }
   }, [dispatch, multiple, acceptAttr, minSize, maxSize, maxFiles, onDrop, onDropAccepted, onDropRejected, validator]);
-  var onDropCb = React.useCallback(function (event) {
+  var onDropCb = useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
     event.persist();
@@ -32959,7 +32933,7 @@ function useDropzone() {
     });
   }, [getFilesFromEvent, setFiles, onErrCb, noDragEventsBubbling]); // Fn for opening the file dialog programmatically
 
-  var openFileDialog = React.useCallback(function () {
+  var openFileDialog = useCallback(function () {
     // No point to use FS access APIs if context is not secure
     // https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts#feature_detection
     if (fsAccessApiWorksRef.current) {
@@ -33013,7 +32987,7 @@ function useDropzone() {
     }
   }, [dispatch, onFileDialogOpenCb, onFileDialogCancelCb, useFsAccessApi, setFiles, onErrCb, pickerTypes, multiple]); // Cb to open the file dialog when SPACE/ENTER occurs on the dropzone
 
-  var onKeyDownCb = React.useCallback(function (event) {
+  var onKeyDownCb = useCallback(function (event) {
     // Ignore keyboard events bubbling up the DOM tree
     if (!rootRef.current || !rootRef.current.isEqualNode(event.target)) {
       return;
@@ -33025,18 +32999,18 @@ function useDropzone() {
     }
   }, [rootRef, openFileDialog]); // Update focus state for the dropzone
 
-  var onFocusCb = React.useCallback(function () {
+  var onFocusCb = useCallback(function () {
     dispatch({
       type: "focus"
     });
   }, []);
-  var onBlurCb = React.useCallback(function () {
+  var onBlurCb = useCallback(function () {
     dispatch({
       type: "blur"
     });
   }, []); // Cb to open the file dialog when click occurs on the dropzone
 
-  var onClickCb = React.useCallback(function () {
+  var onClickCb = useCallback(function () {
     if (noClick) {
       return;
     } // In IE11/Edge the file-browser dialog is blocking, therefore, use setTimeout()
@@ -33069,7 +33043,7 @@ function useDropzone() {
     }
   };
 
-  var getRootProps = React.useMemo(function () {
+  var getRootProps = useMemo(function () {
     return function () {
       var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref2$refKey = _ref2.refKey,
@@ -33100,10 +33074,10 @@ function useDropzone() {
       } : {}), rest);
     };
   }, [rootRef, onKeyDownCb, onFocusCb, onBlurCb, onClickCb, onDragEnterCb, onDragOverCb, onDragLeaveCb, onDropCb, noKeyboard, noDrag, disabled]);
-  var onInputElementClick = React.useCallback(function (event) {
+  var onInputElementClick = useCallback(function (event) {
     event.stopPropagation();
   }, []);
-  var getInputProps = React.useMemo(function () {
+  var getInputProps = useMemo(function () {
     return function () {
       var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref3$refKey = _ref3.refKey,
@@ -33216,9 +33190,9 @@ var vhPolyfill = css`
     }
   }
 `;
-var CSSPolyfill = () => /* @__PURE__ */ jsxRuntime.jsx(react.Global, { styles: vhPolyfill });
-var CSSReset = ({ scope = "" }) => /* @__PURE__ */ jsxRuntime.jsx(
-  react.Global,
+var CSSPolyfill = () => /* @__PURE__ */ jsx(Global, { styles: vhPolyfill });
+var CSSReset = ({ scope = "" }) => /* @__PURE__ */ jsx(
+  Global,
   {
     styles: css`
       html {
@@ -33483,7 +33457,7 @@ var [PortalManagerContextProvider, usePortalManager] = createContext$1({
 });
 function PortalManager(props) {
   const { children, zIndex } = props;
-  return /* @__PURE__ */ jsxRuntime.jsx(PortalManagerContextProvider, { value: { zIndex }, children });
+  return /* @__PURE__ */ jsx(PortalManagerContextProvider, { value: { zIndex }, children });
 }
 PortalManager.displayName = "PortalManager";
 
@@ -33493,7 +33467,7 @@ var [PortalContextProvider, usePortalContext] = createContext$1({
 });
 var PORTAL_CLASSNAME = "chakra-portal";
 var PORTAL_SELECTOR = `.chakra-portal`;
-var Container = (props) => /* @__PURE__ */ jsxRuntime.jsx(
+var Container = (props) => /* @__PURE__ */ jsx(
   "div",
   {
     className: "chakra-portal-zIndex",
@@ -33511,10 +33485,10 @@ var Container = (props) => /* @__PURE__ */ jsxRuntime.jsx(
 );
 var DefaultPortal = (props) => {
   const { appendToParentPortal, children } = props;
-  const [tempNode, setTempNode] = React.useState(null);
-  const portal = React.useRef(null);
-  const [, forceUpdate] = React.useState({});
-  React.useEffect(() => forceUpdate({}), []);
+  const [tempNode, setTempNode] = useState(null);
+  const portal = useRef(null);
+  const [, forceUpdate] = useState({});
+  useEffect(() => forceUpdate({}), []);
   const parentPortal = usePortalContext();
   const manager = usePortalManager();
   useSafeLayoutEffect(() => {
@@ -33535,11 +33509,11 @@ var DefaultPortal = (props) => {
       }
     };
   }, [tempNode]);
-  const _children = (manager == null ? void 0 : manager.zIndex) ? /* @__PURE__ */ jsxRuntime.jsx(Container, { zIndex: manager == null ? void 0 : manager.zIndex, children }) : children;
-  return portal.current ? reactDom.createPortal(
-    /* @__PURE__ */ jsxRuntime.jsx(PortalContextProvider, { value: portal.current, children: _children }),
+  const _children = (manager == null ? void 0 : manager.zIndex) ? /* @__PURE__ */ jsx(Container, { zIndex: manager == null ? void 0 : manager.zIndex, children }) : children;
+  return portal.current ? createPortal(
+    /* @__PURE__ */ jsx(PortalContextProvider, { value: portal.current, children: _children }),
     portal.current
-  ) : /* @__PURE__ */ jsxRuntime.jsx(
+  ) : /* @__PURE__ */ jsx(
     "span",
     {
       ref: (el) => {
@@ -33553,13 +33527,13 @@ var ContainerPortal = (props) => {
   const { children, containerRef, appendToParentPortal } = props;
   const containerEl = containerRef.current;
   const host = containerEl != null ? containerEl : typeof window !== "undefined" ? document.body : void 0;
-  const portal = React.useMemo(() => {
+  const portal = useMemo(() => {
     const node = containerEl == null ? void 0 : containerEl.ownerDocument.createElement("div");
     if (node)
       node.className = PORTAL_CLASSNAME;
     return node;
   }, [containerEl]);
-  const [, forceUpdate] = React.useState({});
+  const [, forceUpdate] = useState({});
   useSafeLayoutEffect(() => forceUpdate({}), []);
   useSafeLayoutEffect(() => {
     if (!portal || !host)
@@ -33570,8 +33544,8 @@ var ContainerPortal = (props) => {
     };
   }, [portal, host]);
   if (host && portal) {
-    return reactDom.createPortal(
-      /* @__PURE__ */ jsxRuntime.jsx(PortalContextProvider, { value: appendToParentPortal ? portal : null, children }),
+    return createPortal(
+      /* @__PURE__ */ jsx(PortalContextProvider, { value: appendToParentPortal ? portal : null, children }),
       portal
     );
   }
@@ -33583,13 +33557,13 @@ function Portal(props) {
     ...props
   };
   const { containerRef, ...rest } = portalProps;
-  return containerRef ? /* @__PURE__ */ jsxRuntime.jsx(ContainerPortal, { containerRef, ...rest }) : /* @__PURE__ */ jsxRuntime.jsx(DefaultPortal, { ...rest });
+  return containerRef ? /* @__PURE__ */ jsx(ContainerPortal, { containerRef, ...rest }) : /* @__PURE__ */ jsx(DefaultPortal, { ...rest });
 }
 Portal.className = PORTAL_CLASSNAME;
 Portal.selector = PORTAL_SELECTOR;
 Portal.displayName = "Portal";
 
-var EnvironmentContext = React.createContext({
+var EnvironmentContext = createContext$2({
   getDocument() {
     return document;
   },
@@ -33600,8 +33574,8 @@ var EnvironmentContext = React.createContext({
 EnvironmentContext.displayName = "EnvironmentContext";
 function EnvironmentProvider(props) {
   const { children, environment: environmentProp, disabled } = props;
-  const ref = React.useRef(null);
-  const context = React.useMemo(() => {
+  const ref = useRef(null);
+  const context = useMemo(() => {
     if (environmentProp)
       return environmentProp;
     return {
@@ -33616,9 +33590,9 @@ function EnvironmentProvider(props) {
     };
   }, [environmentProp]);
   const showSpan = !disabled || !environmentProp;
-  return /* @__PURE__ */ jsxRuntime.jsxs(EnvironmentContext.Provider, { value: context, children: [
+  return /* @__PURE__ */ jsxs(EnvironmentContext.Provider, { value: context, children: [
     children,
-    showSpan && /* @__PURE__ */ jsxRuntime.jsx("span", { id: "__chakra_env", hidden: true, ref })
+    showSpan && /* @__PURE__ */ jsx("span", { id: "__chakra_env", hidden: true, ref })
   ] });
 }
 EnvironmentProvider.displayName = "EnvironmentProvider";
@@ -33636,7 +33610,7 @@ var ChakraProvider$1 = (props) => {
     disableEnvironment,
     disableGlobalStyle
   } = props;
-  const _children = /* @__PURE__ */ jsxRuntime.jsx(
+  const _children = /* @__PURE__ */ jsx(
     EnvironmentProvider,
     {
       environment,
@@ -33644,15 +33618,15 @@ var ChakraProvider$1 = (props) => {
       children
     }
   );
-  return /* @__PURE__ */ jsxRuntime.jsx(ThemeProvider$1, { theme, cssVarsRoot, children: /* @__PURE__ */ jsxRuntime.jsxs(
+  return /* @__PURE__ */ jsx(ThemeProvider$1, { theme, cssVarsRoot, children: /* @__PURE__ */ jsxs(
     ColorModeProvider,
     {
       colorModeManager,
       options: theme.config,
       children: [
-        resetCSS ? /* @__PURE__ */ jsxRuntime.jsx(CSSReset, { scope: resetScope }) : /* @__PURE__ */ jsxRuntime.jsx(CSSPolyfill, {}),
-        !disableGlobalStyle && /* @__PURE__ */ jsxRuntime.jsx(GlobalStyle, {}),
-        portalZIndex ? /* @__PURE__ */ jsxRuntime.jsx(PortalManager, { zIndex: portalZIndex, children: _children }) : _children
+        resetCSS ? /* @__PURE__ */ jsx(CSSReset, { scope: resetScope }) : /* @__PURE__ */ jsx(CSSPolyfill, {}),
+        !disableGlobalStyle && /* @__PURE__ */ jsx(GlobalStyle, {}),
+        portalZIndex ? /* @__PURE__ */ jsx(PortalManager, { zIndex: portalZIndex, children: _children }) : _children
       ]
     }
   ) });
@@ -33711,11 +33685,11 @@ function getToastListStyle(position) {
 }
 
 function useCallbackRef(callback, deps = []) {
-  const callbackRef = React.useRef(callback);
-  React.useEffect(() => {
+  const callbackRef = useRef(callback);
+  useEffect(() => {
     callbackRef.current = callback;
   });
-  return React.useCallback((...args) => {
+  return useCallback((...args) => {
     var _a;
     return (_a = callbackRef.current) == null ? void 0 : _a.call(callbackRef, ...args);
   }, deps);
@@ -33723,7 +33697,7 @@ function useCallbackRef(callback, deps = []) {
 
 function useTimeout(callback, delay) {
   const fn = useCallbackRef(callback);
-  React.useEffect(() => {
+  useEffect(() => {
     if (delay == null)
       return void 0;
     let timeoutId = null;
@@ -33739,9 +33713,9 @@ function useTimeout(callback, delay) {
 }
 
 function useUpdateEffect(callback, deps) {
-  const renderCycleRef = React.useRef(false);
-  const effectCycleRef = React.useRef(false);
-  React.useEffect(() => {
+  const renderCycleRef = useRef(false);
+  const effectCycleRef = useRef(false);
+  useEffect(() => {
     const mounted = renderCycleRef.current;
     const run = mounted && effectCycleRef.current;
     if (run) {
@@ -33749,7 +33723,7 @@ function useUpdateEffect(callback, deps) {
     }
     effectCycleRef.current = true;
   }, deps);
-  React.useEffect(() => {
+  useEffect(() => {
     renderCycleRef.current = true;
     return () => {
       renderCycleRef.current = false;
@@ -33760,24 +33734,24 @@ function useUpdateEffect(callback, deps) {
 /**
  * @public
  */
-const MotionConfigContext = React.createContext({
+const MotionConfigContext = createContext$2({
     transformPagePoint: (p) => p,
     isStatic: false,
     reducedMotion: "never",
 });
 
-const MotionContext = React.createContext({});
+const MotionContext = createContext$2({});
 
 /**
  * @public
  */
-const PresenceContext = React.createContext(null);
+const PresenceContext = createContext$2(null);
 
 const isBrowser = typeof document !== "undefined";
 
-const useIsomorphicLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;
+const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
 
-const LazyContext = React.createContext({ strict: false });
+const LazyContext = createContext$2({ strict: false });
 
 /**
  * Convert camelCase to dash-case properties.
@@ -33788,11 +33762,11 @@ const optimizedAppearDataId = "framerAppearId";
 const optimizedAppearDataAttribute = "data-" + camelToDash(optimizedAppearDataId);
 
 function useVisualElement(Component, visualState, props, createVisualElement) {
-    const { visualElement: parent } = React.useContext(MotionContext);
-    const lazyContext = React.useContext(LazyContext);
-    const presenceContext = React.useContext(PresenceContext);
-    const reducedMotionConfig = React.useContext(MotionConfigContext).reducedMotion;
-    const visualElementRef = React.useRef();
+    const { visualElement: parent } = useContext(MotionContext);
+    const lazyContext = useContext(LazyContext);
+    const presenceContext = useContext(PresenceContext);
+    const reducedMotionConfig = useContext(MotionConfigContext).reducedMotion;
+    const visualElementRef = useRef();
     /**
      * If we haven't preloaded a renderer, check to see if we have one lazy-loaded
      */
@@ -33810,14 +33784,14 @@ function useVisualElement(Component, visualState, props, createVisualElement) {
         });
     }
     const visualElement = visualElementRef.current;
-    React.useInsertionEffect(() => {
+    useInsertionEffect$1(() => {
         visualElement && visualElement.update(props, presenceContext);
     });
     /**
      * Cache this value as we want to know whether HandoffAppearAnimations
      * was present on initial render - it will be deleted after this.
      */
-    const wantsHandoff = React.useRef(Boolean(props[optimizedAppearDataAttribute] && !window.HandoffComplete));
+    const wantsHandoff = useRef(Boolean(props[optimizedAppearDataAttribute] && !window.HandoffComplete));
     useIsomorphicLayoutEffect(() => {
         if (!visualElement)
             return;
@@ -33836,7 +33810,7 @@ function useVisualElement(Component, visualState, props, createVisualElement) {
             visualElement.animationState.animateChanges();
         }
     });
-    React.useEffect(() => {
+    useEffect(() => {
         if (!visualElement)
             return;
         visualElement.updateFeatures();
@@ -33863,7 +33837,7 @@ function isRefObject(ref) {
  * external ref and VisualElement.
  */
 function useMotionRef(visualState, visualElement, externalRef) {
-    return React.useCallback((instance) => {
+    return useCallback((instance) => {
         instance && visualState.mount && visualState.mount(instance);
         if (visualElement) {
             instance
@@ -33933,8 +33907,8 @@ function getCurrentTreeVariants(props, context) {
 }
 
 function useCreateMotionContext(props) {
-    const { initial, animate } = getCurrentTreeVariants(props, React.useContext(MotionContext));
-    return React.useMemo(() => ({ initial, animate }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate)]);
+    const { initial, animate } = getCurrentTreeVariants(props, useContext(MotionContext));
+    return useMemo(() => ({ initial, animate }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate)]);
 }
 function variantLabelsAsDependency(prop) {
     return Array.isArray(prop) ? prop.join(" ") : prop;
@@ -33976,12 +33950,12 @@ function loadFeatures(features) {
     }
 }
 
-const LayoutGroupContext = React.createContext({});
+const LayoutGroupContext = createContext$2({});
 
 /**
  * Internal, exported only for usage in Framer
  */
-const SwitchLayoutGroupContext = React.createContext({});
+const SwitchLayoutGroupContext = createContext$2({});
 
 const motionComponentSymbol = Symbol.for("motionComponentSymbol");
 
@@ -34003,7 +33977,7 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, useRend
          */
         let MeasureLayout;
         const configAndProps = {
-            ...React.useContext(MotionConfigContext),
+            ...useContext(MotionConfigContext),
             ...props,
             layoutId: useLayoutId(props),
         };
@@ -34022,8 +33996,8 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, useRend
              * Load Motion gesture and animation features. These are rendered as renderless
              * components so each feature can optionally make use of React lifecycle methods.
              */
-            const initialLayoutGroupConfig = React.useContext(SwitchLayoutGroupContext);
-            const isStrict = React.useContext(LazyContext).strict;
+            const initialLayoutGroupConfig = useContext(SwitchLayoutGroupContext);
+            const isStrict = useContext(LazyContext).strict;
             if (context.visualElement) {
                 MeasureLayout = context.visualElement.loadFeatures(
                 // Note: Pass the full new combined props to correctly re-render dynamic feature components.
@@ -34034,16 +34008,16 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, useRend
          * The mount order and hierarchy is specific to ensure our element ref
          * is hydrated by the time features fire their effects.
          */
-        return (React__namespace.createElement(MotionContext.Provider, { value: context },
-            MeasureLayout && context.visualElement ? (React__namespace.createElement(MeasureLayout, { visualElement: context.visualElement, ...configAndProps })) : null,
+        return (React.createElement(MotionContext.Provider, { value: context },
+            MeasureLayout && context.visualElement ? (React.createElement(MeasureLayout, { visualElement: context.visualElement, ...configAndProps })) : null,
             useRender(Component, props, useMotionRef(visualState, context.visualElement, externalRef), visualState, isStatic, context.visualElement)));
     }
-    const ForwardRefComponent = React.forwardRef(MotionComponent);
+    const ForwardRefComponent = forwardRef$1(MotionComponent);
     ForwardRefComponent[motionComponentSymbol] = Component;
     return ForwardRefComponent;
 }
 function useLayoutId({ layoutId }) {
-    const layoutGroupId = React.useContext(LayoutGroupContext).id;
+    const layoutGroupId = useContext(LayoutGroupContext).id;
     return layoutGroupId && layoutId !== undefined
         ? layoutGroupId + "-" + layoutId
         : layoutId;
@@ -34449,7 +34423,7 @@ function copyRawValuesOnly(target, source, props) {
     }
 }
 function useInitialMotionValues({ transformTemplate }, visualState, isStatic) {
-    return React.useMemo(() => {
+    return useMemo(() => {
         const state = createHtmlRenderState();
         buildHTMLStyles(state, visualState, { enableHardwareAcceleration: !isStatic }, transformTemplate);
         return Object.assign({}, state.vars, state.style);
@@ -34701,7 +34675,7 @@ const createSvgRenderState = () => ({
 const isSVGTag = (tag) => typeof tag === "string" && tag.toLowerCase() === "svg";
 
 function useSVGProps(props, visualState, _isStatic, Component) {
-    const visualProps = React.useMemo(() => {
+    const visualProps = useMemo(() => {
         const state = createSvgRenderState();
         buildSVGAttrs(state, visualState, { enableHardwareAcceleration: false }, isSVGTag(Component), props.transformTemplate);
         return {
@@ -34735,8 +34709,8 @@ function createUseRender(forwardMotionProps = false) {
          * will be handled by the onChange handler
          */
         const { children } = props;
-        const renderedChildren = React.useMemo(() => (isMotionValue(children) ? children.get() : children), [children]);
-        return React.createElement(Component, {
+        const renderedChildren = useMemo(() => (isMotionValue(children) ? children.get() : children), [children]);
+        return createElement(Component, {
             ...elementProps,
             children: renderedChildren,
         });
@@ -34847,7 +34821,7 @@ function resolveVariantFromProps(props, definition, custom, currentValues = {}, 
  * you can ensure that initialisers don't execute twice or more.
  */
 function useConstant(init) {
-    const ref = React.useRef(null);
+    const ref = useRef(null);
     if (ref.current === null) {
         ref.current = init();
     }
@@ -34889,8 +34863,8 @@ function makeState({ scrapeMotionValuesFromProps, createRenderState, onMount, },
     return state;
 }
 const makeUseVisualState = (config) => (props, isStatic) => {
-    const context = React.useContext(MotionContext);
-    const presenceContext = React.useContext(PresenceContext);
+    const context = useContext(MotionContext);
+    const presenceContext = useContext(PresenceContext);
     const make = () => makeState(config, props, context, presenceContext);
     return isStatic ? make() : useConstant(make);
 };
@@ -39617,14 +39591,14 @@ class PanGesture extends Feature {
  * @public
  */
 function usePresence() {
-    const context = React.useContext(PresenceContext);
+    const context = useContext(PresenceContext);
     if (context === null)
         return [true, null];
     const { isPresent, onExitComplete, register } = context;
     // It's safe to call the following hooks conditionally (after an early return) because the context will always
     // either be null or non-null for the lifespan of the component.
-    const id = React.useId();
-    React.useEffect(() => register(id), []);
+    const id = useId();
+    useEffect(() => register(id), []);
     const safeToRemove = () => onExitComplete && onExitComplete(id);
     return !isPresent && onExitComplete ? [false, safeToRemove] : [true];
 }
@@ -39649,7 +39623,7 @@ function usePresence() {
  * @public
  */
 function useIsPresent() {
-    return isPresent(React.useContext(PresenceContext));
+    return isPresent(useContext(PresenceContext));
 }
 function isPresent(context) {
     return context === null ? true : context.isPresent;
@@ -39742,7 +39716,7 @@ const correctBoxShadow = {
     },
 };
 
-class MeasureLayoutWithContext extends React__default["default"].Component {
+class MeasureLayoutWithContext extends React__default.Component {
     /**
      * This only mounts projection nodes for components that
      * need measuring, we might want to do it for all components
@@ -39842,8 +39816,8 @@ class MeasureLayoutWithContext extends React__default["default"].Component {
 }
 function MeasureLayout(props) {
     const [isPresent, safeToRemove] = usePresence();
-    const layoutGroup = React.useContext(LayoutGroupContext);
-    return (React__default["default"].createElement(MeasureLayoutWithContext, { ...props, layoutGroup: layoutGroup, switchLayoutGroup: React.useContext(SwitchLayoutGroupContext), isPresent: isPresent, safeToRemove: safeToRemove }));
+    const layoutGroup = useContext(LayoutGroupContext);
+    return (React__default.createElement(MeasureLayoutWithContext, { ...props, layoutGroup: layoutGroup, switchLayoutGroup: useContext(SwitchLayoutGroupContext), isPresent: isPresent, safeToRemove: safeToRemove }));
 }
 const defaultScaleCorrectors = {
     borderRadius: {
@@ -42792,7 +42766,7 @@ const preloadedFeatures = {
 const motion = /*@__PURE__*/ createMotionProxy((Component, config) => createDomMotionConfig(Component, config, preloadedFeatures, createDomVisualElement));
 
 function useIsMounted() {
-    const isMounted = React.useRef(false);
+    const isMounted = useRef(false);
     useIsomorphicLayoutEffect(() => {
         isMounted.current = true;
         return () => {
@@ -42804,15 +42778,15 @@ function useIsMounted() {
 
 function useForceUpdate() {
     const isMounted = useIsMounted();
-    const [forcedRenderCount, setForcedRenderCount] = React.useState(0);
-    const forceRender = React.useCallback(() => {
+    const [forcedRenderCount, setForcedRenderCount] = useState(0);
+    const forceRender = useCallback(() => {
         isMounted.current && setForcedRenderCount(forcedRenderCount + 1);
     }, [forcedRenderCount]);
     /**
      * Defer this to the end of the next animation frame in case there are multiple
      * synchronous calls.
      */
-    const deferredForceRender = React.useCallback(() => frame.postRender(forceRender), [forceRender]);
+    const deferredForceRender = useCallback(() => frame.postRender(forceRender), [forceRender]);
     return [deferredForceRender, forcedRenderCount];
 }
 
@@ -42820,7 +42794,7 @@ function useForceUpdate() {
  * Measurement functionality has to be within a separate component
  * to leverage snapshot lifecycle.
  */
-class PopChildMeasure extends React__namespace.Component {
+class PopChildMeasure extends React.Component {
     getSnapshotBeforeUpdate(prevProps) {
         const element = this.props.childRef.current;
         if (element && prevProps.isPresent && !this.props.isPresent) {
@@ -42841,9 +42815,9 @@ class PopChildMeasure extends React__namespace.Component {
     }
 }
 function PopChild({ children, isPresent }) {
-    const id = React.useId();
-    const ref = React.useRef(null);
-    const size = React.useRef({
+    const id = useId();
+    const ref = useRef(null);
+    const size = useRef({
         width: 0,
         height: 0,
         top: 0,
@@ -42858,7 +42832,7 @@ function PopChild({ children, isPresent }) {
      * styles directly on the DOM node, we might be overwriting
      * styles set via the style prop.
      */
-    React.useInsertionEffect(() => {
+    useInsertionEffect$1(() => {
         const { width, height, top, left } = size.current;
         if (isPresent || !ref.current || !width || !height)
             return;
@@ -42880,13 +42854,13 @@ function PopChild({ children, isPresent }) {
             document.head.removeChild(style);
         };
     }, [isPresent]);
-    return (React__namespace.createElement(PopChildMeasure, { isPresent: isPresent, childRef: ref, sizeRef: size }, React__namespace.cloneElement(children, { ref })));
+    return (React.createElement(PopChildMeasure, { isPresent: isPresent, childRef: ref, sizeRef: size }, React.cloneElement(children, { ref })));
 }
 
 const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, presenceAffectsLayout, mode, }) => {
     const presenceChildren = useConstant(newChildrenMap);
-    const id = React.useId();
-    const context = React.useMemo(() => ({
+    const id = useId();
+    const context = useMemo(() => ({
         id,
         initial,
         isPresent,
@@ -42910,30 +42884,30 @@ const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, p
      * so they can detect that layout change.
      */
     presenceAffectsLayout ? undefined : [isPresent]);
-    React.useMemo(() => {
+    useMemo(() => {
         presenceChildren.forEach((_, key) => presenceChildren.set(key, false));
     }, [isPresent]);
     /**
      * If there's no `motion` components to fire exit animations, we want to remove this
      * component immediately.
      */
-    React__namespace.useEffect(() => {
+    React.useEffect(() => {
         !isPresent &&
             !presenceChildren.size &&
             onExitComplete &&
             onExitComplete();
     }, [isPresent]);
     if (mode === "popLayout") {
-        children = React__namespace.createElement(PopChild, { isPresent: isPresent }, children);
+        children = React.createElement(PopChild, { isPresent: isPresent }, children);
     }
-    return (React__namespace.createElement(PresenceContext.Provider, { value: context }, children));
+    return (React.createElement(PresenceContext.Provider, { value: context }, children));
 };
 function newChildrenMap() {
     return new Map();
 }
 
 function useUnmountEffect(callback) {
-    return React.useEffect(() => () => callback(), []);
+    return useEffect(() => () => callback(), []);
 }
 
 const getChildKey = (child) => child.key || "";
@@ -42946,8 +42920,8 @@ function updateChildLookup(children, allChildren) {
 function onlyElements(children) {
     const filtered = [];
     // We use forEach here instead of map as map mutates the component key by preprending `.$`
-    React.Children.forEach(children, (child) => {
-        if (React.isValidElement(child))
+    Children.forEach(children, (child) => {
+        if (isValidElement(child))
             filtered.push(child);
     });
     return filtered;
@@ -42989,20 +42963,20 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
     invariant(!exitBeforeEnter, "Replace exitBeforeEnter with mode='wait'");
     // We want to force a re-render once all exiting animations have finished. We
     // either use a local forceRender function, or one from a parent context if it exists.
-    const forceRender = React.useContext(LayoutGroupContext).forceRender || useForceUpdate()[0];
+    const forceRender = useContext(LayoutGroupContext).forceRender || useForceUpdate()[0];
     const isMounted = useIsMounted();
     // Filter out any children that aren't ReactElements. We can only track ReactElements with a props.key
     const filteredChildren = onlyElements(children);
     let childrenToRender = filteredChildren;
-    const exitingChildren = React.useRef(new Map()).current;
+    const exitingChildren = useRef(new Map()).current;
     // Keep a living record of the children we're actually rendering so we
     // can diff to figure out which are entering and exiting
-    const presentChildren = React.useRef(childrenToRender);
+    const presentChildren = useRef(childrenToRender);
     // A lookup table to quickly reference components by key
-    const allChildren = React.useRef(new Map()).current;
+    const allChildren = useRef(new Map()).current;
     // If this is the initial component render, just deal with logic surrounding whether
     // we play onMount animations or not.
-    const isInitialRender = React.useRef(true);
+    const isInitialRender = useRef(true);
     useIsomorphicLayoutEffect(() => {
         isInitialRender.current = false;
         updateChildLookup(filteredChildren, allChildren);
@@ -43014,7 +42988,7 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
         exitingChildren.clear();
     });
     if (isInitialRender.current) {
-        return (React__namespace.createElement(React__namespace.Fragment, null, childrenToRender.map((child) => (React__namespace.createElement(PresenceChild, { key: getChildKey(child), isPresent: true, initial: initial ? undefined : false, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child)))));
+        return (React.createElement(React.Fragment, null, childrenToRender.map((child) => (React.createElement(PresenceChild, { key: getChildKey(child), isPresent: true, initial: initial ? undefined : false, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child)))));
     }
     // If this is a subsequent render, deal with entering and exiting children
     childrenToRender = [...childrenToRender];
@@ -43073,7 +43047,7 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
                     onExitComplete && onExitComplete();
                 }
             };
-            exitingComponent = (React__namespace.createElement(PresenceChild, { key: getChildKey(child), isPresent: false, onExitComplete: onExit, custom: custom, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child));
+            exitingComponent = (React.createElement(PresenceChild, { key: getChildKey(child), isPresent: false, onExitComplete: onExit, custom: custom, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child));
             exitingChildren.set(key, exitingComponent);
         }
         childrenToRender.splice(insertionIndex, 0, exitingComponent);
@@ -43082,16 +43056,16 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
     // the same tree between renders
     childrenToRender = childrenToRender.map((child) => {
         const key = child.key;
-        return exitingChildren.has(key) ? (child) : (React__namespace.createElement(PresenceChild, { key: getChildKey(child), isPresent: true, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child));
+        return exitingChildren.has(key) ? (child) : (React.createElement(PresenceChild, { key: getChildKey(child), isPresent: true, presenceAffectsLayout: presenceAffectsLayout, mode: mode }, child));
     });
     if (process.env.NODE_ENV !== "production" &&
         mode === "wait" &&
         childrenToRender.length > 1) {
         console.warn(`You're attempting to animate multiple children within AnimatePresence, but its mode is set to "wait". This will lead to odd visual behaviour.`);
     }
-    return (React__namespace.createElement(React__namespace.Fragment, null, exitingChildren.size
+    return (React.createElement(React.Fragment, null, exitingChildren.size
         ? childrenToRender
-        : childrenToRender.map((child) => React.cloneElement(child))));
+        : childrenToRender.map((child) => cloneElement(child))));
 };
 
 var toastMotionVariants = {
@@ -43125,7 +43099,7 @@ var toastMotionVariants = {
     }
   }
 };
-var ToastComponent = React.memo((props) => {
+var ToastComponent = memo$1((props) => {
   const {
     id,
     message,
@@ -43138,7 +43112,7 @@ var ToastComponent = React.memo((props) => {
     motionVariants = toastMotionVariants,
     toastSpacing = "0.5rem"
   } = props;
-  const [delay, setDelay] = React.useState(duration);
+  const [delay, setDelay] = useState(duration);
   const isPresent = useIsPresent();
   useUpdateEffect(() => {
     if (!isPresent) {
@@ -43154,13 +43128,13 @@ var ToastComponent = React.memo((props) => {
     if (isPresent)
       onRequestRemove();
   };
-  React.useEffect(() => {
+  useEffect(() => {
     if (isPresent && requestClose) {
       onRequestRemove();
     }
   }, [isPresent, requestClose, onRequestRemove]);
   useTimeout(close, delay);
-  const containerStyles = React.useMemo(
+  const containerStyles = useMemo(
     () => ({
       pointerEvents: "auto",
       maxWidth: 560,
@@ -43170,8 +43144,8 @@ var ToastComponent = React.memo((props) => {
     }),
     [containerStyle, toastSpacing]
   );
-  const toastStyle = React.useMemo(() => getToastStyle(position), [position]);
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  const toastStyle = useMemo(() => getToastStyle(position), [position]);
+  return /* @__PURE__ */ jsx(
     motion.div,
     {
       layout: true,
@@ -43184,7 +43158,7 @@ var ToastComponent = React.memo((props) => {
       onHoverEnd: onMouseLeave,
       custom: { position },
       style: toastStyle,
-      children: /* @__PURE__ */ jsxRuntime.jsx(
+      children: /* @__PURE__ */ jsx(
         chakra.div,
         {
           role: "status",
@@ -43200,7 +43174,7 @@ var ToastComponent = React.memo((props) => {
 ToastComponent.displayName = "ToastComponent";
 
 function CloseIcon(props) {
-  return /* @__PURE__ */ jsxRuntime.jsx(Icon, { focusable: "false", "aria-hidden": true, ...props, children: /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(Icon, { focusable: "false", "aria-hidden": true, ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -43219,7 +43193,7 @@ var CloseButton = forwardRef(
       justifyContent: "center",
       flexShrink: 0
     };
-    return /* @__PURE__ */ jsxRuntime.jsx(
+    return /* @__PURE__ */ jsx(
       chakra.button,
       {
         type: "button",
@@ -43232,7 +43206,7 @@ var CloseButton = forwardRef(
           ...__css
         },
         ...rest,
-        children: children || /* @__PURE__ */ jsxRuntime.jsx(CloseIcon, { width: "1em", height: "1em" })
+        children: children || /* @__PURE__ */ jsx(CloseIcon, { width: "1em", height: "1em" })
       }
     );
   }
@@ -43386,7 +43360,7 @@ var Toast = (props) => {
     title: `toast-${id}-title`,
     description: `toast-${id}-description`
   } : void 0;
-  return /* @__PURE__ */ jsxRuntime.jsxs(
+  return /* @__PURE__ */ jsxs(
     Alert$1,
     {
       addRole: false,
@@ -43401,12 +43375,12 @@ var Toast = (props) => {
       width: "auto",
       colorScheme,
       children: [
-        /* @__PURE__ */ jsxRuntime.jsx(AlertIcon, { children: icon }),
-        /* @__PURE__ */ jsxRuntime.jsxs(chakra.div, { flex: "1", maxWidth: "100%", children: [
-          title && /* @__PURE__ */ jsxRuntime.jsx(AlertTitle, { id: ids == null ? void 0 : ids.title, children: title }),
-          description && /* @__PURE__ */ jsxRuntime.jsx(AlertDescription, { id: ids == null ? void 0 : ids.description, display: "block", children: description })
+        /* @__PURE__ */ jsx(AlertIcon, { children: icon }),
+        /* @__PURE__ */ jsxs(chakra.div, { flex: "1", maxWidth: "100%", children: [
+          title && /* @__PURE__ */ jsx(AlertTitle, { id: ids == null ? void 0 : ids.title, children: title }),
+          description && /* @__PURE__ */ jsx(AlertDescription, { id: ids == null ? void 0 : ids.description, display: "block", children: description })
         ] }),
-        isClosable && /* @__PURE__ */ jsxRuntime.jsx(
+        isClosable && /* @__PURE__ */ jsx(
           CloseButton,
           {
             size: "sm",
@@ -43426,7 +43400,7 @@ function createRenderToast(options = {}) {
     if (typeof render === "function") {
       return render({ ...props, ...options });
     }
-    return /* @__PURE__ */ jsxRuntime.jsx(ToastComponent, { ...props, ...options });
+    return /* @__PURE__ */ jsx(ToastComponent, { ...props, ...options });
   };
   return renderToast;
 }
@@ -43436,7 +43410,7 @@ var [ToastOptionProvider, useToastOptionContext] = createContext$1({
   strict: false
 });
 var ToastProvider = (props) => {
-  const state = React.useSyncExternalStore(
+  const state = useSyncExternalStore$1(
     toastStore.subscribe,
     toastStore.getState,
     toastStore.getState
@@ -43449,7 +43423,7 @@ var ToastProvider = (props) => {
   const stateKeys = Object.keys(state);
   const toastList = stateKeys.map((position) => {
     const toasts = state[position];
-    return /* @__PURE__ */ jsxRuntime.jsx(
+    return /* @__PURE__ */ jsx(
       "div",
       {
         role: "region",
@@ -43457,7 +43431,7 @@ var ToastProvider = (props) => {
         "aria-label": `Notifications-${position}`,
         id: `chakra-toast-manager-${position}`,
         style: getToastListStyle(position),
-        children: /* @__PURE__ */ jsxRuntime.jsx(AnimatePresence, { initial: false, children: toasts.map((toast) => /* @__PURE__ */ jsxRuntime.jsx(
+        children: /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: toasts.map((toast) => /* @__PURE__ */ jsx(
           Component,
           {
             motionVariants,
@@ -43469,7 +43443,7 @@ var ToastProvider = (props) => {
       position
     );
   });
-  return /* @__PURE__ */ jsxRuntime.jsx(Portal, { ...portalProps, children: toastList });
+  return /* @__PURE__ */ jsx(Portal, { ...portalProps, children: toastList });
 };
 
 var createChakraProvider = (providerTheme) => {
@@ -43479,9 +43453,9 @@ var createChakraProvider = (providerTheme) => {
     toastOptions,
     ...restProps
   }) {
-    return /* @__PURE__ */ jsxRuntime.jsxs(ChakraProvider$1, { theme, ...restProps, children: [
-      /* @__PURE__ */ jsxRuntime.jsx(ToastOptionProvider, { value: toastOptions == null ? void 0 : toastOptions.defaultOptions, children }),
-      /* @__PURE__ */ jsxRuntime.jsx(ToastProvider, { ...toastOptions })
+    return /* @__PURE__ */ jsxs(ChakraProvider$1, { theme, ...restProps, children: [
+      /* @__PURE__ */ jsx(ToastOptionProvider, { value: toastOptions == null ? void 0 : toastOptions.defaultOptions, children }),
+      /* @__PURE__ */ jsx(ToastProvider, { ...toastOptions })
     ] });
   };
 };
@@ -43495,7 +43469,7 @@ var Text = forwardRef(function Text2(props, ref) {
     textDecoration: props.decoration,
     textTransform: props.casing
   });
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(
     chakra.p,
     {
       ref,
@@ -43513,7 +43487,7 @@ Box.displayName = "Box";
 var Square = forwardRef(function Square2(props, ref) {
   const { size, centerContent = true, ...rest } = props;
   const styles = centerContent ? { display: "flex", alignItems: "center", justifyContent: "center" } : {};
-  return /* @__PURE__ */ jsxRuntime.jsx(
+  return /* @__PURE__ */ jsx(
     Box,
     {
       ref,
@@ -43530,7 +43504,7 @@ var Square = forwardRef(function Square2(props, ref) {
 Square.displayName = "Square";
 var Circle = forwardRef(function Circle2(props, ref) {
   const { size, ...rest } = props;
-  return /* @__PURE__ */ jsxRuntime.jsx(Square, { size, ref, borderRadius: "9999px", ...rest });
+  return /* @__PURE__ */ jsx(Square, { size, ref, borderRadius: "9999px", ...rest });
 });
 Circle.displayName = "Circle";
 
@@ -43552,7 +43526,7 @@ const createStoreImpl = (createState) => {
     return () => listeners.delete(listener);
   };
   const destroy = () => {
-    if ((undefined ? undefined.MODE : void 0) !== "production") {
+    if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production") {
       console.warn(
         "[DEPRECATED] The `destroy` method will be unsupported in a future version. Instead use unsubscribe function returned by subscribe. Everything will be garbage-collected if store is garbage-collected."
       );
@@ -43574,8 +43548,8 @@ const createStore = (createState) => createState ? createStoreImpl(createState) 
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-function h(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var k="function"===typeof Object.is?Object.is:h,l=React__default["default"].useState,m=React__default["default"].useEffect,n=React__default["default"].useLayoutEffect,p$1=React__default["default"].useDebugValue;function q$1(a,b){var d=b(),f=l({inst:{value:d,getSnapshot:b}}),c=f[0].inst,g=f[1];n(function(){c.value=d;c.getSnapshot=b;r$1(c)&&g({inst:c});},[a,d,b]);m(function(){r$1(c)&&g({inst:c});return a(function(){r$1(c)&&g({inst:c});})},[a]);p$1(d);return d}
-function r$1(a){var b=a.getSnapshot;a=a.value;try{var d=b();return !k(a,d)}catch(f){return !0}}function t$1(a,b){return b()}var u$1="undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement?t$1:q$1;var useSyncExternalStore=void 0!==React__default["default"].useSyncExternalStore?React__default["default"].useSyncExternalStore:u$1;
+function h(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var k="function"===typeof Object.is?Object.is:h,l=React__default.useState,m=React__default.useEffect,n=React__default.useLayoutEffect,p$1=React__default.useDebugValue;function q$1(a,b){var d=b(),f=l({inst:{value:d,getSnapshot:b}}),c=f[0].inst,g=f[1];n(function(){c.value=d;c.getSnapshot=b;r$1(c)&&g({inst:c});},[a,d,b]);m(function(){r$1(c)&&g({inst:c});return a(function(){r$1(c)&&g({inst:c});})},[a]);p$1(d);return d}
+function r$1(a){var b=a.getSnapshot;a=a.value;try{var d=b();return !k(a,d)}catch(f){return !0}}function t$1(a,b){return b()}var u$1="undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement?t$1:q$1;var useSyncExternalStore=void 0!==React__default.useSyncExternalStore?React__default.useSyncExternalStore:u$1;
 
 var useSyncExternalStoreShim_production_min = {
 	useSyncExternalStore: useSyncExternalStore
@@ -43604,7 +43578,7 @@ if (
 ) {
   __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
 }
-          var React = React__default["default"];
+          var React = React__default;
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
@@ -43838,7 +43812,7 @@ if (process.env.NODE_ENV === 'production') {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-function p(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var q="function"===typeof Object.is?Object.is:p,r=shim.useSyncExternalStore,t=React__default["default"].useRef,u=React__default["default"].useEffect,v=React__default["default"].useMemo,w=React__default["default"].useDebugValue;
+function p(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var q="function"===typeof Object.is?Object.is:p,r=shim.useSyncExternalStore,t=React__default.useRef,u=React__default.useEffect,v=React__default.useMemo,w=React__default.useDebugValue;
 var useSyncExternalStoreWithSelector$1=function(a,b,e,l,g){var c=t(null);if(null===c.current){var f={hasValue:!1,value:null};c.current=f;}else f=c.current;c=v(function(){function a(a){if(!c){c=!0;d=a;a=l(a);if(void 0!==g&&f.hasValue){var b=f.value;if(g(b,a))return k=b}return k=a}b=k;if(q(d,a))return b;var e=l(a);if(void 0!==g&&g(b,e))return b;d=a;return k=e}var c=!1,d,k,m=void 0===e?null:e;return [function(){return a(b())},null===m?void 0:function(){return a(m())}]},[b,e,l,g]);var d=r(a,c[0],c[1]);
 u(function(){f.hasValue=!0;f.value=d;},[d]);w(d);return d};
 
@@ -43869,7 +43843,7 @@ if (
 ) {
   __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
 }
-          var React = React__default["default"];
+          var React = React__default;
 var shim$1 = shim;
 
 /**
@@ -44020,12 +43994,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 });
 
-const { useDebugValue } = React__default["default"];
+const { useDebugValue } = React__default;
 const { useSyncExternalStoreWithSelector } = withSelector;
 let didWarnAboutEqualityFn = false;
 const identity = (arg) => arg;
 function useStore(api, selector = identity, equalityFn) {
-  if ((undefined ? undefined.MODE : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
+  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && equalityFn && !didWarnAboutEqualityFn) {
     console.warn(
       "[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"
     );
@@ -44042,7 +44016,7 @@ function useStore(api, selector = identity, equalityFn) {
   return slice;
 }
 const createImpl = (createState) => {
-  if ((undefined ? undefined.MODE : void 0) !== "production" && typeof createState !== "function") {
+  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && typeof createState !== "function") {
     console.warn(
       "[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`."
     );
@@ -44373,7 +44347,7 @@ const newImpl = (config, baseOptions) => (set, get, api) => {
 };
 const persistImpl = (config, baseOptions) => {
   if ("getStorage" in baseOptions || "serialize" in baseOptions || "deserialize" in baseOptions) {
-    if ((undefined ? undefined.MODE : void 0) !== "production") {
+    if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production") {
       console.warn(
         "[DEPRECATED] `getStorage`, `serialize` and `deserialize` options are deprecated. Use `storage` option instead."
       );
@@ -44400,7 +44374,7 @@ var useThemeStore = create()(persist(function (set) { return ({
 function UploaderWrapper(_a) {
     var _this = this;
     var onSuccess = _a.onSuccess, setDataError = _a.setDataError; __rest$1(_a, ["onSuccess", "setDataError"]);
-    var _b = React.useState(false), loading = _b[0], setLoading = _b[1];
+    var _b = useState(false), loading = _b[0], setLoading = _b[1];
     var theme = useThemeStore(function (state) { return state.theme; });
     var _c = useDropzone({
         noClick: true,
@@ -44430,7 +44404,7 @@ function UploaderWrapper(_a) {
             });
         },
     }), getRootProps = _c.getRootProps, getInputProps = _c.getInputProps, isDragActive = _c.isDragActive, open = _c.open;
-    return (jsxRuntime.jsx(Box, __assign$1({ padding: "15px", border: "1px solid var(--color-border)", borderRadius: "var(--border-radius-2)" }, { children: jsxRuntime.jsxs(Box, __assign$1({}, getRootProps(), { width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", flex: 1, border: "2px dashed var(--color-border)", borderRadius: "var(--border-radius-2)" }, { children: [jsxRuntime.jsx("input", __assign$1({}, getInputProps())), isDragActive ? (jsxRuntime.jsx(Text, { children: "Drop your file here" })) : loading ? (jsxRuntime.jsx(Text, { children: "Loading..." })) : (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(Text, { children: "Drop your file here" }), jsxRuntime.jsx(Text, { children: "or" }), jsxRuntime.jsx(Button$1, __assign$1({ leftIcon: jsxRuntime.jsx(PiFile, {}), onClick: open, mt: "6px", colorScheme: "secondary", variant: theme === "light" ? "outline" : "solid", _hover: theme === "light" ? {
+    return (jsx(Box, __assign$1({ padding: "15px", border: "1px solid var(--color-border)", borderRadius: "var(--border-radius-2)" }, { children: jsxs(Box, __assign$1({}, getRootProps(), { width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", flex: 1, border: "2px dashed var(--color-border)", borderRadius: "var(--border-radius-2)" }, { children: [jsx("input", __assign$1({}, getInputProps())), isDragActive ? (jsx(Text, { children: "Drop your file here" })) : loading ? (jsx(Text, { children: "Loading..." })) : (jsxs(Fragment$1, { children: [jsx(Text, { children: "Drop your file here" }), jsx(Text, { children: "or" }), jsx(Button$1, __assign$1({ leftIcon: jsx(PiFile, {}), onClick: open, mt: "6px", colorScheme: "secondary", variant: theme === "light" ? "outline" : "solid", _hover: theme === "light" ? {
                                 background: "var(--color-border)",
                                 color: "var(--color-text)"
                             } : undefined }, { children: "Browse files" }))] }))] })) })));
@@ -44441,15 +44415,15 @@ function useTemplateTable(fields) {
     if (!fields) {
         return [];
     }
-    var result = React.useMemo(function () {
+    var result = useMemo(function () {
         return fields.map(function (item) { return ({
             "Expected Column": (item === null || item === void 0 ? void 0 : item.description)
                 ? {
                     raw: item.name,
-                    content: (jsxRuntime.jsx("div", { children: jsxRuntime.jsx(Tooltip, __assign$1({ title: item === null || item === void 0 ? void 0 : item.description }, { children: item.name })) })),
+                    content: (jsx("div", { children: jsx(Tooltip, __assign$1({ title: item === null || item === void 0 ? void 0 : item.description }, { children: item.name })) })),
                 }
                 : item.name,
-            Required: { raw: (item === null || item === void 0 ? void 0 : item.required) ? 1 : 0, content: (item === null || item === void 0 ? void 0 : item.required) ? jsxRuntime.jsx(PiCheckBold, {}) : jsxRuntime.jsx(jsxRuntime.Fragment, {}) },
+            Required: { raw: (item === null || item === void 0 ? void 0 : item.required) ? 1 : 0, content: (item === null || item === void 0 ? void 0 : item.required) ? jsx(PiCheckBold, {}) : jsx(Fragment$1, {}) },
         }); });
     }, [fields]);
     return result;
@@ -44463,7 +44437,7 @@ function Uploader(_a) {
     var template = _a.template, skipHeaderRowSelection = _a.skipHeaderRowSelection, onSuccess = _a.onSuccess, showDownloadTemplateButton = _a.showDownloadTemplateButton, setDataError = _a.setDataError;
     var fields = useTemplateTable(template.columns);
     var theme = useThemeStore(function (state) { return state.theme; });
-    var uploaderWrapper = jsxRuntime.jsx(UploaderWrapper, { onSuccess: onSuccess, skipHeaderRowSelection: skipHeaderRowSelection, setDataError: setDataError });
+    var uploaderWrapper = jsx(UploaderWrapper, { onSuccess: onSuccess, skipHeaderRowSelection: skipHeaderRowSelection, setDataError: setDataError });
     showDownloadTemplateButton = showDownloadTemplateButton !== null && showDownloadTemplateButton !== void 0 ? showDownloadTemplateButton : true;
     function downloadTemplate() {
         var columns = template.columns;
@@ -44473,13 +44447,13 @@ function Uploader(_a) {
         link.download = "example.csv";
         link.click();
     }
-    var downloadTemplateButton = showDownloadTemplateButton ? (jsxRuntime.jsx(Button$1, __assign$1({ width: "100%", leftIcon: jsxRuntime.jsx(PiDownloadSimple, {}), onClick: downloadTemplate, colorScheme: "secondary", variant: theme === "light" ? "outline" : "solid", _hover: theme === "light"
+    var downloadTemplateButton = showDownloadTemplateButton ? (jsx(Button$1, __assign$1({ width: "100%", leftIcon: jsx(PiDownloadSimple, {}), onClick: downloadTemplate, colorScheme: "secondary", variant: theme === "light" ? "outline" : "solid", _hover: theme === "light"
             ? {
                 background: "var(--color-border)",
                 color: "var(--color-text)",
             }
             : undefined }, { children: "Download Template" }))) : null;
-    return (jsxRuntime.jsxs("div", __assign$1({ className: style.content }, { children: [uploaderWrapper, jsxRuntime.jsxs("div", __assign$1({ className: style.box }, { children: [jsxRuntime.jsx("div", __assign$1({ className: style.tableContainer }, { children: jsxRuntime.jsx(Table, { fixHeader: true, data: fields, background: "transparent", columnWidths: ["65%", "35%"], columnAlignments: ["", "center"] }) })), downloadTemplateButton] }))] })));
+    return (jsxs("div", __assign$1({ className: style.content }, { children: [uploaderWrapper, jsxs("div", __assign$1({ className: style.box }, { children: [jsx("div", __assign$1({ className: style.tableContainer }, { children: jsx(Table, { fixHeader: true, data: fields, background: "transparent", columnWidths: ["65%", "35%"], columnAlignments: ["", "center"] }) })), downloadTemplateButton] }))] })));
 }
 
 function Main(props) {
@@ -44491,8 +44465,8 @@ function Main(props) {
     // Stepper handler
     var _c = useStepNavigation(StepEnum.Upload, skipHeader), currentStep = _c.currentStep, setStep = _c.setStep, goNext = _c.goNext, goBack = _c.goBack, stepper = _c.stepper;
     // Error handling
-    var _d = React.useState(null), initializationError = _d[0], setInitializationError = _d[1];
-    var _e = React.useState(null), dataError = _e[0], setDataError = _e[1];
+    var _d = useState(null), initializationError = _d[0], setInitializationError = _d[1];
+    var _e = useState(null), dataError = _e[0], setDataError = _e[1];
     // File data
     var emptyData = {
         fileName: "",
@@ -44500,17 +44474,17 @@ function Main(props) {
         sheetList: [],
         errors: [],
     };
-    var _f = React.useState(emptyData), data = _f[0], setData = _f[1];
+    var _f = useState(emptyData), data = _f[0], setData = _f[1];
     // Header row selection state
-    var _g = React.useState(0), selectedHeaderRow = _g[0], setSelectedHeaderRow = _g[1];
+    var _g = useState(0), selectedHeaderRow = _g[0], setSelectedHeaderRow = _g[1];
     // Map of upload column index -> TemplateColumnMapping
-    var _h = React.useState({}), columnMapping = _h[0], setColumnMapping = _h[1];
+    var _h = useState({}), columnMapping = _h[0], setColumnMapping = _h[1];
     // Used in the final step to show a loading indicator while the data is submitting
-    var _j = React.useState(false), isSubmitting = _j[0], setIsSubmitting = _j[1];
-    var _k = React.useState({
+    var _j = useState(false), isSubmitting = _j[0], setIsSubmitting = _j[1];
+    var _k = useState({
         columns: [],
     }), parsedTemplate = _k[0], setParsedTemplate = _k[1];
-    React.useEffect(function () {
+    useEffect(function () {
         var _a = convertRawTemplate(template), parsedTemplate = _a[0], parsedTemplateError = _a[1];
         if (parsedTemplateError) {
             setInitializationError(parsedTemplateError);
@@ -44519,7 +44493,7 @@ function Main(props) {
             setParsedTemplate(parsedTemplate);
         }
     }, [template]);
-    React.useEffect(function () {
+    useEffect(function () {
         // TODO (client-sdk): Have the importer continue where left off if closed
         // Temporary solution to reload state if closed and opened again
         if (data.rows.length === 0 && currentStep !== StepEnum.Upload) {
@@ -44544,12 +44518,12 @@ function Main(props) {
         }
     };
     if (initializationError) {
-        return (jsxRuntime.jsx("div", __assign$1({ className: style$8.wrapper }, { children: jsxRuntime.jsx(Errors, { error: initializationError, centered: true }) })));
+        return (jsx("div", __assign$1({ className: style$8.wrapper }, { children: jsx(Errors, { error: initializationError, centered: true }) })));
     }
     var renderContent = function () {
         switch (currentStep) {
             case StepEnum.Upload:
-                return (jsxRuntime.jsx(Uploader, { template: parsedTemplate, skipHeaderRowSelection: skipHeader || false, showDownloadTemplateButton: showDownloadTemplateButton, setDataError: setDataError, onSuccess: function (file) { return __awaiter(_this, void 0, void 0, function () {
+                return (jsx(Uploader, { template: parsedTemplate, skipHeaderRowSelection: skipHeader || false, showDownloadTemplateButton: showDownloadTemplateButton, setDataError: setDataError, onSuccess: function (file) { return __awaiter(_this, void 0, void 0, function () {
                         var fileType, reader, isNotBlankRow;
                         var _this = this;
                         return __generator(this, function (_a) {
@@ -44616,9 +44590,9 @@ function Main(props) {
                         });
                     }); } }));
             case StepEnum.RowSelection:
-                return (jsxRuntime.jsx(RowSelection, { data: data, onCancel: reload, onSuccess: function () { return goNext(); }, selectedHeaderRow: selectedHeaderRow, setSelectedHeaderRow: setSelectedHeaderRow }));
+                return (jsx(RowSelection, { data: data, onCancel: reload, onSuccess: function () { return goNext(); }, selectedHeaderRow: selectedHeaderRow, setSelectedHeaderRow: setSelectedHeaderRow }));
             case StepEnum.MapColumns:
-                return (jsxRuntime.jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, onSuccess: function (columnMapping) {
+                return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, onSuccess: function (columnMapping) {
                         setIsSubmitting(true);
                         setColumnMapping(columnMapping);
                         var startIndex = (selectedHeaderRow || 0) + 1;
@@ -44656,12 +44630,12 @@ function Main(props) {
                         goNext();
                     }, isSubmitting: isSubmitting, onCancel: skipHeader ? reload : function () { return goBack(StepEnum.RowSelection); } }));
             case StepEnum.Complete:
-                return jsxRuntime.jsx(Complete, { reload: reload, close: requestClose, isModal: isModal });
+                return jsx(Complete, { reload: reload, close: requestClose, isModal: isModal });
             default:
                 return null;
         }
     };
-    return (jsxRuntime.jsxs("div", __assign$1({ className: style$8.wrapper }, { children: [jsxRuntime.jsx("div", { children: jsxRuntime.jsx(Stepper, __assign$1({}, stepper)) }), jsxRuntime.jsx("div", __assign$1({ className: style$8.content }, { children: renderContent() })), !!dataError && (jsxRuntime.jsxs("div", __assign$1({ className: style$8.status }, { children: [jsxRuntime.jsx("div", {}), jsxRuntime.jsx(Errors, { error: dataError, centered: true }), jsxRuntime.jsx("div", {})] }))), isModal && jsxRuntime.jsx(IconButton, { isRound: true, className: style$8.close, colorScheme: "secondary", "aria-label": "Close", icon: jsxRuntime.jsx(PiX, {}), onClick: requestClose })] })));
+    return (jsxs("div", __assign$1({ className: style$8.wrapper }, { children: [jsx("div", { children: jsx(Stepper, __assign$1({}, stepper)) }), jsx("div", __assign$1({ className: style$8.content }, { children: renderContent() })), !!dataError && (jsxs("div", __assign$1({ className: style$8.status }, { children: [jsx("div", {}), jsx(Errors, { error: dataError, centered: true }), jsx("div", {})] }))), isModal && jsx(IconButton, { isRound: true, className: style$8.close, colorScheme: "secondary", "aria-label": "Close", icon: jsx(PiX, {}), onClick: requestClose })] })));
 }
 
 /*
@@ -46560,12 +46534,12 @@ var myCache = createCache({
 var chakraTheme = extendTheme(theme);
 function ThemeProvider(_a) {
     var children = _a.children;
-    return (jsxRuntime.jsx(react.CacheProvider, __assign$1({ value: myCache }, { children: jsxRuntime.jsx(ChakraProvider, __assign$1({ resetCSS: false, disableGlobalStyle: true, theme: chakraTheme }, { children: jsxRuntime.jsx(IconContext.Provider, __assign$1({ value: { className: "react-icon", size: sizes$1.icon.medium } }, { children: children })) })) })));
+    return (jsx(CacheProvider, __assign$1({ value: myCache }, { children: jsx(ChakraProvider, __assign$1({ resetCSS: false, disableGlobalStyle: true, theme: chakraTheme }, { children: jsx(IconContext.Provider, __assign$1({ value: { className: "react-icon", size: sizes$1.icon.medium } }, { children: children })) })) })));
 }
 
 function Providers(_a) {
     var children = _a.children;
-    return jsxRuntime.jsx(ThemeProvider, { children: children });
+    return jsx(ThemeProvider, { children: children });
 }
 
 var css_248z$1 = ":root {\n  --base-spacing: 24px;\n  --m-xxxxs: calc(var(--base-spacing) / 5);\n  --m-xxxs: calc(var(--base-spacing) / 4);\n  --m-xxs: calc(var(--base-spacing) / 3);\n  --m-xs: calc(var(--base-spacing) / 2);\n  --m-s: calc(var(--base-spacing) * 2 / 3);\n  --m: var(--base-spacing);\n  --m-mm: calc(var(--base-spacing) * 3 / 2);\n  --m-l: calc(var(--base-spacing) * 5 / 3);\n  --m-xl: calc(var(--base-spacing) * 2);\n  --m-xxl: calc(var(--base-spacing) * 5 / 2);\n  --m-xxxl: calc(var(--base-spacing) * 3);\n  --font-size-xs: calc(var(--font-size) * 16 / 17);\n  --font-size-s: calc(var(--font-size) * 13 / 14);\n  --font-size: 0.875rem;\n  --font-size-l: calc(var(--font-size) * 8 / 7);\n  --font-size-xl: calc(var(--font-size) * 9 / 7);\n  --font-size-xxl: calc(var(--font-size) * 12 / 7);\n  --font-size-xxxl: calc(var(--font-size) * 18 / 7);\n  --font-size-h: calc(var(--font-size) * 24 / 7);\n  --font-family: \"Inter\", sans-serif;\n  --font-family-1: var(--font-family);\n  --font-family-2: \"Laxan\", sans-serif;\n  --border-radius: 4px;\n  --border-radius-1: var(--border-radius);\n  --border-radius-2: calc(var(--border-radius) * 2);\n  --border-radius-3: calc(var(--border-radius) * 3);\n  --border-radius-4: calc(var(--border-radius) * 4);\n  --border-radius-5: calc(var(--border-radius) * 5);\n  --border-radius-r: 50%;\n  --fast: 0.3s;\n  --speed: 0.4s;\n  --slow: 0.9s;\n  --ease: ease-out;\n  --transition-ui: background-color var(--fast) var(--ease), border-color var(--fast) var(--ease), opacity var(--fast) var(--ease),\n    transform var(--fast) var(--ease), color var(--fast) var(--ease);\n  --blurred: 5px; }\n\n:root {\n  --color-primary: #7a5ef8;\n  --color-primary-hover: #664ecf;\n  --color-primary-focus: #7a5ef8;\n  --color-primary-disabled: #d3c9fd;\n  --color-primary-button-disabled: #3f3b55;\n  --color-secondary: #1d2939;\n  --color-secondary-hover: #475467;\n  --color-secondary-focus: #1d2939;\n  --color-secondary-disabled: #344054;\n  --color-text-on-primary: #ffffff;\n  --color-text-on-primary-disabled: #667085;\n  --color-text-on-primary-button-disabled: #ffffff;\n  --color-text-on-secondary: #f2f4f7;\n  --color-text-on-secondary-disabled: #475467;\n  --color-progress-bar: #099250;\n  --color-success: rgba(18, 183, 106, 0.88);\n  --color-emphasis: #0ba5ec;\n  --color-error: rgba(252, 93, 93, 0.88);\n  --color-attention: rgba(248, 203, 44, 0.88);\n  --color-importer-link: #2275d7;\n  --blue-light-500: #0ba5ec;\n  --color-green-ui: var(--color-progress-bar);\n  --color-green: var(--color-success);\n  --color-blue: #0ba5ec;\n  --color-red: rgba(252, 93, 93, 0.88);\n  --color-yellow: rgba(248, 203, 44, 0.88);\n  --importer-link: var(--color-importer-link); }\n\n.CSVImporter-dark {\n  color-scheme: dark;\n  --color-background: #0e1116;\n  --color-background-main: var(--color-background);\n  --color-background-modal: #171a20;\n  --color-background-modal-hover: #2e323c;\n  --color-background-modal-veil: #0e1116;\n  --color-background-modal-shadow: #0e1116;\n  --color-background-modal-shade: #171a20;\n  --color-tertiary: #101828;\n  --color-tertiary-hover: #1d2939;\n  --color-tertiary-focus: #1d2939;\n  --color-tertiary-disabled: #eaecf0;\n  --color-background-menu: #101828;\n  --color-background-menu-hover: #1d2939;\n  --color-text-strong: #f2f4f7;\n  --color-text: #d0d5dd;\n  --color-text-soft: #667085;\n  --color-text-on-tertiary: #ffffff;\n  --color-text-on-tertiary-disabled: #667085;\n  --color-error: #912018;\n  --color-text-error: #f04438;\n  --color-background-error: #f04438;\n  --color-background-error-hover: #d92d20;\n  --color-background-error-soft: #fecdca;\n  --color-input-background: #101828;\n  --color-input-background-soft: #1d2939;\n  --color-input-border: #344054;\n  --color-input-placeholder: #344054;\n  --color-input-text-disabled: #344054;\n  --color-input-disabled: #171a20;\n  --color-border: #1d2939;\n  --color-background-small-button-selected: #344054;\n  --color-background-small-button-hover: #101828;\n  --color-text-small-button: $base-white;\n  --color-button: #f9f5ff;\n  --color-button-hover: #e4dffe;\n  --color-button-disabled: #e4dffe;\n  --color-button-text: #171a20;\n  --color-button-text-disabled: lighter(#171a20, 10);\n  --color-button-border: transparent;\n  --color-border: #344054;\n  --color-border-soft: #1d2939;\n  --color-icon: #d0d5dd;\n  --color-bisel: rgba(255, 255, 255, 0.05);\n  --color-csv-import-text: var(--color-text);\n  --color-stepper: #30374f;\n  --color-stepper-active: #6ce9a6; }\n\n.CSVImporter-light {\n  color-scheme: light;\n  --color-background: #f2f4f7;\n  --color-background-main: #ffffff;\n  --color-background-modal: #ffffff;\n  --color-background-modal-hover: #ffffff;\n  --color-background-modal-veil: #0e1116;\n  --color-background-modal-shadow: transparent;\n  --color-background-modal-shade: #f2f4f7;\n  --color-tertiary: #ffffff;\n  --color-tertiary-hover: #f2f4f7;\n  --color-tertiary-focus: #ffffff;\n  --color-tertiary-disabled: #eaecf0;\n  --color-background-menu: #ffffff;\n  --color-background-menu-hover: #f2f4f7;\n  --color-text-strong: #101828;\n  --color-text: #1d2939;\n  --color-text-soft: #667085;\n  --color-text-on-tertiary: #344054;\n  --color-text-on-tertiary-disabled: #667085;\n  --color-error: #fecdca;\n  --color-text-error: #f04438;\n  --color-background-error: #f04438;\n  --color-background-error-hover: #d92d20;\n  --color-background-error-soft: #fecdca;\n  --color-input-background: #ffffff;\n  --color-input-background-soft: #d0d5dd;\n  --color-input-border: #344054;\n  --color-input-placeholder: #344054;\n  --color-input-text-disabled: #344054;\n  --color-input-disabled: #f9fafb;\n  --color-border: #1d2939;\n  --color-background-small-button-selected: #f2f4f7;\n  --color-background-small-button-hover: #f9fafb;\n  --color-text-small-button: var(--color-text);\n  --color-button: #ffffff;\n  --color-button-hover: #f2f4f7;\n  --color-button-disabled: #fcfcfd;\n  --color-button-text: var(--color-text-soft);\n  --color-button-text-disabled: #d0d5dd;\n  --color-button-border: #d0d5dd;\n  --color-border: #d0d5dd;\n  --color-border-soft: #eaecf0;\n  --color-icon: #101323;\n  --color-bisel: rgba(0, 0, 0, 0.05);\n  --color-csv-import-text: #130638;\n  --color-stepper: #b9c0d4;\n  --color-stepper-active: #6ce9a6; }\n\n.csv-importer {\n  font-family: var(--font-family-1);\n  background-color: var(--color-background);\n  color: var(--color-text);\n  font-size: var(--font-size);\n  font-weight: 500;\n  line-height: 1.5; }\n  .csv-importer * {\n    box-sizing: border-box; }\n  .csv-importer .container {\n    max-width: 1300px;\n    margin: 0 auto; }\n";
@@ -46574,11 +46548,11 @@ styleInject(css_248z$1);
 var css_248z = ".CSVImporter {\n  border: none;\n  background-color: transparent;\n  padding: 0 1rem;\n  border-radius: 1.2rem;\n  color: inherit;\n  cursor: pointer;\n  font-weight: 500;\n  font-size: 14px;\n  /* height: 2.4rem; */\n  display: inline-flex;\n  gap: 0.5rem;\n  align-items: center;\n  transition: filter 0.2s ease-out;\n}\n\n.CSVImporter svg {\n  display: block;\n}\n\n.CSVImporter svg path {\n  stroke: currentColor !important;\n}\n\n.CSVImporter:hover,\n.CSVImporter:active {\n  filter: brightness(1.2);\n}\n\n.CSVImporter-dialog::backdrop {\n  background-color: rgba(0, 0, 0, 0.85);\n}\n\n.CSVImporter-dialog {\n  border-radius: 1rem;\n  width: 80vw;\n  height: 100vh;\n  min-width: 907px;\n  border: none;\n  position: fixed;\n  inset: 0;\n  padding: 0;\n  margin: auto;\n}\n\n.CSVImporter-div {\n  border: none;\n  display: block;\n  width: 100%;\n  height: 98vh;\n  overflow-y: hidden;\n}\n\n@media (max-width: 768px) {\n  .CSVImporter-dialog {\n    width: 90vw;\n    min-width: 950px;\n  }\n}\n";
 styleInject(css_248z);
 
-var CSVImporter = React.forwardRef(function (importerProps, forwardRef) {
+var CSVImporter = forwardRef$1(function (importerProps, forwardRef) {
     var _a = importerProps.isModal, isModal = _a === void 0 ? true : _a, _b = importerProps.modalIsOpen, modalIsOpen = _b === void 0 ? true : _b, _c = importerProps.modalOnCloseTriggered, modalOnCloseTriggered = _c === void 0 ? function () { return null; } : _c, modalCloseOnOutsideClick = importerProps.modalCloseOnOutsideClick; importerProps.template; var _d = importerProps.darkMode, darkMode = _d === void 0 ? false : _d, _e = importerProps.primaryColor, primaryColor = _e === void 0 ? "#7a5ef8" : _e, className = importerProps.className; importerProps.onComplete; importerProps.customStyles; importerProps.showDownloadTemplateButton; importerProps.skipHeaderRowSelection; var props = __rest$1(importerProps, ["isModal", "modalIsOpen", "modalOnCloseTriggered", "modalCloseOnOutsideClick", "template", "darkMode", "primaryColor", "className", "onComplete", "customStyles", "showDownloadTemplateButton", "skipHeaderRowSelection"]);
-    var ref = forwardRef !== null && forwardRef !== void 0 ? forwardRef : React.useRef(null);
+    var ref = forwardRef !== null && forwardRef !== void 0 ? forwardRef : useRef(null);
     var current = ref === null || ref === void 0 ? void 0 : ref.current;
-    React.useEffect(function () {
+    useEffect(function () {
         var _a, _b;
         if (isModal && current) {
             if (modalIsOpen)
@@ -46592,12 +46566,12 @@ var CSVImporter = React.forwardRef(function (importerProps, forwardRef) {
     var domElementClass = ["csv-importer", "".concat(baseClass, "-").concat(isModal ? "dialog" : "div"), themeClass, className].filter(function (i) { return i; }).join(" ");
     // Set Light/Dark mode
     var setTheme = useThemeStore(function (state) { return state.setTheme; });
-    React.useEffect(function () {
+    useEffect(function () {
         var theme = darkMode ? "dark" : "light";
         setTheme(theme);
     }, [darkMode]);
     // Apply primary color
-    React.useEffect(function () {
+    useEffect(function () {
         if (primaryColor && isValidColor(primaryColor)) {
             var root = document.documentElement;
             root.style.setProperty("--color-primary", primaryColor);
@@ -46613,9 +46587,9 @@ var CSVImporter = React.forwardRef(function (importerProps, forwardRef) {
         modalOnCloseTriggered();
     });
     var elementProps = __assign$1(__assign$1(__assign$1({ ref: ref }, (isModal ? { onClick: backdropClick } : {})), { className: domElementClass, "data-theme": darkMode ? "dark" : "light", style: { colorScheme: darkMode ? "dark" : "light" } }), props);
-    var ImporterComponent = function () { return (jsxRuntime.jsx(Providers, { children: jsxRuntime.jsx(Main, __assign$1({}, importerProps)) })); };
-    return isModal ? (jsxRuntime.jsx("div", __assign$1({ className: "csvImporter" }, { children: jsxRuntime.jsx("dialog", __assign$1({}, elementProps, { children: jsxRuntime.jsx(ImporterComponent, {}) })) }))) : (jsxRuntime.jsx("div", __assign$1({}, elementProps, { children: jsxRuntime.jsx(ImporterComponent, {}) })));
+    var ImporterComponent = function () { return (jsx(Providers, { children: jsx(Main, __assign$1({}, importerProps)) })); };
+    return isModal ? (jsx("div", __assign$1({ className: "csvImporter" }, { children: jsx("dialog", __assign$1({}, elementProps, { children: jsx(ImporterComponent, {}) })) }))) : (jsx("div", __assign$1({}, elementProps, { children: jsx(ImporterComponent, {}) })));
 });
 
-exports.CSVImporter = CSVImporter;
+export { CSVImporter };
 //# sourceMappingURL=index.js.map
