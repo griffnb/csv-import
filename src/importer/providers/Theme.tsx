@@ -1,12 +1,12 @@
 import { IconContext } from "react-icons";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import createCache from "@emotion/cache";
+import createCache, { EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import theme from "../settings/chakra";
 import { sizes } from "../settings/theme";
 import { ThemeProps } from "./types";
 
-export const myCache = createCache({
+export const myCache = typeof window==="undefined" ? {} as EmotionCache : createCache({
   key: "csv-importer",
 });
 

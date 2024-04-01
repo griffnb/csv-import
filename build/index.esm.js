@@ -46528,7 +46528,7 @@ var theme = __assign$1(__assign$1({ semanticTokens: semanticTokens, direction: d
         Alert: Alert,
     } });
 
-var myCache = createCache({
+var myCache = typeof window === "undefined" ? {} : createCache({
     key: "csv-importer",
 });
 var chakraTheme = extendTheme(theme);
