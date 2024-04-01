@@ -12,7 +12,7 @@ export default function Table({
   theme, // A CSS module object to style the table
   mergeThemes, // Should 'theme' be the only style applied (false) or be merged with the default style (true)
   highlightColumns, // Columns that should use the highlighted style
-  hideColumns = ["id"], // Array of columns to be hidden in the display
+  hideColumns = [], // Array of columns to be hidden in the display
   emptyState,
   heading,
   background = "zebra",

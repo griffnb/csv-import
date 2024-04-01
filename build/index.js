@@ -29718,7 +29718,7 @@ function Table(_a) {
     mergeThemes = _a.mergeThemes, // Should 'theme' be the only style applied (false) or be merged with the default style (true)
     highlightColumns = _a.highlightColumns, // Columns that should use the highlighted style
     _c = _a.hideColumns, // Columns that should use the highlighted style
-    hideColumns = _c === void 0 ? ["id"] : _c, // Array of columns to be hidden in the display
+    hideColumns = _c === void 0 ? [] : _c, // Array of columns to be hidden in the display
     emptyState = _a.emptyState, heading = _a.heading, _d = _a.background, background = _d === void 0 ? "zebra" : _d, _e = _a.columnWidths, columnWidths = _e === void 0 ? [] : _e, _f = _a.columnAlignments, columnAlignments = _f === void 0 ? [] : _f, _g = _a.fixHeader, fixHeader = _g === void 0 ? false : _g, onRowClick = _a.onRowClick;
     var style = !theme ? themeDefault : mergeThemes ? __assign$1(__assign$1({}, themeDefault), theme) : theme;
     // TABLE HEADINGS
