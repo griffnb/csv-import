@@ -1,6 +1,6 @@
 /// <reference types="react" />
 declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0a347bb9").R, import("react").HTMLAttributes<HTMLDialogElement> & import("react").HTMLAttributes<HTMLDivElement> & {
-    template?: string | Record<string, unknown> | undefined;
+    template?: string | import("../..").Template | undefined;
     darkMode?: boolean | undefined;
     primaryColor?: string | undefined;
     className?: string | undefined;
@@ -17,7 +17,7 @@ declare const _default: import("@storybook/types").ComponentAnnotations<import("
 } & import("react").RefAttributes<unknown>>;
 export default _default;
 export declare const Importer: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0a347bb9").R, import("react").HTMLAttributes<HTMLDialogElement> & import("react").HTMLAttributes<HTMLDivElement> & {
-    template?: string | Record<string, unknown> | undefined;
+    template?: string | import("../..").Template | undefined;
     darkMode?: boolean | undefined;
     primaryColor?: string | undefined;
     className?: string | undefined;

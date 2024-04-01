@@ -5,7 +5,7 @@ type CreateImporterProps = CSVImporterProps & {
 };
 export declare function createCSVImporter(props: CreateImporterProps): {
     instance: (import("react").ForwardRefExoticComponent<import("react").HTMLAttributes<HTMLDialogElement> & import("react").HTMLAttributes<HTMLDivElement> & {
-        template?: string | Record<string, unknown> | undefined;
+        template?: string | import(".").Template | undefined;
         darkMode?: boolean | undefined;
         primaryColor?: string | undefined;
         className?: string | undefined;

@@ -1,4 +1,5 @@
 import { HTMLAttributes } from "react";
+import { Template } from "../importer/types";
 
 type ModalParams = {
   isModal?: boolean;
@@ -8,7 +9,7 @@ type ModalParams = {
 };
 
 export type CSVImporterProps = (HTMLAttributes<HTMLDialogElement> & HTMLAttributes<HTMLDivElement>) & {
-  template?: Record<string, unknown> | string;
+  template?: Template | string;
   darkMode?: boolean;
   primaryColor?: string;
   className?: string;
