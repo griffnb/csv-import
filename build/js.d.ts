@@ -9,7 +9,7 @@ export declare function createCSVImporter(props: CreateImporterProps): {
         darkMode?: boolean | undefined;
         primaryColor?: string | undefined;
         className?: string | undefined;
-        onComplete?: ((data: any) => void) | undefined;
+        onComplete?: ((data: import("./types").CompleteData) => void) | undefined;
         waitOnComplete?: boolean | undefined;
         customStyles?: string | Record<string, string> | undefined;
         showDownloadTemplateButton?: boolean | undefined;

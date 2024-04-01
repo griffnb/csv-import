@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 import { IconButton } from "@chakra-ui/button";
 import Errors from "../../components/Errors";
 import Stepper from "../../components/Stepper";
-import { CSVImporterProps } from "../../../types";
+import { CSVImporterProps, MappedRow } from "../../../types";
 import useCustomStyles from "../../hooks/useCustomStyles";
 import { Template } from "../../types";
 import { convertRawTemplate } from "../../utils/template";
@@ -197,11 +197,7 @@ export default function Main(props: CSVImporterProps) {
               setIsSubmitting(true);
               setColumnMapping(columnMapping);
 
-              // TODO (client-sdk): Move this type, add other data attributes (i.e. column definitions), and move the data processing to a function
-              type MappedRow = {
-                index: number;
-                values: Record<string, number | string>;
-              };
+             
               const startIndex = (selectedHeaderRow || 0) + 1;
 
               const mappedRows: MappedRow[] = [];
