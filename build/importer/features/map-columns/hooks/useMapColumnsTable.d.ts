@@ -1,5 +1,5 @@
 import { TemplateColumn, UploadColumn } from "../../../types";
-import { TemplateColumnMapping } from "../types";
+import { TemplateColumnMapping, MergeStrategy } from "../types";
 export default function useMapColumnsTable(uploadColumns: UploadColumn[], templateColumns: TemplateColumn[] | undefined, columnsValues: {
     [uploadColumnIndex: number]: TemplateColumnMapping;
 }, isLoading?: boolean): {
@@ -18,6 +18,14 @@ export default function useMapColumnsTable(uploadColumns: UploadColumn[], templa
         };
         Include: {
             raw: boolean;
+            content: import("react/jsx-runtime").JSX.Element;
+        };
+        "Primary Key": {
+            raw: boolean;
+            content: import("react/jsx-runtime").JSX.Element;
+        };
+        "Merge Strategy": {
+            raw: MergeStrategy;
             content: import("react/jsx-runtime").JSX.Element;
         };
     }[];
