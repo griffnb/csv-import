@@ -4,7 +4,7 @@ import { FileData } from "../../main/types";
 export const MergeStrategies = {
   OVERWRITE: "overwrite",
   FILL_IF_EMPTY: "fill_if_empty",
-  // APPEND_COLLECTION: "append_collection",
+  APPEND_COLLECTION: "append_collection",
 } as const;
 
 export type MergeStrategy = typeof MergeStrategies[keyof typeof MergeStrategies];
