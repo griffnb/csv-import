@@ -14,6 +14,7 @@ export default function useMapColumnsTable(
   columnsValues: { [uploadColumnIndex: number]: TemplateColumnMapping },
   isLoading?: boolean
 ) {
+
   useEffect(() => {
     Object.keys(columnsValues).map((uploadColumnIndexStr) => {
       const uploadColumnIndex = Number(uploadColumnIndexStr);
@@ -43,7 +44,13 @@ export default function useMapColumnsTable(
 
       if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
         usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
-        acc[uc.index] = { key: matchedSuggestedTemplateColumn.key, include: true, name: uc.name, primary_key: false, merge_strategy: MergeStrategies.OVERWRITE };
+        acc[uc.index] = {
+          key: matchedSuggestedTemplateColumn.key,
+          include: true,
+          name: uc.name,
+          primary_key: matchedSuggestedTemplateColumn.primary_key || false,
+          merge_strategy: MergeStrategies.OVERWRITE
+        };
         return acc;
       }
 
@@ -60,7 +67,7 @@ export default function useMapColumnsTable(
         include: !!similarTemplateColumn?.key,
         selected: !!similarTemplateColumn?.key,
         name: uc.name,
-        primary_key: false,
+        primary_key: !!similarTemplateColumn?.primary_key,
         merge_strategy: MergeStrategies.OVERWRITE
       };
       return acc;
@@ -103,6 +110,11 @@ export default function useMapColumnsTable(
       const suggestion = values?.[index] || {};
       const samples = sample_data.filter((d) => d);
 
+      // Find the template column to check if primary_key is required
+      const templateColumn = templateColumns.find(tc => tc.key === suggestion.key);
+      const isPrimaryKeyRequired = templateColumn?.primary_key;
+      const isFieldRequired = templateColumn?.required;
+
       return {
         "Your File Column": {
           raw: name || false,
@@ -136,7 +148,7 @@ export default function useMapColumnsTable(
           content: (
             <Checkbox
               checked={suggestion.include || false}
-              disabled={!suggestion.key || isLoading}
+              disabled={!suggestion.key || isLoading || isFieldRequired}
               onChange={(e) => handleUseChange(index, e.target.checked)}
             />
           ),
@@ -146,7 +158,7 @@ export default function useMapColumnsTable(
           content: (
             <Checkbox
               checked={suggestion.primary_key || false}
-              disabled={!suggestion.key || isLoading}
+              disabled={!suggestion.key || isLoading || isPrimaryKeyRequired}
               onChange={(e) => handlePKChange(index, e.target.checked)}
             />
           ),
