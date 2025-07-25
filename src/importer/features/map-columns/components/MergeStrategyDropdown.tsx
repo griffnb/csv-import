@@ -10,7 +10,7 @@ interface MergeStrategyDropdownProps {
 const mergeStrategyOptions: { label: string; value: MergeStrategy }[] = [
   { label: "Overwrite", value: MergeStrategies.OVERWRITE },
   { label: "Fill If Empty", value: MergeStrategies.FILL_IF_EMPTY },
-  { label: "Append Collection", value: MergeStrategies.APPEND_COLLECTION },
+//   { label: "Append Collection", value: MergeStrategies.APPEND_COLLECTION },
 ];
 
 export default function MergeStrategyDropdown({ value, disabled, onChange }: MergeStrategyDropdownProps) {
