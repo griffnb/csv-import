@@ -1,5 +1,6 @@
 import { HTMLAttributes } from "react";
 import { Template } from "../importer/types";
+import type { MergeStrategy } from "../importer/features/map-columns/types";
 type ModalParams = {
     isModal?: boolean;
     modalIsOpen?: boolean;
@@ -24,6 +25,8 @@ export type CompleteData = {
     columns: {
         key: string;
         name: string;
+        primary_key?: boolean;
+        merge_strategy?: MergeStrategy;
     }[];
     rows: MappedRow[];
 };
@@ -31,4 +34,5 @@ export type MappedRow = {
     index: number;
     values: Record<string, number | string>;
 };
-export {};
+export { MergeStrategies } from "../importer/features/map-columns/types";
+export type { MergeStrategy } from "../importer/features/map-columns/types";

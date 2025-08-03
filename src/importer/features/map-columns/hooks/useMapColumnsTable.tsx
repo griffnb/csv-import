@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import Checkbox from "../../../components/Checkbox";
 import { InputOption } from "../../../components/Input/types";
 import DropdownFields from "../components/DropDownFields";
+import MergeStrategyDropdown from "../components/MergeStrategyDropdown";
 import { TemplateColumn, UploadColumn } from "../../../types";
 import style from "../style/MapColumns.module.scss";
-import { TemplateColumnMapping } from "../types";
+import { TemplateColumnMapping, MergeStrategy, MergeStrategies } from "../types";
 import stringsSimilarity from "../../../utils/stringSimilarity";
 
 export default function useMapColumnsTable(
@@ -13,6 +14,7 @@ export default function useMapColumnsTable(
   columnsValues: { [uploadColumnIndex: number]: TemplateColumnMapping },
   isLoading?: boolean
 ) {
+
   useEffect(() => {
     Object.keys(columnsValues).map((uploadColumnIndexStr) => {
       const uploadColumnIndex = Number(uploadColumnIndexStr);
@@ -42,7 +44,13 @@ export default function useMapColumnsTable(
 
       if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
         usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
-        acc[uc.index] = { key: matchedSuggestedTemplateColumn.key, include: true };
+        acc[uc.index] = {
+          key: matchedSuggestedTemplateColumn.key,
+          include: true,
+          name: uc.name,
+          primary_key: matchedSuggestedTemplateColumn.primary_key || false,
+          merge_strategy: MergeStrategies.OVERWRITE
+        };
         return acc;
       }
 
@@ -58,6 +66,9 @@ export default function useMapColumnsTable(
         key: similarTemplateColumn?.key || "",
         include: !!similarTemplateColumn?.key,
         selected: !!similarTemplateColumn?.key,
+        name: uc.name,
+        primary_key: !!similarTemplateColumn?.primary_key,
+        merge_strategy: MergeStrategies.OVERWRITE
       };
       return acc;
     }, initialObject);
@@ -74,7 +85,7 @@ export default function useMapColumnsTable(
 
   const handleTemplateChange = (uploadColumnIndex: number, key: string) => {
     setValues((prev) => {
-      const templatesFields = { ...prev, [uploadColumnIndex]: { ...prev[uploadColumnIndex], key: key, include: !!key, selected: !!key } };
+      const templatesFields = { ...prev, [uploadColumnIndex]: { ...prev[uploadColumnIndex], key: key, include: !!key, selected: !!key, primary_key: prev[uploadColumnIndex]?.primary_key || false, merge_strategy: prev[uploadColumnIndex]?.merge_strategy || MergeStrategies.OVERWRITE } };
       const templateFieldsObj = Object.values(templatesFields).map(({ key, selected }) => ({ key, selected }));
       setSelectedValues(templateFieldsObj);
       return templatesFields;
@@ -85,11 +96,24 @@ export default function useMapColumnsTable(
     setValues((prev) => ({ ...prev, [id]: { ...prev[id], include: !!prev[id].key && value } }));
   };
 
+  const handlePKChange = (id: number, value: boolean) => {
+    setValues((prev) => ({ ...prev, [id]: { ...prev[id], primary_key: !!prev[id].key && value } }));
+  };
+
+  const handleMergeStrategyChange = (id: number, value: MergeStrategy) => {
+    setValues((prev) => ({ ...prev, [id]: { ...prev[id], merge_strategy: value } }));
+  };
+
   const rows = useMemo(() => {
     return uploadColumns.map((uc, index) => {
       const { name, sample_data } = uc;
       const suggestion = values?.[index] || {};
       const samples = sample_data.filter((d) => d);
+
+      // Find the template column to check if primary_key is required
+      const templateColumn = templateColumns.find(tc => tc.key === suggestion.key);
+      const isPrimaryKeyRequired = templateColumn?.primary_key;
+      const isFieldRequired = templateColumn?.required;
 
       return {
         "Your File Column": {
@@ -123,9 +147,29 @@ export default function useMapColumnsTable(
           raw: false,
           content: (
             <Checkbox
-              checked={suggestion.include}
-              disabled={!suggestion.key || isLoading}
+              checked={suggestion.include || false}
+              disabled={!suggestion.key || isLoading || isFieldRequired}
               onChange={(e) => handleUseChange(index, e.target.checked)}
+            />
+          ),
+        },
+        "Primary Key": {
+          raw: false,
+          content: (
+            <Checkbox
+              checked={suggestion.primary_key || false}
+              disabled={!suggestion.key || isLoading || isPrimaryKeyRequired}
+              onChange={(e) => handlePKChange(index, e.target.checked)}
+            />
+          ),
+        },
+        "Merge Strategy": {
+          raw: suggestion.merge_strategy || MergeStrategies.OVERWRITE,
+          content: (
+            <MergeStrategyDropdown
+              value={suggestion.merge_strategy || MergeStrategies.OVERWRITE}
+              disabled={!suggestion.key || !suggestion.include || isLoading}
+              onChange={(value) => handleMergeStrategyChange(index, value)}
             />
           ),
         },

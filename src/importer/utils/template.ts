@@ -31,6 +31,7 @@ export function convertRawTemplate(rawTemplate?: Record<string, unknown> | strin
     let key: string = item.key || "";
     const description: string = item.description || "";
     const required: boolean = item.required || false;
+    const primary_key: boolean = item.primary_key || false;
     let suggestedMappings: string[] = item.suggested_mappings || [];
 
     if (name === "") {
@@ -63,6 +64,7 @@ export function convertRawTemplate(rawTemplate?: Record<string, unknown> | strin
       description,
       required,
       suggested_mappings: suggestedMappings,
+      primary_key,
     } as TemplateColumn);
   }
 

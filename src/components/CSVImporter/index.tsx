@@ -1,5 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
-import { useColorMode, useStatStyles } from "@chakra-ui/react";
+import { forwardRef, useEffect, useRef } from "react";
 import Importer from "../../importer/features/main";
 import Providers from "../../importer/providers";
 import useThemeStore from "../../importer/stores/theme";

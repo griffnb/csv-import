@@ -1,7 +1,7 @@
 import { jsx, jsxs, Fragment as Fragment$1 } from 'react/jsx-runtime';
 import * as React from 'react';
-import React__default, { createContext as createContext$2, useContext, useLayoutEffect, useEffect, useState, useMemo, useCallback, useRef, forwardRef as forwardRef$1, isValidElement, cloneElement, createElement, useReducer, useImperativeHandle, Fragment as Fragment$2, useInsertionEffect as useInsertionEffect$1, useId, Children, memo as memo$1, useSyncExternalStore as useSyncExternalStore$1 } from 'react';
-import { ThemeContext, withEmotionCache, ThemeProvider as ThemeProvider$2, Global, keyframes as keyframes$1, CacheProvider } from '@emotion/react';
+import React__default, { createContext as createContext$3, useContext, useRef as useRef$1, forwardRef as forwardRef$2, useState as useState$1, useCallback, isValidElement, cloneElement, useMemo as useMemo$1, useEffect as useEffect$2, createElement, useLayoutEffect as useLayoutEffect$1, useId, useReducer, useImperativeHandle, Fragment as Fragment$2, useInsertionEffect as useInsertionEffect$1, Children, memo as memo$1, useSyncExternalStore as useSyncExternalStore$4 } from 'react';
+import { ThemeContext, withEmotionCache, keyframes as keyframes$1, __unsafe_useEmotionCache, Global, ThemeProvider as ThemeProvider$2, CacheProvider } from '@emotion/react';
 import { createPortal } from 'react-dom';
 
 /******************************************************************************
@@ -42,7 +42,7 @@ function __rest$1(s, e) {
   return t;
 }
 
-function __awaiter(thisArg, _arguments, P, generator) {
+function __awaiter$1(thisArg, _arguments, P, generator) {
   function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
   return new (P || (P = Promise))(function (resolve, reject) {
       function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -80,23 +80,6 @@ function __generator(thisArg, body) {
   }
 }
 
-function __read(o, n) {
-  var m = typeof Symbol === "function" && o[Symbol.iterator];
-  if (!m) return o;
-  var i = m.call(o), r, ar = [], e;
-  try {
-      while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-  }
-  catch (error) { e = { error: error }; }
-  finally {
-      try {
-          if (r && !r.done && (m = i["return"])) m.call(i);
-      }
-      finally { if (e) throw e.error; }
-  }
-  return ar;
-}
-
 function __spreadArray(to, from, pack) {
   if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
       if (ar || !(i in from)) {
@@ -121,13 +104,13 @@ function createCommonjsModule(fn) {
 
 /* @license
 Papa Parse
-v5.4.1
+v5.5.3
 https://github.com/mholt/PapaParse
 License: MIT
 */
 
 var papaparse_min = createCommonjsModule(function (module, exports) {
-!function(e,t){module.exports=t();}(commonjsGlobal,function s(){var f="undefined"!=typeof self?self:"undefined"!=typeof window?window:void 0!==f?f:{};var n=!f.document&&!!f.postMessage,o=f.IS_PAPA_WORKER||!1,a={},u=0,b={parse:function(e,t){var r=(t=t||{}).dynamicTyping||!1;J(r)&&(t.dynamicTypingFunction=r,r={});if(t.dynamicTyping=r,t.transform=!!J(t.transform)&&t.transform,t.worker&&b.WORKERS_SUPPORTED){var i=function(){if(!b.WORKERS_SUPPORTED)return !1;var e=(r=f.URL||f.webkitURL||null,i=s.toString(),b.BLOB_URL||(b.BLOB_URL=r.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (typeof window !== 'undefined') { return window; } if (typeof global !== 'undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ","(",i,")();"],{type:"text/javascript"})))),t=new f.Worker(e);var r,i;return t.onmessage=_,t.id=u++,a[t.id]=t}();return i.userStep=t.step,i.userChunk=t.chunk,i.userComplete=t.complete,i.userError=t.error,t.step=J(t.step),t.chunk=J(t.chunk),t.complete=J(t.complete),t.error=J(t.error),delete t.worker,void i.postMessage({input:e,config:t,workerId:i.id})}var n=null;b.NODE_STREAM_INPUT,"string"==typeof e?(e=function(e){if(65279===e.charCodeAt(0))return e.slice(1);return e}(e),n=t.download?new l(t):new p(t)):!0===e.readable&&J(e.read)&&J(e.on)?n=new g(t):(f.File&&e instanceof File||e instanceof Object)&&(n=new c(t));return n.stream(e)},unparse:function(e,t){var n=!1,_=!0,m=",",y="\r\n",s='"',a=s+s,r=!1,i=null,o=!1;!function(){if("object"!=typeof t)return;"string"!=typeof t.delimiter||b.BAD_DELIMITERS.filter(function(e){return -1!==t.delimiter.indexOf(e)}).length||(m=t.delimiter);("boolean"==typeof t.quotes||"function"==typeof t.quotes||Array.isArray(t.quotes))&&(n=t.quotes);"boolean"!=typeof t.skipEmptyLines&&"string"!=typeof t.skipEmptyLines||(r=t.skipEmptyLines);"string"==typeof t.newline&&(y=t.newline);"string"==typeof t.quoteChar&&(s=t.quoteChar);"boolean"==typeof t.header&&(_=t.header);if(Array.isArray(t.columns)){if(0===t.columns.length)throw new Error("Option columns is empty");i=t.columns;}void 0!==t.escapeChar&&(a=t.escapeChar+s);("boolean"==typeof t.escapeFormulae||t.escapeFormulae instanceof RegExp)&&(o=t.escapeFormulae instanceof RegExp?t.escapeFormulae:/^[=+\-@\t\r].*$/);}();var u=new RegExp(Q(s),"g");"string"==typeof e&&(e=JSON.parse(e));if(Array.isArray(e)){if(!e.length||Array.isArray(e[0]))return h(null,e,r);if("object"==typeof e[0])return h(i||Object.keys(e[0]),e,r)}else if("object"==typeof e)return "string"==typeof e.data&&(e.data=JSON.parse(e.data)),Array.isArray(e.data)&&(e.fields||(e.fields=e.meta&&e.meta.fields||i),e.fields||(e.fields=Array.isArray(e.data[0])?e.fields:"object"==typeof e.data[0]?Object.keys(e.data[0]):[]),Array.isArray(e.data[0])||"object"==typeof e.data[0]||(e.data=[e.data])),h(e.fields||[],e.data||[],r);throw new Error("Unable to serialize unrecognized input");function h(e,t,r){var i="";"string"==typeof e&&(e=JSON.parse(e)),"string"==typeof t&&(t=JSON.parse(t));var n=Array.isArray(e)&&0<e.length,s=!Array.isArray(t[0]);if(n&&_){for(var a=0;a<e.length;a++)0<a&&(i+=m),i+=v(e[a],a);0<t.length&&(i+=y);}for(var o=0;o<t.length;o++){var u=n?e.length:t[o].length,h=!1,f=n?0===Object.keys(t[o]).length:0===t[o].length;if(r&&!n&&(h="greedy"===r?""===t[o].join("").trim():1===t[o].length&&0===t[o][0].length),"greedy"===r&&n){for(var d=[],l=0;l<u;l++){var c=s?e[l]:l;d.push(t[o][c]);}h=""===d.join("").trim();}if(!h){for(var p=0;p<u;p++){0<p&&!f&&(i+=m);var g=n&&s?e[p]:p;i+=v(t[o][g],p);}o<t.length-1&&(!r||0<u&&!f)&&(i+=y);}}return i}function v(e,t){if(null==e)return "";if(e.constructor===Date)return JSON.stringify(e).slice(1,25);var r=!1;o&&"string"==typeof e&&o.test(e)&&(e="'"+e,r=!0);var i=e.toString().replace(u,a);return (r=r||!0===n||"function"==typeof n&&n(e,t)||Array.isArray(n)&&n[t]||function(e,t){for(var r=0;r<t.length;r++)if(-1<e.indexOf(t[r]))return !0;return !1}(i,b.BAD_DELIMITERS)||-1<i.indexOf(m)||" "===i.charAt(0)||" "===i.charAt(i.length-1))?s+i+s:i}}};if(b.RECORD_SEP=String.fromCharCode(30),b.UNIT_SEP=String.fromCharCode(31),b.BYTE_ORDER_MARK="\ufeff",b.BAD_DELIMITERS=["\r","\n",'"',b.BYTE_ORDER_MARK],b.WORKERS_SUPPORTED=!n&&!!f.Worker,b.NODE_STREAM_INPUT=1,b.LocalChunkSize=10485760,b.RemoteChunkSize=5242880,b.DefaultDelimiter=",",b.Parser=E,b.ParserHandle=r,b.NetworkStreamer=l,b.FileStreamer=c,b.StringStreamer=p,b.ReadableStreamStreamer=g,f.jQuery){var d=f.jQuery;d.fn.parse=function(o){var r=o.config||{},u=[];return this.each(function(e){if(!("INPUT"===d(this).prop("tagName").toUpperCase()&&"file"===d(this).attr("type").toLowerCase()&&f.FileReader)||!this.files||0===this.files.length)return !0;for(var t=0;t<this.files.length;t++)u.push({file:this.files[t],inputElem:this,instanceConfig:d.extend({},r)});}),e(),this;function e(){if(0!==u.length){var e,t,r,i,n=u[0];if(J(o.before)){var s=o.before(n.file,n.inputElem);if("object"==typeof s){if("abort"===s.action)return e="AbortError",t=n.file,r=n.inputElem,i=s.reason,void(J(o.error)&&o.error({name:e},t,r,i));if("skip"===s.action)return void h();"object"==typeof s.config&&(n.instanceConfig=d.extend(n.instanceConfig,s.config));}else if("skip"===s)return void h()}var a=n.instanceConfig.complete;n.instanceConfig.complete=function(e){J(a)&&a(e,n.file,n.inputElem),h();},b.parse(n.file,n.instanceConfig);}else J(o.complete)&&o.complete();}function h(){u.splice(0,1),e();}};}function h(e){this._handle=null,this._finished=!1,this._completed=!1,this._halted=!1,this._input=null,this._baseIndex=0,this._partialLine="",this._rowCount=0,this._start=0,this._nextChunk=null,this.isFirstChunk=!0,this._completeResults={data:[],errors:[],meta:{}},function(e){var t=w(e);t.chunkSize=parseInt(t.chunkSize),e.step||e.chunk||(t.chunkSize=null);this._handle=new r(t),(this._handle.streamer=this)._config=t;}.call(this,e),this.parseChunk=function(e,t){if(this.isFirstChunk&&J(this._config.beforeFirstChunk)){var r=this._config.beforeFirstChunk(e);void 0!==r&&(e=r);}this.isFirstChunk=!1,this._halted=!1;var i=this._partialLine+e;this._partialLine="";var n=this._handle.parse(i,this._baseIndex,!this._finished);if(!this._handle.paused()&&!this._handle.aborted()){var s=n.meta.cursor;this._finished||(this._partialLine=i.substring(s-this._baseIndex),this._baseIndex=s),n&&n.data&&(this._rowCount+=n.data.length);var a=this._finished||this._config.preview&&this._rowCount>=this._config.preview;if(o)f.postMessage({results:n,workerId:b.WORKER_ID,finished:a});else if(J(this._config.chunk)&&!t){if(this._config.chunk(n,this._handle),this._handle.paused()||this._handle.aborted())return void(this._halted=!0);n=void 0,this._completeResults=void 0;}return this._config.step||this._config.chunk||(this._completeResults.data=this._completeResults.data.concat(n.data),this._completeResults.errors=this._completeResults.errors.concat(n.errors),this._completeResults.meta=n.meta),this._completed||!a||!J(this._config.complete)||n&&n.meta.aborted||(this._config.complete(this._completeResults,this._input),this._completed=!0),a||n&&n.meta.paused||this._nextChunk(),n}this._halted=!0;},this._sendError=function(e){J(this._config.error)?this._config.error(e):o&&this._config.error&&f.postMessage({workerId:b.WORKER_ID,error:e,finished:!1});};}function l(e){var i;(e=e||{}).chunkSize||(e.chunkSize=b.RemoteChunkSize),h.call(this,e),this._nextChunk=n?function(){this._readChunk(),this._chunkLoaded();}:function(){this._readChunk();},this.stream=function(e){this._input=e,this._nextChunk();},this._readChunk=function(){if(this._finished)this._chunkLoaded();else {if(i=new XMLHttpRequest,this._config.withCredentials&&(i.withCredentials=this._config.withCredentials),n||(i.onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)),i.open(this._config.downloadRequestBody?"POST":"GET",this._input,!n),this._config.downloadRequestHeaders){var e=this._config.downloadRequestHeaders;for(var t in e)i.setRequestHeader(t,e[t]);}if(this._config.chunkSize){var r=this._start+this._config.chunkSize-1;i.setRequestHeader("Range","bytes="+this._start+"-"+r);}try{i.send(this._config.downloadRequestBody);}catch(e){this._chunkError(e.message);}n&&0===i.status&&this._chunkError();}},this._chunkLoaded=function(){4===i.readyState&&(i.status<200||400<=i.status?this._chunkError():(this._start+=this._config.chunkSize?this._config.chunkSize:i.responseText.length,this._finished=!this._config.chunkSize||this._start>=function(e){var t=e.getResponseHeader("Content-Range");if(null===t)return -1;return parseInt(t.substring(t.lastIndexOf("/")+1))}(i),this.parseChunk(i.responseText)));},this._chunkError=function(e){var t=i.statusText||e;this._sendError(new Error(t));};}function c(e){var i,n;(e=e||{}).chunkSize||(e.chunkSize=b.LocalChunkSize),h.call(this,e);var s="undefined"!=typeof FileReader;this.stream=function(e){this._input=e,n=e.slice||e.webkitSlice||e.mozSlice,s?((i=new FileReader).onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)):i=new FileReaderSync,this._nextChunk();},this._nextChunk=function(){this._finished||this._config.preview&&!(this._rowCount<this._config.preview)||this._readChunk();},this._readChunk=function(){var e=this._input;if(this._config.chunkSize){var t=Math.min(this._start+this._config.chunkSize,this._input.size);e=n.call(e,this._start,t);}var r=i.readAsText(e,this._config.encoding);s||this._chunkLoaded({target:{result:r}});},this._chunkLoaded=function(e){this._start+=this._config.chunkSize,this._finished=!this._config.chunkSize||this._start>=this._input.size,this.parseChunk(e.target.result);},this._chunkError=function(){this._sendError(i.error);};}function p(e){var r;h.call(this,e=e||{}),this.stream=function(e){return r=e,this._nextChunk()},this._nextChunk=function(){if(!this._finished){var e,t=this._config.chunkSize;return t?(e=r.substring(0,t),r=r.substring(t)):(e=r,r=""),this._finished=!r,this.parseChunk(e)}};}function g(e){h.call(this,e=e||{});var t=[],r=!0,i=!1;this.pause=function(){h.prototype.pause.apply(this,arguments),this._input.pause();},this.resume=function(){h.prototype.resume.apply(this,arguments),this._input.resume();},this.stream=function(e){this._input=e,this._input.on("data",this._streamData),this._input.on("end",this._streamEnd),this._input.on("error",this._streamError);},this._checkIsFinished=function(){i&&1===t.length&&(this._finished=!0);},this._nextChunk=function(){this._checkIsFinished(),t.length?this.parseChunk(t.shift()):r=!0;},this._streamData=v(function(e){try{t.push("string"==typeof e?e:e.toString(this._config.encoding)),r&&(r=!1,this._checkIsFinished(),this.parseChunk(t.shift()));}catch(e){this._streamError(e);}},this),this._streamError=v(function(e){this._streamCleanUp(),this._sendError(e);},this),this._streamEnd=v(function(){this._streamCleanUp(),i=!0,this._streamData("");},this),this._streamCleanUp=v(function(){this._input.removeListener("data",this._streamData),this._input.removeListener("end",this._streamEnd),this._input.removeListener("error",this._streamError);},this);}function r(m){var a,o,u,i=Math.pow(2,53),n=-i,s=/^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/,h=/^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/,t=this,r=0,f=0,d=!1,e=!1,l=[],c={data:[],errors:[],meta:{}};if(J(m.step)){var p=m.step;m.step=function(e){if(c=e,_())g();else {if(g(),0===c.data.length)return;r+=e.data.length,m.preview&&r>m.preview?o.abort():(c.data=c.data[0],p(c,t));}};}function y(e){return "greedy"===m.skipEmptyLines?""===e.join("").trim():1===e.length&&0===e[0].length}function g(){return c&&u&&(k("Delimiter","UndetectableDelimiter","Unable to auto-detect delimiting character; defaulted to '"+b.DefaultDelimiter+"'"),u=!1),m.skipEmptyLines&&(c.data=c.data.filter(function(e){return !y(e)})),_()&&function(){if(!c)return;function e(e,t){J(m.transformHeader)&&(e=m.transformHeader(e,t)),l.push(e);}if(Array.isArray(c.data[0])){for(var t=0;_()&&t<c.data.length;t++)c.data[t].forEach(e);c.data.splice(0,1);}else c.data.forEach(e);}(),function(){if(!c||!m.header&&!m.dynamicTyping&&!m.transform)return c;function e(e,t){var r,i=m.header?{}:[];for(r=0;r<e.length;r++){var n=r,s=e[r];m.header&&(n=r>=l.length?"__parsed_extra":l[r]),m.transform&&(s=m.transform(s,n)),s=v(n,s),"__parsed_extra"===n?(i[n]=i[n]||[],i[n].push(s)):i[n]=s;}return m.header&&(r>l.length?k("FieldMismatch","TooManyFields","Too many fields: expected "+l.length+" fields but parsed "+r,f+t):r<l.length&&k("FieldMismatch","TooFewFields","Too few fields: expected "+l.length+" fields but parsed "+r,f+t)),i}var t=1;!c.data.length||Array.isArray(c.data[0])?(c.data=c.data.map(e),t=c.data.length):c.data=e(c.data,0);m.header&&c.meta&&(c.meta.fields=l);return f+=t,c}()}function _(){return m.header&&0===l.length}function v(e,t){return r=e,m.dynamicTypingFunction&&void 0===m.dynamicTyping[r]&&(m.dynamicTyping[r]=m.dynamicTypingFunction(r)),!0===(m.dynamicTyping[r]||m.dynamicTyping)?"true"===t||"TRUE"===t||"false"!==t&&"FALSE"!==t&&(function(e){if(s.test(e)){var t=parseFloat(e);if(n<t&&t<i)return !0}return !1}(t)?parseFloat(t):h.test(t)?new Date(t):""===t?null:t):t;var r;}function k(e,t,r,i){var n={type:e,code:t,message:r};void 0!==i&&(n.row=i),c.errors.push(n);}this.parse=function(e,t,r){var i=m.quoteChar||'"';if(m.newline||(m.newline=function(e,t){e=e.substring(0,1048576);var r=new RegExp(Q(t)+"([^]*?)"+Q(t),"gm"),i=(e=e.replace(r,"")).split("\r"),n=e.split("\n"),s=1<n.length&&n[0].length<i[0].length;if(1===i.length||s)return "\n";for(var a=0,o=0;o<i.length;o++)"\n"===i[o][0]&&a++;return a>=i.length/2?"\r\n":"\r"}(e,i)),u=!1,m.delimiter)J(m.delimiter)&&(m.delimiter=m.delimiter(e),c.meta.delimiter=m.delimiter);else {var n=function(e,t,r,i,n){var s,a,o,u;n=n||[",","\t","|",";",b.RECORD_SEP,b.UNIT_SEP];for(var h=0;h<n.length;h++){var f=n[h],d=0,l=0,c=0;o=void 0;for(var p=new E({comments:i,delimiter:f,newline:t,preview:10}).parse(e),g=0;g<p.data.length;g++)if(r&&y(p.data[g]))c++;else {var _=p.data[g].length;l+=_,void 0!==o?0<_&&(d+=Math.abs(_-o),o=_):o=_;}0<p.data.length&&(l/=p.data.length-c),(void 0===a||d<=a)&&(void 0===u||u<l)&&1.99<l&&(a=d,s=f,u=l);}return {successful:!!(m.delimiter=s),bestDelimiter:s}}(e,m.newline,m.skipEmptyLines,m.comments,m.delimitersToGuess);n.successful?m.delimiter=n.bestDelimiter:(u=!0,m.delimiter=b.DefaultDelimiter),c.meta.delimiter=m.delimiter;}var s=w(m);return m.preview&&m.header&&s.preview++,a=e,o=new E(s),c=o.parse(a,t,r),g(),d?{meta:{paused:!0}}:c||{meta:{paused:!1}}},this.paused=function(){return d},this.pause=function(){d=!0,o.abort(),a=J(m.chunk)?"":a.substring(o.getCharIndex());},this.resume=function(){t.streamer._halted?(d=!1,t.streamer.parseChunk(a,!0)):setTimeout(t.resume,3);},this.aborted=function(){return e},this.abort=function(){e=!0,o.abort(),c.meta.aborted=!0,J(m.complete)&&m.complete(c),a="";};}function Q(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function E(j){var z,M=(j=j||{}).delimiter,P=j.newline,U=j.comments,q=j.step,N=j.preview,B=j.fastMode,K=z=void 0===j.quoteChar||null===j.quoteChar?'"':j.quoteChar;if(void 0!==j.escapeChar&&(K=j.escapeChar),("string"!=typeof M||-1<b.BAD_DELIMITERS.indexOf(M))&&(M=","),U===M)throw new Error("Comment character same as delimiter");!0===U?U="#":("string"!=typeof U||-1<b.BAD_DELIMITERS.indexOf(U))&&(U=!1),"\n"!==P&&"\r"!==P&&"\r\n"!==P&&(P="\n");var W=0,H=!1;this.parse=function(i,t,r){if("string"!=typeof i)throw new Error("Input must be a string");var n=i.length,e=M.length,s=P.length,a=U.length,o=J(q),u=[],h=[],f=[],d=W=0;if(!i)return L();if(j.header&&!t){var l=i.split(P)[0].split(M),c=[],p={},g=!1;for(var _ in l){var m=l[_];J(j.transformHeader)&&(m=j.transformHeader(m,_));var y=m,v=p[m]||0;for(0<v&&(g=!0,y=m+"_"+v),p[m]=v+1;c.includes(y);)y=y+"_"+v;c.push(y);}if(g){var k=i.split(P);k[0]=c.join(M),i=k.join(P);}}if(B||!1!==B&&-1===i.indexOf(z)){for(var b=i.split(P),E=0;E<b.length;E++){if(f=b[E],W+=f.length,E!==b.length-1)W+=P.length;else if(r)return L();if(!U||f.substring(0,a)!==U){if(o){if(u=[],I(f.split(M)),F(),H)return L()}else I(f.split(M));if(N&&N<=E)return u=u.slice(0,N),L(!0)}}return L()}for(var w=i.indexOf(M,W),R=i.indexOf(P,W),C=new RegExp(Q(K)+Q(z),"g"),S=i.indexOf(z,W);;)if(i[W]!==z)if(U&&0===f.length&&i.substring(W,W+a)===U){if(-1===R)return L();W=R+s,R=i.indexOf(P,W),w=i.indexOf(M,W);}else if(-1!==w&&(w<R||-1===R))f.push(i.substring(W,w)),W=w+e,w=i.indexOf(M,W);else {if(-1===R)break;if(f.push(i.substring(W,R)),D(R+s),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0)}else for(S=W,W++;;){if(-1===(S=i.indexOf(z,S+1)))return r||h.push({type:"Quotes",code:"MissingQuotes",message:"Quoted field unterminated",row:u.length,index:W}),T();if(S===n-1)return T(i.substring(W,S).replace(C,z));if(z!==K||i[S+1]!==K){if(z===K||0===S||i[S-1]!==K){-1!==w&&w<S+1&&(w=i.indexOf(M,S+1)),-1!==R&&R<S+1&&(R=i.indexOf(P,S+1));var O=A(-1===R?w:Math.min(w,R));if(i.substr(S+1+O,e)===M){f.push(i.substring(W,S).replace(C,z)),i[W=S+1+O+e]!==z&&(S=i.indexOf(z,W)),w=i.indexOf(M,W),R=i.indexOf(P,W);break}var x=A(R);if(i.substring(S+1+x,S+1+x+s)===P){if(f.push(i.substring(W,S).replace(C,z)),D(S+1+x+s),w=i.indexOf(M,W),S=i.indexOf(z,W),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0);break}h.push({type:"Quotes",code:"InvalidQuotes",message:"Trailing quote on quoted field is malformed",row:u.length,index:W}),S++;}}else S++;}return T();function I(e){u.push(e),d=W;}function A(e){var t=0;if(-1!==e){var r=i.substring(S+1,e);r&&""===r.trim()&&(t=r.length);}return t}function T(e){return r||(void 0===e&&(e=i.substring(W)),f.push(e),W=n,I(f),o&&F()),L()}function D(e){W=e,I(f),f=[],R=i.indexOf(P,W);}function L(e){return {data:u,errors:h,meta:{delimiter:M,linebreak:P,aborted:H,truncated:!!e,cursor:d+(t||0)}}}function F(){q(L()),u=[],h=[];}},this.abort=function(){H=!0;},this.getCharIndex=function(){return W};}function _(e){var t=e.data,r=a[t.workerId],i=!1;if(t.error)r.userError(t.error,t.file);else if(t.results&&t.results.data){var n={abort:function(){i=!0,m(t.workerId,{data:[],errors:[],meta:{aborted:!0}});},pause:y,resume:y};if(J(r.userStep)){for(var s=0;s<t.results.data.length&&(r.userStep({data:t.results.data[s],errors:t.results.errors,meta:t.results.meta},n),!i);s++);delete t.results;}else J(r.userChunk)&&(r.userChunk(t.results,n,t.file),delete t.results);}t.finished&&!i&&m(t.workerId,t.results);}function m(e,t){var r=a[e];J(r.userComplete)&&r.userComplete(t),r.terminate(),delete a[e];}function y(){throw new Error("Not implemented.")}function w(e){if("object"!=typeof e||null===e)return e;var t=Array.isArray(e)?[]:{};for(var r in e)t[r]=w(e[r]);return t}function v(e,t){return function(){e.apply(t,arguments);}}function J(e){return "function"==typeof e}return o&&(f.onmessage=function(e){var t=e.data;void 0===b.WORKER_ID&&t&&(b.WORKER_ID=t.workerId);if("string"==typeof t.input)f.postMessage({workerId:b.WORKER_ID,results:b.parse(t.input,t.config),finished:!0});else if(f.File&&t.input instanceof File||t.input instanceof Object){var r=b.parse(t.input,t.config);r&&f.postMessage({workerId:b.WORKER_ID,results:r,finished:!0});}}),(l.prototype=Object.create(h.prototype)).constructor=l,(c.prototype=Object.create(h.prototype)).constructor=c,(p.prototype=Object.create(p.prototype)).constructor=p,(g.prototype=Object.create(h.prototype)).constructor=g,b});
+((e,t)=>{module.exports=t();})(commonjsGlobal,function r(){var n="undefined"!=typeof self?self:"undefined"!=typeof window?window:void 0!==n?n:{};var d,s=!n.document&&!!n.postMessage,a=n.IS_PAPA_WORKER||!1,o={},h=0,v={};function u(e){this._handle=null,this._finished=!1,this._completed=!1,this._halted=!1,this._input=null,this._baseIndex=0,this._partialLine="",this._rowCount=0,this._start=0,this._nextChunk=null,this.isFirstChunk=!0,this._completeResults={data:[],errors:[],meta:{}},function(e){var t=b(e);t.chunkSize=parseInt(t.chunkSize),e.step||e.chunk||(t.chunkSize=null);this._handle=new i(t),(this._handle.streamer=this)._config=t;}.call(this,e),this.parseChunk=function(t,e){var i=parseInt(this._config.skipFirstNLines)||0;if(this.isFirstChunk&&0<i){let e=this._config.newline;e||(r=this._config.quoteChar||'"',e=this._handle.guessLineEndings(t,r)),t=[...t.split(e).slice(i)].join(e);}this.isFirstChunk&&U(this._config.beforeFirstChunk)&&void 0!==(r=this._config.beforeFirstChunk(t))&&(t=r),this.isFirstChunk=!1,this._halted=!1;var i=this._partialLine+t,r=(this._partialLine="",this._handle.parse(i,this._baseIndex,!this._finished));if(!this._handle.paused()&&!this._handle.aborted()){t=r.meta.cursor,i=(this._finished||(this._partialLine=i.substring(t-this._baseIndex),this._baseIndex=t),r&&r.data&&(this._rowCount+=r.data.length),this._finished||this._config.preview&&this._rowCount>=this._config.preview);if(a)n.postMessage({results:r,workerId:v.WORKER_ID,finished:i});else if(U(this._config.chunk)&&!e){if(this._config.chunk(r,this._handle),this._handle.paused()||this._handle.aborted())return void(this._halted=!0);this._completeResults=r=void 0;}return this._config.step||this._config.chunk||(this._completeResults.data=this._completeResults.data.concat(r.data),this._completeResults.errors=this._completeResults.errors.concat(r.errors),this._completeResults.meta=r.meta),this._completed||!i||!U(this._config.complete)||r&&r.meta.aborted||(this._config.complete(this._completeResults,this._input),this._completed=!0),i||r&&r.meta.paused||this._nextChunk(),r}this._halted=!0;},this._sendError=function(e){U(this._config.error)?this._config.error(e):a&&this._config.error&&n.postMessage({workerId:v.WORKER_ID,error:e,finished:!1});};}function f(e){var r;(e=e||{}).chunkSize||(e.chunkSize=v.RemoteChunkSize),u.call(this,e),this._nextChunk=s?function(){this._readChunk(),this._chunkLoaded();}:function(){this._readChunk();},this.stream=function(e){this._input=e,this._nextChunk();},this._readChunk=function(){if(this._finished)this._chunkLoaded();else {if(r=new XMLHttpRequest,this._config.withCredentials&&(r.withCredentials=this._config.withCredentials),s||(r.onload=y(this._chunkLoaded,this),r.onerror=y(this._chunkError,this)),r.open(this._config.downloadRequestBody?"POST":"GET",this._input,!s),this._config.downloadRequestHeaders){var e,t=this._config.downloadRequestHeaders;for(e in t)r.setRequestHeader(e,t[e]);}var i;this._config.chunkSize&&(i=this._start+this._config.chunkSize-1,r.setRequestHeader("Range","bytes="+this._start+"-"+i));try{r.send(this._config.downloadRequestBody);}catch(e){this._chunkError(e.message);}s&&0===r.status&&this._chunkError();}},this._chunkLoaded=function(){4===r.readyState&&(r.status<200||400<=r.status?this._chunkError():(this._start+=this._config.chunkSize||r.responseText.length,this._finished=!this._config.chunkSize||this._start>=(e=>null!==(e=e.getResponseHeader("Content-Range"))?parseInt(e.substring(e.lastIndexOf("/")+1)):-1)(r),this.parseChunk(r.responseText)));},this._chunkError=function(e){e=r.statusText||e;this._sendError(new Error(e));};}function l(e){(e=e||{}).chunkSize||(e.chunkSize=v.LocalChunkSize),u.call(this,e);var i,r,n="undefined"!=typeof FileReader;this.stream=function(e){this._input=e,r=e.slice||e.webkitSlice||e.mozSlice,n?((i=new FileReader).onload=y(this._chunkLoaded,this),i.onerror=y(this._chunkError,this)):i=new FileReaderSync,this._nextChunk();},this._nextChunk=function(){this._finished||this._config.preview&&!(this._rowCount<this._config.preview)||this._readChunk();},this._readChunk=function(){var e=this._input,t=(this._config.chunkSize&&(t=Math.min(this._start+this._config.chunkSize,this._input.size),e=r.call(e,this._start,t)),i.readAsText(e,this._config.encoding));n||this._chunkLoaded({target:{result:t}});},this._chunkLoaded=function(e){this._start+=this._config.chunkSize,this._finished=!this._config.chunkSize||this._start>=this._input.size,this.parseChunk(e.target.result);},this._chunkError=function(){this._sendError(i.error);};}function c(e){var i;u.call(this,e=e||{}),this.stream=function(e){return i=e,this._nextChunk()},this._nextChunk=function(){var e,t;if(!this._finished)return e=this._config.chunkSize,i=e?(t=i.substring(0,e),i.substring(e)):(t=i,""),this._finished=!i,this.parseChunk(t)};}function p(e){u.call(this,e=e||{});var t=[],i=!0,r=!1;this.pause=function(){u.prototype.pause.apply(this,arguments),this._input.pause();},this.resume=function(){u.prototype.resume.apply(this,arguments),this._input.resume();},this.stream=function(e){this._input=e,this._input.on("data",this._streamData),this._input.on("end",this._streamEnd),this._input.on("error",this._streamError);},this._checkIsFinished=function(){r&&1===t.length&&(this._finished=!0);},this._nextChunk=function(){this._checkIsFinished(),t.length?this.parseChunk(t.shift()):i=!0;},this._streamData=y(function(e){try{t.push("string"==typeof e?e:e.toString(this._config.encoding)),i&&(i=!1,this._checkIsFinished(),this.parseChunk(t.shift()));}catch(e){this._streamError(e);}},this),this._streamError=y(function(e){this._streamCleanUp(),this._sendError(e);},this),this._streamEnd=y(function(){this._streamCleanUp(),r=!0,this._streamData("");},this),this._streamCleanUp=y(function(){this._input.removeListener("data",this._streamData),this._input.removeListener("end",this._streamEnd),this._input.removeListener("error",this._streamError);},this);}function i(m){var n,s,a,t,o=Math.pow(2,53),h=-o,u=/^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/,d=/^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/,i=this,r=0,f=0,l=!1,e=!1,c=[],p={data:[],errors:[],meta:{}};function y(e){return "greedy"===m.skipEmptyLines?""===e.join("").trim():1===e.length&&0===e[0].length}function g(){if(p&&a&&(k("Delimiter","UndetectableDelimiter","Unable to auto-detect delimiting character; defaulted to '"+v.DefaultDelimiter+"'"),a=!1),m.skipEmptyLines&&(p.data=p.data.filter(function(e){return !y(e)})),_()){if(p)if(Array.isArray(p.data[0])){for(var e=0;_()&&e<p.data.length;e++)p.data[e].forEach(t);p.data.splice(0,1);}else p.data.forEach(t);function t(e,t){U(m.transformHeader)&&(e=m.transformHeader(e,t)),c.push(e);}}function i(e,t){for(var i=m.header?{}:[],r=0;r<e.length;r++){var n=r,s=e[r],s=((e,t)=>(e=>(m.dynamicTypingFunction&&void 0===m.dynamicTyping[e]&&(m.dynamicTyping[e]=m.dynamicTypingFunction(e)),!0===(m.dynamicTyping[e]||m.dynamicTyping)))(e)?"true"===t||"TRUE"===t||"false"!==t&&"FALSE"!==t&&((e=>{if(u.test(e)){e=parseFloat(e);if(h<e&&e<o)return 1}})(t)?parseFloat(t):d.test(t)?new Date(t):""===t?null:t):t)(n=m.header?r>=c.length?"__parsed_extra":c[r]:n,s=m.transform?m.transform(s,n):s);"__parsed_extra"===n?(i[n]=i[n]||[],i[n].push(s)):i[n]=s;}return m.header&&(r>c.length?k("FieldMismatch","TooManyFields","Too many fields: expected "+c.length+" fields but parsed "+r,f+t):r<c.length&&k("FieldMismatch","TooFewFields","Too few fields: expected "+c.length+" fields but parsed "+r,f+t)),i}var r;p&&(m.header||m.dynamicTyping||m.transform)&&(r=1,!p.data.length||Array.isArray(p.data[0])?(p.data=p.data.map(i),r=p.data.length):p.data=i(p.data,0),m.header&&p.meta&&(p.meta.fields=c),f+=r);}function _(){return m.header&&0===c.length}function k(e,t,i,r){e={type:e,code:t,message:i};void 0!==r&&(e.row=r),p.errors.push(e);}U(m.step)&&(t=m.step,m.step=function(e){p=e,_()?g():(g(),0!==p.data.length&&(r+=e.data.length,m.preview&&r>m.preview?s.abort():(p.data=p.data[0],t(p,i))));}),this.parse=function(e,t,i){var r=m.quoteChar||'"',r=(m.newline||(m.newline=this.guessLineEndings(e,r)),a=!1,m.delimiter?U(m.delimiter)&&(m.delimiter=m.delimiter(e),p.meta.delimiter=m.delimiter):((r=((e,t,i,r,n)=>{var s,a,o,h;n=n||[",","\t","|",";",v.RECORD_SEP,v.UNIT_SEP];for(var u=0;u<n.length;u++){for(var d,f=n[u],l=0,c=0,p=0,g=(o=void 0,new E({comments:r,delimiter:f,newline:t,preview:10}).parse(e)),_=0;_<g.data.length;_++)i&&y(g.data[_])?p++:(d=g.data[_].length,c+=d,void 0===o?o=d:0<d&&(l+=Math.abs(d-o),o=d));0<g.data.length&&(c/=g.data.length-p),(void 0===a||l<=a)&&(void 0===h||h<c)&&1.99<c&&(a=l,s=f,h=c);}return {successful:!!(m.delimiter=s),bestDelimiter:s}})(e,m.newline,m.skipEmptyLines,m.comments,m.delimitersToGuess)).successful?m.delimiter=r.bestDelimiter:(a=!0,m.delimiter=v.DefaultDelimiter),p.meta.delimiter=m.delimiter),b(m));return m.preview&&m.header&&r.preview++,n=e,s=new E(r),p=s.parse(n,t,i),g(),l?{meta:{paused:!0}}:p||{meta:{paused:!1}}},this.paused=function(){return l},this.pause=function(){l=!0,s.abort(),n=U(m.chunk)?"":n.substring(s.getCharIndex());},this.resume=function(){i.streamer._halted?(l=!1,i.streamer.parseChunk(n,!0)):setTimeout(i.resume,3);},this.aborted=function(){return e},this.abort=function(){e=!0,s.abort(),p.meta.aborted=!0,U(m.complete)&&m.complete(p),n="";},this.guessLineEndings=function(e,t){e=e.substring(0,1048576);var t=new RegExp(P(t)+"([^]*?)"+P(t),"gm"),i=(e=e.replace(t,"")).split("\r"),t=e.split("\n"),e=1<t.length&&t[0].length<i[0].length;if(1===i.length||e)return "\n";for(var r=0,n=0;n<i.length;n++)"\n"===i[n][0]&&r++;return r>=i.length/2?"\r\n":"\r"};}function P(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function E(C){var S=(C=C||{}).delimiter,O=C.newline,x=C.comments,I=C.step,A=C.preview,T=C.fastMode,D=null,L=!1,F=null==C.quoteChar?'"':C.quoteChar,j=F;if(void 0!==C.escapeChar&&(j=C.escapeChar),("string"!=typeof S||-1<v.BAD_DELIMITERS.indexOf(S))&&(S=","),x===S)throw new Error("Comment character same as delimiter");!0===x?x="#":("string"!=typeof x||-1<v.BAD_DELIMITERS.indexOf(x))&&(x=!1),"\n"!==O&&"\r"!==O&&"\r\n"!==O&&(O="\n");var z=0,M=!1;this.parse=function(i,t,r){if("string"!=typeof i)throw new Error("Input must be a string");var n=i.length,e=S.length,s=O.length,a=x.length,o=U(I),h=[],u=[],d=[],f=z=0;if(!i)return w();if(T||!1!==T&&-1===i.indexOf(F)){for(var l=i.split(O),c=0;c<l.length;c++){if(d=l[c],z+=d.length,c!==l.length-1)z+=O.length;else if(r)return w();if(!x||d.substring(0,a)!==x){if(o){if(h=[],k(d.split(S)),R(),M)return w()}else k(d.split(S));if(A&&A<=c)return h=h.slice(0,A),w(!0)}}return w()}for(var p=i.indexOf(S,z),g=i.indexOf(O,z),_=new RegExp(P(j)+P(F),"g"),m=i.indexOf(F,z);;)if(i[z]===F)for(m=z,z++;;){if(-1===(m=i.indexOf(F,m+1)))return r||u.push({type:"Quotes",code:"MissingQuotes",message:"Quoted field unterminated",row:h.length,index:z}),E();if(m===n-1)return E(i.substring(z,m).replace(_,F));if(F===j&&i[m+1]===j)m++;else if(F===j||0===m||i[m-1]!==j){-1!==p&&p<m+1&&(p=i.indexOf(S,m+1));var y=v(-1===(g=-1!==g&&g<m+1?i.indexOf(O,m+1):g)?p:Math.min(p,g));if(i.substr(m+1+y,e)===S){d.push(i.substring(z,m).replace(_,F)),i[z=m+1+y+e]!==F&&(m=i.indexOf(F,z)),p=i.indexOf(S,z),g=i.indexOf(O,z);break}y=v(g);if(i.substring(m+1+y,m+1+y+s)===O){if(d.push(i.substring(z,m).replace(_,F)),b(m+1+y+s),p=i.indexOf(S,z),m=i.indexOf(F,z),o&&(R(),M))return w();if(A&&h.length>=A)return w(!0);break}u.push({type:"Quotes",code:"InvalidQuotes",message:"Trailing quote on quoted field is malformed",row:h.length,index:z}),m++;}}else if(x&&0===d.length&&i.substring(z,z+a)===x){if(-1===g)return w();z=g+s,g=i.indexOf(O,z),p=i.indexOf(S,z);}else if(-1!==p&&(p<g||-1===g))d.push(i.substring(z,p)),z=p+e,p=i.indexOf(S,z);else {if(-1===g)break;if(d.push(i.substring(z,g)),b(g+s),o&&(R(),M))return w();if(A&&h.length>=A)return w(!0)}return E();function k(e){h.push(e),f=z;}function v(e){var t=0;return t=-1!==e&&(e=i.substring(m+1,e))&&""===e.trim()?e.length:t}function E(e){return r||(void 0===e&&(e=i.substring(z)),d.push(e),z=n,k(d),o&&R()),w()}function b(e){z=e,k(d),d=[],g=i.indexOf(O,z);}function w(e){if(C.header&&!t&&h.length&&!L){var s=h[0],a=Object.create(null),o=new Set(s);let n=!1;for(let r=0;r<s.length;r++){let i=s[r];if(a[i=U(C.transformHeader)?C.transformHeader(i,r):i]){let e,t=a[i];for(;e=i+"_"+t,t++,o.has(e););o.add(e),s[r]=e,a[i]++,n=!0,(D=null===D?{}:D)[e]=i;}else a[i]=1,s[r]=i;o.add(i);}n&&console.warn("Duplicate headers found and renamed."),L=!0;}return {data:h,errors:u,meta:{delimiter:S,linebreak:O,aborted:M,truncated:!!e,cursor:f+(t||0),renamedHeaders:D}}}function R(){I(w()),h=[],u=[];}},this.abort=function(){M=!0;},this.getCharIndex=function(){return z};}function g(e){var t=e.data,i=o[t.workerId],r=!1;if(t.error)i.userError(t.error,t.file);else if(t.results&&t.results.data){var n={abort:function(){r=!0,_(t.workerId,{data:[],errors:[],meta:{aborted:!0}});},pause:m,resume:m};if(U(i.userStep)){for(var s=0;s<t.results.data.length&&(i.userStep({data:t.results.data[s],errors:t.results.errors,meta:t.results.meta},n),!r);s++);delete t.results;}else U(i.userChunk)&&(i.userChunk(t.results,n,t.file),delete t.results);}t.finished&&!r&&_(t.workerId,t.results);}function _(e,t){var i=o[e];U(i.userComplete)&&i.userComplete(t),i.terminate(),delete o[e];}function m(){throw new Error("Not implemented.")}function b(e){if("object"!=typeof e||null===e)return e;var t,i=Array.isArray(e)?[]:{};for(t in e)i[t]=b(e[t]);return i}function y(e,t){return function(){e.apply(t,arguments);}}function U(e){return "function"==typeof e}return v.parse=function(e,t){var i=(t=t||{}).dynamicTyping||!1;U(i)&&(t.dynamicTypingFunction=i,i={});if(t.dynamicTyping=i,t.transform=!!U(t.transform)&&t.transform,!t.worker||!v.WORKERS_SUPPORTED)return i=null,v.NODE_STREAM_INPUT,"string"==typeof e?(e=(e=>65279!==e.charCodeAt(0)?e:e.slice(1))(e),i=new(t.download?f:c)(t)):!0===e.readable&&U(e.read)&&U(e.on)?i=new p(t):(n.File&&e instanceof File||e instanceof Object)&&(i=new l(t)),i.stream(e);(i=(()=>{var e;return !!v.WORKERS_SUPPORTED&&(e=(()=>{var e=n.URL||n.webkitURL||null,t=r.toString();return v.BLOB_URL||(v.BLOB_URL=e.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (typeof window !== 'undefined') { return window; } if (typeof global !== 'undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ","(",t,")();"],{type:"text/javascript"})))})(),(e=new n.Worker(e)).onmessage=g,e.id=h++,o[e.id]=e)})()).userStep=t.step,i.userChunk=t.chunk,i.userComplete=t.complete,i.userError=t.error,t.step=U(t.step),t.chunk=U(t.chunk),t.complete=U(t.complete),t.error=U(t.error),delete t.worker,i.postMessage({input:e,config:t,workerId:i.id});},v.unparse=function(e,t){var n=!1,_=!0,m=",",y="\r\n",s='"',a=s+s,i=!1,r=null,o=!1,h=((()=>{if("object"==typeof t){if("string"!=typeof t.delimiter||v.BAD_DELIMITERS.filter(function(e){return -1!==t.delimiter.indexOf(e)}).length||(m=t.delimiter),"boolean"!=typeof t.quotes&&"function"!=typeof t.quotes&&!Array.isArray(t.quotes)||(n=t.quotes),"boolean"!=typeof t.skipEmptyLines&&"string"!=typeof t.skipEmptyLines||(i=t.skipEmptyLines),"string"==typeof t.newline&&(y=t.newline),"string"==typeof t.quoteChar&&(s=t.quoteChar),"boolean"==typeof t.header&&(_=t.header),Array.isArray(t.columns)){if(0===t.columns.length)throw new Error("Option columns is empty");r=t.columns;}void 0!==t.escapeChar&&(a=t.escapeChar+s),t.escapeFormulae instanceof RegExp?o=t.escapeFormulae:"boolean"==typeof t.escapeFormulae&&t.escapeFormulae&&(o=/^[=+\-@\t\r].*$/);}})(),new RegExp(P(s),"g"));"string"==typeof e&&(e=JSON.parse(e));if(Array.isArray(e)){if(!e.length||Array.isArray(e[0]))return u(null,e,i);if("object"==typeof e[0])return u(r||Object.keys(e[0]),e,i)}else if("object"==typeof e)return "string"==typeof e.data&&(e.data=JSON.parse(e.data)),Array.isArray(e.data)&&(e.fields||(e.fields=e.meta&&e.meta.fields||r),e.fields||(e.fields=Array.isArray(e.data[0])?e.fields:"object"==typeof e.data[0]?Object.keys(e.data[0]):[]),Array.isArray(e.data[0])||"object"==typeof e.data[0]||(e.data=[e.data])),u(e.fields||[],e.data||[],i);throw new Error("Unable to serialize unrecognized input");function u(e,t,i){var r="",n=("string"==typeof e&&(e=JSON.parse(e)),"string"==typeof t&&(t=JSON.parse(t)),Array.isArray(e)&&0<e.length),s=!Array.isArray(t[0]);if(n&&_){for(var a=0;a<e.length;a++)0<a&&(r+=m),r+=k(e[a],a);0<t.length&&(r+=y);}for(var o=0;o<t.length;o++){var h=(n?e:t[o]).length,u=!1,d=n?0===Object.keys(t[o]).length:0===t[o].length;if(i&&!n&&(u="greedy"===i?""===t[o].join("").trim():1===t[o].length&&0===t[o][0].length),"greedy"===i&&n){for(var f=[],l=0;l<h;l++){var c=s?e[l]:l;f.push(t[o][c]);}u=""===f.join("").trim();}if(!u){for(var p=0;p<h;p++){0<p&&!d&&(r+=m);var g=n&&s?e[p]:p;r+=k(t[o][g],p);}o<t.length-1&&(!i||0<h&&!d)&&(r+=y);}}return r}function k(e,t){var i,r;return null==e?"":e.constructor===Date?JSON.stringify(e).slice(1,25):(r=!1,o&&"string"==typeof e&&o.test(e)&&(e="'"+e,r=!0),i=e.toString().replace(h,a),(r=r||!0===n||"function"==typeof n&&n(e,t)||Array.isArray(n)&&n[t]||((e,t)=>{for(var i=0;i<t.length;i++)if(-1<e.indexOf(t[i]))return !0;return !1})(i,v.BAD_DELIMITERS)||-1<i.indexOf(m)||" "===i.charAt(0)||" "===i.charAt(i.length-1))?s+i+s:i)}},v.RECORD_SEP=String.fromCharCode(30),v.UNIT_SEP=String.fromCharCode(31),v.BYTE_ORDER_MARK="\ufeff",v.BAD_DELIMITERS=["\r","\n",'"',v.BYTE_ORDER_MARK],v.WORKERS_SUPPORTED=!s&&!!n.Worker,v.NODE_STREAM_INPUT=1,v.LocalChunkSize=10485760,v.RemoteChunkSize=5242880,v.DefaultDelimiter=",",v.Parser=E,v.ParserHandle=i,v.NetworkStreamer=f,v.FileStreamer=l,v.StringStreamer=c,v.ReadableStreamStreamer=p,n.jQuery&&((d=n.jQuery).fn.parse=function(o){var i=o.config||{},h=[];return this.each(function(e){if(!("INPUT"===d(this).prop("tagName").toUpperCase()&&"file"===d(this).attr("type").toLowerCase()&&n.FileReader)||!this.files||0===this.files.length)return !0;for(var t=0;t<this.files.length;t++)h.push({file:this.files[t],inputElem:this,instanceConfig:d.extend({},i)});}),e(),this;function e(){if(0===h.length)U(o.complete)&&o.complete();else {var e,t,i,r,n=h[0];if(U(o.before)){var s=o.before(n.file,n.inputElem);if("object"==typeof s){if("abort"===s.action)return e="AbortError",t=n.file,i=n.inputElem,r=s.reason,void(U(o.error)&&o.error({name:e},t,i,r));if("skip"===s.action)return void u();"object"==typeof s.config&&(n.instanceConfig=d.extend(n.instanceConfig,s.config));}else if("skip"===s)return void u()}var a=n.instanceConfig.complete;n.instanceConfig.complete=function(e){U(a)&&a(e,n.file,n.inputElem),u();},v.parse(n.file,n.instanceConfig);}}function u(){h.splice(0,1),e();}}),a&&(n.onmessage=function(e){e=e.data;void 0===v.WORKER_ID&&e&&(v.WORKER_ID=e.workerId);"string"==typeof e.input?n.postMessage({workerId:v.WORKER_ID,results:v.parse(e.input,e.config),finished:!0}):(n.File&&e.input instanceof File||e.input instanceof Object)&&(e=v.parse(e.input,e.config))&&n.postMessage({workerId:v.WORKER_ID,results:e,finished:!0});}),(f.prototype=Object.create(u.prototype)).constructor=f,(l.prototype=Object.create(u.prototype)).constructor=l,(c.prototype=Object.create(c.prototype)).constructor=c,(p.prototype=Object.create(u.prototype)).constructor=p,v});
 });
 
 /*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
@@ -19548,10 +19531,10 @@ var utils/*:any*/ = {
 	}
 };
 
-function getErrorMessage(hook, provider) {
+function getErrorMessage$2(hook, provider) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
 }
-function createContext$1(options = {}) {
+function createContext$2(options = {}) {
   const {
     name,
     strict = true,
@@ -19560,14 +19543,14 @@ function createContext$1(options = {}) {
     errorMessage,
     defaultValue
   } = options;
-  const Context = createContext$2(defaultValue);
+  const Context = createContext$3(defaultValue);
   Context.displayName = name;
   function useContext$1() {
     var _a;
     const context = useContext(Context);
     if (!context && strict) {
       const error = new Error(
-        errorMessage != null ? errorMessage : getErrorMessage(hookName, providerName)
+        errorMessage != null ? errorMessage : getErrorMessage$2(hookName, providerName)
       );
       error.name = "ContextError";
       (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext$1);
@@ -19578,12 +19561,12 @@ function createContext$1(options = {}) {
   return [Context.Provider, useContext$1, Context];
 }
 
-var [ButtonGroupProvider, useButtonGroup] = createContext$1({
+var [ButtonGroupProvider, useButtonGroup] = createContext$2({
   strict: false,
   name: "ButtonGroupContext"
 });
 
-function useTheme() {
+function useTheme$1() {
   const theme = useContext(
     ThemeContext
   );
@@ -19595,200 +19578,33 @@ function useTheme() {
   return theme;
 }
 
-var ColorModeContext = createContext$2({});
-ColorModeContext.displayName = "ColorModeContext";
-function useColorMode() {
-  const context = useContext(ColorModeContext);
+var ColorModeContext$1 = createContext$3({});
+ColorModeContext$1.displayName = "ColorModeContext";
+function useColorMode$1() {
+  const context = useContext(ColorModeContext$1);
   if (context === void 0) {
     throw new Error("useColorMode must be used within a ColorModeProvider");
   }
   return context;
 }
 
-// src/color-mode.utils.ts
-var classNames = {
-  light: "chakra-ui-light",
-  dark: "chakra-ui-dark"
-};
-function getColorModeUtils(options = {}) {
-  const { preventTransition = true } = options;
-  const utils = {
-    setDataset: (value) => {
-      const cleanup = preventTransition ? utils.preventTransition() : void 0;
-      document.documentElement.dataset.theme = value;
-      document.documentElement.style.colorScheme = value;
-      cleanup == null ? void 0 : cleanup();
-    },
-    setClassName(dark) {
-      document.body.classList.add(dark ? classNames.dark : classNames.light);
-      document.body.classList.remove(dark ? classNames.light : classNames.dark);
-    },
-    query() {
-      return window.matchMedia("(prefers-color-scheme: dark)");
-    },
-    getSystemTheme(fallback) {
-      var _a;
-      const dark = (_a = utils.query().matches) != null ? _a : fallback === "dark";
-      return dark ? "dark" : "light";
-    },
-    addListener(fn) {
-      const mql = utils.query();
-      const listener = (e) => {
-        fn(e.matches ? "dark" : "light");
-      };
-      if (typeof mql.addListener === "function")
-        mql.addListener(listener);
-      else
-        mql.addEventListener("change", listener);
-      return () => {
-        if (typeof mql.removeListener === "function")
-          mql.removeListener(listener);
-        else
-          mql.removeEventListener("change", listener);
-      };
-    },
-    preventTransition() {
-      const css = document.createElement("style");
-      css.appendChild(
-        document.createTextNode(
-          `*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
-        )
-      );
-      document.head.appendChild(css);
-      return () => {
-        (() => window.getComputedStyle(document.body))();
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            document.head.removeChild(css);
-          });
-        });
-      };
-    }
-  };
-  return utils;
-}
-
-// src/storage-manager.ts
-var STORAGE_KEY$1 = "chakra-ui-color-mode";
-function createLocalStorageManager(key) {
-  return {
-    ssr: false,
-    type: "localStorage",
-    get(init) {
-      if (!(globalThis == null ? void 0 : globalThis.document))
-        return init;
-      let value;
-      try {
-        value = localStorage.getItem(key) || init;
-      } catch (e) {
-      }
-      return value || init;
-    },
-    set(value) {
-      try {
-        localStorage.setItem(key, value);
-      } catch (e) {
-      }
-    }
-  };
-}
-var localStorageManager = createLocalStorageManager(STORAGE_KEY$1);
-
-var useSafeLayoutEffect = Boolean(globalThis == null ? void 0 : globalThis.document) ? useLayoutEffect : useEffect;
-
-var noop$2 = () => {
-};
-function getTheme(manager, fallback) {
-  return manager.type === "cookie" && manager.ssr ? manager.get(fallback) : fallback;
-}
-function ColorModeProvider(props) {
-  const {
-    value,
-    children,
-    options: {
-      useSystemColorMode,
-      initialColorMode,
-      disableTransitionOnChange
-    } = {},
-    colorModeManager = localStorageManager
-  } = props;
-  const defaultColorMode = initialColorMode === "dark" ? "dark" : "light";
-  const [colorMode, rawSetColorMode] = useState(
-    () => getTheme(colorModeManager, defaultColorMode)
-  );
-  const [resolvedColorMode, setResolvedColorMode] = useState(
-    () => getTheme(colorModeManager)
-  );
-  const { getSystemTheme, setClassName, setDataset, addListener } = useMemo(
-    () => getColorModeUtils({ preventTransition: disableTransitionOnChange }),
-    [disableTransitionOnChange]
-  );
-  const resolvedValue = initialColorMode === "system" && !colorMode ? resolvedColorMode : colorMode;
-  const setColorMode = useCallback(
-    (value2) => {
-      const resolved = value2 === "system" ? getSystemTheme() : value2;
-      rawSetColorMode(resolved);
-      setClassName(resolved === "dark");
-      setDataset(resolved);
-      colorModeManager.set(resolved);
-    },
-    [colorModeManager, getSystemTheme, setClassName, setDataset]
-  );
-  useSafeLayoutEffect(() => {
-    if (initialColorMode === "system") {
-      setResolvedColorMode(getSystemTheme());
-    }
-  }, []);
-  useEffect(() => {
-    const managerValue = colorModeManager.get();
-    if (managerValue) {
-      setColorMode(managerValue);
-      return;
-    }
-    if (initialColorMode === "system") {
-      setColorMode("system");
-      return;
-    }
-    setColorMode(defaultColorMode);
-  }, [colorModeManager, defaultColorMode, initialColorMode, setColorMode]);
-  const toggleColorMode = useCallback(() => {
-    setColorMode(resolvedValue === "dark" ? "light" : "dark");
-  }, [resolvedValue, setColorMode]);
-  useEffect(() => {
-    if (!useSystemColorMode)
-      return;
-    return addListener(setColorMode);
-  }, [useSystemColorMode, addListener, setColorMode]);
-  const context = useMemo(
-    () => ({
-      colorMode: value != null ? value : resolvedValue,
-      toggleColorMode: value ? noop$2 : toggleColorMode,
-      setColorMode: value ? noop$2 : setColorMode,
-      forced: value !== void 0
-    }),
-    [resolvedValue, toggleColorMode, setColorMode, value]
-  );
-  return /* @__PURE__ */ jsx(ColorModeContext.Provider, { value: context, children });
-}
-ColorModeProvider.displayName = "ColorModeProvider";
-
-function useChakra() {
-  const colorModeResult = useColorMode();
-  const theme = useTheme();
+function useChakra$1() {
+  const colorModeResult = useColorMode$1();
+  const theme = useTheme$1();
   return { ...colorModeResult, theme };
 }
 
 // src/index.ts
-var cx = (...classNames) => classNames.filter(Boolean).join(" ");
-function isObject$1(value) {
+var cx$2 = (...classNames) => classNames.filter(Boolean).join(" ");
+function isObject$3(value) {
   const type = typeof value;
   return value != null && (type === "object" || type === "function") && !Array.isArray(value);
 }
-function runIfFn$2(valueOrFn, ...args) {
-  return isFunction$3(valueOrFn) ? valueOrFn(...args) : valueOrFn;
+function runIfFn$3(valueOrFn, ...args) {
+  return isFunction$4(valueOrFn) ? valueOrFn(...args) : valueOrFn;
 }
-var isFunction$3 = (value) => typeof value === "function";
-var dataAttr = (condition) => condition ? "" : void 0;
+var isFunction$4 = (value) => typeof value === "function";
+var dataAttr$1 = (condition) => condition ? "" : void 0;
 
 /**
  * Lodash (Custom Build) <https://lodash.com/>
@@ -19799,7 +19615,7 @@ var dataAttr = (condition) => condition ? "" : void 0;
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
 
-var lodash_mergewith = createCommonjsModule(function (module, exports) {
+var lodash_mergewith$1 = createCommonjsModule(function (module, exports) {
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
 
@@ -21770,23 +21586,25 @@ function stubFalse() {
 module.exports = mergeWith;
 });
 
+var mergeWith = lodash_mergewith$1;
+
 // src/utils/create-transform.ts
-var isImportant = (value) => /!(important)?$/.test(value);
-var withoutImportant = (value) => typeof value === "string" ? value.replace(/!(important)?$/, "").trim() : value;
-var tokenToCSSVar = (scale, value) => (theme) => {
+var isImportant$2 = (value) => /!(important)?$/.test(value);
+var withoutImportant$2 = (value) => typeof value === "string" ? value.replace(/!(important)?$/, "").trim() : value;
+var tokenToCSSVar$2 = (scale, value) => (theme) => {
   const valueStr = String(value);
-  const important = isImportant(valueStr);
-  const valueWithoutImportant = withoutImportant(valueStr);
+  const important = isImportant$2(valueStr);
+  const valueWithoutImportant = withoutImportant$2(valueStr);
   const key = scale ? `${scale}.${valueWithoutImportant}` : valueWithoutImportant;
-  let transformed = isObject$1(theme.__cssMap) && key in theme.__cssMap ? theme.__cssMap[key].varRef : value;
-  transformed = withoutImportant(transformed);
+  let transformed = isObject$3(theme.__cssMap) && key in theme.__cssMap ? theme.__cssMap[key].varRef : value;
+  transformed = withoutImportant$2(transformed);
   return important ? `${transformed} !important` : transformed;
 };
-function createTransform(options) {
+function createTransform$2(options) {
   const { scale, transform: transform2, compose } = options;
   const fn = (value, theme) => {
     var _a;
-    const _value = tokenToCSSVar(scale, value)(theme);
+    const _value = tokenToCSSVar$2(scale, value)(theme);
     let result = (_a = transform2 == null ? void 0 : transform2(_value, theme)) != null ? _a : _value;
     if (compose) {
       result = compose(result, theme);
@@ -21797,26 +21615,26 @@ function createTransform(options) {
 }
 
 // src/utils/pipe.ts
-var pipe$2 = (...fns) => (v) => fns.reduce((a, b) => b(a), v);
+var pipe$4 = (...fns) => (v) => fns.reduce((a, b) => b(a), v);
 
 // src/utils/prop-config.ts
-function toConfig(scale, transform2) {
+function toConfig$2(scale, transform2) {
   return (property) => {
     const result = { property, scale };
-    result.transform = createTransform({
+    result.transform = createTransform$2({
       scale,
       transform: transform2
     });
     return result;
   };
 }
-var getRtl = ({ rtl, ltr }) => (theme) => theme.direction === "rtl" ? rtl : ltr;
-function logical(options) {
+var getRtl$2 = ({ rtl, ltr }) => (theme) => theme.direction === "rtl" ? rtl : ltr;
+function logical$2(options) {
   const { property, scale, transform: transform2 } = options;
   return {
     scale,
-    property: getRtl(property),
-    transform: scale ? createTransform({
+    property: getRtl$2(property),
+    transform: scale ? createTransform$2({
       scale,
       compose: transform2
     }) : transform2
@@ -21824,27 +21642,27 @@ function logical(options) {
 }
 
 // src/utils/templates.ts
-var transformTemplate = [
+var transformTemplate$2 = [
   "rotate(var(--chakra-rotate, 0))",
   "scaleX(var(--chakra-scale-x, 1))",
   "scaleY(var(--chakra-scale-y, 1))",
   "skewX(var(--chakra-skew-x, 0))",
   "skewY(var(--chakra-skew-y, 0))"
 ];
-function getTransformTemplate() {
+function getTransformTemplate$2() {
   return [
     "translateX(var(--chakra-translate-x, 0))",
     "translateY(var(--chakra-translate-y, 0))",
-    ...transformTemplate
+    ...transformTemplate$2
   ].join(" ");
 }
-function getTransformGpuTemplate() {
+function getTransformGpuTemplate$2() {
   return [
     "translate3d(var(--chakra-translate-x, 0), var(--chakra-translate-y, 0), 0)",
-    ...transformTemplate
+    ...transformTemplate$2
   ].join(" ");
 }
-var filterTemplate = {
+var filterTemplate$2 = {
   "--chakra-blur": "var(--chakra-empty,/*!*/ /*!*/)",
   "--chakra-brightness": "var(--chakra-empty,/*!*/ /*!*/)",
   "--chakra-contrast": "var(--chakra-empty,/*!*/ /*!*/)",
@@ -21866,7 +21684,7 @@ var filterTemplate = {
     "var(--chakra-drop-shadow)"
   ].join(" ")
 };
-var backdropFilterTemplate = {
+var backdropFilterTemplate$2 = {
   backdropFilter: [
     "var(--chakra-backdrop-blur)",
     "var(--chakra-backdrop-brightness)",
@@ -21888,7 +21706,7 @@ var backdropFilterTemplate = {
   "--chakra-backdrop-saturate": "var(--chakra-empty,/*!*/ /*!*/)",
   "--chakra-backdrop-sepia": "var(--chakra-empty,/*!*/ /*!*/)"
 };
-function getRingTemplate(value) {
+function getRingTemplate$2(value) {
   return {
     "--chakra-ring-offset-shadow": `var(--chakra-ring-inset) 0 0 0 var(--chakra-ring-offset-width) var(--chakra-ring-offset-color)`,
     "--chakra-ring-shadow": `var(--chakra-ring-inset) 0 0 0 calc(var(--chakra-ring-width) + var(--chakra-ring-offset-width)) var(--chakra-ring-color)`,
@@ -21900,7 +21718,7 @@ function getRingTemplate(value) {
     ].join(", ")
   };
 }
-var flexDirectionTemplate = {
+var flexDirectionTemplate$2 = {
   "row-reverse": {
     space: "--chakra-space-x-reverse",
     divide: "--chakra-divide-x-reverse"
@@ -21912,7 +21730,7 @@ var flexDirectionTemplate = {
 };
 
 // src/utils/parse-gradient.ts
-var directionMap = {
+var directionMap$2 = {
   "to-t": "to top",
   "to-tr": "to top right",
   "to-r": "to right",
@@ -21922,8 +21740,8 @@ var directionMap = {
   "to-l": "to left",
   "to-tl": "to top left"
 };
-var valueSet = new Set(Object.values(directionMap));
-var globalSet = /* @__PURE__ */ new Set([
+var valueSet$2 = new Set(Object.values(directionMap$2));
+var globalSet$2 = /* @__PURE__ */ new Set([
   "none",
   "-moz-initial",
   "inherit",
@@ -21931,11 +21749,11 @@ var globalSet = /* @__PURE__ */ new Set([
   "revert",
   "unset"
 ]);
-var trimSpace = (str) => str.trim();
-function parseGradient(value, theme) {
-  if (value == null || globalSet.has(value))
+var trimSpace$2 = (str) => str.trim();
+function parseGradient$2(value, theme) {
+  if (value == null || globalSet$2.has(value))
     return value;
-  const prevent = isCSSFunction(value) || globalSet.has(value);
+  const prevent = isCSSFunction$2(value) || globalSet$2.has(value);
   if (!prevent)
     return `url('${value}')`;
   const regex = /(^[a-z-A-Z]+)\((.*)\)/g;
@@ -21945,17 +21763,17 @@ function parseGradient(value, theme) {
   if (!type || !values)
     return value;
   const _type = type.includes("-gradient") ? type : `${type}-gradient`;
-  const [maybeDirection, ...stops] = values.split(",").map(trimSpace).filter(Boolean);
+  const [maybeDirection, ...stops] = values.split(",").map(trimSpace$2).filter(Boolean);
   if ((stops == null ? void 0 : stops.length) === 0)
     return value;
-  const direction = maybeDirection in directionMap ? directionMap[maybeDirection] : maybeDirection;
+  const direction = maybeDirection in directionMap$2 ? directionMap$2[maybeDirection] : maybeDirection;
   stops.unshift(direction);
   const _values = stops.map((stop) => {
-    if (valueSet.has(stop))
+    if (valueSet$2.has(stop))
       return stop;
     const firstStop = stop.indexOf(" ");
     const [_color, _stop] = firstStop !== -1 ? [stop.substr(0, firstStop), stop.substr(firstStop + 1)] : [stop];
-    const _stopOrFunc = isCSSFunction(_stop) ? _stop : _stop && _stop.split(" ");
+    const _stopOrFunc = isCSSFunction$2(_stop) ? _stop : _stop && _stop.split(" ");
     const key = `colors.${_color}`;
     const color2 = key in theme.__cssMap ? theme.__cssMap[key].varRef : _color;
     return _stopOrFunc ? [
@@ -21965,39 +21783,39 @@ function parseGradient(value, theme) {
   });
   return `${_type}(${_values.join(", ")})`;
 }
-var isCSSFunction = (value) => {
+var isCSSFunction$2 = (value) => {
   return typeof value === "string" && value.includes("(") && value.includes(")");
 };
-var gradientTransform = (value, theme) => parseGradient(value, theme != null ? theme : {});
+var gradientTransform$2 = (value, theme) => parseGradient$2(value, theme != null ? theme : {});
 
 // src/utils/transform-functions.ts
-function isCssVar(value) {
+function isCssVar$3(value) {
   return /^var\(--.+\)$/.test(value);
 }
-var analyzeCSSValue = (value) => {
+var analyzeCSSValue$3 = (value) => {
   const num = parseFloat(value.toString());
   const unit = value.toString().replace(String(num), "");
   return { unitless: !unit, value: num, unit };
 };
-var wrap = (str) => (value) => `${str}(${value})`;
-var transformFunctions = {
+var wrap$2 = (str) => (value) => `${str}(${value})`;
+var transformFunctions$2 = {
   filter(value) {
-    return value !== "auto" ? value : filterTemplate;
+    return value !== "auto" ? value : filterTemplate$2;
   },
   backdropFilter(value) {
-    return value !== "auto" ? value : backdropFilterTemplate;
+    return value !== "auto" ? value : backdropFilterTemplate$2;
   },
   ring(value) {
-    return getRingTemplate(transformFunctions.px(value));
+    return getRingTemplate$2(transformFunctions$2.px(value));
   },
   bgClip(value) {
     return value === "text" ? { color: "transparent", backgroundClip: "text" } : { backgroundClip: value };
   },
   transform(value) {
     if (value === "auto")
-      return getTransformTemplate();
+      return getTransformTemplate$2();
     if (value === "auto-gpu")
-      return getTransformGpuTemplate();
+      return getTransformGpuTemplate$2();
     return value;
   },
   vh(value) {
@@ -22006,7 +21824,7 @@ var transformFunctions = {
   px(value) {
     if (value == null)
       return value;
-    const { unitless } = analyzeCSSValue(value);
+    const { unitless } = analyzeCSSValue$3(value);
     return unitless || typeof value === "number" ? `${value}px` : value;
   },
   fraction(value) {
@@ -22017,26 +21835,26 @@ var transformFunctions = {
     return theme.direction === "rtl" ? map[value] : value;
   },
   degree(value) {
-    if (isCssVar(value) || value == null)
+    if (isCssVar$3(value) || value == null)
       return value;
     const unitless = typeof value === "string" && !value.endsWith("deg");
     return typeof value === "number" || unitless ? `${value}deg` : value;
   },
-  gradient: gradientTransform,
-  blur: wrap("blur"),
-  opacity: wrap("opacity"),
-  brightness: wrap("brightness"),
-  contrast: wrap("contrast"),
-  dropShadow: wrap("drop-shadow"),
-  grayscale: wrap("grayscale"),
-  hueRotate: (value) => wrap("hue-rotate")(transformFunctions.degree(value)),
-  invert: wrap("invert"),
-  saturate: wrap("saturate"),
-  sepia: wrap("sepia"),
+  gradient: gradientTransform$2,
+  blur: wrap$2("blur"),
+  opacity: wrap$2("opacity"),
+  brightness: wrap$2("brightness"),
+  contrast: wrap$2("contrast"),
+  dropShadow: wrap$2("drop-shadow"),
+  grayscale: wrap$2("grayscale"),
+  hueRotate: (value) => wrap$2("hue-rotate")(transformFunctions$2.degree(value)),
+  invert: wrap$2("invert"),
+  saturate: wrap$2("saturate"),
+  sepia: wrap$2("sepia"),
   bgImage(value) {
     if (value == null)
       return value;
-    const prevent = isCSSFunction(value) || globalSet.has(value);
+    const prevent = isCSSFunction$2(value) || globalSet$2.has(value);
     return !prevent ? `url(${value})` : value;
   },
   outline(value) {
@@ -22045,7 +21863,7 @@ var transformFunctions = {
   },
   flexDirection(value) {
     var _a;
-    const { space: space2, divide: divide2 } = (_a = flexDirectionTemplate[value]) != null ? _a : {};
+    const { space: space2, divide: divide2 } = (_a = flexDirectionTemplate$2[value]) != null ? _a : {};
     const result = { flexDirection: value };
     if (space2)
       result[space2] = 1;
@@ -22057,38 +21875,38 @@ var transformFunctions = {
 
 // src/utils/index.ts
 var t$3 = {
-  borderWidths: toConfig("borderWidths"),
-  borderStyles: toConfig("borderStyles"),
-  colors: toConfig("colors"),
-  borders: toConfig("borders"),
-  gradients: toConfig("gradients", transformFunctions.gradient),
-  radii: toConfig("radii", transformFunctions.px),
-  space: toConfig("space", pipe$2(transformFunctions.vh, transformFunctions.px)),
-  spaceT: toConfig("space", pipe$2(transformFunctions.vh, transformFunctions.px)),
+  borderWidths: toConfig$2("borderWidths"),
+  borderStyles: toConfig$2("borderStyles"),
+  colors: toConfig$2("colors"),
+  borders: toConfig$2("borders"),
+  gradients: toConfig$2("gradients", transformFunctions$2.gradient),
+  radii: toConfig$2("radii", transformFunctions$2.px),
+  space: toConfig$2("space", pipe$4(transformFunctions$2.vh, transformFunctions$2.px)),
+  spaceT: toConfig$2("space", pipe$4(transformFunctions$2.vh, transformFunctions$2.px)),
   degreeT(property) {
-    return { property, transform: transformFunctions.degree };
+    return { property, transform: transformFunctions$2.degree };
   },
   prop(property, scale, transform2) {
     return {
       property,
       scale,
       ...scale && {
-        transform: createTransform({ scale, transform: transform2 })
+        transform: createTransform$2({ scale, transform: transform2 })
       }
     };
   },
   propT(property, transform2) {
     return { property, transform: transform2 };
   },
-  sizes: toConfig("sizes", pipe$2(transformFunctions.vh, transformFunctions.px)),
-  sizesT: toConfig("sizes", pipe$2(transformFunctions.vh, transformFunctions.fraction)),
-  shadows: toConfig("shadows"),
-  logical,
-  blur: toConfig("blur", transformFunctions.blur)
+  sizes: toConfig$2("sizes", pipe$4(transformFunctions$2.vh, transformFunctions$2.px)),
+  sizesT: toConfig$2("sizes", pipe$4(transformFunctions$2.vh, transformFunctions$2.fraction)),
+  shadows: toConfig$2("shadows"),
+  logical: logical$2,
+  blur: toConfig$2("blur", transformFunctions$2.blur)
 };
 
 // src/config/background.ts
-var background = {
+var background$2 = {
   background: t$3.colors("background"),
   backgroundColor: t$3.colors("backgroundColor"),
   backgroundImage: t$3.gradients("backgroundImage"),
@@ -22096,7 +21914,7 @@ var background = {
   backgroundPosition: true,
   backgroundRepeat: true,
   backgroundAttachment: true,
-  backgroundClip: { transform: transformFunctions.bgClip },
+  backgroundClip: { transform: transformFunctions$2.bgClip },
   bgSize: t$3.prop("backgroundSize"),
   bgPosition: t$3.prop("backgroundPosition"),
   bg: t$3.colors("background"),
@@ -22105,15 +21923,15 @@ var background = {
   bgRepeat: t$3.prop("backgroundRepeat"),
   bgAttachment: t$3.prop("backgroundAttachment"),
   bgGradient: t$3.gradients("backgroundImage"),
-  bgClip: { transform: transformFunctions.bgClip }
+  bgClip: { transform: transformFunctions$2.bgClip }
 };
-Object.assign(background, {
-  bgImage: background.backgroundImage,
-  bgImg: background.backgroundImage
+Object.assign(background$2, {
+  bgImage: background$2.backgroundImage,
+  bgImg: background$2.backgroundImage
 });
 
 // src/config/border.ts
-var border = {
+var border$2 = {
   border: t$3.borders("border"),
   borderWidth: t$3.borderWidths("borderWidth"),
   borderStyle: t$3.borderStyles("borderStyle"),
@@ -22215,40 +22033,40 @@ var border = {
     "borderBottomRightRadius"
   ])
 };
-Object.assign(border, {
-  rounded: border.borderRadius,
-  roundedTop: border.borderTopRadius,
-  roundedTopLeft: border.borderTopLeftRadius,
-  roundedTopRight: border.borderTopRightRadius,
-  roundedTopStart: border.borderStartStartRadius,
-  roundedTopEnd: border.borderStartEndRadius,
-  roundedBottom: border.borderBottomRadius,
-  roundedBottomLeft: border.borderBottomLeftRadius,
-  roundedBottomRight: border.borderBottomRightRadius,
-  roundedBottomStart: border.borderEndStartRadius,
-  roundedBottomEnd: border.borderEndEndRadius,
-  roundedLeft: border.borderLeftRadius,
-  roundedRight: border.borderRightRadius,
-  roundedStart: border.borderInlineStartRadius,
-  roundedEnd: border.borderInlineEndRadius,
-  borderStart: border.borderInlineStart,
-  borderEnd: border.borderInlineEnd,
-  borderTopStartRadius: border.borderStartStartRadius,
-  borderTopEndRadius: border.borderStartEndRadius,
-  borderBottomStartRadius: border.borderEndStartRadius,
-  borderBottomEndRadius: border.borderEndEndRadius,
-  borderStartRadius: border.borderInlineStartRadius,
-  borderEndRadius: border.borderInlineEndRadius,
-  borderStartWidth: border.borderInlineStartWidth,
-  borderEndWidth: border.borderInlineEndWidth,
-  borderStartColor: border.borderInlineStartColor,
-  borderEndColor: border.borderInlineEndColor,
-  borderStartStyle: border.borderInlineStartStyle,
-  borderEndStyle: border.borderInlineEndStyle
+Object.assign(border$2, {
+  rounded: border$2.borderRadius,
+  roundedTop: border$2.borderTopRadius,
+  roundedTopLeft: border$2.borderTopLeftRadius,
+  roundedTopRight: border$2.borderTopRightRadius,
+  roundedTopStart: border$2.borderStartStartRadius,
+  roundedTopEnd: border$2.borderStartEndRadius,
+  roundedBottom: border$2.borderBottomRadius,
+  roundedBottomLeft: border$2.borderBottomLeftRadius,
+  roundedBottomRight: border$2.borderBottomRightRadius,
+  roundedBottomStart: border$2.borderEndStartRadius,
+  roundedBottomEnd: border$2.borderEndEndRadius,
+  roundedLeft: border$2.borderLeftRadius,
+  roundedRight: border$2.borderRightRadius,
+  roundedStart: border$2.borderInlineStartRadius,
+  roundedEnd: border$2.borderInlineEndRadius,
+  borderStart: border$2.borderInlineStart,
+  borderEnd: border$2.borderInlineEnd,
+  borderTopStartRadius: border$2.borderStartStartRadius,
+  borderTopEndRadius: border$2.borderStartEndRadius,
+  borderBottomStartRadius: border$2.borderEndStartRadius,
+  borderBottomEndRadius: border$2.borderEndEndRadius,
+  borderStartRadius: border$2.borderInlineStartRadius,
+  borderEndRadius: border$2.borderInlineEndRadius,
+  borderStartWidth: border$2.borderInlineStartWidth,
+  borderEndWidth: border$2.borderInlineEndWidth,
+  borderStartColor: border$2.borderInlineStartColor,
+  borderEndColor: border$2.borderInlineEndColor,
+  borderStartStyle: border$2.borderInlineStartStyle,
+  borderEndStyle: border$2.borderInlineEndStyle
 });
 
 // src/config/color.ts
-var color$1 = {
+var color$3 = {
   color: t$3.colors("color"),
   textColor: t$3.colors("color"),
   fill: t$3.colors("fill"),
@@ -22256,7 +22074,7 @@ var color$1 = {
 };
 
 // src/config/effect.ts
-var effect = {
+var effect$2 = {
   boxShadow: t$3.shadows("boxShadow"),
   mixBlendMode: true,
   blendMode: t$3.prop("mixBlendMode"),
@@ -22264,43 +22082,43 @@ var effect = {
   bgBlendMode: t$3.prop("backgroundBlendMode"),
   opacity: true
 };
-Object.assign(effect, {
-  shadow: effect.boxShadow
+Object.assign(effect$2, {
+  shadow: effect$2.boxShadow
 });
 
 // src/config/filter.ts
-var filter$1 = {
-  filter: { transform: transformFunctions.filter },
+var filter$3 = {
+  filter: { transform: transformFunctions$2.filter },
   blur: t$3.blur("--chakra-blur"),
-  brightness: t$3.propT("--chakra-brightness", transformFunctions.brightness),
-  contrast: t$3.propT("--chakra-contrast", transformFunctions.contrast),
-  hueRotate: t$3.propT("--chakra-hue-rotate", transformFunctions.hueRotate),
-  invert: t$3.propT("--chakra-invert", transformFunctions.invert),
-  saturate: t$3.propT("--chakra-saturate", transformFunctions.saturate),
-  dropShadow: t$3.propT("--chakra-drop-shadow", transformFunctions.dropShadow),
-  backdropFilter: { transform: transformFunctions.backdropFilter },
+  brightness: t$3.propT("--chakra-brightness", transformFunctions$2.brightness),
+  contrast: t$3.propT("--chakra-contrast", transformFunctions$2.contrast),
+  hueRotate: t$3.propT("--chakra-hue-rotate", transformFunctions$2.hueRotate),
+  invert: t$3.propT("--chakra-invert", transformFunctions$2.invert),
+  saturate: t$3.propT("--chakra-saturate", transformFunctions$2.saturate),
+  dropShadow: t$3.propT("--chakra-drop-shadow", transformFunctions$2.dropShadow),
+  backdropFilter: { transform: transformFunctions$2.backdropFilter },
   backdropBlur: t$3.blur("--chakra-backdrop-blur"),
   backdropBrightness: t$3.propT(
     "--chakra-backdrop-brightness",
-    transformFunctions.brightness
+    transformFunctions$2.brightness
   ),
-  backdropContrast: t$3.propT("--chakra-backdrop-contrast", transformFunctions.contrast),
+  backdropContrast: t$3.propT("--chakra-backdrop-contrast", transformFunctions$2.contrast),
   backdropHueRotate: t$3.propT(
     "--chakra-backdrop-hue-rotate",
-    transformFunctions.hueRotate
+    transformFunctions$2.hueRotate
   ),
-  backdropInvert: t$3.propT("--chakra-backdrop-invert", transformFunctions.invert),
-  backdropSaturate: t$3.propT("--chakra-backdrop-saturate", transformFunctions.saturate)
+  backdropInvert: t$3.propT("--chakra-backdrop-invert", transformFunctions$2.invert),
+  backdropSaturate: t$3.propT("--chakra-backdrop-saturate", transformFunctions$2.saturate)
 };
 
 // src/config/flexbox.ts
-var flexbox = {
+var flexbox$2 = {
   alignItems: true,
   alignContent: true,
   justifyItems: true,
   justifyContent: true,
   flexWrap: true,
-  flexDirection: { transform: transformFunctions.flexDirection },
+  flexDirection: { transform: transformFunctions$2.flexDirection },
   flex: true,
   flexFlow: true,
   flexGrow: true,
@@ -22316,12 +22134,12 @@ var flexbox = {
   rowGap: t$3.space("rowGap"),
   columnGap: t$3.space("columnGap")
 };
-Object.assign(flexbox, {
-  flexDir: flexbox.flexDirection
+Object.assign(flexbox$2, {
+  flexDir: flexbox$2.flexDirection
 });
 
 // src/config/grid.ts
-var grid = {
+var grid$2 = {
   gridGap: t$3.space("gridGap"),
   gridColumnGap: t$3.space("gridColumnGap"),
   gridRowGap: t$3.space("gridRowGap"),
@@ -22342,19 +22160,19 @@ var grid = {
 };
 
 // src/config/interactivity.ts
-var interactivity = {
+var interactivity$2 = {
   appearance: true,
   cursor: true,
   resize: true,
   userSelect: true,
   pointerEvents: true,
-  outline: { transform: transformFunctions.outline },
+  outline: { transform: transformFunctions$2.outline },
   outlineOffset: true,
   outlineColor: t$3.colors("outlineColor")
 };
 
 // src/config/layout.ts
-var layout$1 = {
+var layout$3 = {
   width: t$3.sizesT("width"),
   inlineSize: t$3.sizesT("inlineSize"),
   height: t$3.sizes("height"),
@@ -22397,26 +22215,26 @@ var layout$1 = {
   verticalAlign: true,
   boxSizing: true,
   boxDecorationBreak: true,
-  float: t$3.propT("float", transformFunctions.float),
+  float: t$3.propT("float", transformFunctions$2.float),
   objectFit: true,
   objectPosition: true,
   visibility: true,
   isolation: true
 };
-Object.assign(layout$1, {
-  w: layout$1.width,
-  h: layout$1.height,
-  minW: layout$1.minWidth,
-  maxW: layout$1.maxWidth,
-  minH: layout$1.minHeight,
-  maxH: layout$1.maxHeight,
-  overscroll: layout$1.overscrollBehavior,
-  overscrollX: layout$1.overscrollBehaviorX,
-  overscrollY: layout$1.overscrollBehaviorY
+Object.assign(layout$3, {
+  w: layout$3.width,
+  h: layout$3.height,
+  minW: layout$3.minWidth,
+  maxW: layout$3.maxWidth,
+  minH: layout$3.minHeight,
+  maxH: layout$3.maxHeight,
+  overscroll: layout$3.overscrollBehavior,
+  overscrollX: layout$3.overscrollBehaviorX,
+  overscrollY: layout$3.overscrollBehaviorY
 });
 
 // src/config/list.ts
-var list = {
+var list$2 = {
   listStyleType: true,
   listStylePosition: true,
   listStylePos: t$3.prop("listStylePosition"),
@@ -22425,7 +22243,7 @@ var list = {
 };
 
 // src/get.ts
-function get$1(obj, path, fallback, index) {
+function get$5(obj, path, fallback, index) {
   const key = typeof path === "string" ? path.split(".") : [path];
   for (index = 0; index < key.length; index += 1) {
     if (!obj)
@@ -22434,7 +22252,7 @@ function get$1(obj, path, fallback, index) {
   }
   return obj === void 0 ? fallback : obj;
 }
-var memoize$2 = (fn) => {
+var memoize$5 = (fn) => {
   const cache = /* @__PURE__ */ new WeakMap();
   const memoizedFn = (obj, path, fallback, index) => {
     if (typeof obj === "undefined") {
@@ -22453,10 +22271,10 @@ var memoize$2 = (fn) => {
   };
   return memoizedFn;
 };
-var memoizedGet$1 = memoize$2(get$1);
+var memoizedGet$4 = memoize$5(get$5);
 
 // src/config/others.ts
-var srOnly = {
+var srOnly$2 = {
   border: "0px",
   clip: "rect(0, 0, 0, 0)",
   width: "1px",
@@ -22467,7 +22285,7 @@ var srOnly = {
   whiteSpace: "nowrap",
   position: "absolute"
 };
-var srFocusable = {
+var srFocusable$2 = {
   position: "static",
   width: "auto",
   height: "auto",
@@ -22477,9 +22295,9 @@ var srFocusable = {
   overflow: "visible",
   whiteSpace: "normal"
 };
-var getWithPriority = (theme, key, styles) => {
+var getWithPriority$2 = (theme, key, styles) => {
   const result = {};
-  const obj = memoizedGet$1(theme, key, {});
+  const obj = memoizedGet$4(theme, key, {});
   for (const prop in obj) {
     const isInStyles = prop in styles && styles[prop] != null;
     if (!isInStyles)
@@ -22487,32 +22305,32 @@ var getWithPriority = (theme, key, styles) => {
   }
   return result;
 };
-var others = {
+var others$2 = {
   srOnly: {
     transform(value) {
       if (value === true)
-        return srOnly;
+        return srOnly$2;
       if (value === "focusable")
-        return srFocusable;
+        return srFocusable$2;
       return {};
     }
   },
   layerStyle: {
     processResult: true,
-    transform: (value, theme, styles) => getWithPriority(theme, `layerStyles.${value}`, styles)
+    transform: (value, theme, styles) => getWithPriority$2(theme, `layerStyles.${value}`, styles)
   },
   textStyle: {
     processResult: true,
-    transform: (value, theme, styles) => getWithPriority(theme, `textStyles.${value}`, styles)
+    transform: (value, theme, styles) => getWithPriority$2(theme, `textStyles.${value}`, styles)
   },
   apply: {
     processResult: true,
-    transform: (value, theme, styles) => getWithPriority(theme, value, styles)
+    transform: (value, theme, styles) => getWithPriority$2(theme, value, styles)
   }
 };
 
 // src/config/position.ts
-var position$1 = {
+var position$3 = {
   position: true,
   pos: t$3.prop("position"),
   zIndex: t$3.prop("zIndex", "zIndices"),
@@ -22536,14 +22354,14 @@ var position$1 = {
     property: { ltr: "right", rtl: "left" }
   })
 };
-Object.assign(position$1, {
-  insetStart: position$1.insetInlineStart,
-  insetEnd: position$1.insetInlineEnd
+Object.assign(position$3, {
+  insetStart: position$3.insetInlineStart,
+  insetEnd: position$3.insetInlineEnd
 });
 
 // src/config/ring.ts
-var ring = {
-  ring: { transform: transformFunctions.ring },
+var ring$2 = {
+  ring: { transform: transformFunctions$2.ring },
   ringColor: t$3.colors("--chakra-ring-color"),
   ringOffset: t$3.prop("--chakra-ring-offset-width"),
   ringOffsetColor: t$3.colors("--chakra-ring-offset-color"),
@@ -22551,7 +22369,7 @@ var ring = {
 };
 
 // src/config/space.ts
-var space = {
+var space$2 = {
   margin: t$3.spaceT("margin"),
   marginTop: t$3.spaceT("marginTop"),
   marginBlockStart: t$3.spaceT("marginBlockStart"),
@@ -22579,33 +22397,33 @@ var space = {
   paddingY: t$3.space(["paddingTop", "paddingBottom"]),
   paddingBlock: t$3.space("paddingBlock")
 };
-Object.assign(space, {
-  m: space.margin,
-  mt: space.marginTop,
-  mr: space.marginRight,
-  me: space.marginInlineEnd,
-  marginEnd: space.marginInlineEnd,
-  mb: space.marginBottom,
-  ml: space.marginLeft,
-  ms: space.marginInlineStart,
-  marginStart: space.marginInlineStart,
-  mx: space.marginX,
-  my: space.marginY,
-  p: space.padding,
-  pt: space.paddingTop,
-  py: space.paddingY,
-  px: space.paddingX,
-  pb: space.paddingBottom,
-  pl: space.paddingLeft,
-  ps: space.paddingInlineStart,
-  paddingStart: space.paddingInlineStart,
-  pr: space.paddingRight,
-  pe: space.paddingInlineEnd,
-  paddingEnd: space.paddingInlineEnd
+Object.assign(space$2, {
+  m: space$2.margin,
+  mt: space$2.marginTop,
+  mr: space$2.marginRight,
+  me: space$2.marginInlineEnd,
+  marginEnd: space$2.marginInlineEnd,
+  mb: space$2.marginBottom,
+  ml: space$2.marginLeft,
+  ms: space$2.marginInlineStart,
+  marginStart: space$2.marginInlineStart,
+  mx: space$2.marginX,
+  my: space$2.marginY,
+  p: space$2.padding,
+  pt: space$2.paddingTop,
+  py: space$2.paddingY,
+  px: space$2.paddingX,
+  pb: space$2.paddingBottom,
+  pl: space$2.paddingLeft,
+  ps: space$2.paddingInlineStart,
+  paddingStart: space$2.paddingInlineStart,
+  pr: space$2.paddingRight,
+  pe: space$2.paddingInlineEnd,
+  paddingEnd: space$2.paddingInlineEnd
 });
 
 // src/config/text-decoration.ts
-var textDecoration = {
+var textDecoration$2 = {
   textDecorationColor: t$3.colors("textDecorationColor"),
   textDecoration: true,
   textDecor: { property: "textDecoration" },
@@ -22617,9 +22435,9 @@ var textDecoration = {
 };
 
 // src/config/transform.ts
-var transform = {
+var transform$2 = {
   clipPath: true,
-  transform: t$3.propT("transform", transformFunctions.transform),
+  transform: t$3.propT("transform", transformFunctions$2.transform),
   transformOrigin: true,
   translateX: t$3.spaceT("--chakra-translate-x"),
   translateY: t$3.spaceT("--chakra-translate-y"),
@@ -22632,7 +22450,7 @@ var transform = {
 };
 
 // src/config/transition.ts
-var transition$2 = {
+var transition$4 = {
   transition: true,
   transitionDelay: true,
   animation: true,
@@ -22646,9 +22464,9 @@ var transition$2 = {
 };
 
 // src/config/typography.ts
-var typography$2 = {
+var typography$4 = {
   fontFamily: t$3.prop("fontFamily", "fonts"),
-  fontSize: t$3.prop("fontSize", "fontSizes", transformFunctions.px),
+  fontSize: t$3.prop("fontSize", "fontSizes", transformFunctions$2.px),
   fontWeight: t$3.prop("fontWeight", "fontWeights"),
   lineHeight: t$3.prop("lineHeight", "lineHeights"),
   letterSpacing: t$3.prop("letterSpacing", "letterSpacings"),
@@ -22685,7 +22503,7 @@ var typography$2 = {
 };
 
 // src/config/scroll.ts
-var scroll = {
+var scroll$2 = {
   scrollBehavior: true,
   scrollSnapAlign: true,
   scrollSnapStop: true,
@@ -22707,208 +22525,63 @@ var scroll = {
   scrollPaddingX: t$3.spaceT(["scrollPaddingLeft", "scrollPaddingRight"]),
   scrollPaddingY: t$3.spaceT(["scrollPaddingTop", "scrollPaddingBottom"])
 };
-function resolveReference(operand) {
-  if (isObject$1(operand) && operand.reference) {
+function resolveReference$2(operand) {
+  if (isObject$3(operand) && operand.reference) {
     return operand.reference;
   }
   return String(operand);
 }
-var toExpression = (operator, ...operands) => operands.map(resolveReference).join(` ${operator} `).replace(/calc/g, "");
-var add$1 = (...operands) => `calc(${toExpression("+", ...operands)})`;
-var subtract$1 = (...operands) => `calc(${toExpression("-", ...operands)})`;
-var multiply$1 = (...operands) => `calc(${toExpression("*", ...operands)})`;
-var divide$1 = (...operands) => `calc(${toExpression("/", ...operands)})`;
-var negate$1 = (x) => {
-  const value = resolveReference(x);
+var toExpression$2 = (operator, ...operands) => operands.map(resolveReference$2).join(` ${operator} `).replace(/calc/g, "");
+var add$3 = (...operands) => `calc(${toExpression$2("+", ...operands)})`;
+var subtract$4 = (...operands) => `calc(${toExpression$2("-", ...operands)})`;
+var multiply$3 = (...operands) => `calc(${toExpression$2("*", ...operands)})`;
+var divide$3 = (...operands) => `calc(${toExpression$2("/", ...operands)})`;
+var negate$3 = (x) => {
+  const value = resolveReference$2(x);
   if (value != null && !Number.isNaN(parseFloat(value))) {
     return String(value).startsWith("-") ? String(value).slice(1) : `-${value}`;
   }
-  return multiply$1(value, -1);
+  return multiply$3(value, -1);
 };
-var calc$1 = Object.assign(
+var calc$3 = Object.assign(
   (x) => ({
-    add: (...operands) => calc$1(add$1(x, ...operands)),
-    subtract: (...operands) => calc$1(subtract$1(x, ...operands)),
-    multiply: (...operands) => calc$1(multiply$1(x, ...operands)),
-    divide: (...operands) => calc$1(divide$1(x, ...operands)),
-    negate: () => calc$1(negate$1(x)),
+    add: (...operands) => calc$3(add$3(x, ...operands)),
+    subtract: (...operands) => calc$3(subtract$4(x, ...operands)),
+    multiply: (...operands) => calc$3(multiply$3(x, ...operands)),
+    divide: (...operands) => calc$3(divide$3(x, ...operands)),
+    negate: () => calc$3(negate$3(x)),
     toString: () => x.toString()
   }),
   {
-    add: add$1,
-    subtract: subtract$1,
-    multiply: multiply$1,
-    divide: divide$1,
-    negate: negate$1
+    add: add$3,
+    subtract: subtract$4,
+    multiply: multiply$3,
+    divide: divide$3,
+    negate: negate$3
   }
 );
-
-// src/create-theme-vars/css-var.ts
-function replaceWhiteSpace$1(value, replaceValue = "-") {
-  return value.replace(/\s+/g, replaceValue);
-}
-function escape$1(value) {
-  const valueStr = replaceWhiteSpace$1(value.toString());
-  return escapeSymbol(escapeDot(valueStr));
-}
-function escapeDot(value) {
-  if (value.includes("\\."))
-    return value;
-  const isDecimal = !Number.isInteger(parseFloat(value.toString()));
-  return isDecimal ? value.replace(".", `\\.`) : value;
-}
-function escapeSymbol(value) {
-  return value.replace(/[!-,/:-@[-^`{-~]/g, "\\$&");
-}
-function addPrefix$1(value, prefix = "") {
-  return [prefix, value].filter(Boolean).join("-");
-}
-function toVarReference(name, fallback) {
-  return `var(${name}${fallback ? `, ${fallback}` : ""})`;
-}
-function toVarDefinition(value, prefix = "") {
-  return escape$1(`--${addPrefix$1(value, prefix)}`);
-}
-function cssVar$1(name, fallback, cssVarPrefix) {
-  const cssVariable = toVarDefinition(name, cssVarPrefix);
-  return {
-    variable: cssVariable,
-    reference: toVarReference(cssVariable, fallback)
-  };
-}
-function defineCssVars(scope, keys2) {
-  const vars = {};
-  for (const key of keys2) {
-    if (Array.isArray(key)) {
-      const [name, fallback] = key;
-      vars[name] = cssVar$1(`${scope}-${name}`, fallback);
-      continue;
-    }
-    vars[key] = cssVar$1(`${scope}-${key}`);
-  }
-  return vars;
-}
-function getLastItem(array) {
-  const length = array == null ? 0 : array.length;
-  return length ? array[length - 1] : void 0;
-}
 function analyzeCSSValue2(value) {
   const num = parseFloat(value.toString());
   const unit = value.toString().replace(String(num), "");
   return { unitless: !unit, value: num, unit };
 }
-function px$1(value) {
+function px$2(value) {
   if (value == null)
     return value;
   const { unitless } = analyzeCSSValue2(value);
   return unitless || typeof value === "number" ? `${value}px` : value;
 }
-var sortByBreakpointValue = (a, b) => parseInt(a[1], 10) > parseInt(b[1], 10) ? 1 : -1;
-var sortBps = (breakpoints) => Object.fromEntries(Object.entries(breakpoints).sort(sortByBreakpointValue));
-function normalize(breakpoints) {
-  const sorted = sortBps(breakpoints);
-  return Object.assign(Object.values(sorted), sorted);
-}
-function keys(breakpoints) {
-  const value = Object.keys(sortBps(breakpoints));
-  return new Set(value);
-}
-function subtract2(value) {
-  var _a;
-  if (!value)
-    return value;
-  value = (_a = px$1(value)) != null ? _a : value;
-  const OFFSET = -0.02;
-  return typeof value === "number" ? `${value + OFFSET}` : value.replace(/(\d+\.?\d*)/u, (m) => `${parseFloat(m) + OFFSET}`);
-}
-function toMediaQueryString(min, max) {
+function toMediaQueryString$1(min, max) {
   const query = ["@media screen"];
   if (min)
-    query.push("and", `(min-width: ${px$1(min)})`);
+    query.push("and", `(min-width: ${px$2(min)})`);
   if (max)
-    query.push("and", `(max-width: ${px$1(max)})`);
+    query.push("and", `(max-width: ${px$2(max)})`);
   return query.join(" ");
-}
-function analyzeBreakpoints(breakpoints) {
-  var _a;
-  if (!breakpoints)
-    return null;
-  breakpoints.base = (_a = breakpoints.base) != null ? _a : "0px";
-  const normalized = normalize(breakpoints);
-  const queries = Object.entries(breakpoints).sort(sortByBreakpointValue).map(([breakpoint, minW], index, entry) => {
-    var _a2;
-    let [, maxW] = (_a2 = entry[index + 1]) != null ? _a2 : [];
-    maxW = parseFloat(maxW) > 0 ? subtract2(maxW) : void 0;
-    return {
-      _minW: subtract2(minW),
-      breakpoint,
-      minW,
-      maxW,
-      maxWQuery: toMediaQueryString(null, maxW),
-      minWQuery: toMediaQueryString(minW),
-      minMaxQuery: toMediaQueryString(minW, maxW)
-    };
-  });
-  const _keys = keys(breakpoints);
-  const _keysArr = Array.from(_keys.values());
-  return {
-    keys: _keys,
-    normalized,
-    isResponsive(test) {
-      const keys2 = Object.keys(test);
-      return keys2.length > 0 && keys2.every((key) => _keys.has(key));
-    },
-    asObject: sortBps(breakpoints),
-    asArray: normalize(breakpoints),
-    details: queries,
-    get(key) {
-      return queries.find((q) => q.breakpoint === key);
-    },
-    media: [
-      null,
-      ...normalized.map((minW) => toMediaQueryString(minW)).slice(1)
-    ],
-    /**
-     * Converts the object responsive syntax to array syntax
-     *
-     * @example
-     * toArrayValue({ base: 1, sm: 2, md: 3 }) // => [1, 2, 3]
-     */
-    toArrayValue(test) {
-      if (!isObject$1(test)) {
-        throw new Error("toArrayValue: value must be an object");
-      }
-      const result = _keysArr.map((bp) => {
-        var _a2;
-        return (_a2 = test[bp]) != null ? _a2 : null;
-      });
-      while (getLastItem(result) === null) {
-        result.pop();
-      }
-      return result;
-    },
-    /**
-     * Converts the array responsive syntax to object syntax
-     *
-     * @example
-     * toObjectValue([1, 2, 3]) // => { base: 1, sm: 2, md: 3 }
-     */
-    toObjectValue(test) {
-      if (!Array.isArray(test)) {
-        throw new Error("toObjectValue: value must be an array");
-      }
-      return test.reduce((acc, value, index) => {
-        const key = _keysArr[index];
-        if (key != null && value != null)
-          acc[key] = value;
-        return acc;
-      }, {});
-    }
-  };
 }
 
 // src/pseudos.ts
-var state = {
+var state$2 = {
   hover: (str, post) => `${str}:hover ${post}, ${str}[data-hover] ${post}`,
   focus: (str, post) => `${str}:focus ${post}, ${str}[data-focus] ${post}`,
   focusVisible: (str, post) => `${str}:focus-visible ${post}`,
@@ -22922,10 +22595,10 @@ var state = {
   expanded: (str, post) => `${str}:read-only ${post}, ${str}[aria-expanded=true] ${post}, ${str}[data-expanded] ${post}`,
   placeholderShown: (str, post) => `${str}:placeholder-shown ${post}`
 };
-var toGroup = (fn) => merge((v) => fn(v, "&"), "[role=group]", "[data-group]", ".group");
-var toPeer = (fn) => merge((v) => fn(v, "~ &"), "[data-peer]", ".peer");
-var merge = (fn, ...selectors) => selectors.map(fn).join(", ");
-var pseudoSelectors = {
+var toGroup$2 = (fn) => merge$2((v) => fn(v, "&"), "[role=group]", "[data-group]", ".group");
+var toPeer$2 = (fn) => merge$2((v) => fn(v, "~ &"), "[data-peer]", ".peer");
+var merge$2 = (fn, ...selectors) => selectors.map(fn).join(", ");
+var pseudoSelectors$2 = {
   /**
    * Styles for CSS selector `&:hover`
    */
@@ -23094,71 +22767,71 @@ var pseudoSelectors = {
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is hovered
    */
-  _groupHover: toGroup(state.hover),
+  _groupHover: toGroup$2(state$2.hover),
   /**
    * Styles to apply when a sibling element with `.peer` or `data-peer` is hovered
    */
-  _peerHover: toPeer(state.hover),
+  _peerHover: toPeer$2(state$2.hover),
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is focused
    */
-  _groupFocus: toGroup(state.focus),
+  _groupFocus: toGroup$2(state$2.focus),
   /**
    * Styles to apply when a sibling element with `.peer` or `data-peer` is focused
    */
-  _peerFocus: toPeer(state.focus),
+  _peerFocus: toPeer$2(state$2.focus),
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` has visible focus
    */
-  _groupFocusVisible: toGroup(state.focusVisible),
+  _groupFocusVisible: toGroup$2(state$2.focusVisible),
   /**
    * Styles to apply when a sibling element with `.peer`or `data-peer` has visible focus
    */
-  _peerFocusVisible: toPeer(state.focusVisible),
+  _peerFocusVisible: toPeer$2(state$2.focusVisible),
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is active
    */
-  _groupActive: toGroup(state.active),
+  _groupActive: toGroup$2(state$2.active),
   /**
    * Styles to apply when a sibling element with `.peer` or `data-peer` is active
    */
-  _peerActive: toPeer(state.active),
+  _peerActive: toPeer$2(state$2.active),
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is disabled
    */
-  _groupDisabled: toGroup(state.disabled),
+  _groupDisabled: toGroup$2(state$2.disabled),
   /**
    *  Styles to apply when a sibling element with `.peer` or `data-peer` is disabled
    */
-  _peerDisabled: toPeer(state.disabled),
+  _peerDisabled: toPeer$2(state$2.disabled),
   /**
    *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` is invalid
    */
-  _groupInvalid: toGroup(state.invalid),
+  _groupInvalid: toGroup$2(state$2.invalid),
   /**
    *  Styles to apply when a sibling element with `.peer` or `data-peer` is invalid
    */
-  _peerInvalid: toPeer(state.invalid),
+  _peerInvalid: toPeer$2(state$2.invalid),
   /**
    * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is checked
    */
-  _groupChecked: toGroup(state.checked),
+  _groupChecked: toGroup$2(state$2.checked),
   /**
    * Styles to apply when a sibling element with `.peer` or `data-peer` is checked
    */
-  _peerChecked: toPeer(state.checked),
+  _peerChecked: toPeer$2(state$2.checked),
   /**
    *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` has focus within
    */
-  _groupFocusWithin: toGroup(state.focusWithin),
+  _groupFocusWithin: toGroup$2(state$2.focusWithin),
   /**
    *  Styles to apply when a sibling element with `.peer` or `data-peer` has focus within
    */
-  _peerFocusWithin: toPeer(state.focusWithin),
+  _peerFocusWithin: toPeer$2(state$2.focusWithin),
   /**
    * Styles to apply when a sibling element with `.peer` or `data-peer` has placeholder shown
    */
-  _peerPlaceholderShown: toPeer(state.placeholderShown),
+  _peerPlaceholderShown: toPeer$2(state$2.placeholderShown),
   /**
    * Styles for CSS Selector `&::placeholder`.
    */
@@ -23214,82 +22887,12 @@ var pseudoSelectors = {
    */
   _vertical: "&[data-orientation=vertical]"
 };
-var pseudoPropNames = Object.keys(
-  pseudoSelectors
+var pseudoPropNames$2 = Object.keys(
+  pseudoSelectors$2
 );
-function tokenToCssVar(token, prefix) {
-  return cssVar$1(String(token).replace(/\./g, "-"), void 0, prefix);
-}
-function createThemeVars(flatTokens, options) {
-  let cssVars = {};
-  const cssMap = {};
-  for (const [token, tokenValue] of Object.entries(flatTokens)) {
-    const { isSemantic, value } = tokenValue;
-    const { variable, reference } = tokenToCssVar(token, options == null ? void 0 : options.cssVarPrefix);
-    if (!isSemantic) {
-      if (token.startsWith("space")) {
-        const keys2 = token.split(".");
-        const [firstKey, ...referenceKeys] = keys2;
-        const negativeLookupKey = `${firstKey}.-${referenceKeys.join(".")}`;
-        const negativeValue = calc$1.negate(value);
-        const negatedReference = calc$1.negate(reference);
-        cssMap[negativeLookupKey] = {
-          value: negativeValue,
-          var: variable,
-          varRef: negatedReference
-        };
-      }
-      cssVars[variable] = value;
-      cssMap[token] = {
-        value,
-        var: variable,
-        varRef: reference
-      };
-      continue;
-    }
-    const lookupToken = (maybeToken) => {
-      const scale = String(token).split(".")[0];
-      const withScale = [scale, maybeToken].join(".");
-      const resolvedTokenValue = flatTokens[withScale];
-      if (!resolvedTokenValue)
-        return maybeToken;
-      const { reference: reference2 } = tokenToCssVar(withScale, options == null ? void 0 : options.cssVarPrefix);
-      return reference2;
-    };
-    const normalizedValue = isObject$1(value) ? value : { default: value };
-    cssVars = lodash_mergewith(
-      cssVars,
-      Object.entries(normalizedValue).reduce(
-        (acc, [conditionAlias, conditionValue]) => {
-          var _a, _b;
-          if (!conditionValue)
-            return acc;
-          const tokenReference = lookupToken(`${conditionValue}`);
-          if (conditionAlias === "default") {
-            acc[variable] = tokenReference;
-            return acc;
-          }
-          const conditionSelector = (_b = (_a = pseudoSelectors) == null ? void 0 : _a[conditionAlias]) != null ? _b : conditionAlias;
-          acc[conditionSelector] = { [variable]: tokenReference };
-          return acc;
-        },
-        {}
-      )
-    );
-    cssMap[token] = {
-      value: reference,
-      var: variable,
-      varRef: reference
-    };
-  }
-  return {
-    cssVars,
-    cssMap
-  };
-}
 
 // ../../utilities/object-utils/src/omit.ts
-function omit$1(object, keysToOmit = []) {
+function omit$2(object, keysToOmit = []) {
   const clone = Object.assign({}, object);
   for (const key of keysToOmit) {
     if (key in clone) {
@@ -23298,175 +22901,45 @@ function omit$1(object, keysToOmit = []) {
   }
   return clone;
 }
-
-// ../../utilities/object-utils/src/pick.ts
-function pick(object, keysToPick) {
-  const result = {};
-  for (const key of keysToPick) {
-    if (key in object) {
-      result[key] = object[key];
-    }
-  }
-  return result;
-}
-
-// ../../utilities/object-utils/src/walk-object.ts
-function isObject5(value) {
-  return typeof value === "object" && value != null && !Array.isArray(value);
-}
-function walkObject(target, predicate, options = {}) {
-  const { stop, getKey } = options;
-  function inner(value, path = []) {
-    var _a;
-    if (isObject5(value) || Array.isArray(value)) {
-      const result = {};
-      for (const [prop, child] of Object.entries(value)) {
-        const key = (_a = getKey == null ? void 0 : getKey(prop)) != null ? _a : prop;
-        const childPath = [...path, key];
-        if (stop == null ? void 0 : stop(value, childPath)) {
-          return predicate(value, path);
-        }
-        result[key] = inner(child, childPath);
-      }
-      return result;
-    }
-    return predicate(value, path);
-  }
-  return inner(target);
-}
-
-// src/create-theme-vars/theme-tokens.ts
-var tokens = [
-  "colors",
-  "borders",
-  "borderWidths",
-  "borderStyles",
-  "fonts",
-  "fontSizes",
-  "fontWeights",
-  "gradients",
-  "letterSpacings",
-  "lineHeights",
-  "radii",
-  "space",
-  "shadows",
-  "sizes",
-  "zIndices",
-  "transition",
-  "blur",
-  "breakpoints"
-];
-function extractTokens(theme) {
-  const _tokens = tokens;
-  return pick(theme, _tokens);
-}
-function extractSemanticTokens(theme) {
-  return theme.semanticTokens;
-}
-function omitVars(rawTheme) {
-  const { __cssMap, __cssVars, __breakpoints, ...cleanTheme } = rawTheme;
-  return cleanTheme;
-}
-
-// src/create-theme-vars/flatten-tokens.ts
-var isSemanticCondition = (key) => pseudoPropNames.includes(key) || "default" === key;
-function flattenTokens({
-  tokens: tokens2,
-  semanticTokens
-}) {
-  const result = {};
-  walkObject(tokens2, (value, path) => {
-    if (value == null)
-      return;
-    result[path.join(".")] = { isSemantic: false, value };
-  });
-  walkObject(
-    semanticTokens,
-    (value, path) => {
-      if (value == null)
-        return;
-      result[path.join(".")] = { isSemantic: true, value };
-    },
-    {
-      stop: (value) => Object.keys(value).every(isSemanticCondition)
-    }
-  );
-  return result;
-}
-
-// src/create-theme-vars/to-css-var.ts
-function toCSSVar(rawTheme) {
-  var _a;
-  const theme = omitVars(rawTheme);
-  const tokens2 = extractTokens(theme);
-  const semanticTokens = extractSemanticTokens(theme);
-  const flatTokens = flattenTokens({ tokens: tokens2, semanticTokens });
-  const cssVarPrefix = (_a = theme.config) == null ? void 0 : _a.cssVarPrefix;
-  const {
-    /**
-     * This is more like a dictionary of tokens users will type `green.500`,
-     * and their equivalent css variable.
-     */
-    cssMap,
-    /**
-     * The extracted css variables will be stored here, and used in
-     * the emotion's <Global/> component to attach variables to `:root`
-     */
-    cssVars
-  } = createThemeVars(flatTokens, { cssVarPrefix });
-  const defaultCssVars = {
-    "--chakra-ring-inset": "var(--chakra-empty,/*!*/ /*!*/)",
-    "--chakra-ring-offset-width": "0px",
-    "--chakra-ring-offset-color": "#fff",
-    "--chakra-ring-color": "rgba(66, 153, 225, 0.6)",
-    "--chakra-ring-offset-shadow": "0 0 #0000",
-    "--chakra-ring-shadow": "0 0 #0000",
-    "--chakra-space-x-reverse": "0",
-    "--chakra-space-y-reverse": "0"
-  };
-  Object.assign(theme, {
-    __cssVars: { ...defaultCssVars, ...cssVars },
-    __cssMap: cssMap,
-    __breakpoints: analyzeBreakpoints(theme.breakpoints)
-  });
-  return theme;
-}
-var systemProps = lodash_mergewith(
+var systemProps$2 = mergeWith(
   {},
-  background,
-  border,
-  color$1,
-  flexbox,
-  layout$1,
-  filter$1,
-  ring,
-  interactivity,
-  grid,
-  others,
-  position$1,
-  effect,
-  space,
-  scroll,
-  typography$2,
-  textDecoration,
-  transform,
-  list,
-  transition$2
+  background$2,
+  border$2,
+  color$3,
+  flexbox$2,
+  layout$3,
+  filter$3,
+  ring$2,
+  interactivity$2,
+  grid$2,
+  others$2,
+  position$3,
+  effect$2,
+  space$2,
+  scroll$2,
+  typography$4,
+  textDecoration$2,
+  transform$2,
+  list$2,
+  transition$4
 );
-Object.assign({}, space, layout$1, flexbox, grid, position$1);
-var propNames = [...Object.keys(systemProps), ...pseudoPropNames];
-var styleProps = { ...systemProps, ...pseudoSelectors };
-var isStyleProp = (prop) => prop in styleProps;
-var expandResponsive = (styles) => (theme) => {
+var layoutSystem = Object.assign({}, space$2, layout$3, flexbox$2, grid$2, position$3);
+var layoutPropNames = Object.keys(
+  layoutSystem
+);
+var propNames$1 = [...Object.keys(systemProps$2), ...pseudoPropNames$2];
+var styleProps$1 = { ...systemProps$2, ...pseudoSelectors$2 };
+var isStyleProp$1 = (prop) => prop in styleProps$1;
+var expandResponsive$1 = (styles) => (theme) => {
   if (!theme.__breakpoints)
     return styles;
   const { isResponsive, toArrayValue, media: medias } = theme.__breakpoints;
   const computedStyles = {};
   for (const key in styles) {
-    let value = runIfFn$2(styles[key], theme);
+    let value = runIfFn$3(styles[key], theme);
     if (value == null)
       continue;
-    value = isObject$1(value) && isResponsive(value) ? toArrayValue(value) : value;
+    value = isObject$3(value) && isResponsive(value) ? toArrayValue(value) : value;
     if (!Array.isArray(value)) {
       computedStyles[key] = value;
       continue;
@@ -23489,7 +22962,7 @@ var expandResponsive = (styles) => (theme) => {
 };
 
 // src/utils/split-by-comma.ts
-function splitByComma(value) {
+function splitByComma$1(value) {
   const chunks = [];
   let chunk = "";
   let inParens = false;
@@ -23519,8 +22992,8 @@ function splitByComma(value) {
 function isCssVar2(value) {
   return /^var\(--.+\)$/.test(value);
 }
-var isCSSVariableTokenValue = (key, value) => key.startsWith("--") && typeof value === "string" && !isCssVar2(value);
-var resolveTokenValue = (theme, value) => {
+var isCSSVariableTokenValue$1 = (key, value) => key.startsWith("--") && typeof value === "string" && !isCssVar2(value);
+var resolveTokenValue$1 = (theme, value) => {
   var _a, _b;
   if (value == null)
     return value;
@@ -23532,33 +23005,33 @@ var resolveTokenValue = (theme, value) => {
     var _a2;
     return (_a2 = getVar(val)) != null ? _a2 : val;
   };
-  const [tokenValue, fallbackValue] = splitByComma(value);
+  const [tokenValue, fallbackValue] = splitByComma$1(value);
   value = (_b = (_a = getVar(tokenValue)) != null ? _a : getValue(fallbackValue)) != null ? _b : getValue(value);
   return value;
 };
-function getCss(options) {
+function getCss$1(options) {
   const { configs = {}, pseudos = {}, theme } = options;
   const css2 = (stylesOrFn, nested = false) => {
     var _a, _b, _c;
-    const _styles = runIfFn$2(stylesOrFn, theme);
-    const styles = expandResponsive(_styles)(theme);
+    const _styles = runIfFn$3(stylesOrFn, theme);
+    const styles = expandResponsive$1(_styles)(theme);
     let computedStyles = {};
     for (let key in styles) {
       const valueOrFn = styles[key];
-      let value = runIfFn$2(valueOrFn, theme);
+      let value = runIfFn$3(valueOrFn, theme);
       if (key in pseudos) {
         key = pseudos[key];
       }
-      if (isCSSVariableTokenValue(key, value)) {
-        value = resolveTokenValue(theme, value);
+      if (isCSSVariableTokenValue$1(key, value)) {
+        value = resolveTokenValue$1(theme, value);
       }
       let config = configs[key];
       if (config === true) {
         config = { property: key };
       }
-      if (isObject$1(value)) {
+      if (isObject$3(value)) {
         computedStyles[key] = (_a = computedStyles[key]) != null ? _a : {};
-        computedStyles[key] = lodash_mergewith(
+        computedStyles[key] = mergeWith(
           {},
           computedStyles[key],
           css2(value, true)
@@ -23567,10 +23040,10 @@ function getCss(options) {
       }
       let rawValue = (_c = (_b = config == null ? void 0 : config.transform) == null ? void 0 : _b.call(config, value, theme, _styles)) != null ? _c : value;
       rawValue = (config == null ? void 0 : config.processResult) ? css2(rawValue, true) : rawValue;
-      const configProperty = runIfFn$2(config == null ? void 0 : config.property, theme);
+      const configProperty = runIfFn$3(config == null ? void 0 : config.property, theme);
       if (!nested && (config == null ? void 0 : config.static)) {
-        const staticStyles = runIfFn$2(config.static, theme);
-        computedStyles = lodash_mergewith({}, computedStyles, staticStyles);
+        const staticStyles = runIfFn$3(config.static, theme);
+        computedStyles = mergeWith({}, computedStyles, staticStyles);
       }
       if (configProperty && Array.isArray(configProperty)) {
         for (const property of configProperty) {
@@ -23579,15 +23052,15 @@ function getCss(options) {
         continue;
       }
       if (configProperty) {
-        if (configProperty === "&" && isObject$1(rawValue)) {
-          computedStyles = lodash_mergewith({}, computedStyles, rawValue);
+        if (configProperty === "&" && isObject$3(rawValue)) {
+          computedStyles = mergeWith({}, computedStyles, rawValue);
         } else {
           computedStyles[configProperty] = rawValue;
         }
         continue;
       }
-      if (isObject$1(rawValue)) {
-        computedStyles = lodash_mergewith({}, computedStyles, rawValue);
+      if (isObject$3(rawValue)) {
+        computedStyles = mergeWith({}, computedStyles, rawValue);
         continue;
       }
       computedStyles[key] = rawValue;
@@ -23596,48 +23069,30 @@ function getCss(options) {
   };
   return css2;
 }
-var css$1 = (styles) => (theme) => {
-  const cssFn = getCss({
+var css$2 = (styles) => (theme) => {
+  const cssFn = getCss$1({
     theme,
-    pseudos: pseudoSelectors,
-    configs: systemProps
+    pseudos: pseudoSelectors$2,
+    configs: systemProps$2
   });
   return cssFn(styles);
 };
-
-// src/define-styles.ts
-function defineStyle(styles) {
-  return styles;
-}
-function defineStyleConfig(config) {
-  return config;
-}
-function createMultiStyleConfigHelpers(parts) {
-  return {
-    definePartsStyle(config) {
-      return config;
-    },
-    defineMultiStyleConfig(config) {
-      return { parts, ...config };
-    }
-  };
-}
 function normalize2(value, toArray) {
   if (Array.isArray(value))
     return value;
-  if (isObject$1(value))
+  if (isObject$3(value))
     return toArray(value);
   if (value != null)
     return [value];
 }
-function getNextIndex(values, i) {
+function getNextIndex$1(values, i) {
   for (let j = i + 1; j < values.length; j++) {
     if (values[j] != null)
       return j;
   }
   return -1;
 }
-function createResolver(theme) {
+function createResolver$1(theme) {
   const breakpointUtil = theme.__breakpoints;
   return function resolver(config, prop, value, props) {
     var _a, _b;
@@ -23652,14 +23107,14 @@ function createResolver(theme) {
     const isMultipart = !!config.parts;
     for (let i = 0; i < len; i++) {
       const key = breakpointUtil.details[i];
-      const nextKey = breakpointUtil.details[getNextIndex(normalized, i)];
-      const query = toMediaQueryString(key.minW, nextKey == null ? void 0 : nextKey._minW);
-      const styles = runIfFn$2((_a = config[prop]) == null ? void 0 : _a[normalized[i]], props);
+      const nextKey = breakpointUtil.details[getNextIndex$1(normalized, i)];
+      const query = toMediaQueryString$1(key.minW, nextKey == null ? void 0 : nextKey._minW);
+      const styles = runIfFn$3((_a = config[prop]) == null ? void 0 : _a[normalized[i]], props);
       if (!styles)
         continue;
       if (isMultipart) {
         (_b = config.parts) == null ? void 0 : _b.forEach((part) => {
-          lodash_mergewith(result, {
+          mergeWith(result, {
             [part]: isSingle ? styles[part] : { [query]: styles[part] }
           });
         });
@@ -23667,7 +23122,7 @@ function createResolver(theme) {
       }
       if (!isMultipart) {
         if (isSingle)
-          lodash_mergewith(result, styles);
+          mergeWith(result, styles);
         else
           result[query] = styles;
         continue;
@@ -23677,14 +23132,14 @@ function createResolver(theme) {
     return result;
   };
 }
-function resolveStyleConfig(config) {
+function resolveStyleConfig$1(config) {
   return (props) => {
     var _a;
     const { variant, size, theme } = props;
-    const recipe = createResolver(theme);
-    return lodash_mergewith(
+    const recipe = createResolver$1(theme);
+    return mergeWith(
       {},
-      runIfFn$2((_a = config.baseStyle) != null ? _a : {}, props),
+      runIfFn$3((_a = config.baseStyle) != null ? _a : {}, props),
       recipe(config, "sizes", size, props),
       recipe(config, "variants", variant, props)
     );
@@ -23692,842 +23147,9 @@ function resolveStyleConfig(config) {
 }
 
 // src/theming-props.ts
-function omitThemingProps(props) {
-  return omit$1(props, ["styleConfig", "size", "variant", "colorScheme"]);
+function omitThemingProps$1(props) {
+  return omit$2(props, ["styleConfig", "size", "variant", "colorScheme"]);
 }
-
-// src/utils/is-chakra-theme.ts
-var requiredChakraThemeKeys = [
-  "borders",
-  "breakpoints",
-  "colors",
-  "components",
-  "config",
-  "direction",
-  "fonts",
-  "fontSizes",
-  "fontWeights",
-  "letterSpacings",
-  "lineHeights",
-  "radii",
-  "shadows",
-  "sizes",
-  "space",
-  "styles",
-  "transition",
-  "zIndices"
-];
-function isChakraTheme(unit) {
-  if (!isObject$1(unit)) {
-    return false;
-  }
-  return requiredChakraThemeKeys.every(
-    (propertyName) => Object.prototype.hasOwnProperty.call(unit, propertyName)
-  );
-}
-
-// src/foundations/transition.ts
-var transitionProperty$1 = {
-  common: "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform",
-  colors: "background-color, border-color, color, fill, stroke",
-  dimensions: "width, height",
-  position: "left, right, top, bottom",
-  background: "background-color, background-image, background-position"
-};
-var transitionTimingFunction$1 = {
-  "ease-in": "cubic-bezier(0.4, 0, 1, 1)",
-  "ease-out": "cubic-bezier(0, 0, 0.2, 1)",
-  "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)"
-};
-var transitionDuration$1 = {
-  "ultra-fast": "50ms",
-  faster: "100ms",
-  fast: "150ms",
-  normal: "200ms",
-  slow: "300ms",
-  slower: "400ms",
-  "ultra-slow": "500ms"
-};
-var transition$1 = {
-  property: transitionProperty$1,
-  easing: transitionTimingFunction$1,
-  duration: transitionDuration$1
-};
-var transition_default = transition$1;
-
-// src/foundations/z-index.ts
-var zIndices$1 = {
-  hide: -1,
-  auto: "auto",
-  base: 0,
-  docked: 10,
-  dropdown: 1e3,
-  sticky: 1100,
-  banner: 1200,
-  overlay: 1300,
-  modal: 1400,
-  popover: 1500,
-  skipLink: 1600,
-  toast: 1700,
-  tooltip: 1800
-};
-var z_index_default = zIndices$1;
-
-// src/foundations/borders.ts
-var borders$2 = {
-  none: 0,
-  "1px": "1px solid",
-  "2px": "2px solid",
-  "4px": "4px solid",
-  "8px": "8px solid"
-};
-var borders_default = borders$2;
-
-// src/foundations/breakpoints.ts
-var breakpoints$1 = {
-  base: "0em",
-  sm: "30em",
-  md: "48em",
-  lg: "62em",
-  xl: "80em",
-  "2xl": "96em"
-};
-var breakpoints_default = breakpoints$1;
-
-// src/foundations/colors.ts
-var colors$2 = {
-  transparent: "transparent",
-  current: "currentColor",
-  black: "#000000",
-  white: "#FFFFFF",
-  whiteAlpha: {
-    50: "rgba(255, 255, 255, 0.04)",
-    100: "rgba(255, 255, 255, 0.06)",
-    200: "rgba(255, 255, 255, 0.08)",
-    300: "rgba(255, 255, 255, 0.16)",
-    400: "rgba(255, 255, 255, 0.24)",
-    500: "rgba(255, 255, 255, 0.36)",
-    600: "rgba(255, 255, 255, 0.48)",
-    700: "rgba(255, 255, 255, 0.64)",
-    800: "rgba(255, 255, 255, 0.80)",
-    900: "rgba(255, 255, 255, 0.92)"
-  },
-  blackAlpha: {
-    50: "rgba(0, 0, 0, 0.04)",
-    100: "rgba(0, 0, 0, 0.06)",
-    200: "rgba(0, 0, 0, 0.08)",
-    300: "rgba(0, 0, 0, 0.16)",
-    400: "rgba(0, 0, 0, 0.24)",
-    500: "rgba(0, 0, 0, 0.36)",
-    600: "rgba(0, 0, 0, 0.48)",
-    700: "rgba(0, 0, 0, 0.64)",
-    800: "rgba(0, 0, 0, 0.80)",
-    900: "rgba(0, 0, 0, 0.92)"
-  },
-  gray: {
-    50: "#F7FAFC",
-    100: "#EDF2F7",
-    200: "#E2E8F0",
-    300: "#CBD5E0",
-    400: "#A0AEC0",
-    500: "#718096",
-    600: "#4A5568",
-    700: "#2D3748",
-    800: "#1A202C",
-    900: "#171923"
-  },
-  red: {
-    50: "#FFF5F5",
-    100: "#FED7D7",
-    200: "#FEB2B2",
-    300: "#FC8181",
-    400: "#F56565",
-    500: "#E53E3E",
-    600: "#C53030",
-    700: "#9B2C2C",
-    800: "#822727",
-    900: "#63171B"
-  },
-  orange: {
-    50: "#FFFAF0",
-    100: "#FEEBC8",
-    200: "#FBD38D",
-    300: "#F6AD55",
-    400: "#ED8936",
-    500: "#DD6B20",
-    600: "#C05621",
-    700: "#9C4221",
-    800: "#7B341E",
-    900: "#652B19"
-  },
-  yellow: {
-    50: "#FFFFF0",
-    100: "#FEFCBF",
-    200: "#FAF089",
-    300: "#F6E05E",
-    400: "#ECC94B",
-    500: "#D69E2E",
-    600: "#B7791F",
-    700: "#975A16",
-    800: "#744210",
-    900: "#5F370E"
-  },
-  green: {
-    50: "#F0FFF4",
-    100: "#C6F6D5",
-    200: "#9AE6B4",
-    300: "#68D391",
-    400: "#48BB78",
-    500: "#38A169",
-    600: "#2F855A",
-    700: "#276749",
-    800: "#22543D",
-    900: "#1C4532"
-  },
-  teal: {
-    50: "#E6FFFA",
-    100: "#B2F5EA",
-    200: "#81E6D9",
-    300: "#4FD1C5",
-    400: "#38B2AC",
-    500: "#319795",
-    600: "#2C7A7B",
-    700: "#285E61",
-    800: "#234E52",
-    900: "#1D4044"
-  },
-  blue: {
-    50: "#ebf8ff",
-    100: "#bee3f8",
-    200: "#90cdf4",
-    300: "#63b3ed",
-    400: "#4299e1",
-    500: "#3182ce",
-    600: "#2b6cb0",
-    700: "#2c5282",
-    800: "#2a4365",
-    900: "#1A365D"
-  },
-  cyan: {
-    50: "#EDFDFD",
-    100: "#C4F1F9",
-    200: "#9DECF9",
-    300: "#76E4F7",
-    400: "#0BC5EA",
-    500: "#00B5D8",
-    600: "#00A3C4",
-    700: "#0987A0",
-    800: "#086F83",
-    900: "#065666"
-  },
-  purple: {
-    50: "#FAF5FF",
-    100: "#E9D8FD",
-    200: "#D6BCFA",
-    300: "#B794F4",
-    400: "#9F7AEA",
-    500: "#805AD5",
-    600: "#6B46C1",
-    700: "#553C9A",
-    800: "#44337A",
-    900: "#322659"
-  },
-  pink: {
-    50: "#FFF5F7",
-    100: "#FED7E2",
-    200: "#FBB6CE",
-    300: "#F687B3",
-    400: "#ED64A6",
-    500: "#D53F8C",
-    600: "#B83280",
-    700: "#97266D",
-    800: "#702459",
-    900: "#521B41"
-  },
-  linkedin: {
-    50: "#E8F4F9",
-    100: "#CFEDFB",
-    200: "#9BDAF3",
-    300: "#68C7EC",
-    400: "#34B3E4",
-    500: "#00A0DC",
-    600: "#008CC9",
-    700: "#0077B5",
-    800: "#005E93",
-    900: "#004471"
-  },
-  facebook: {
-    50: "#E8F4F9",
-    100: "#D9DEE9",
-    200: "#B7C2DA",
-    300: "#6482C0",
-    400: "#4267B2",
-    500: "#385898",
-    600: "#314E89",
-    700: "#29487D",
-    800: "#223B67",
-    900: "#1E355B"
-  },
-  messenger: {
-    50: "#D0E6FF",
-    100: "#B9DAFF",
-    200: "#A2CDFF",
-    300: "#7AB8FF",
-    400: "#2E90FF",
-    500: "#0078FF",
-    600: "#0063D1",
-    700: "#0052AC",
-    800: "#003C7E",
-    900: "#002C5C"
-  },
-  whatsapp: {
-    50: "#dffeec",
-    100: "#b9f5d0",
-    200: "#90edb3",
-    300: "#65e495",
-    400: "#3cdd78",
-    500: "#22c35e",
-    600: "#179848",
-    700: "#0c6c33",
-    800: "#01421c",
-    900: "#001803"
-  },
-  twitter: {
-    50: "#E5F4FD",
-    100: "#C8E9FB",
-    200: "#A8DCFA",
-    300: "#83CDF7",
-    400: "#57BBF5",
-    500: "#1DA1F2",
-    600: "#1A94DA",
-    700: "#1681BF",
-    800: "#136B9E",
-    900: "#0D4D71"
-  },
-  telegram: {
-    50: "#E3F2F9",
-    100: "#C5E4F3",
-    200: "#A2D4EC",
-    300: "#7AC1E4",
-    400: "#47A9DA",
-    500: "#0088CC",
-    600: "#007AB8",
-    700: "#006BA1",
-    800: "#005885",
-    900: "#003F5E"
-  }
-};
-var colors_default = colors$2;
-
-// src/foundations/radius.ts
-var radii$1 = {
-  none: "0",
-  sm: "0.125rem",
-  base: "0.25rem",
-  md: "0.375rem",
-  lg: "0.5rem",
-  xl: "0.75rem",
-  "2xl": "1rem",
-  "3xl": "1.5rem",
-  full: "9999px"
-};
-var radius_default = radii$1;
-
-// src/foundations/shadows.ts
-var shadows$1 = {
-  xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
-  sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-  base: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-  md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-  lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-  xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-  "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-  outline: "0 0 0 3px rgba(66, 153, 225, 0.6)",
-  inner: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
-  none: "none",
-  "dark-lg": "rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px"
-};
-var shadows_default = shadows$1;
-
-// src/foundations/blur.ts
-var blur$1 = {
-  none: 0,
-  sm: "4px",
-  base: "8px",
-  md: "12px",
-  lg: "16px",
-  xl: "24px",
-  "2xl": "40px",
-  "3xl": "64px"
-};
-var blur_default = blur$1;
-
-// src/foundations/typography.ts
-var typography$1 = {
-  letterSpacings: {
-    tighter: "-0.05em",
-    tight: "-0.025em",
-    normal: "0",
-    wide: "0.025em",
-    wider: "0.05em",
-    widest: "0.1em"
-  },
-  lineHeights: {
-    normal: "normal",
-    none: 1,
-    shorter: 1.25,
-    short: 1.375,
-    base: 1.5,
-    tall: 1.625,
-    taller: "2",
-    "3": ".75rem",
-    "4": "1rem",
-    "5": "1.25rem",
-    "6": "1.5rem",
-    "7": "1.75rem",
-    "8": "2rem",
-    "9": "2.25rem",
-    "10": "2.5rem"
-  },
-  fontWeights: {
-    hairline: 100,
-    thin: 200,
-    light: 300,
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-    extrabold: 800,
-    black: 900
-  },
-  fonts: {
-    heading: `-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-    mono: `SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`
-  },
-  fontSizes: {
-    "3xs": "0.45rem",
-    "2xs": "0.625rem",
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-    "3xl": "1.875rem",
-    "4xl": "2.25rem",
-    "5xl": "3rem",
-    "6xl": "3.75rem",
-    "7xl": "4.5rem",
-    "8xl": "6rem",
-    "9xl": "8rem"
-  }
-};
-var typography_default = typography$1;
-
-// src/foundations/spacing.ts
-var spacing$1 = {
-  px: "1px",
-  0.5: "0.125rem",
-  1: "0.25rem",
-  1.5: "0.375rem",
-  2: "0.5rem",
-  2.5: "0.625rem",
-  3: "0.75rem",
-  3.5: "0.875rem",
-  4: "1rem",
-  5: "1.25rem",
-  6: "1.5rem",
-  7: "1.75rem",
-  8: "2rem",
-  9: "2.25rem",
-  10: "2.5rem",
-  12: "3rem",
-  14: "3.5rem",
-  16: "4rem",
-  20: "5rem",
-  24: "6rem",
-  28: "7rem",
-  32: "8rem",
-  36: "9rem",
-  40: "10rem",
-  44: "11rem",
-  48: "12rem",
-  52: "13rem",
-  56: "14rem",
-  60: "15rem",
-  64: "16rem",
-  72: "18rem",
-  80: "20rem",
-  96: "24rem"
-};
-
-// src/foundations/sizes.ts
-var largeSizes$1 = {
-  max: "max-content",
-  min: "min-content",
-  full: "100%",
-  "3xs": "14rem",
-  "2xs": "16rem",
-  xs: "20rem",
-  sm: "24rem",
-  md: "28rem",
-  lg: "32rem",
-  xl: "36rem",
-  "2xl": "42rem",
-  "3xl": "48rem",
-  "4xl": "56rem",
-  "5xl": "64rem",
-  "6xl": "72rem",
-  "7xl": "80rem",
-  "8xl": "90rem",
-  prose: "60ch"
-};
-var container$1 = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px"
-};
-var sizes$o = {
-  ...spacing$1,
-  ...largeSizes$1,
-  container: container$1
-};
-var sizes_default = sizes$o;
-
-// src/foundations/index.ts
-var foundations$1 = {
-  breakpoints: breakpoints_default,
-  zIndices: z_index_default,
-  radii: radius_default,
-  blur: blur_default,
-  colors: colors_default,
-  ...typography_default,
-  sizes: sizes_default,
-  shadows: shadows_default,
-  space: spacing$1,
-  borders: borders_default,
-  transition: transition_default
-};
-
-// src/components/stepper.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$p, definePartsStyle: definePartsStyle$p } = createMultiStyleConfigHelpers([
-  "stepper",
-  "step",
-  "title",
-  "description",
-  "indicator",
-  "separator",
-  "icon",
-  "number"
-]);
-var $size$4 = cssVar$1("stepper-indicator-size");
-var $iconSize = cssVar$1("stepper-icon-size");
-var $titleFontSize = cssVar$1("stepper-title-font-size");
-var $descFontSize = cssVar$1("stepper-description-font-size");
-var $accentColor = cssVar$1("stepper-accent-color");
-var baseStyle$F = definePartsStyle$p(({ colorScheme: c }) => ({
-  stepper: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "4",
-    "&[data-orientation=vertical]": {
-      flexDirection: "column",
-      alignItems: "flex-start"
-    },
-    "&[data-orientation=horizontal]": {
-      flexDirection: "row",
-      alignItems: "center"
-    },
-    [$accentColor.variable]: `colors.${c}.500`,
-    _dark: {
-      [$accentColor.variable]: `colors.${c}.200`
-    }
-  },
-  title: {
-    fontSize: $titleFontSize.reference,
-    fontWeight: "medium"
-  },
-  description: {
-    fontSize: $descFontSize.reference,
-    color: "chakra-subtle-text"
-  },
-  number: {
-    fontSize: $titleFontSize.reference
-  },
-  step: {
-    flexShrink: 0,
-    position: "relative",
-    display: "flex",
-    gap: "2",
-    "&[data-orientation=horizontal]": {
-      alignItems: "center"
-    },
-    flex: "1",
-    "&:last-of-type:not([data-stretch])": {
-      flex: "initial"
-    }
-  },
-  icon: {
-    flexShrink: 0,
-    width: $iconSize.reference,
-    height: $iconSize.reference
-  },
-  indicator: {
-    flexShrink: 0,
-    borderRadius: "full",
-    width: $size$4.reference,
-    height: $size$4.reference,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "&[data-status=active]": {
-      borderWidth: "2px",
-      borderColor: $accentColor.reference
-    },
-    "&[data-status=complete]": {
-      bg: $accentColor.reference,
-      color: "chakra-inverse-text"
-    },
-    "&[data-status=incomplete]": {
-      borderWidth: "2px"
-    }
-  },
-  separator: {
-    bg: "chakra-border-color",
-    flex: "1",
-    "&[data-status=complete]": {
-      bg: $accentColor.reference
-    },
-    "&[data-orientation=horizontal]": {
-      width: "100%",
-      height: "2px",
-      marginStart: "2"
-    },
-    "&[data-orientation=vertical]": {
-      width: "2px",
-      position: "absolute",
-      height: "100%",
-      maxHeight: `calc(100% - ${$size$4.reference} - 8px)`,
-      top: `calc(${$size$4.reference} + 4px)`,
-      insetStart: `calc(${$size$4.reference} / 2 - 1px)`
-    }
-  }
-}));
-var stepperTheme = defineMultiStyleConfig$p({
-  baseStyle: baseStyle$F,
-  sizes: {
-    xs: definePartsStyle$p({
-      stepper: {
-        [$size$4.variable]: "sizes.4",
-        [$iconSize.variable]: "sizes.3",
-        [$titleFontSize.variable]: "fontSizes.xs",
-        [$descFontSize.variable]: "fontSizes.xs"
-      }
-    }),
-    sm: definePartsStyle$p({
-      stepper: {
-        [$size$4.variable]: "sizes.6",
-        [$iconSize.variable]: "sizes.4",
-        [$titleFontSize.variable]: "fontSizes.sm",
-        [$descFontSize.variable]: "fontSizes.xs"
-      }
-    }),
-    md: definePartsStyle$p({
-      stepper: {
-        [$size$4.variable]: "sizes.8",
-        [$iconSize.variable]: "sizes.5",
-        [$titleFontSize.variable]: "fontSizes.md",
-        [$descFontSize.variable]: "fontSizes.sm"
-      }
-    }),
-    lg: definePartsStyle$p({
-      stepper: {
-        [$size$4.variable]: "sizes.10",
-        [$iconSize.variable]: "sizes.6",
-        [$titleFontSize.variable]: "fontSizes.lg",
-        [$descFontSize.variable]: "fontSizes.md"
-      }
-    })
-  },
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-// src/anatomy.ts
-function anatomy(name, map = {}) {
-  let called = false;
-  function assert() {
-    if (!called) {
-      called = true;
-      return;
-    }
-    throw new Error(
-      "[anatomy] .part(...) should only be called once. Did you mean to use .extend(...) ?"
-    );
-  }
-  function parts(...values) {
-    assert();
-    for (const part of values) {
-      map[part] = toPart(part);
-    }
-    return anatomy(name, map);
-  }
-  function extend(...parts2) {
-    for (const part of parts2) {
-      if (part in map)
-        continue;
-      map[part] = toPart(part);
-    }
-    return anatomy(name, map);
-  }
-  function selectors() {
-    const value = Object.fromEntries(
-      Object.entries(map).map(([key, part]) => [key, part.selector])
-    );
-    return value;
-  }
-  function classnames() {
-    const value = Object.fromEntries(
-      Object.entries(map).map(([key, part]) => [key, part.className])
-    );
-    return value;
-  }
-  function toPart(part) {
-    const el = ["container", "root"].includes(part != null ? part : "") ? [name] : [name, part];
-    const attr = el.filter(Boolean).join("__");
-    const className = `chakra-${attr}`;
-    const partObj = {
-      className,
-      selector: `.${className}`,
-      toString: () => part
-    };
-    return partObj;
-  }
-  const __type = {};
-  return {
-    parts,
-    toPart,
-    extend,
-    selectors,
-    classnames,
-    get keys() {
-      return Object.keys(map);
-    },
-    __type
-  };
-}
-
-// src/components.ts
-var accordionAnatomy = anatomy("accordion").parts("root", "container", "button", "panel").extend("icon");
-var alertAnatomy = anatomy("alert").parts("title", "description", "container").extend("icon", "spinner");
-var avatarAnatomy = anatomy("avatar").parts("label", "badge", "container").extend("excessLabel", "group");
-var breadcrumbAnatomy = anatomy("breadcrumb").parts("link", "item", "container").extend("separator");
-anatomy("button").parts();
-var checkboxAnatomy = anatomy("checkbox").parts("control", "icon", "container").extend("label");
-anatomy("progress").parts("track", "filledTrack").extend("label");
-var drawerAnatomy = anatomy("drawer").parts("overlay", "dialogContainer", "dialog").extend("header", "closeButton", "body", "footer");
-var editableAnatomy = anatomy("editable").parts(
-  "preview",
-  "input",
-  "textarea"
-);
-var formAnatomy = anatomy("form").parts(
-  "container",
-  "requiredIndicator",
-  "helperText"
-);
-var formErrorAnatomy = anatomy("formError").parts("text", "icon");
-var inputAnatomy = anatomy("input").parts(
-  "addon",
-  "field",
-  "element",
-  "group"
-);
-var listAnatomy = anatomy("list").parts("container", "item", "icon");
-var menuAnatomy = anatomy("menu").parts("button", "list", "item").extend("groupTitle", "icon", "command", "divider");
-var modalAnatomy = anatomy("modal").parts("overlay", "dialogContainer", "dialog").extend("header", "closeButton", "body", "footer");
-var numberInputAnatomy = anatomy("numberinput").parts(
-  "root",
-  "field",
-  "stepperGroup",
-  "stepper"
-);
-anatomy("pininput").parts("field");
-var popoverAnatomy = anatomy("popover").parts("content", "header", "body", "footer").extend("popper", "arrow", "closeButton");
-var progressAnatomy = anatomy("progress").parts(
-  "label",
-  "filledTrack",
-  "track"
-);
-var radioAnatomy = anatomy("radio").parts(
-  "container",
-  "control",
-  "label"
-);
-var selectAnatomy = anatomy("select").parts("field", "icon");
-var sliderAnatomy = anatomy("slider").parts(
-  "container",
-  "track",
-  "thumb",
-  "filledTrack",
-  "mark"
-);
-var statAnatomy = anatomy("stat").parts(
-  "container",
-  "label",
-  "helpText",
-  "number",
-  "icon"
-);
-var switchAnatomy = anatomy("switch").parts(
-  "container",
-  "track",
-  "thumb",
-  "label"
-);
-var tableAnatomy = anatomy("table").parts(
-  "table",
-  "thead",
-  "tbody",
-  "tr",
-  "th",
-  "td",
-  "tfoot",
-  "caption"
-);
-var tabsAnatomy = anatomy("tabs").parts(
-  "root",
-  "tab",
-  "tablist",
-  "tabpanel",
-  "tabpanels",
-  "indicator"
-);
-var tagAnatomy = anatomy("tag").parts(
-  "container",
-  "label",
-  "closeButton"
-);
-var cardAnatomy = anatomy("card").parts(
-  "container",
-  "header",
-  "body",
-  "footer"
-);
-anatomy("stepper").parts(
-  "stepper",
-  "step",
-  "title",
-  "description",
-  "indicator",
-  "separator",
-  "icon",
-  "number"
-);
 
 /**
  * A simple guard function:
@@ -24560,7 +23182,7 @@ function parseToRgba(color) {
   const reducedHexMatch = reducedHexRegex.exec(normalizedColor);
   if (reducedHexMatch) {
     const arr = Array.from(reducedHexMatch).slice(1);
-    return [...arr.slice(0, 3).map(x => parseInt(r$3(x, 2), 16)), parseInt(r$3(arr[3] || 'f', 2), 16) / 255];
+    return [...arr.slice(0, 3).map(x => parseInt(r$1(x, 2), 16)), parseInt(r$1(arr[3] || 'f', 2), 16) / 255];
   }
   const hexMatch = hexRegex.exec(normalizedColor);
   if (hexMatch) {
@@ -24617,10 +23239,10 @@ function nameToHex(color) {
   if (!result) throw new ColorError$1(color);
   return `#${result}`;
 }
-const r$3 = (str, amount) => Array.from(Array(amount)).map(() => str).join('');
-const reducedHexRegex = new RegExp(`^#${r$3('([a-f0-9])', 3)}([a-f0-9])?$`, 'i');
-const hexRegex = new RegExp(`^#${r$3('([a-f0-9]{2})', 3)}([a-f0-9]{2})?$`, 'i');
-const rgbaRegex = new RegExp(`^rgba?\\(\\s*(\\d+)\\s*${r$3(',\\s*(\\d+)\\s*', 2)}(?:,\\s*([\\d.]+))?\\s*\\)$`, 'i');
+const r$1 = (str, amount) => Array.from(Array(amount)).map(() => str).join('');
+const reducedHexRegex = new RegExp(`^#${r$1('([a-f0-9])', 3)}([a-f0-9])?$`, 'i');
+const hexRegex = new RegExp(`^#${r$1('([a-f0-9]{2})', 3)}([a-f0-9]{2})?$`, 'i');
+const rgbaRegex = new RegExp(`^rgba?\\(\\s*(\\d+)\\s*${r$1(',\\s*(\\d+)\\s*', 2)}(?:,\\s*([\\d.]+))?\\s*\\)$`, 'i');
 const hslaRegex = /^hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%(?:\s*,\s*([\d.]+))?\s*\)$/i;
 const namedColorRegex = /^[a-z]+$/i;
 const roundColor = color => {
@@ -24703,3169 +23325,8 @@ function toHex(color) {
   return `#${hex(r)}${hex(g)}${hex(b)}${a < 1 ? hex(Math.round(a * 255)) : ''}`;
 }
 
-// src/color.ts
-
-// ../../../node_modules/.pnpm/dlv@1.1.3/node_modules/dlv/dist/dlv.es.js
-function dlv_es_default(t, e, l, n, r) {
-  for (e = e.split ? e.split(".") : e, n = 0; n < e.length; n++)
-    t = t ? t[e[n]] : r;
-  return t === r ? l : t;
-}
-
-// src/color.ts
-var isEmptyObject = (obj) => Object.keys(obj).length === 0;
-var getColor = (theme, color, fallback) => {
-  const hex = dlv_es_default(theme, `colors.${color}`, color);
-  try {
-    toHex(hex);
-    return hex;
-  } catch {
-    return fallback != null ? fallback : "#000000";
-  }
-};
-var getBrightness = (color) => {
-  const [r, g, b] = parseToRgba(color);
-  return (r * 299 + g * 587 + b * 114) / 1e3;
-};
-var tone = (color) => (theme) => {
-  const hex = getColor(theme, color);
-  const brightness = getBrightness(hex);
-  const isDark2 = brightness < 128;
-  return isDark2 ? "dark" : "light";
-};
-var isDark = (color) => (theme) => tone(color)(theme) === "dark";
-var transparentize = (color, opacity) => (theme) => {
-  const raw = getColor(theme, color);
-  return transparentize$1(raw, 1 - opacity);
-};
-function generateStripe(size = "1rem", color = "rgba(255, 255, 255, 0.15)") {
-  return {
-    backgroundImage: `linear-gradient(
-    45deg,
-    ${color} 25%,
-    transparent 25%,
-    transparent 50%,
-    ${color} 50%,
-    ${color} 75%,
-    transparent 75%,
-    transparent
-  )`,
-    backgroundSize: `${size} ${size}`
-  };
-}
-var randomHex = () => `#${Math.floor(Math.random() * 16777215).toString(16).padEnd(6, "0")}`;
-function randomColor(opts) {
-  const fallback = randomHex();
-  if (!opts || isEmptyObject(opts)) {
-    return fallback;
-  }
-  if (opts.string && opts.colors) {
-    return randomColorFromList(opts.string, opts.colors);
-  }
-  if (opts.string && !opts.colors) {
-    return randomColorFromString(opts.string);
-  }
-  if (opts.colors && !opts.string) {
-    return randomFromList(opts.colors);
-  }
-  return fallback;
-}
-function randomColorFromString(str) {
-  let hash = 0;
-  if (str.length === 0)
-    return hash.toString();
-  for (let i = 0; i < str.length; i += 1) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    hash = hash & hash;
-  }
-  let color = "#";
-  for (let j = 0; j < 3; j += 1) {
-    const value = hash >> j * 8 & 255;
-    color += `00${value.toString(16)}`.substr(-2);
-  }
-  return color;
-}
-function randomColorFromList(str, list) {
-  let index = 0;
-  if (str.length === 0)
-    return list[0];
-  for (let i = 0; i < str.length; i += 1) {
-    index = str.charCodeAt(i) + ((index << 5) - index);
-    index = index & index;
-  }
-  index = (index % list.length + list.length) % list.length;
-  return list[index];
-}
-function randomFromList(list) {
-  return list[Math.floor(Math.random() * list.length)];
-}
-
-// src/component.ts
-function mode(light, dark) {
-  return (props) => props.colorMode === "dark" ? dark : light;
-}
-function orient(options) {
-  const { orientation, vertical, horizontal } = options;
-  if (!orientation)
-    return {};
-  return orientation === "vertical" ? vertical : horizontal;
-}
-
-// src/css-calc.ts
-function toRef(operand) {
-  if (isObject$1(operand) && operand.reference) {
-    return operand.reference;
-  }
-  return String(operand);
-}
-var toExpr = (operator, ...operands) => operands.map(toRef).join(` ${operator} `).replace(/calc/g, "");
-var add = (...operands) => `calc(${toExpr("+", ...operands)})`;
-var subtract = (...operands) => `calc(${toExpr("-", ...operands)})`;
-var multiply = (...operands) => `calc(${toExpr("*", ...operands)})`;
-var divide = (...operands) => `calc(${toExpr("/", ...operands)})`;
-var negate = (x) => {
-  const value = toRef(x);
-  if (value != null && !Number.isNaN(parseFloat(value))) {
-    return String(value).startsWith("-") ? String(value).slice(1) : `-${value}`;
-  }
-  return multiply(value, -1);
-};
-var calc = Object.assign(
-  (x) => ({
-    add: (...operands) => calc(add(x, ...operands)),
-    subtract: (...operands) => calc(subtract(x, ...operands)),
-    multiply: (...operands) => calc(multiply(x, ...operands)),
-    divide: (...operands) => calc(divide(x, ...operands)),
-    negate: () => calc(negate(x)),
-    toString: () => x.toString()
-  }),
-  {
-    add,
-    subtract,
-    multiply,
-    divide,
-    negate
-  }
-);
-
-// src/css-var.ts
-function isDecimal(value) {
-  return !Number.isInteger(parseFloat(value.toString()));
-}
-function replaceWhiteSpace(value, replaceValue = "-") {
-  return value.replace(/\s+/g, replaceValue);
-}
-function escape(value) {
-  const valueStr = replaceWhiteSpace(value.toString());
-  if (valueStr.includes("\\."))
-    return value;
-  return isDecimal(value) ? valueStr.replace(".", `\\.`) : value;
-}
-function addPrefix(value, prefix = "") {
-  return [prefix, escape(value)].filter(Boolean).join("-");
-}
-function toVarRef(name, fallback) {
-  return `var(${escape(name)}${fallback ? `, ${fallback}` : ""})`;
-}
-function toVar(value, prefix = "") {
-  return `--${addPrefix(value, prefix)}`;
-}
-function cssVar(name, options) {
-  const cssVariable = toVar(name, options == null ? void 0 : options.prefix);
-  return {
-    variable: cssVariable,
-    reference: toVarRef(cssVariable, getFallback(options == null ? void 0 : options.fallback))
-  };
-}
-function getFallback(fallback) {
-  if (typeof fallback === "string")
-    return fallback;
-  return fallback == null ? void 0 : fallback.reference;
-}
-
-// src/components/switch.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$o, definePartsStyle: definePartsStyle$o } = createMultiStyleConfigHelpers(switchAnatomy.keys);
-var $width = cssVar("switch-track-width");
-var $height$1 = cssVar("switch-track-height");
-var $diff = cssVar("switch-track-diff");
-var diffValue = calc.subtract($width, $height$1);
-var $translateX = cssVar("switch-thumb-x");
-var $bg$f = cssVar("switch-bg");
-var baseStyleTrack$2 = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  return {
-    borderRadius: "full",
-    p: "0.5",
-    width: [$width.reference],
-    height: [$height$1.reference],
-    transitionProperty: "common",
-    transitionDuration: "fast",
-    [$bg$f.variable]: "colors.gray.300",
-    _dark: {
-      [$bg$f.variable]: "colors.whiteAlpha.400"
-    },
-    _focusVisible: {
-      boxShadow: "outline"
-    },
-    _disabled: {
-      opacity: 0.4,
-      cursor: "not-allowed"
-    },
-    _checked: {
-      [$bg$f.variable]: `colors.${c}.500`,
-      _dark: {
-        [$bg$f.variable]: `colors.${c}.200`
-      }
-    },
-    bg: $bg$f.reference
-  };
-});
-var baseStyleThumb$1 = defineStyle({
-  bg: "white",
-  transitionProperty: "transform",
-  transitionDuration: "normal",
-  borderRadius: "inherit",
-  width: [$height$1.reference],
-  height: [$height$1.reference],
-  _checked: {
-    transform: `translateX(${$translateX.reference})`
-  }
-});
-var baseStyle$E = definePartsStyle$o((props) => ({
-  container: {
-    [$diff.variable]: diffValue,
-    [$translateX.variable]: $diff.reference,
-    _rtl: {
-      [$translateX.variable]: calc($diff).negate().toString()
-    }
-  },
-  track: baseStyleTrack$2(props),
-  thumb: baseStyleThumb$1
-}));
-var sizes$n = {
-  sm: definePartsStyle$o({
-    container: {
-      [$width.variable]: "1.375rem",
-      [$height$1.variable]: "sizes.3"
-    }
-  }),
-  md: definePartsStyle$o({
-    container: {
-      [$width.variable]: "1.875rem",
-      [$height$1.variable]: "sizes.4"
-    }
-  }),
-  lg: definePartsStyle$o({
-    container: {
-      [$width.variable]: "2.875rem",
-      [$height$1.variable]: "sizes.6"
-    }
-  })
-};
-var switchTheme = defineMultiStyleConfig$o({
-  baseStyle: baseStyle$E,
-  sizes: sizes$n,
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-// src/components/table.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$n, definePartsStyle: definePartsStyle$n } = createMultiStyleConfigHelpers(tableAnatomy.keys);
-var baseStyle$D = definePartsStyle$n({
-  table: {
-    fontVariantNumeric: "lining-nums tabular-nums",
-    borderCollapse: "collapse",
-    width: "full"
-  },
-  th: {
-    fontFamily: "heading",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    letterSpacing: "wider",
-    textAlign: "start"
-  },
-  td: {
-    textAlign: "start"
-  },
-  caption: {
-    mt: 4,
-    fontFamily: "heading",
-    textAlign: "center",
-    fontWeight: "medium"
-  }
-});
-var numericStyles = defineStyle({
-  "&[data-is-numeric=true]": {
-    textAlign: "end"
-  }
-});
-var variantSimple = definePartsStyle$n((props) => {
-  const { colorScheme: c } = props;
-  return {
-    th: {
-      color: mode("gray.600", "gray.400")(props),
-      borderBottom: "1px",
-      borderColor: mode(`${c}.100`, `${c}.700`)(props),
-      ...numericStyles
-    },
-    td: {
-      borderBottom: "1px",
-      borderColor: mode(`${c}.100`, `${c}.700`)(props),
-      ...numericStyles
-    },
-    caption: {
-      color: mode("gray.600", "gray.100")(props)
-    },
-    tfoot: {
-      tr: {
-        "&:last-of-type": {
-          th: { borderBottomWidth: 0 }
-        }
-      }
-    }
-  };
-});
-var variantStripe = definePartsStyle$n((props) => {
-  const { colorScheme: c } = props;
-  return {
-    th: {
-      color: mode("gray.600", "gray.400")(props),
-      borderBottom: "1px",
-      borderColor: mode(`${c}.100`, `${c}.700`)(props),
-      ...numericStyles
-    },
-    td: {
-      borderBottom: "1px",
-      borderColor: mode(`${c}.100`, `${c}.700`)(props),
-      ...numericStyles
-    },
-    caption: {
-      color: mode("gray.600", "gray.100")(props)
-    },
-    tbody: {
-      tr: {
-        "&:nth-of-type(odd)": {
-          "th, td": {
-            borderBottomWidth: "1px",
-            borderColor: mode(`${c}.100`, `${c}.700`)(props)
-          },
-          td: {
-            background: mode(`${c}.100`, `${c}.700`)(props)
-          }
-        }
-      }
-    },
-    tfoot: {
-      tr: {
-        "&:last-of-type": {
-          th: { borderBottomWidth: 0 }
-        }
-      }
-    }
-  };
-});
-var variants$b = {
-  simple: variantSimple,
-  striped: variantStripe,
-  unstyled: defineStyle({})
-};
-var sizes$m = {
-  sm: definePartsStyle$n({
-    th: {
-      px: "4",
-      py: "1",
-      lineHeight: "4",
-      fontSize: "xs"
-    },
-    td: {
-      px: "4",
-      py: "2",
-      fontSize: "sm",
-      lineHeight: "4"
-    },
-    caption: {
-      px: "4",
-      py: "2",
-      fontSize: "xs"
-    }
-  }),
-  md: definePartsStyle$n({
-    th: {
-      px: "6",
-      py: "3",
-      lineHeight: "4",
-      fontSize: "xs"
-    },
-    td: {
-      px: "6",
-      py: "4",
-      lineHeight: "5"
-    },
-    caption: {
-      px: "6",
-      py: "2",
-      fontSize: "sm"
-    }
-  }),
-  lg: definePartsStyle$n({
-    th: {
-      px: "8",
-      py: "4",
-      lineHeight: "5",
-      fontSize: "sm"
-    },
-    td: {
-      px: "8",
-      py: "5",
-      lineHeight: "6"
-    },
-    caption: {
-      px: "6",
-      py: "2",
-      fontSize: "md"
-    }
-  })
-};
-var tableTheme = defineMultiStyleConfig$n({
-  baseStyle: baseStyle$D,
-  variants: variants$b,
-  sizes: sizes$m,
-  defaultProps: {
-    variant: "simple",
-    size: "md",
-    colorScheme: "gray"
-  }
-});
-
-// src/components/tabs.ts
-var $fg$5 = cssVar$1("tabs-color");
-var $bg$e = cssVar$1("tabs-bg");
-var $border$3 = cssVar$1("tabs-border-color");
-var { defineMultiStyleConfig: defineMultiStyleConfig$m, definePartsStyle: definePartsStyle$m } = createMultiStyleConfigHelpers(tabsAnatomy.keys);
-var baseStyleRoot$1 = defineStyle((props) => {
-  const { orientation } = props;
-  return {
-    display: orientation === "vertical" ? "flex" : "block"
-  };
-});
-var baseStyleTab = defineStyle((props) => {
-  const { isFitted } = props;
-  return {
-    flex: isFitted ? 1 : void 0,
-    transitionProperty: "common",
-    transitionDuration: "normal",
-    _focusVisible: {
-      zIndex: 1,
-      boxShadow: "outline"
-    },
-    _disabled: {
-      cursor: "not-allowed",
-      opacity: 0.4
-    }
-  };
-});
-var baseStyleTablist = defineStyle((props) => {
-  const { align = "start", orientation } = props;
-  const alignments = {
-    end: "flex-end",
-    center: "center",
-    start: "flex-start"
-  };
-  return {
-    justifyContent: alignments[align],
-    flexDirection: orientation === "vertical" ? "column" : "row"
-  };
-});
-var baseStyleTabpanel = defineStyle({
-  p: 4
-});
-var baseStyle$C = definePartsStyle$m((props) => ({
-  root: baseStyleRoot$1(props),
-  tab: baseStyleTab(props),
-  tablist: baseStyleTablist(props),
-  tabpanel: baseStyleTabpanel
-}));
-var sizes$l = {
-  sm: definePartsStyle$m({
-    tab: {
-      py: 1,
-      px: 4,
-      fontSize: "sm"
-    }
-  }),
-  md: definePartsStyle$m({
-    tab: {
-      fontSize: "md",
-      py: 2,
-      px: 4
-    }
-  }),
-  lg: definePartsStyle$m({
-    tab: {
-      fontSize: "lg",
-      py: 3,
-      px: 4
-    }
-  })
-};
-var variantLine = definePartsStyle$m((props) => {
-  const { colorScheme: c, orientation } = props;
-  const isVertical = orientation === "vertical";
-  const borderProp = isVertical ? "borderStart" : "borderBottom";
-  const marginProp = isVertical ? "marginStart" : "marginBottom";
-  return {
-    tablist: {
-      [borderProp]: "2px solid",
-      borderColor: "inherit"
-    },
-    tab: {
-      [borderProp]: "2px solid",
-      borderColor: "transparent",
-      [marginProp]: "-2px",
-      _selected: {
-        [$fg$5.variable]: `colors.${c}.600`,
-        _dark: {
-          [$fg$5.variable]: `colors.${c}.300`
-        },
-        borderColor: "currentColor"
-      },
-      _active: {
-        [$bg$e.variable]: "colors.gray.200",
-        _dark: {
-          [$bg$e.variable]: "colors.whiteAlpha.300"
-        }
-      },
-      _disabled: {
-        _active: { bg: "none" }
-      },
-      color: $fg$5.reference,
-      bg: $bg$e.reference
-    }
-  };
-});
-var variantEnclosed = definePartsStyle$m((props) => {
-  const { colorScheme: c } = props;
-  return {
-    tab: {
-      borderTopRadius: "md",
-      border: "1px solid",
-      borderColor: "transparent",
-      mb: "-1px",
-      [$border$3.variable]: "transparent",
-      _selected: {
-        [$fg$5.variable]: `colors.${c}.600`,
-        [$border$3.variable]: `colors.white`,
-        _dark: {
-          [$fg$5.variable]: `colors.${c}.300`,
-          [$border$3.variable]: `colors.gray.800`
-        },
-        borderColor: "inherit",
-        borderBottomColor: $border$3.reference
-      },
-      color: $fg$5.reference
-    },
-    tablist: {
-      mb: "-1px",
-      borderBottom: "1px solid",
-      borderColor: "inherit"
-    }
-  };
-});
-var variantEnclosedColored = definePartsStyle$m((props) => {
-  const { colorScheme: c } = props;
-  return {
-    tab: {
-      border: "1px solid",
-      borderColor: "inherit",
-      [$bg$e.variable]: "colors.gray.50",
-      _dark: {
-        [$bg$e.variable]: "colors.whiteAlpha.50"
-      },
-      mb: "-1px",
-      _notLast: {
-        marginEnd: "-1px"
-      },
-      _selected: {
-        [$bg$e.variable]: "colors.white",
-        [$fg$5.variable]: `colors.${c}.600`,
-        _dark: {
-          [$bg$e.variable]: "colors.gray.800",
-          [$fg$5.variable]: `colors.${c}.300`
-        },
-        borderColor: "inherit",
-        borderTopColor: "currentColor",
-        borderBottomColor: "transparent"
-      },
-      color: $fg$5.reference,
-      bg: $bg$e.reference
-    },
-    tablist: {
-      mb: "-1px",
-      borderBottom: "1px solid",
-      borderColor: "inherit"
-    }
-  };
-});
-var variantSoftRounded = definePartsStyle$m((props) => {
-  const { colorScheme: c, theme } = props;
-  return {
-    tab: {
-      borderRadius: "full",
-      fontWeight: "semibold",
-      color: "gray.600",
-      _selected: {
-        color: getColor(theme, `${c}.700`),
-        bg: getColor(theme, `${c}.100`)
-      }
-    }
-  };
-});
-var variantSolidRounded = definePartsStyle$m((props) => {
-  const { colorScheme: c } = props;
-  return {
-    tab: {
-      borderRadius: "full",
-      fontWeight: "semibold",
-      [$fg$5.variable]: "colors.gray.600",
-      _dark: {
-        [$fg$5.variable]: "inherit"
-      },
-      _selected: {
-        [$fg$5.variable]: "colors.white",
-        [$bg$e.variable]: `colors.${c}.600`,
-        _dark: {
-          [$fg$5.variable]: "colors.gray.800",
-          [$bg$e.variable]: `colors.${c}.300`
-        }
-      },
-      color: $fg$5.reference,
-      bg: $bg$e.reference
-    }
-  };
-});
-var variantUnstyled$2 = definePartsStyle$m({});
-var variants$a = {
-  line: variantLine,
-  enclosed: variantEnclosed,
-  "enclosed-colored": variantEnclosedColored,
-  "soft-rounded": variantSoftRounded,
-  "solid-rounded": variantSolidRounded,
-  unstyled: variantUnstyled$2
-};
-var tabsTheme = defineMultiStyleConfig$m({
-  baseStyle: baseStyle$C,
-  sizes: sizes$l,
-  variants: variants$a,
-  defaultProps: {
-    size: "md",
-    variant: "line",
-    colorScheme: "blue"
-  }
-});
-
-// src/components/badge.ts
-var vars = defineCssVars("badge", ["bg", "color", "shadow"]);
-var baseStyle$B = defineStyle({
-  px: 1,
-  textTransform: "uppercase",
-  fontSize: "xs",
-  borderRadius: "sm",
-  fontWeight: "bold",
-  bg: vars.bg.reference,
-  color: vars.color.reference,
-  boxShadow: vars.shadow.reference
-});
-var variantSolid$3 = defineStyle((props) => {
-  const { colorScheme: c, theme } = props;
-  const dark = transparentize(`${c}.500`, 0.6)(theme);
-  return {
-    [vars.bg.variable]: `colors.${c}.500`,
-    [vars.color.variable]: `colors.white`,
-    _dark: {
-      [vars.bg.variable]: dark,
-      [vars.color.variable]: `colors.whiteAlpha.800`
-    }
-  };
-});
-var variantSubtle$1 = defineStyle((props) => {
-  const { colorScheme: c, theme } = props;
-  const darkBg = transparentize(`${c}.200`, 0.16)(theme);
-  return {
-    [vars.bg.variable]: `colors.${c}.100`,
-    [vars.color.variable]: `colors.${c}.800`,
-    _dark: {
-      [vars.bg.variable]: darkBg,
-      [vars.color.variable]: `colors.${c}.200`
-    }
-  };
-});
-var variantOutline$2 = defineStyle((props) => {
-  const { colorScheme: c, theme } = props;
-  const darkColor = transparentize(`${c}.200`, 0.8)(theme);
-  return {
-    [vars.color.variable]: `colors.${c}.500`,
-    _dark: {
-      [vars.color.variable]: darkColor
-    },
-    [vars.shadow.variable]: `inset 0 0 0px 1px ${vars.color.reference}`
-  };
-});
-var variants$9 = {
-  solid: variantSolid$3,
-  subtle: variantSubtle$1,
-  outline: variantOutline$2
-};
-var badgeTheme = defineStyleConfig({
-  baseStyle: baseStyle$B,
-  variants: variants$9,
-  defaultProps: {
-    variant: "subtle",
-    colorScheme: "gray"
-  }
-});
-
-var { defineMultiStyleConfig: defineMultiStyleConfig$l, definePartsStyle: definePartsStyle$l } = createMultiStyleConfigHelpers(tagAnatomy.keys);
-var $bg$d = cssVar$1("tag-bg");
-var $color = cssVar$1("tag-color");
-var $shadow$3 = cssVar$1("tag-shadow");
-var $minH = cssVar$1("tag-min-height");
-var $minW = cssVar$1("tag-min-width");
-var $fontSize$1 = cssVar$1("tag-font-size");
-var $paddingX = cssVar$1("tag-padding-inline");
-var baseStyleContainer$4 = defineStyle({
-  fontWeight: "medium",
-  lineHeight: 1.2,
-  outline: 0,
-  [$color.variable]: vars.color.reference,
-  [$bg$d.variable]: vars.bg.reference,
-  [$shadow$3.variable]: vars.shadow.reference,
-  color: $color.reference,
-  bg: $bg$d.reference,
-  boxShadow: $shadow$3.reference,
-  borderRadius: "md",
-  minH: $minH.reference,
-  minW: $minW.reference,
-  fontSize: $fontSize$1.reference,
-  px: $paddingX.reference,
-  _focusVisible: {
-    [$shadow$3.variable]: "shadows.outline"
-  }
-});
-var baseStyleLabel$4 = defineStyle({
-  lineHeight: 1.2,
-  overflow: "visible"
-});
-var baseStyleCloseButton$3 = defineStyle({
-  fontSize: "lg",
-  w: "5",
-  h: "5",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  borderRadius: "full",
-  marginStart: "1.5",
-  marginEnd: "-1",
-  opacity: 0.5,
-  _disabled: {
-    opacity: 0.4
-  },
-  _focusVisible: {
-    boxShadow: "outline",
-    bg: "rgba(0, 0, 0, 0.14)"
-  },
-  _hover: {
-    opacity: 0.8
-  },
-  _active: {
-    opacity: 1
-  }
-});
-var baseStyle$A = definePartsStyle$l({
-  container: baseStyleContainer$4,
-  label: baseStyleLabel$4,
-  closeButton: baseStyleCloseButton$3
-});
-var sizes$k = {
-  sm: definePartsStyle$l({
-    container: {
-      [$minH.variable]: "sizes.5",
-      [$minW.variable]: "sizes.5",
-      [$fontSize$1.variable]: "fontSizes.xs",
-      [$paddingX.variable]: "space.2"
-    },
-    closeButton: {
-      marginEnd: "-2px",
-      marginStart: "0.35rem"
-    }
-  }),
-  md: definePartsStyle$l({
-    container: {
-      [$minH.variable]: "sizes.6",
-      [$minW.variable]: "sizes.6",
-      [$fontSize$1.variable]: "fontSizes.sm",
-      [$paddingX.variable]: "space.2"
-    }
-  }),
-  lg: definePartsStyle$l({
-    container: {
-      [$minH.variable]: "sizes.8",
-      [$minW.variable]: "sizes.8",
-      [$fontSize$1.variable]: "fontSizes.md",
-      [$paddingX.variable]: "space.3"
-    }
-  })
-};
-var variants$8 = {
-  subtle: definePartsStyle$l((props) => {
-    var _a;
-    return {
-      container: (_a = badgeTheme.variants) == null ? void 0 : _a.subtle(props)
-    };
-  }),
-  solid: definePartsStyle$l((props) => {
-    var _a;
-    return {
-      container: (_a = badgeTheme.variants) == null ? void 0 : _a.solid(props)
-    };
-  }),
-  outline: definePartsStyle$l((props) => {
-    var _a;
-    return {
-      container: (_a = badgeTheme.variants) == null ? void 0 : _a.outline(props)
-    };
-  })
-};
-var tagTheme = defineMultiStyleConfig$l({
-  variants: variants$8,
-  baseStyle: baseStyle$A,
-  sizes: sizes$k,
-  defaultProps: {
-    size: "md",
-    variant: "subtle",
-    colorScheme: "gray"
-  }
-});
-
-// src/components/input.ts
-var { definePartsStyle: definePartsStyle$k, defineMultiStyleConfig: defineMultiStyleConfig$k } = createMultiStyleConfigHelpers(inputAnatomy.keys);
-var $height = cssVar$1("input-height");
-var $fontSize = cssVar$1("input-font-size");
-var $padding$1 = cssVar$1("input-padding");
-var $borderRadius = cssVar$1("input-border-radius");
-var baseStyle$z = definePartsStyle$k({
-  addon: {
-    height: $height.reference,
-    fontSize: $fontSize.reference,
-    px: $padding$1.reference,
-    borderRadius: $borderRadius.reference
-  },
-  field: {
-    width: "100%",
-    height: $height.reference,
-    fontSize: $fontSize.reference,
-    px: $padding$1.reference,
-    borderRadius: $borderRadius.reference,
-    minWidth: 0,
-    outline: 0,
-    position: "relative",
-    appearance: "none",
-    transitionProperty: "common",
-    transitionDuration: "normal",
-    _disabled: {
-      opacity: 0.4,
-      cursor: "not-allowed"
-    }
-  }
-});
-var size = {
-  lg: defineStyle({
-    [$fontSize.variable]: "fontSizes.lg",
-    [$padding$1.variable]: "space.4",
-    [$borderRadius.variable]: "radii.md",
-    [$height.variable]: "sizes.12"
-  }),
-  md: defineStyle({
-    [$fontSize.variable]: "fontSizes.md",
-    [$padding$1.variable]: "space.4",
-    [$borderRadius.variable]: "radii.md",
-    [$height.variable]: "sizes.10"
-  }),
-  sm: defineStyle({
-    [$fontSize.variable]: "fontSizes.sm",
-    [$padding$1.variable]: "space.3",
-    [$borderRadius.variable]: "radii.sm",
-    [$height.variable]: "sizes.8"
-  }),
-  xs: defineStyle({
-    [$fontSize.variable]: "fontSizes.xs",
-    [$padding$1.variable]: "space.2",
-    [$borderRadius.variable]: "radii.sm",
-    [$height.variable]: "sizes.6"
-  })
-};
-var sizes$j = {
-  lg: definePartsStyle$k({
-    field: size.lg,
-    group: size.lg
-  }),
-  md: definePartsStyle$k({
-    field: size.md,
-    group: size.md
-  }),
-  sm: definePartsStyle$k({
-    field: size.sm,
-    group: size.sm
-  }),
-  xs: definePartsStyle$k({
-    field: size.xs,
-    group: size.xs
-  })
-};
-function getDefaults(props) {
-  const { focusBorderColor: fc, errorBorderColor: ec } = props;
-  return {
-    focusBorderColor: fc || mode("blue.500", "blue.300")(props),
-    errorBorderColor: ec || mode("red.500", "red.300")(props)
-  };
-}
-var variantOutline$1 = definePartsStyle$k((props) => {
-  const { theme } = props;
-  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
-  return {
-    field: {
-      border: "1px solid",
-      borderColor: "inherit",
-      bg: "inherit",
-      _hover: {
-        borderColor: mode("gray.300", "whiteAlpha.400")(props)
-      },
-      _readOnly: {
-        boxShadow: "none !important",
-        userSelect: "all"
-      },
-      _invalid: {
-        borderColor: getColor(theme, ec),
-        boxShadow: `0 0 0 1px ${getColor(theme, ec)}`
-      },
-      _focusVisible: {
-        zIndex: 1,
-        borderColor: getColor(theme, fc),
-        boxShadow: `0 0 0 1px ${getColor(theme, fc)}`
-      }
-    },
-    addon: {
-      border: "1px solid",
-      borderColor: mode("inherit", "whiteAlpha.50")(props),
-      bg: mode("gray.100", "whiteAlpha.300")(props)
-    }
-  };
-});
-var variantFilled = definePartsStyle$k((props) => {
-  const { theme } = props;
-  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
-  return {
-    field: {
-      border: "2px solid",
-      borderColor: "transparent",
-      bg: mode("gray.100", "whiteAlpha.50")(props),
-      _hover: {
-        bg: mode("gray.200", "whiteAlpha.100")(props)
-      },
-      _readOnly: {
-        boxShadow: "none !important",
-        userSelect: "all"
-      },
-      _invalid: {
-        borderColor: getColor(theme, ec)
-      },
-      _focusVisible: {
-        bg: "transparent",
-        borderColor: getColor(theme, fc)
-      }
-    },
-    addon: {
-      border: "2px solid",
-      borderColor: "transparent",
-      bg: mode("gray.100", "whiteAlpha.50")(props)
-    }
-  };
-});
-var variantFlushed = definePartsStyle$k((props) => {
-  const { theme } = props;
-  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
-  return {
-    field: {
-      borderBottom: "1px solid",
-      borderColor: "inherit",
-      borderRadius: "0",
-      px: "0",
-      bg: "transparent",
-      _readOnly: {
-        boxShadow: "none !important",
-        userSelect: "all"
-      },
-      _invalid: {
-        borderColor: getColor(theme, ec),
-        boxShadow: `0px 1px 0px 0px ${getColor(theme, ec)}`
-      },
-      _focusVisible: {
-        borderColor: getColor(theme, fc),
-        boxShadow: `0px 1px 0px 0px ${getColor(theme, fc)}`
-      }
-    },
-    addon: {
-      borderBottom: "2px solid",
-      borderColor: "inherit",
-      borderRadius: "0",
-      px: "0",
-      bg: "transparent"
-    }
-  };
-});
-var variantUnstyled$1 = definePartsStyle$k({
-  field: {
-    bg: "transparent",
-    px: "0",
-    height: "auto"
-  },
-  addon: {
-    bg: "transparent",
-    px: "0",
-    height: "auto"
-  }
-});
-var variants$7 = {
-  outline: variantOutline$1,
-  filled: variantFilled,
-  flushed: variantFlushed,
-  unstyled: variantUnstyled$1
-};
-var inputTheme = defineMultiStyleConfig$k({
-  baseStyle: baseStyle$z,
-  sizes: sizes$j,
-  variants: variants$7,
-  defaultProps: {
-    size: "md",
-    variant: "outline"
-  }
-});
-
-var _a$3;
-var baseStyle$y = defineStyle({
-  ...(_a$3 = inputTheme.baseStyle) == null ? void 0 : _a$3.field,
-  paddingY: "2",
-  minHeight: "20",
-  lineHeight: "short",
-  verticalAlign: "top"
-});
-var _a2$2, _b$2;
-var variants$6 = {
-  outline: defineStyle(
-    (props) => {
-      var _a4, _b3;
-      return (_b3 = (_a4 = inputTheme.variants) == null ? void 0 : _a4.outline(props).field) != null ? _b3 : {};
-    }
-  ),
-  flushed: defineStyle(
-    (props) => {
-      var _a4, _b3;
-      return (_b3 = (_a4 = inputTheme.variants) == null ? void 0 : _a4.flushed(props).field) != null ? _b3 : {};
-    }
-  ),
-  filled: defineStyle(
-    (props) => {
-      var _a4, _b3;
-      return (_b3 = (_a4 = inputTheme.variants) == null ? void 0 : _a4.filled(props).field) != null ? _b3 : {};
-    }
-  ),
-  unstyled: (_b$2 = (_a2$2 = inputTheme.variants) == null ? void 0 : _a2$2.unstyled.field) != null ? _b$2 : {}
-};
-var _a3, _b2, _c$1, _d$1, _e$1, _f$1, _g$1, _h$1;
-var sizes$i = {
-  xs: (_b2 = (_a3 = inputTheme.sizes) == null ? void 0 : _a3.xs.field) != null ? _b2 : {},
-  sm: (_d$1 = (_c$1 = inputTheme.sizes) == null ? void 0 : _c$1.sm.field) != null ? _d$1 : {},
-  md: (_f$1 = (_e$1 = inputTheme.sizes) == null ? void 0 : _e$1.md.field) != null ? _f$1 : {},
-  lg: (_h$1 = (_g$1 = inputTheme.sizes) == null ? void 0 : _g$1.lg.field) != null ? _h$1 : {}
-};
-var textareaTheme = defineStyleConfig({
-  baseStyle: baseStyle$y,
-  sizes: sizes$i,
-  variants: variants$6,
-  defaultProps: {
-    size: "md",
-    variant: "outline"
-  }
-});
-
-// src/components/tooltip.ts
-var $bg$c = cssVar("tooltip-bg");
-var $fg$4 = cssVar("tooltip-fg");
-var $arrowBg$1 = cssVar("popper-arrow-bg");
-var baseStyle$x = defineStyle({
-  bg: $bg$c.reference,
-  color: $fg$4.reference,
-  [$bg$c.variable]: "colors.gray.700",
-  [$fg$4.variable]: "colors.whiteAlpha.900",
-  _dark: {
-    [$bg$c.variable]: "colors.gray.300",
-    [$fg$4.variable]: "colors.gray.900"
-  },
-  [$arrowBg$1.variable]: $bg$c.reference,
-  px: "2",
-  py: "0.5",
-  borderRadius: "sm",
-  fontWeight: "medium",
-  fontSize: "sm",
-  boxShadow: "md",
-  maxW: "xs",
-  zIndex: "tooltip"
-});
-var tooltipTheme = defineStyleConfig({
-  baseStyle: baseStyle$x
-});
-
-// src/components/progress.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$j, definePartsStyle: definePartsStyle$j } = createMultiStyleConfigHelpers(progressAnatomy.keys);
-var filledStyle = defineStyle((props) => {
-  const { colorScheme: c, theme: t, isIndeterminate, hasStripe } = props;
-  const stripeStyle = mode(
-    generateStripe(),
-    generateStripe("1rem", "rgba(0,0,0,0.1)")
-  )(props);
-  const bgColor = mode(`${c}.500`, `${c}.200`)(props);
-  const gradient = `linear-gradient(
-    to right,
-    transparent 0%,
-    ${getColor(t, bgColor)} 50%,
-    transparent 100%
-  )`;
-  const addStripe = !isIndeterminate && hasStripe;
-  return {
-    ...addStripe && stripeStyle,
-    ...isIndeterminate ? { bgImage: gradient } : { bgColor }
-  };
-});
-var baseStyleLabel$3 = defineStyle({
-  lineHeight: "1",
-  fontSize: "0.25em",
-  fontWeight: "bold",
-  color: "white"
-});
-var baseStyleTrack$1 = defineStyle((props) => {
-  return {
-    bg: mode("gray.100", "whiteAlpha.300")(props)
-  };
-});
-var baseStyleFilledTrack$1 = defineStyle((props) => {
-  return {
-    transitionProperty: "common",
-    transitionDuration: "slow",
-    ...filledStyle(props)
-  };
-});
-var baseStyle$w = definePartsStyle$j((props) => ({
-  label: baseStyleLabel$3,
-  filledTrack: baseStyleFilledTrack$1(props),
-  track: baseStyleTrack$1(props)
-}));
-var sizes$h = {
-  xs: definePartsStyle$j({
-    track: { h: "1" }
-  }),
-  sm: definePartsStyle$j({
-    track: { h: "2" }
-  }),
-  md: definePartsStyle$j({
-    track: { h: "3" }
-  }),
-  lg: definePartsStyle$j({
-    track: { h: "4" }
-  })
-};
-var progressTheme = defineMultiStyleConfig$j({
-  sizes: sizes$h,
-  baseStyle: baseStyle$w,
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-// src/utils/run-if-fn.ts
-var isFunction$2 = (value) => typeof value === "function";
-function runIfFn$1(valueOrFn, ...args) {
-  return isFunction$2(valueOrFn) ? valueOrFn(...args) : valueOrFn;
-}
-
-var { definePartsStyle: definePartsStyle$i, defineMultiStyleConfig: defineMultiStyleConfig$i } = createMultiStyleConfigHelpers(checkboxAnatomy.keys);
-var $size$3 = cssVar$1("checkbox-size");
-var baseStyleControl$1 = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  return {
-    w: $size$3.reference,
-    h: $size$3.reference,
-    transitionProperty: "box-shadow",
-    transitionDuration: "normal",
-    border: "2px solid",
-    borderRadius: "sm",
-    borderColor: "inherit",
-    color: "white",
-    _checked: {
-      bg: mode(`${c}.500`, `${c}.200`)(props),
-      borderColor: mode(`${c}.500`, `${c}.200`)(props),
-      color: mode("white", "gray.900")(props),
-      _hover: {
-        bg: mode(`${c}.600`, `${c}.300`)(props),
-        borderColor: mode(`${c}.600`, `${c}.300`)(props)
-      },
-      _disabled: {
-        borderColor: mode("gray.200", "transparent")(props),
-        bg: mode("gray.200", "whiteAlpha.300")(props),
-        color: mode("gray.500", "whiteAlpha.500")(props)
-      }
-    },
-    _indeterminate: {
-      bg: mode(`${c}.500`, `${c}.200`)(props),
-      borderColor: mode(`${c}.500`, `${c}.200`)(props),
-      color: mode("white", "gray.900")(props)
-    },
-    _disabled: {
-      bg: mode("gray.100", "whiteAlpha.100")(props),
-      borderColor: mode("gray.100", "transparent")(props)
-    },
-    _focusVisible: {
-      boxShadow: "outline"
-    },
-    _invalid: {
-      borderColor: mode("red.500", "red.300")(props)
-    }
-  };
-});
-var baseStyleContainer$3 = defineStyle({
-  _disabled: { cursor: "not-allowed" }
-});
-var baseStyleLabel$2 = defineStyle({
-  userSelect: "none",
-  _disabled: { opacity: 0.4 }
-});
-var baseStyleIcon$6 = defineStyle({
-  transitionProperty: "transform",
-  transitionDuration: "normal"
-});
-var baseStyle$v = definePartsStyle$i((props) => ({
-  icon: baseStyleIcon$6,
-  container: baseStyleContainer$3,
-  control: runIfFn$1(baseStyleControl$1, props),
-  label: baseStyleLabel$2
-}));
-var sizes$g = {
-  sm: definePartsStyle$i({
-    control: { [$size$3.variable]: "sizes.3" },
-    label: { fontSize: "sm" },
-    icon: { fontSize: "3xs" }
-  }),
-  md: definePartsStyle$i({
-    control: { [$size$3.variable]: "sizes.4" },
-    label: { fontSize: "md" },
-    icon: { fontSize: "2xs" }
-  }),
-  lg: definePartsStyle$i({
-    control: { [$size$3.variable]: "sizes.5" },
-    label: { fontSize: "lg" },
-    icon: { fontSize: "2xs" }
-  })
-};
-var checkboxTheme = defineMultiStyleConfig$i({
-  baseStyle: baseStyle$v,
-  sizes: sizes$g,
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-var { defineMultiStyleConfig: defineMultiStyleConfig$h, definePartsStyle: definePartsStyle$h } = createMultiStyleConfigHelpers(radioAnatomy.keys);
-var baseStyleControl = defineStyle((props) => {
-  var _a;
-  const controlStyle = (_a = runIfFn$1(checkboxTheme.baseStyle, props)) == null ? void 0 : _a.control;
-  return {
-    ...controlStyle,
-    borderRadius: "full",
-    _checked: {
-      ...controlStyle == null ? void 0 : controlStyle["_checked"],
-      _before: {
-        content: `""`,
-        display: "inline-block",
-        pos: "relative",
-        w: "50%",
-        h: "50%",
-        borderRadius: "50%",
-        bg: "currentColor"
-      }
-    }
-  };
-});
-var baseStyle$u = definePartsStyle$h((props) => {
-  var _a, _b, _c, _d;
-  return {
-    label: (_b = (_a = checkboxTheme).baseStyle) == null ? void 0 : _b.call(_a, props).label,
-    container: (_d = (_c = checkboxTheme).baseStyle) == null ? void 0 : _d.call(_c, props).container,
-    control: baseStyleControl(props)
-  };
-});
-var sizes$f = {
-  md: definePartsStyle$h({
-    control: { w: "4", h: "4" },
-    label: { fontSize: "md" }
-  }),
-  lg: definePartsStyle$h({
-    control: { w: "5", h: "5" },
-    label: { fontSize: "lg" }
-  }),
-  sm: definePartsStyle$h({
-    control: { width: "3", height: "3" },
-    label: { fontSize: "sm" }
-  })
-};
-var radioTheme = defineMultiStyleConfig$h({
-  baseStyle: baseStyle$u,
-  sizes: sizes$f,
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-var { defineMultiStyleConfig: defineMultiStyleConfig$g, definePartsStyle: definePartsStyle$g } = createMultiStyleConfigHelpers(selectAnatomy.keys);
-var $bg$b = cssVar$1("select-bg");
-var _a$2;
-var baseStyleField$1 = defineStyle({
-  ...(_a$2 = inputTheme.baseStyle) == null ? void 0 : _a$2.field,
-  appearance: "none",
-  paddingBottom: "1px",
-  lineHeight: "normal",
-  bg: $bg$b.reference,
-  [$bg$b.variable]: "colors.white",
-  _dark: {
-    [$bg$b.variable]: "colors.gray.700"
-  },
-  "> option, > optgroup": {
-    bg: $bg$b.reference
-  }
-});
-var baseStyleIcon$5 = defineStyle({
-  width: "6",
-  height: "100%",
-  insetEnd: "2",
-  position: "relative",
-  color: "currentColor",
-  fontSize: "xl",
-  _disabled: {
-    opacity: 0.5
-  }
-});
-var baseStyle$t = definePartsStyle$g({
-  field: baseStyleField$1,
-  icon: baseStyleIcon$5
-});
-var iconSpacing = defineStyle({
-  paddingInlineEnd: "8"
-});
-var _a2$1, _b$1, _c, _d, _e, _f, _g, _h;
-var sizes$e = {
-  lg: {
-    ...(_a2$1 = inputTheme.sizes) == null ? void 0 : _a2$1.lg,
-    field: {
-      ...(_b$1 = inputTheme.sizes) == null ? void 0 : _b$1.lg.field,
-      ...iconSpacing
-    }
-  },
-  md: {
-    ...(_c = inputTheme.sizes) == null ? void 0 : _c.md,
-    field: {
-      ...(_d = inputTheme.sizes) == null ? void 0 : _d.md.field,
-      ...iconSpacing
-    }
-  },
-  sm: {
-    ...(_e = inputTheme.sizes) == null ? void 0 : _e.sm,
-    field: {
-      ...(_f = inputTheme.sizes) == null ? void 0 : _f.sm.field,
-      ...iconSpacing
-    }
-  },
-  xs: {
-    ...(_g = inputTheme.sizes) == null ? void 0 : _g.xs,
-    field: {
-      ...(_h = inputTheme.sizes) == null ? void 0 : _h.xs.field,
-      ...iconSpacing
-    },
-    icon: {
-      insetEnd: "1"
-    }
-  }
-};
-var selectTheme = defineMultiStyleConfig$g({
-  baseStyle: baseStyle$t,
-  sizes: sizes$e,
-  variants: inputTheme.variants,
-  defaultProps: inputTheme.defaultProps
-});
-
-// src/components/skeleton.ts
-var $startColor = cssVar$1("skeleton-start-color");
-var $endColor = cssVar$1("skeleton-end-color");
-var baseStyle$s = defineStyle({
-  [$startColor.variable]: "colors.gray.100",
-  [$endColor.variable]: "colors.gray.400",
-  _dark: {
-    [$startColor.variable]: "colors.gray.800",
-    [$endColor.variable]: "colors.gray.600"
-  },
-  background: $startColor.reference,
-  borderColor: $endColor.reference,
-  opacity: 0.7,
-  borderRadius: "sm"
-});
-var skeletonTheme = defineStyleConfig({
-  baseStyle: baseStyle$s
-});
-
-// src/components/skip-link.ts
-var $bg$a = cssVar$1("skip-link-bg");
-var baseStyle$r = defineStyle({
-  borderRadius: "md",
-  fontWeight: "semibold",
-  _focusVisible: {
-    boxShadow: "outline",
-    padding: "4",
-    position: "fixed",
-    top: "6",
-    insetStart: "6",
-    [$bg$a.variable]: "colors.white",
-    _dark: {
-      [$bg$a.variable]: "colors.gray.700"
-    },
-    bg: $bg$a.reference
-  }
-});
-var skipLinkTheme = defineStyleConfig({
-  baseStyle: baseStyle$r
-});
-
-// src/components/slider.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$f, definePartsStyle: definePartsStyle$f } = createMultiStyleConfigHelpers(sliderAnatomy.keys);
-var $thumbSize = cssVar$1("slider-thumb-size");
-var $trackSize = cssVar$1("slider-track-size");
-var $bg$9 = cssVar$1("slider-bg");
-var baseStyleContainer$2 = defineStyle((props) => {
-  const { orientation } = props;
-  return {
-    display: "inline-block",
-    position: "relative",
-    cursor: "pointer",
-    _disabled: {
-      opacity: 0.6,
-      cursor: "default",
-      pointerEvents: "none"
-    },
-    ...orient({
-      orientation,
-      vertical: { h: "100%" },
-      horizontal: { w: "100%" }
-    })
-  };
-});
-var baseStyleTrack = defineStyle((props) => {
-  const orientationStyles = orient({
-    orientation: props.orientation,
-    horizontal: { h: $trackSize.reference },
-    vertical: { w: $trackSize.reference }
-  });
-  return {
-    ...orientationStyles,
-    overflow: "hidden",
-    borderRadius: "sm",
-    [$bg$9.variable]: "colors.gray.200",
-    _dark: {
-      [$bg$9.variable]: "colors.whiteAlpha.200"
-    },
-    _disabled: {
-      [$bg$9.variable]: "colors.gray.300",
-      _dark: {
-        [$bg$9.variable]: "colors.whiteAlpha.300"
-      }
-    },
-    bg: $bg$9.reference
-  };
-});
-var baseStyleThumb = defineStyle((props) => {
-  const { orientation } = props;
-  const orientationStyle = orient({
-    orientation,
-    vertical: {
-      left: "50%",
-      transform: `translateX(-50%)`,
-      _active: {
-        transform: `translateX(-50%) scale(1.15)`
-      }
-    },
-    horizontal: {
-      top: "50%",
-      transform: `translateY(-50%)`,
-      _active: {
-        transform: `translateY(-50%) scale(1.15)`
-      }
-    }
-  });
-  return {
-    ...orientationStyle,
-    w: $thumbSize.reference,
-    h: $thumbSize.reference,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    outline: 0,
-    zIndex: 1,
-    borderRadius: "full",
-    bg: "white",
-    boxShadow: "base",
-    border: "1px solid",
-    borderColor: "transparent",
-    transitionProperty: "transform",
-    transitionDuration: "normal",
-    _focusVisible: {
-      boxShadow: "outline"
-    },
-    _disabled: {
-      bg: "gray.300"
-    }
-  };
-});
-var baseStyleFilledTrack = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  return {
-    width: "inherit",
-    height: "inherit",
-    [$bg$9.variable]: `colors.${c}.500`,
-    _dark: {
-      [$bg$9.variable]: `colors.${c}.200`
-    },
-    bg: $bg$9.reference
-  };
-});
-var baseStyle$q = definePartsStyle$f((props) => ({
-  container: baseStyleContainer$2(props),
-  track: baseStyleTrack(props),
-  thumb: baseStyleThumb(props),
-  filledTrack: baseStyleFilledTrack(props)
-}));
-var sizeLg = definePartsStyle$f({
-  container: {
-    [$thumbSize.variable]: `sizes.4`,
-    [$trackSize.variable]: `sizes.1`
-  }
-});
-var sizeMd = definePartsStyle$f({
-  container: {
-    [$thumbSize.variable]: `sizes.3.5`,
-    [$trackSize.variable]: `sizes.1`
-  }
-});
-var sizeSm = definePartsStyle$f({
-  container: {
-    [$thumbSize.variable]: `sizes.2.5`,
-    [$trackSize.variable]: `sizes.0.5`
-  }
-});
-var sizes$d = {
-  lg: sizeLg,
-  md: sizeMd,
-  sm: sizeSm
-};
-var sliderTheme = defineMultiStyleConfig$f({
-  baseStyle: baseStyle$q,
-  sizes: sizes$d,
-  defaultProps: {
-    size: "md",
-    colorScheme: "blue"
-  }
-});
-
-// src/components/spinner.ts
-var $size$2 = cssVar("spinner-size");
-var baseStyle$p = defineStyle({
-  width: [$size$2.reference],
-  height: [$size$2.reference]
-});
-var sizes$c = {
-  xs: defineStyle({
-    [$size$2.variable]: "sizes.3"
-  }),
-  sm: defineStyle({
-    [$size$2.variable]: "sizes.4"
-  }),
-  md: defineStyle({
-    [$size$2.variable]: "sizes.6"
-  }),
-  lg: defineStyle({
-    [$size$2.variable]: "sizes.8"
-  }),
-  xl: defineStyle({
-    [$size$2.variable]: "sizes.12"
-  })
-};
-var spinnerTheme = defineStyleConfig({
-  baseStyle: baseStyle$p,
-  sizes: sizes$c,
-  defaultProps: {
-    size: "md"
-  }
-});
-
-// src/components/stat.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$e, definePartsStyle: definePartsStyle$e } = createMultiStyleConfigHelpers(statAnatomy.keys);
-var baseStyleLabel$1 = defineStyle({
-  fontWeight: "medium"
-});
-var baseStyleHelpText = defineStyle({
-  opacity: 0.8,
-  marginBottom: "2"
-});
-var baseStyleNumber = defineStyle({
-  verticalAlign: "baseline",
-  fontWeight: "semibold"
-});
-var baseStyleIcon$4 = defineStyle({
-  marginEnd: 1,
-  w: "3.5",
-  h: "3.5",
-  verticalAlign: "middle"
-});
-var baseStyle$o = definePartsStyle$e({
-  container: {},
-  label: baseStyleLabel$1,
-  helpText: baseStyleHelpText,
-  number: baseStyleNumber,
-  icon: baseStyleIcon$4
-});
-var sizes$b = {
-  md: definePartsStyle$e({
-    label: { fontSize: "sm" },
-    helpText: { fontSize: "sm" },
-    number: { fontSize: "2xl" }
-  })
-};
-var statTheme = defineMultiStyleConfig$e({
-  baseStyle: baseStyle$o,
-  sizes: sizes$b,
-  defaultProps: {
-    size: "md"
-  }
-});
-
-// src/components/kbd.ts
-var $bg$8 = cssVar$1("kbd-bg");
-var baseStyle$n = defineStyle({
-  [$bg$8.variable]: "colors.gray.100",
-  _dark: {
-    [$bg$8.variable]: "colors.whiteAlpha.100"
-  },
-  bg: $bg$8.reference,
-  borderRadius: "md",
-  borderWidth: "1px",
-  borderBottomWidth: "3px",
-  fontSize: "0.8em",
-  fontWeight: "bold",
-  lineHeight: "normal",
-  px: "0.4em",
-  whiteSpace: "nowrap"
-});
-var kbdTheme = defineStyleConfig({
-  baseStyle: baseStyle$n
-});
-
-// src/components/link.ts
-var baseStyle$m = defineStyle({
-  transitionProperty: "common",
-  transitionDuration: "fast",
-  transitionTimingFunction: "ease-out",
-  cursor: "pointer",
-  textDecoration: "none",
-  outline: "none",
-  color: "inherit",
-  _hover: {
-    textDecoration: "underline"
-  },
-  _focusVisible: {
-    boxShadow: "outline"
-  }
-});
-var linkTheme = defineStyleConfig({
-  baseStyle: baseStyle$m
-});
-
-// src/components/list.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$d, definePartsStyle: definePartsStyle$d } = createMultiStyleConfigHelpers(listAnatomy.keys);
-var baseStyleIcon$3 = defineStyle({
-  marginEnd: "2",
-  display: "inline",
-  verticalAlign: "text-bottom"
-});
-var baseStyle$l = definePartsStyle$d({
-  icon: baseStyleIcon$3
-});
-var listTheme = defineMultiStyleConfig$d({
-  baseStyle: baseStyle$l
-});
-
-// src/components/menu.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$c, definePartsStyle: definePartsStyle$c } = createMultiStyleConfigHelpers(menuAnatomy.keys);
-var $bg$7 = cssVar$1("menu-bg");
-var $shadow$2 = cssVar$1("menu-shadow");
-var baseStyleList = defineStyle({
-  [$bg$7.variable]: "#fff",
-  [$shadow$2.variable]: "shadows.sm",
-  _dark: {
-    [$bg$7.variable]: "colors.gray.700",
-    [$shadow$2.variable]: "shadows.dark-lg"
-  },
-  color: "inherit",
-  minW: "3xs",
-  py: "2",
-  zIndex: 1,
-  borderRadius: "md",
-  borderWidth: "1px",
-  bg: $bg$7.reference,
-  boxShadow: $shadow$2.reference
-});
-var baseStyleItem = defineStyle({
-  py: "1.5",
-  px: "3",
-  transitionProperty: "background",
-  transitionDuration: "ultra-fast",
-  transitionTimingFunction: "ease-in",
-  _focus: {
-    [$bg$7.variable]: "colors.gray.100",
-    _dark: {
-      [$bg$7.variable]: "colors.whiteAlpha.100"
-    }
-  },
-  _active: {
-    [$bg$7.variable]: "colors.gray.200",
-    _dark: {
-      [$bg$7.variable]: "colors.whiteAlpha.200"
-    }
-  },
-  _expanded: {
-    [$bg$7.variable]: "colors.gray.100",
-    _dark: {
-      [$bg$7.variable]: "colors.whiteAlpha.100"
-    }
-  },
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed"
-  },
-  bg: $bg$7.reference
-});
-var baseStyleGroupTitle = defineStyle({
-  mx: 4,
-  my: 2,
-  fontWeight: "semibold",
-  fontSize: "sm"
-});
-var baseStyleIcon$2 = defineStyle({
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexShrink: 0
-});
-var baseStyleCommand = defineStyle({
-  opacity: 0.6
-});
-var baseStyleDivider = defineStyle({
-  border: 0,
-  borderBottom: "1px solid",
-  borderColor: "inherit",
-  my: "2",
-  opacity: 0.6
-});
-var baseStyleButton$1 = defineStyle({
-  transitionProperty: "common",
-  transitionDuration: "normal"
-});
-var baseStyle$k = definePartsStyle$c({
-  button: baseStyleButton$1,
-  list: baseStyleList,
-  item: baseStyleItem,
-  groupTitle: baseStyleGroupTitle,
-  icon: baseStyleIcon$2,
-  command: baseStyleCommand,
-  divider: baseStyleDivider
-});
-var menuTheme = defineMultiStyleConfig$c({
-  baseStyle: baseStyle$k
-});
-
-var { defineMultiStyleConfig: defineMultiStyleConfig$b, definePartsStyle: definePartsStyle$b } = createMultiStyleConfigHelpers(modalAnatomy.keys);
-var $bg$6 = cssVar$1("modal-bg");
-var $shadow$1 = cssVar$1("modal-shadow");
-var baseStyleOverlay$1 = defineStyle({
-  bg: "blackAlpha.600",
-  zIndex: "modal"
-});
-var baseStyleDialogContainer$1 = defineStyle((props) => {
-  const { isCentered, scrollBehavior } = props;
-  return {
-    display: "flex",
-    zIndex: "modal",
-    justifyContent: "center",
-    alignItems: isCentered ? "center" : "flex-start",
-    overflow: scrollBehavior === "inside" ? "hidden" : "auto",
-    overscrollBehaviorY: "none"
-  };
-});
-var baseStyleDialog$1 = defineStyle((props) => {
-  const { isCentered, scrollBehavior } = props;
-  return {
-    borderRadius: "md",
-    color: "inherit",
-    my: isCentered ? "auto" : "16",
-    mx: isCentered ? "auto" : void 0,
-    zIndex: "modal",
-    maxH: scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : void 0,
-    [$bg$6.variable]: "colors.white",
-    [$shadow$1.variable]: "shadows.lg",
-    _dark: {
-      [$bg$6.variable]: "colors.gray.700",
-      [$shadow$1.variable]: "shadows.dark-lg"
-    },
-    bg: $bg$6.reference,
-    boxShadow: $shadow$1.reference
-  };
-});
-var baseStyleHeader$2 = defineStyle({
-  px: "6",
-  py: "4",
-  fontSize: "xl",
-  fontWeight: "semibold"
-});
-var baseStyleCloseButton$2 = defineStyle({
-  position: "absolute",
-  top: "2",
-  insetEnd: "3"
-});
-var baseStyleBody$2 = defineStyle((props) => {
-  const { scrollBehavior } = props;
-  return {
-    px: "6",
-    py: "2",
-    flex: "1",
-    overflow: scrollBehavior === "inside" ? "auto" : void 0
-  };
-});
-var baseStyleFooter$2 = defineStyle({
-  px: "6",
-  py: "4"
-});
-var baseStyle$j = definePartsStyle$b((props) => ({
-  overlay: baseStyleOverlay$1,
-  dialogContainer: runIfFn$1(baseStyleDialogContainer$1, props),
-  dialog: runIfFn$1(baseStyleDialog$1, props),
-  header: baseStyleHeader$2,
-  closeButton: baseStyleCloseButton$2,
-  body: runIfFn$1(baseStyleBody$2, props),
-  footer: baseStyleFooter$2
-}));
-function getSize$3(value) {
-  if (value === "full") {
-    return definePartsStyle$b({
-      dialog: {
-        maxW: "100vw",
-        minH: "$100vh",
-        my: "0",
-        borderRadius: "0"
-      }
-    });
-  }
-  return definePartsStyle$b({
-    dialog: { maxW: value }
-  });
-}
-var sizes$a = {
-  xs: getSize$3("xs"),
-  sm: getSize$3("sm"),
-  md: getSize$3("md"),
-  lg: getSize$3("lg"),
-  xl: getSize$3("xl"),
-  "2xl": getSize$3("2xl"),
-  "3xl": getSize$3("3xl"),
-  "4xl": getSize$3("4xl"),
-  "5xl": getSize$3("5xl"),
-  "6xl": getSize$3("6xl"),
-  full: getSize$3("full")
-};
-var modalTheme = defineMultiStyleConfig$b({
-  baseStyle: baseStyle$j,
-  sizes: sizes$a,
-  defaultProps: { size: "md" }
-});
-
-var { defineMultiStyleConfig: defineMultiStyleConfig$a, definePartsStyle: definePartsStyle$a } = createMultiStyleConfigHelpers(numberInputAnatomy.keys);
-var $stepperWidth = cssVar("number-input-stepper-width");
-var $inputPadding = cssVar("number-input-input-padding");
-var inputPaddingValue = calc($stepperWidth).add("0.5rem").toString();
-var $bg$5 = cssVar("number-input-bg");
-var $fg$3 = cssVar("number-input-color");
-var $border$2 = cssVar("number-input-border-color");
-var baseStyleRoot = defineStyle({
-  [$stepperWidth.variable]: "sizes.6",
-  [$inputPadding.variable]: inputPaddingValue
-});
-var baseStyleField = defineStyle(
-  (props) => {
-    var _a, _b;
-    return (_b = (_a = runIfFn$1(inputTheme.baseStyle, props)) == null ? void 0 : _a.field) != null ? _b : {};
-  }
-);
-var baseStyleStepperGroup = defineStyle({
-  width: $stepperWidth.reference
-});
-var baseStyleStepper = defineStyle({
-  borderStart: "1px solid",
-  borderStartColor: $border$2.reference,
-  color: $fg$3.reference,
-  bg: $bg$5.reference,
-  [$fg$3.variable]: "colors.chakra-body-text",
-  [$border$2.variable]: "colors.chakra-border-color",
-  _dark: {
-    [$fg$3.variable]: "colors.whiteAlpha.800",
-    [$border$2.variable]: "colors.whiteAlpha.300"
-  },
-  _active: {
-    [$bg$5.variable]: "colors.gray.200",
-    _dark: {
-      [$bg$5.variable]: "colors.whiteAlpha.300"
-    }
-  },
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed"
-  }
-});
-var baseStyle$i = definePartsStyle$a((props) => {
-  var _a;
-  return {
-    root: baseStyleRoot,
-    field: (_a = runIfFn$1(baseStyleField, props)) != null ? _a : {},
-    stepperGroup: baseStyleStepperGroup,
-    stepper: baseStyleStepper
-  };
-});
-function getSize$2(size) {
-  var _a, _b, _c;
-  const sizeStyle = (_a = inputTheme.sizes) == null ? void 0 : _a[size];
-  const radius = {
-    lg: "md",
-    md: "md",
-    sm: "sm",
-    xs: "sm"
-  };
-  const _fontSize = (_c = (_b = sizeStyle.field) == null ? void 0 : _b.fontSize) != null ? _c : "md";
-  const fontSize = typography_default.fontSizes[_fontSize];
-  return definePartsStyle$a({
-    field: {
-      ...sizeStyle.field,
-      paddingInlineEnd: $inputPadding.reference,
-      verticalAlign: "top"
-    },
-    stepper: {
-      fontSize: calc(fontSize).multiply(0.75).toString(),
-      _first: {
-        borderTopEndRadius: radius[size]
-      },
-      _last: {
-        borderBottomEndRadius: radius[size],
-        mt: "-1px",
-        borderTopWidth: 1
-      }
-    }
-  });
-}
-var sizes$9 = {
-  xs: getSize$2("xs"),
-  sm: getSize$2("sm"),
-  md: getSize$2("md"),
-  lg: getSize$2("lg")
-};
-var numberInputTheme = defineMultiStyleConfig$a({
-  baseStyle: baseStyle$i,
-  sizes: sizes$9,
-  variants: inputTheme.variants,
-  defaultProps: inputTheme.defaultProps
-});
-
-var _a$1;
-var baseStyle$h = defineStyle({
-  ...(_a$1 = inputTheme.baseStyle) == null ? void 0 : _a$1.field,
-  textAlign: "center"
-});
-var sizes$8 = {
-  lg: defineStyle({
-    fontSize: "lg",
-    w: 12,
-    h: 12,
-    borderRadius: "md"
-  }),
-  md: defineStyle({
-    fontSize: "md",
-    w: 10,
-    h: 10,
-    borderRadius: "md"
-  }),
-  sm: defineStyle({
-    fontSize: "sm",
-    w: 8,
-    h: 8,
-    borderRadius: "sm"
-  }),
-  xs: defineStyle({
-    fontSize: "xs",
-    w: 6,
-    h: 6,
-    borderRadius: "sm"
-  })
-};
-var _a2, _b;
-var variants$5 = {
-  outline: defineStyle(
-    (props) => {
-      var _a3, _b2, _c;
-      return (_c = (_b2 = runIfFn$1((_a3 = inputTheme.variants) == null ? void 0 : _a3.outline, props)) == null ? void 0 : _b2.field) != null ? _c : {};
-    }
-  ),
-  flushed: defineStyle(
-    (props) => {
-      var _a3, _b2, _c;
-      return (_c = (_b2 = runIfFn$1((_a3 = inputTheme.variants) == null ? void 0 : _a3.flushed, props)) == null ? void 0 : _b2.field) != null ? _c : {};
-    }
-  ),
-  filled: defineStyle(
-    (props) => {
-      var _a3, _b2, _c;
-      return (_c = (_b2 = runIfFn$1((_a3 = inputTheme.variants) == null ? void 0 : _a3.filled, props)) == null ? void 0 : _b2.field) != null ? _c : {};
-    }
-  ),
-  unstyled: (_b = (_a2 = inputTheme.variants) == null ? void 0 : _a2.unstyled.field) != null ? _b : {}
-};
-var pinInputTheme = defineStyleConfig({
-  baseStyle: baseStyle$h,
-  sizes: sizes$8,
-  variants: variants$5,
-  defaultProps: inputTheme.defaultProps
-});
-
-// src/components/popover.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$9, definePartsStyle: definePartsStyle$9 } = createMultiStyleConfigHelpers(popoverAnatomy.keys);
-var $popperBg = cssVar("popper-bg");
-var $arrowBg = cssVar("popper-arrow-bg");
-var $arrowShadowColor = cssVar("popper-arrow-shadow-color");
-var baseStylePopper = defineStyle({ zIndex: 10 });
-var baseStyleContent = defineStyle({
-  [$popperBg.variable]: `colors.white`,
-  bg: $popperBg.reference,
-  [$arrowBg.variable]: $popperBg.reference,
-  [$arrowShadowColor.variable]: `colors.gray.200`,
-  _dark: {
-    [$popperBg.variable]: `colors.gray.700`,
-    [$arrowShadowColor.variable]: `colors.whiteAlpha.300`
-  },
-  width: "xs",
-  border: "1px solid",
-  borderColor: "inherit",
-  borderRadius: "md",
-  boxShadow: "sm",
-  zIndex: "inherit",
-  _focusVisible: {
-    outline: 0,
-    boxShadow: "outline"
-  }
-});
-var baseStyleHeader$1 = defineStyle({
-  px: 3,
-  py: 2,
-  borderBottomWidth: "1px"
-});
-var baseStyleBody$1 = defineStyle({
-  px: 3,
-  py: 2
-});
-var baseStyleFooter$1 = defineStyle({
-  px: 3,
-  py: 2,
-  borderTopWidth: "1px"
-});
-var baseStyleCloseButton$1 = defineStyle({
-  position: "absolute",
-  borderRadius: "md",
-  top: 1,
-  insetEnd: 2,
-  padding: 2
-});
-var baseStyle$g = definePartsStyle$9({
-  popper: baseStylePopper,
-  content: baseStyleContent,
-  header: baseStyleHeader$1,
-  body: baseStyleBody$1,
-  footer: baseStyleFooter$1,
-  closeButton: baseStyleCloseButton$1
-});
-var popoverTheme = defineMultiStyleConfig$9({
-  baseStyle: baseStyle$g
-});
-
-var { definePartsStyle: definePartsStyle$8, defineMultiStyleConfig: defineMultiStyleConfig$8 } = createMultiStyleConfigHelpers(drawerAnatomy.keys);
-var $bg$4 = cssVar$1("drawer-bg");
-var $bs = cssVar$1("drawer-box-shadow");
-function getSize$1(value) {
-  if (value === "full") {
-    return definePartsStyle$8({
-      dialog: { maxW: "100vw", h: "100vh" }
-    });
-  }
-  return definePartsStyle$8({
-    dialog: { maxW: value }
-  });
-}
-var baseStyleOverlay = defineStyle({
-  bg: "blackAlpha.600",
-  zIndex: "modal"
-});
-var baseStyleDialogContainer = defineStyle({
-  display: "flex",
-  zIndex: "modal",
-  justifyContent: "center"
-});
-var baseStyleDialog = defineStyle((props) => {
-  const { isFullHeight } = props;
-  return {
-    ...isFullHeight && { height: "100vh" },
-    zIndex: "modal",
-    maxH: "100vh",
-    color: "inherit",
-    [$bg$4.variable]: "colors.white",
-    [$bs.variable]: "shadows.lg",
-    _dark: {
-      [$bg$4.variable]: "colors.gray.700",
-      [$bs.variable]: "shadows.dark-lg"
-    },
-    bg: $bg$4.reference,
-    boxShadow: $bs.reference
-  };
-});
-var baseStyleHeader = defineStyle({
-  px: "6",
-  py: "4",
-  fontSize: "xl",
-  fontWeight: "semibold"
-});
-var baseStyleCloseButton = defineStyle({
-  position: "absolute",
-  top: "2",
-  insetEnd: "3"
-});
-var baseStyleBody = defineStyle({
-  px: "6",
-  py: "2",
-  flex: "1",
-  overflow: "auto"
-});
-var baseStyleFooter = defineStyle({
-  px: "6",
-  py: "4"
-});
-var baseStyle$f = definePartsStyle$8((props) => ({
-  overlay: baseStyleOverlay,
-  dialogContainer: baseStyleDialogContainer,
-  dialog: runIfFn$1(baseStyleDialog, props),
-  header: baseStyleHeader,
-  closeButton: baseStyleCloseButton,
-  body: baseStyleBody,
-  footer: baseStyleFooter
-}));
-var sizes$7 = {
-  xs: getSize$1("xs"),
-  sm: getSize$1("md"),
-  md: getSize$1("lg"),
-  lg: getSize$1("2xl"),
-  xl: getSize$1("4xl"),
-  full: getSize$1("full")
-};
-var drawerTheme = defineMultiStyleConfig$8({
-  baseStyle: baseStyle$f,
-  sizes: sizes$7,
-  defaultProps: {
-    size: "xs"
-  }
-});
-
-// src/components/editable.ts
-var { definePartsStyle: definePartsStyle$7, defineMultiStyleConfig: defineMultiStyleConfig$7 } = createMultiStyleConfigHelpers(editableAnatomy.keys);
-var baseStylePreview = defineStyle({
-  borderRadius: "md",
-  py: "1",
-  transitionProperty: "common",
-  transitionDuration: "normal"
-});
-var baseStyleInput = defineStyle({
-  borderRadius: "md",
-  py: "1",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  width: "full",
-  _focusVisible: { boxShadow: "outline" },
-  _placeholder: { opacity: 0.6 }
-});
-var baseStyleTextarea = defineStyle({
-  borderRadius: "md",
-  py: "1",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  width: "full",
-  _focusVisible: { boxShadow: "outline" },
-  _placeholder: { opacity: 0.6 }
-});
-var baseStyle$e = definePartsStyle$7({
-  preview: baseStylePreview,
-  input: baseStyleInput,
-  textarea: baseStyleTextarea
-});
-var editableTheme = defineMultiStyleConfig$7({
-  baseStyle: baseStyle$e
-});
-
-// src/components/form-control.ts
-var { definePartsStyle: definePartsStyle$6, defineMultiStyleConfig: defineMultiStyleConfig$6 } = createMultiStyleConfigHelpers(formAnatomy.keys);
-var $fg$2 = cssVar$1("form-control-color");
-var baseStyleRequiredIndicator = defineStyle({
-  marginStart: "1",
-  [$fg$2.variable]: "colors.red.500",
-  _dark: {
-    [$fg$2.variable]: "colors.red.300"
-  },
-  color: $fg$2.reference
-});
-var baseStyleHelperText = defineStyle({
-  mt: "2",
-  [$fg$2.variable]: "colors.gray.600",
-  _dark: {
-    [$fg$2.variable]: "colors.whiteAlpha.600"
-  },
-  color: $fg$2.reference,
-  lineHeight: "normal",
-  fontSize: "sm"
-});
-var baseStyle$d = definePartsStyle$6({
-  container: {
-    width: "100%",
-    position: "relative"
-  },
-  requiredIndicator: baseStyleRequiredIndicator,
-  helperText: baseStyleHelperText
-});
-var formTheme = defineMultiStyleConfig$6({
-  baseStyle: baseStyle$d
-});
-
-// src/components/form-error.ts
-var { definePartsStyle: definePartsStyle$5, defineMultiStyleConfig: defineMultiStyleConfig$5 } = createMultiStyleConfigHelpers(formErrorAnatomy.keys);
-var $fg$1 = cssVar$1("form-error-color");
-var baseStyleText = defineStyle({
-  [$fg$1.variable]: `colors.red.500`,
-  _dark: {
-    [$fg$1.variable]: `colors.red.300`
-  },
-  color: $fg$1.reference,
-  mt: "2",
-  fontSize: "sm",
-  lineHeight: "normal"
-});
-var baseStyleIcon$1 = defineStyle({
-  marginEnd: "0.5em",
-  [$fg$1.variable]: `colors.red.500`,
-  _dark: {
-    [$fg$1.variable]: `colors.red.300`
-  },
-  color: $fg$1.reference
-});
-var baseStyle$c = definePartsStyle$5({
-  text: baseStyleText,
-  icon: baseStyleIcon$1
-});
-var formErrorTheme = defineMultiStyleConfig$5({
-  baseStyle: baseStyle$c
-});
-
-// src/components/form-label.ts
-var baseStyle$b = defineStyle({
-  fontSize: "md",
-  marginEnd: "3",
-  mb: "2",
-  fontWeight: "medium",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  opacity: 1,
-  _disabled: {
-    opacity: 0.4
-  }
-});
-var formLabelTheme = defineStyleConfig({
-  baseStyle: baseStyle$b
-});
-
-// src/components/heading.ts
-var baseStyle$a = defineStyle({
-  fontFamily: "heading",
-  fontWeight: "bold"
-});
-var sizes$6 = {
-  "4xl": defineStyle({
-    fontSize: ["6xl", null, "7xl"],
-    lineHeight: 1
-  }),
-  "3xl": defineStyle({
-    fontSize: ["5xl", null, "6xl"],
-    lineHeight: 1
-  }),
-  "2xl": defineStyle({
-    fontSize: ["4xl", null, "5xl"],
-    lineHeight: [1.2, null, 1]
-  }),
-  xl: defineStyle({
-    fontSize: ["3xl", null, "4xl"],
-    lineHeight: [1.33, null, 1.2]
-  }),
-  lg: defineStyle({
-    fontSize: ["2xl", null, "3xl"],
-    lineHeight: [1.33, null, 1.2]
-  }),
-  md: defineStyle({
-    fontSize: "xl",
-    lineHeight: 1.2
-  }),
-  sm: defineStyle({
-    fontSize: "md",
-    lineHeight: 1.2
-  }),
-  xs: defineStyle({
-    fontSize: "sm",
-    lineHeight: 1.2
-  })
-};
-var headingTheme = defineStyleConfig({
-  baseStyle: baseStyle$a,
-  sizes: sizes$6,
-  defaultProps: {
-    size: "xl"
-  }
-});
-
-// src/components/breadcrumb.ts
-var { defineMultiStyleConfig: defineMultiStyleConfig$4, definePartsStyle: definePartsStyle$4 } = createMultiStyleConfigHelpers(breadcrumbAnatomy.keys);
-var $decor = cssVar$1("breadcrumb-link-decor");
-var baseStyleLink = defineStyle({
-  transitionProperty: "common",
-  transitionDuration: "fast",
-  transitionTimingFunction: "ease-out",
-  outline: "none",
-  color: "inherit",
-  textDecoration: $decor.reference,
-  [$decor.variable]: "none",
-  "&:not([aria-current=page])": {
-    cursor: "pointer",
-    _hover: {
-      [$decor.variable]: "underline"
-    },
-    _focusVisible: {
-      boxShadow: "outline"
-    }
-  }
-});
-var baseStyle$9 = definePartsStyle$4({
-  link: baseStyleLink
-});
-var breadcrumbTheme = defineMultiStyleConfig$4({
-  baseStyle: baseStyle$9
-});
-
-var baseStyle$8 = defineStyle({
-  lineHeight: "1.2",
-  borderRadius: "md",
-  fontWeight: "semibold",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  _focusVisible: {
-    boxShadow: "outline"
-  },
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed",
-    boxShadow: "none"
-  },
-  _hover: {
-    _disabled: {
-      bg: "initial"
-    }
-  }
-});
-var variantGhost = defineStyle((props) => {
-  const { colorScheme: c, theme } = props;
-  if (c === "gray") {
-    return {
-      color: mode(`gray.800`, `whiteAlpha.900`)(props),
-      _hover: {
-        bg: mode(`gray.100`, `whiteAlpha.200`)(props)
-      },
-      _active: { bg: mode(`gray.200`, `whiteAlpha.300`)(props) }
-    };
-  }
-  const darkHoverBg = transparentize(`${c}.200`, 0.12)(theme);
-  const darkActiveBg = transparentize(`${c}.200`, 0.24)(theme);
-  return {
-    color: mode(`${c}.600`, `${c}.200`)(props),
-    bg: "transparent",
-    _hover: {
-      bg: mode(`${c}.50`, darkHoverBg)(props)
-    },
-    _active: {
-      bg: mode(`${c}.100`, darkActiveBg)(props)
-    }
-  };
-});
-var variantOutline = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  const borderColor = mode(`gray.200`, `whiteAlpha.300`)(props);
-  return {
-    border: "1px solid",
-    borderColor: c === "gray" ? borderColor : "currentColor",
-    ".chakra-button__group[data-attached][data-orientation=horizontal] > &:not(:last-of-type)": { marginEnd: "-1px" },
-    ".chakra-button__group[data-attached][data-orientation=vertical] > &:not(:last-of-type)": { marginBottom: "-1px" },
-    ...runIfFn$1(variantGhost, props)
-  };
-});
-var accessibleColorMap = {
-  yellow: {
-    bg: "yellow.400",
-    color: "black",
-    hoverBg: "yellow.500",
-    activeBg: "yellow.600"
-  },
-  cyan: {
-    bg: "cyan.400",
-    color: "black",
-    hoverBg: "cyan.500",
-    activeBg: "cyan.600"
-  }
-};
-var variantSolid$2 = defineStyle((props) => {
-  var _a;
-  const { colorScheme: c } = props;
-  if (c === "gray") {
-    const bg2 = mode(`gray.100`, `whiteAlpha.200`)(props);
-    return {
-      bg: bg2,
-      color: mode(`gray.800`, `whiteAlpha.900`)(props),
-      _hover: {
-        bg: mode(`gray.200`, `whiteAlpha.300`)(props),
-        _disabled: {
-          bg: bg2
-        }
-      },
-      _active: { bg: mode(`gray.300`, `whiteAlpha.400`)(props) }
-    };
-  }
-  const {
-    bg = `${c}.500`,
-    color = "white",
-    hoverBg = `${c}.600`,
-    activeBg = `${c}.700`
-  } = (_a = accessibleColorMap[c]) != null ? _a : {};
-  const background = mode(bg, `${c}.200`)(props);
-  return {
-    bg: background,
-    color: mode(color, `gray.800`)(props),
-    _hover: {
-      bg: mode(hoverBg, `${c}.300`)(props),
-      _disabled: {
-        bg: background
-      }
-    },
-    _active: { bg: mode(activeBg, `${c}.400`)(props) }
-  };
-});
-var variantLink = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  return {
-    padding: 0,
-    height: "auto",
-    lineHeight: "normal",
-    verticalAlign: "baseline",
-    color: mode(`${c}.500`, `${c}.200`)(props),
-    _hover: {
-      textDecoration: "underline",
-      _disabled: {
-        textDecoration: "none"
-      }
-    },
-    _active: {
-      color: mode(`${c}.700`, `${c}.500`)(props)
-    }
-  };
-});
-var variantUnstyled = defineStyle({
-  bg: "none",
-  color: "inherit",
-  display: "inline",
-  lineHeight: "inherit",
-  m: "0",
-  p: "0"
-});
-var variants$4 = {
-  ghost: variantGhost,
-  outline: variantOutline,
-  solid: variantSolid$2,
-  link: variantLink,
-  unstyled: variantUnstyled
-};
-var sizes$5 = {
-  lg: defineStyle({
-    h: "12",
-    minW: "12",
-    fontSize: "lg",
-    px: "6"
-  }),
-  md: defineStyle({
-    h: "10",
-    minW: "10",
-    fontSize: "md",
-    px: "4"
-  }),
-  sm: defineStyle({
-    h: "8",
-    minW: "8",
-    fontSize: "sm",
-    px: "3"
-  }),
-  xs: defineStyle({
-    h: "6",
-    minW: "6",
-    fontSize: "xs",
-    px: "2"
-  })
-};
-var buttonTheme = defineStyleConfig({
-  baseStyle: baseStyle$8,
-  variants: variants$4,
-  sizes: sizes$5,
-  defaultProps: {
-    variant: "solid",
-    size: "md",
-    colorScheme: "gray"
-  }
-});
-
-// src/components/card.ts
-var { definePartsStyle: definePartsStyle$3, defineMultiStyleConfig: defineMultiStyleConfig$3 } = createMultiStyleConfigHelpers(cardAnatomy.keys);
-var $bg$3 = cssVar$1("card-bg");
-var $padding = cssVar$1("card-padding");
-var $shadow = cssVar$1("card-shadow");
-var $radius = cssVar$1("card-radius");
-var $border$1 = cssVar$1("card-border-width", "0");
-var $borderColor = cssVar$1("card-border-color");
-var baseStyle$7 = definePartsStyle$3({
-  container: {
-    [$bg$3.variable]: "colors.chakra-body-bg",
-    backgroundColor: $bg$3.reference,
-    boxShadow: $shadow.reference,
-    borderRadius: $radius.reference,
-    color: "chakra-body-text",
-    borderWidth: $border$1.reference,
-    borderColor: $borderColor.reference
-  },
-  body: {
-    padding: $padding.reference,
-    flex: "1 1 0%"
-  },
-  header: {
-    padding: $padding.reference
-  },
-  footer: {
-    padding: $padding.reference
-  }
-});
-var sizes$4 = {
-  sm: definePartsStyle$3({
-    container: {
-      [$radius.variable]: "radii.base",
-      [$padding.variable]: "space.3"
-    }
-  }),
-  md: definePartsStyle$3({
-    container: {
-      [$radius.variable]: "radii.md",
-      [$padding.variable]: "space.5"
-    }
-  }),
-  lg: definePartsStyle$3({
-    container: {
-      [$radius.variable]: "radii.xl",
-      [$padding.variable]: "space.7"
-    }
-  })
-};
-var variants$3 = {
-  elevated: definePartsStyle$3({
-    container: {
-      [$shadow.variable]: "shadows.base",
-      _dark: {
-        [$bg$3.variable]: "colors.gray.700"
-      }
-    }
-  }),
-  outline: definePartsStyle$3({
-    container: {
-      [$border$1.variable]: "1px",
-      [$borderColor.variable]: "colors.chakra-border-color"
-    }
-  }),
-  filled: definePartsStyle$3({
-    container: {
-      [$bg$3.variable]: "colors.chakra-subtle-bg"
-    }
-  }),
-  unstyled: {
-    body: {
-      [$padding.variable]: 0
-    },
-    header: {
-      [$padding.variable]: 0
-    },
-    footer: {
-      [$padding.variable]: 0
-    }
-  }
-};
-var cardTheme = defineMultiStyleConfig$3({
-  baseStyle: baseStyle$7,
-  variants: variants$3,
-  sizes: sizes$4,
-  defaultProps: {
-    variant: "elevated",
-    size: "md"
-  }
-});
-
-// src/components/close-button.ts
-var $size$1 = cssVar("close-button-size");
-var $bg$2 = cssVar("close-button-bg");
-var baseStyle$6 = defineStyle({
-  w: [$size$1.reference],
-  h: [$size$1.reference],
-  borderRadius: "md",
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed",
-    boxShadow: "none"
-  },
-  _hover: {
-    [$bg$2.variable]: "colors.blackAlpha.100",
-    _dark: {
-      [$bg$2.variable]: "colors.whiteAlpha.100"
-    }
-  },
-  _active: {
-    [$bg$2.variable]: "colors.blackAlpha.200",
-    _dark: {
-      [$bg$2.variable]: "colors.whiteAlpha.200"
-    }
-  },
-  _focusVisible: {
-    boxShadow: "outline"
-  },
-  bg: $bg$2.reference
-});
-var sizes$3 = {
-  lg: defineStyle({
-    [$size$1.variable]: "sizes.10",
-    fontSize: "md"
-  }),
-  md: defineStyle({
-    [$size$1.variable]: "sizes.8",
-    fontSize: "xs"
-  }),
-  sm: defineStyle({
-    [$size$1.variable]: "sizes.6",
-    fontSize: "2xs"
-  })
-};
-var closeButtonTheme = defineStyleConfig({
-  baseStyle: baseStyle$6,
-  sizes: sizes$3,
-  defaultProps: {
-    size: "md"
-  }
-});
-
-var { variants: variants$2, defaultProps: defaultProps$1 } = badgeTheme;
-var baseStyle$5 = defineStyle({
-  fontFamily: "mono",
-  fontSize: "sm",
-  px: "0.2em",
-  borderRadius: "sm",
-  bg: vars.bg.reference,
-  color: vars.color.reference,
-  boxShadow: vars.shadow.reference
-});
-var codeTheme = defineStyleConfig({
-  baseStyle: baseStyle$5,
-  variants: variants$2,
-  defaultProps: defaultProps$1
-});
-
-// src/components/container.ts
-var baseStyle$4 = defineStyle({
-  w: "100%",
-  mx: "auto",
-  maxW: "prose",
-  px: "4"
-});
-var containerTheme = defineStyleConfig({
-  baseStyle: baseStyle$4
-});
-
-// src/components/divider.ts
-var baseStyle$3 = defineStyle({
-  opacity: 0.6,
-  borderColor: "inherit"
-});
-var variantSolid$1 = defineStyle({
-  borderStyle: "solid"
-});
-var variantDashed = defineStyle({
-  borderStyle: "dashed"
-});
-var variants$1 = {
-  solid: variantSolid$1,
-  dashed: variantDashed
-};
-var dividerTheme = defineStyleConfig({
-  baseStyle: baseStyle$3,
-  variants: variants$1,
-  defaultProps: {
-    variant: "solid"
-  }
-});
-
-// src/components/accordion.ts
-var { definePartsStyle: definePartsStyle$2, defineMultiStyleConfig: defineMultiStyleConfig$2 } = createMultiStyleConfigHelpers(accordionAnatomy.keys);
-var baseStyleContainer$1 = defineStyle({
-  borderTopWidth: "1px",
-  borderColor: "inherit",
-  _last: {
-    borderBottomWidth: "1px"
-  }
-});
-var baseStyleButton = defineStyle({
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  fontSize: "md",
-  _focusVisible: {
-    boxShadow: "outline"
-  },
-  _hover: {
-    bg: "blackAlpha.50"
-  },
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed"
-  },
-  px: "4",
-  py: "2"
-});
-var baseStylePanel = defineStyle({
-  pt: "2",
-  px: "4",
-  pb: "5"
-});
-var baseStyleIcon = defineStyle({
-  fontSize: "1.25em"
-});
-var baseStyle$2 = definePartsStyle$2({
-  container: baseStyleContainer$1,
-  button: baseStyleButton,
-  panel: baseStylePanel,
-  icon: baseStyleIcon
-});
-var accordionTheme = defineMultiStyleConfig$2({ baseStyle: baseStyle$2 });
-
-// src/components/alert.ts
-var { definePartsStyle: definePartsStyle$1, defineMultiStyleConfig: defineMultiStyleConfig$1 } = createMultiStyleConfigHelpers(alertAnatomy.keys);
-var $fg = cssVar$1("alert-fg");
-var $bg$1 = cssVar$1("alert-bg");
-var baseStyle$1 = definePartsStyle$1({
-  container: {
-    bg: $bg$1.reference,
-    px: "4",
-    py: "3"
-  },
-  title: {
-    fontWeight: "bold",
-    lineHeight: "6",
-    marginEnd: "2"
-  },
-  description: {
-    lineHeight: "6"
-  },
-  icon: {
-    color: $fg.reference,
-    flexShrink: 0,
-    marginEnd: "3",
-    w: "5",
-    h: "6"
-  },
-  spinner: {
-    color: $fg.reference,
-    flexShrink: 0,
-    marginEnd: "3",
-    w: "5",
-    h: "5"
-  }
-});
-function getBg(props) {
-  const { theme, colorScheme: c } = props;
-  const darkBg = transparentize(`${c}.200`, 0.16)(theme);
-  return {
-    light: `colors.${c}.100`,
-    dark: darkBg
-  };
-}
-var variantSubtle = definePartsStyle$1((props) => {
-  const { colorScheme: c } = props;
-  const bg = getBg(props);
-  return {
-    container: {
-      [$fg.variable]: `colors.${c}.600`,
-      [$bg$1.variable]: bg.light,
-      _dark: {
-        [$fg.variable]: `colors.${c}.200`,
-        [$bg$1.variable]: bg.dark
-      }
-    }
-  };
-});
-var variantLeftAccent = definePartsStyle$1((props) => {
-  const { colorScheme: c } = props;
-  const bg = getBg(props);
-  return {
-    container: {
-      [$fg.variable]: `colors.${c}.600`,
-      [$bg$1.variable]: bg.light,
-      _dark: {
-        [$fg.variable]: `colors.${c}.200`,
-        [$bg$1.variable]: bg.dark
-      },
-      paddingStart: "3",
-      borderStartWidth: "4px",
-      borderStartColor: $fg.reference
-    }
-  };
-});
-var variantTopAccent = definePartsStyle$1((props) => {
-  const { colorScheme: c } = props;
-  const bg = getBg(props);
-  return {
-    container: {
-      [$fg.variable]: `colors.${c}.600`,
-      [$bg$1.variable]: bg.light,
-      _dark: {
-        [$fg.variable]: `colors.${c}.200`,
-        [$bg$1.variable]: bg.dark
-      },
-      pt: "2",
-      borderTopWidth: "4px",
-      borderTopColor: $fg.reference
-    }
-  };
-});
-var variantSolid = definePartsStyle$1((props) => {
-  const { colorScheme: c } = props;
-  return {
-    container: {
-      [$fg.variable]: `colors.white`,
-      [$bg$1.variable]: `colors.${c}.600`,
-      _dark: {
-        [$fg.variable]: `colors.gray.900`,
-        [$bg$1.variable]: `colors.${c}.200`
-      },
-      color: $fg.reference
-    }
-  };
-});
-var variants = {
-  subtle: variantSubtle,
-  "left-accent": variantLeftAccent,
-  "top-accent": variantTopAccent,
-  solid: variantSolid
-};
-var alertTheme = defineMultiStyleConfig$1({
-  baseStyle: baseStyle$1,
-  variants,
-  defaultProps: {
-    variant: "subtle",
-    colorScheme: "blue"
-  }
-});
-
-var { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(avatarAnatomy.keys);
-var $border = cssVar$1("avatar-border-color");
-var $bg = cssVar$1("avatar-bg");
-var $fs = cssVar$1("avatar-font-size");
-var $size = cssVar$1("avatar-size");
-var baseStyleBadge = defineStyle({
-  borderRadius: "full",
-  border: "0.2em solid",
-  borderColor: $border.reference,
-  [$border.variable]: "white",
-  _dark: {
-    [$border.variable]: "colors.gray.800"
-  }
-});
-var baseStyleExcessLabel = defineStyle({
-  bg: $bg.reference,
-  fontSize: $fs.reference,
-  width: $size.reference,
-  height: $size.reference,
-  lineHeight: "1",
-  [$bg.variable]: "colors.gray.200",
-  _dark: {
-    [$bg.variable]: "colors.whiteAlpha.400"
-  }
-});
-var baseStyleContainer = defineStyle((props) => {
-  const { name, theme } = props;
-  const bg = name ? randomColor({ string: name }) : "colors.gray.400";
-  const isBgDark = isDark(bg)(theme);
-  let color = "white";
-  if (!isBgDark)
-    color = "gray.800";
-  return {
-    bg: $bg.reference,
-    fontSize: $fs.reference,
-    color,
-    borderColor: $border.reference,
-    verticalAlign: "top",
-    width: $size.reference,
-    height: $size.reference,
-    "&:not([data-loaded])": {
-      [$bg.variable]: bg
-    },
-    [$border.variable]: "colors.white",
-    _dark: {
-      [$border.variable]: "colors.gray.800"
-    }
-  };
-});
-var baseStyleLabel = defineStyle({
-  fontSize: $fs.reference,
-  lineHeight: "1"
-});
-var baseStyle = definePartsStyle((props) => ({
-  badge: runIfFn$1(baseStyleBadge, props),
-  excessLabel: runIfFn$1(baseStyleExcessLabel, props),
-  container: runIfFn$1(baseStyleContainer, props),
-  label: baseStyleLabel
-}));
-function getSize(size) {
-  const themeSize = size !== "100%" ? sizes_default[size] : void 0;
-  return definePartsStyle({
-    container: {
-      [$size.variable]: themeSize != null ? themeSize : size,
-      [$fs.variable]: `calc(${themeSize != null ? themeSize : size} / 2.5)`
-    },
-    excessLabel: {
-      [$size.variable]: themeSize != null ? themeSize : size,
-      [$fs.variable]: `calc(${themeSize != null ? themeSize : size} / 2.5)`
-    }
-  });
-}
-var sizes$2 = {
-  "2xs": getSize(4),
-  xs: getSize(6),
-  sm: getSize(8),
-  md: getSize(12),
-  lg: getSize(16),
-  xl: getSize(24),
-  "2xl": getSize(32),
-  full: getSize("100%")
-};
-var avatarTheme = defineMultiStyleConfig({
-  baseStyle,
-  sizes: sizes$2,
-  defaultProps: {
-    size: "md"
-  }
-});
-
-// src/components/index.ts
-var components = {
-  Accordion: accordionTheme,
-  Alert: alertTheme,
-  Avatar: avatarTheme,
-  Badge: badgeTheme,
-  Breadcrumb: breadcrumbTheme,
-  Button: buttonTheme,
-  Checkbox: checkboxTheme,
-  CloseButton: closeButtonTheme,
-  Code: codeTheme,
-  Container: containerTheme,
-  Divider: dividerTheme,
-  Drawer: drawerTheme,
-  Editable: editableTheme,
-  Form: formTheme,
-  FormError: formErrorTheme,
-  FormLabel: formLabelTheme,
-  Heading: headingTheme,
-  Input: inputTheme,
-  Kbd: kbdTheme,
-  Link: linkTheme,
-  List: listTheme,
-  Menu: menuTheme,
-  Modal: modalTheme,
-  NumberInput: numberInputTheme,
-  PinInput: pinInputTheme,
-  Popover: popoverTheme,
-  Progress: progressTheme,
-  Radio: radioTheme,
-  Select: selectTheme,
-  Skeleton: skeletonTheme,
-  SkipLink: skipLinkTheme,
-  Slider: sliderTheme,
-  Spinner: spinnerTheme,
-  Stat: statTheme,
-  Switch: switchTheme,
-  Table: tableTheme,
-  Tabs: tabsTheme,
-  Tag: tagTheme,
-  Textarea: textareaTheme,
-  Tooltip: tooltipTheme,
-  Card: cardTheme,
-  Stepper: stepperTheme
-};
-
-// src/semantic-tokens.ts
-var semanticTokens$1 = {
-  colors: {
-    "chakra-body-text": { _light: "gray.800", _dark: "whiteAlpha.900" },
-    "chakra-body-bg": { _light: "white", _dark: "gray.800" },
-    "chakra-border-color": { _light: "gray.200", _dark: "whiteAlpha.300" },
-    "chakra-inverse-text": { _light: "white", _dark: "gray.800" },
-    "chakra-subtle-bg": { _light: "gray.100", _dark: "gray.700" },
-    "chakra-subtle-text": { _light: "gray.600", _dark: "gray.400" },
-    "chakra-placeholder-color": { _light: "gray.500", _dark: "whiteAlpha.400" }
-  }
-};
-
-// src/styles.ts
-var styles$1 = {
-  global: {
-    body: {
-      fontFamily: "body",
-      color: "chakra-body-text",
-      bg: "chakra-body-bg",
-      transitionProperty: "background-color",
-      transitionDuration: "normal",
-      lineHeight: "base"
-    },
-    "*::placeholder": {
-      color: "chakra-placeholder-color"
-    },
-    "*, *::before, &::after": {
-      borderColor: "chakra-border-color"
-    }
-  }
-};
-
-// src/index.ts
-var direction$1 = "ltr";
-var config$1 = {
-  useSystemColorMode: false,
-  initialColorMode: "light",
-  cssVarPrefix: "chakra"
-};
-var theme$1 = {
-  semanticTokens: semanticTokens$1,
-  direction: direction$1,
-  ...foundations$1,
-  components,
-  styles: styles$1,
-  config: config$1
-};
-({
-  semanticTokens: semanticTokens$1,
-  direction: direction$1,
-  components: {},
-  ...foundations$1,
-  styles: styles$1,
-  config: config$1
-});
-
-// src/extend-theme.ts
-function isFunction$1(value) {
-  return typeof value === "function";
-}
-function pipe$1(...fns) {
-  return (v) => fns.reduce((a, b) => b(a), v);
-}
-var createExtendTheme = (theme2) => {
-  return function extendTheme2(...extensions) {
-    let overrides = [...extensions];
-    let activeTheme = extensions[extensions.length - 1];
-    if (isChakraTheme(activeTheme) && // this ensures backward compatibility
-    // previously only `extendTheme(override, activeTheme?)` was allowed
-    overrides.length > 1) {
-      overrides = overrides.slice(0, overrides.length - 1);
-    } else {
-      activeTheme = theme2;
-    }
-    return pipe$1(
-      ...overrides.map(
-        (extension) => (prevTheme) => isFunction$1(extension) ? extension(prevTheme) : mergeThemeOverride(prevTheme, extension)
-      )
-    )(activeTheme);
-  };
-};
-var extendTheme = createExtendTheme(theme$1);
-function mergeThemeOverride(...overrides) {
-  return lodash_mergewith({}, ...overrides, mergeThemeCustomizer);
-}
-function mergeThemeCustomizer(source, override, key, object) {
-  if ((isFunction$1(source) || isFunction$1(override)) && Object.prototype.hasOwnProperty.call(object, key)) {
-    return (...args) => {
-      const sourceValue = isFunction$1(source) ? source(...args) : source;
-      const overrideValue = isFunction$1(override) ? override(...args) : override;
-      return lodash_mergewith({}, sourceValue, overrideValue, mergeThemeCustomizer);
-    };
-  }
-  return void 0;
-}
-
 // src/object.ts
-function omit(object, keys) {
+function omit$1(object, keys) {
   const result = {};
   Object.keys(object).forEach((key) => {
     if (keys.includes(key))
@@ -27874,7 +23335,7 @@ function omit(object, keys) {
   });
   return result;
 }
-function get(obj, path, fallback, index) {
+function get$4(obj, path, fallback, index) {
   const key = typeof path === "string" ? path.split(".") : [path];
   for (index = 0; index < key.length; index += 1) {
     if (!obj)
@@ -27883,7 +23344,7 @@ function get(obj, path, fallback, index) {
   }
   return obj === void 0 ? fallback : obj;
 }
-var memoize$1 = (fn) => {
+var memoize$4 = (fn) => {
   const cache = /* @__PURE__ */ new WeakMap();
   const memoizedFn = (obj, path, fallback, index) => {
     if (typeof obj === "undefined") {
@@ -27902,7 +23363,7 @@ var memoize$1 = (fn) => {
   };
   return memoizedFn;
 };
-var memoizedGet = memoize$1(get);
+var memoizedGet$3 = memoize$4(get$4);
 function objectFilter(object, fn) {
   const result = {};
   Object.keys(object).forEach((key) => {
@@ -27917,15 +23378,15 @@ function objectFilter(object, fn) {
 var filterUndefined = (object) => objectFilter(object, (val) => val !== null && val !== void 0);
 
 // src/assertion.ts
-function isFunction(value) {
+function isFunction$3(value) {
   return typeof value === "function";
 }
 process.env.NODE_ENV !== "production";
 process.env.NODE_ENV === "test";
 
 // src/function.ts
-function runIfFn(valueOrFn, ...args) {
-  return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
+function runIfFn$2(valueOrFn, ...args) {
+  return isFunction$3(valueOrFn) ? valueOrFn(...args) : valueOrFn;
 }
 
 /* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
@@ -28067,20 +23528,20 @@ var reactFastCompare = function isEqual(a, b) {
   }
 };
 
-function useStyleConfigImpl(themeKey, props = {}) {
+function useStyleConfigImpl$1(themeKey, props = {}) {
   var _a;
   const { styleConfig: styleConfigProp, ...rest } = props;
-  const { theme, colorMode } = useChakra();
-  const themeStyleConfig = themeKey ? memoizedGet(theme, `components.${themeKey}`) : void 0;
+  const { theme, colorMode } = useChakra$1();
+  const themeStyleConfig = themeKey ? memoizedGet$3(theme, `components.${themeKey}`) : void 0;
   const styleConfig = styleConfigProp || themeStyleConfig;
-  const mergedProps = lodash_mergewith(
+  const mergedProps = mergeWith(
     { theme, colorMode },
     (_a = styleConfig == null ? void 0 : styleConfig.defaultProps) != null ? _a : {},
-    filterUndefined(omit(rest, ["children"]))
+    filterUndefined(omit$1(rest, ["children"]))
   );
-  const stylesRef = useRef({});
+  const stylesRef = useRef$1({});
   if (styleConfig) {
-    const getStyles = resolveStyleConfig(styleConfig);
+    const getStyles = resolveStyleConfig$1(styleConfig);
     const styles = getStyles(mergedProps);
     const isStyleEqual = reactFastCompare(stylesRef.current, styles);
     if (!isStyleEqual) {
@@ -28089,15 +23550,15 @@ function useStyleConfigImpl(themeKey, props = {}) {
   }
   return stylesRef.current;
 }
-function useStyleConfig(themeKey, props = {}) {
-  return useStyleConfigImpl(themeKey, props);
+function useStyleConfig$1(themeKey, props = {}) {
+  return useStyleConfigImpl$1(themeKey, props);
 }
-function useMultiStyleConfig(themeKey, props = {}) {
-  return useStyleConfigImpl(themeKey, props);
+function useMultiStyleConfig$1(themeKey, props = {}) {
+  return useStyleConfigImpl$1(themeKey, props);
 }
 
-var allPropNames = /* @__PURE__ */ new Set([
-  ...propNames,
+var allPropNames$1 = /* @__PURE__ */ new Set([
+  ...propNames$1,
   "textStyle",
   "layerStyle",
   "apply",
@@ -28109,18 +23570,18 @@ var allPropNames = /* @__PURE__ */ new Set([
   "css",
   "sx"
 ]);
-var validHTMLProps = /* @__PURE__ */ new Set([
+var validHTMLProps$1 = /* @__PURE__ */ new Set([
   "htmlWidth",
   "htmlHeight",
   "htmlSize",
   "htmlTranslate"
 ]);
-function shouldForwardProp(prop) {
-  return validHTMLProps.has(prop) || !allPropNames.has(prop);
+function shouldForwardProp$1(prop) {
+  return validHTMLProps$1.has(prop) || !allPropNames$1.has(prop);
 }
 
 // src/assign-after.ts
-function assignAfter(target, ...sources) {
+function assignAfter$1(target, ...sources) {
   if (target == null) {
     throw new TypeError("Cannot convert undefined or null to object");
   }
@@ -28139,93 +23600,15 @@ function assignAfter(target, ...sources) {
   return result;
 }
 
-// src/compact.ts
-function compact(object) {
-  const clone = Object.assign({}, object);
-  for (let key in clone) {
-    if (clone[key] === void 0)
-      delete clone[key];
-  }
-  return clone;
-}
-
 function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return _extends = Object.assign ? Object.assign.bind() : function (n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
     }
-    return target;
-  };
-  return _extends.apply(this, arguments);
+    return n;
+  }, _extends.apply(null, arguments);
 }
-
-function memoize(fn) {
-  var cache = Object.create(null);
-  return function (arg) {
-    if (cache[arg] === undefined) cache[arg] = fn(arg);
-    return cache[arg];
-  };
-}
-
-var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
-
-var isPropValid = /* #__PURE__ */memoize(function (prop) {
-  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
-  /* o */
-  && prop.charCodeAt(1) === 110
-  /* n */
-  && prop.charCodeAt(2) < 91;
-}
-/* Z+1 */
-);
-
-var isBrowser$1 = "object" !== 'undefined';
-function getRegisteredStyles(registered, registeredStyles, classNames) {
-  var rawClassName = '';
-  classNames.split(' ').forEach(function (className) {
-    if (registered[className] !== undefined) {
-      registeredStyles.push(registered[className] + ";");
-    } else {
-      rawClassName += className + " ";
-    }
-  });
-  return rawClassName;
-}
-var registerStyles = function registerStyles(cache, serialized, isStringTag) {
-  var className = cache.key + "-" + serialized.name;
-
-  if ( // we only need to add the styles to the registered cache if the
-  // class name could be used further down
-  // the tree but if it's a string tag, we know it won't
-  // so we don't have to add it to registered cache.
-  // this improves memory usage since we can avoid storing the whole style string
-  (isStringTag === false || // we need to always store it if we're in compat mode and
-  // in node since emotion-server relies on whether a style is in
-  // the registered cache to know whether a style is global or not
-  // also, note that this check will be dead code eliminated in the browser
-  isBrowser$1 === false ) && cache.registered[className] === undefined) {
-    cache.registered[className] = serialized.styles;
-  }
-};
-var insertStyles = function insertStyles(cache, serialized, isStringTag) {
-  registerStyles(cache, serialized, isStringTag);
-  var className = cache.key + "-" + serialized.name;
-
-  if (cache.inserted[serialized.name] === undefined) {
-    var current = serialized;
-
-    do {
-      cache.insert(serialized === current ? "." + className : '', current, cache.sheet, true);
-
-      current = current.next;
-    } while (current !== undefined);
-  }
-};
 
 /* eslint-disable */
 // Inspired by https://github.com/garycourt/murmurhash-js
@@ -28315,6 +23698,7 @@ var unitlessKeys = {
   opacity: 1,
   order: 1,
   orphans: 1,
+  scale: 1,
   tabSize: 1,
   widows: 1,
   zIndex: 1,
@@ -28331,8 +23715,16 @@ var unitlessKeys = {
   strokeWidth: 1
 };
 
-var ILLEGAL_ESCAPE_SEQUENCE_ERROR$1 = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
-var UNDEFINED_AS_OBJECT_KEY_ERROR = "You have passed in falsy value as style object's key (can happen when in example you pass unexported component as computed key).";
+function memoize$3(fn) {
+  var cache = Object.create(null);
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
+
+var isDevelopment$2 = false;
+
 var hyphenateRegex = /[A-Z]|^ms/g;
 var animationRegex = /_EMO_([^_]+?)_([^]*?)_EMO_/g;
 
@@ -28344,7 +23736,7 @@ var isProcessableValue = function isProcessableValue(value) {
   return value != null && typeof value !== 'boolean';
 };
 
-var processStyleName = /* #__PURE__ */memoize(function (styleName) {
+var processStyleName = /* #__PURE__ */memoize$3(function (styleName) {
   return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, '-$&').toLowerCase();
 });
 
@@ -28373,34 +23765,6 @@ var processStyleValue = function processStyleValue(key, value) {
   return value;
 };
 
-if (process.env.NODE_ENV !== 'production') {
-  var contentValuePattern = /(var|attr|counters?|url|element|(((repeating-)?(linear|radial))|conic)-gradient)\(|(no-)?(open|close)-quote/;
-  var contentValues = ['normal', 'none', 'initial', 'inherit', 'unset'];
-  var oldProcessStyleValue = processStyleValue;
-  var msPattern = /^-ms-/;
-  var hyphenPattern = /-(.)/g;
-  var hyphenatedCache = {};
-
-  processStyleValue = function processStyleValue(key, value) {
-    if (key === 'content') {
-      if (typeof value !== 'string' || contentValues.indexOf(value) === -1 && !contentValuePattern.test(value) && (value.charAt(0) !== value.charAt(value.length - 1) || value.charAt(0) !== '"' && value.charAt(0) !== "'")) {
-        throw new Error("You seem to be using a value for 'content' without quotes, try replacing it with `content: '\"" + value + "\"'`");
-      }
-    }
-
-    var processed = oldProcessStyleValue(key, value);
-
-    if (processed !== '' && !isCustomProperty(key) && key.indexOf('-') !== -1 && hyphenatedCache[key] === undefined) {
-      hyphenatedCache[key] = true;
-      console.error("Using kebab-case for css properties in objects is not supported. Did you mean " + key.replace(msPattern, 'ms-').replace(hyphenPattern, function (str, _char) {
-        return _char.toUpperCase();
-      }) + "?");
-    }
-
-    return processed;
-  };
-}
-
 var noComponentSelectorMessage = 'Component selectors can only be used in conjunction with ' + '@emotion/babel-plugin, the swc Emotion plugin, or another Emotion-aware ' + 'compiler transform.';
 
 function handleInterpolation(mergedProps, registered, interpolation) {
@@ -28408,12 +23772,11 @@ function handleInterpolation(mergedProps, registered, interpolation) {
     return '';
   }
 
-  if (interpolation.__emotion_styles !== undefined) {
-    if (process.env.NODE_ENV !== 'production' && interpolation.toString() === 'NO_COMPONENT_SELECTOR') {
-      throw new Error(noComponentSelectorMessage);
-    }
+  var componentSelector = interpolation;
 
-    return interpolation;
+  if (componentSelector.__emotion_styles !== undefined) {
+
+    return componentSelector;
   }
 
   switch (typeof interpolation) {
@@ -28424,17 +23787,21 @@ function handleInterpolation(mergedProps, registered, interpolation) {
 
     case 'object':
       {
-        if (interpolation.anim === 1) {
+        var keyframes = interpolation;
+
+        if (keyframes.anim === 1) {
           cursor = {
-            name: interpolation.name,
-            styles: interpolation.styles,
+            name: keyframes.name,
+            styles: keyframes.styles,
             next: cursor
           };
-          return interpolation.name;
+          return keyframes.name;
         }
 
-        if (interpolation.styles !== undefined) {
-          var next = interpolation.next;
+        var serializedStyles = interpolation;
+
+        if (serializedStyles.styles !== undefined) {
+          var next = serializedStyles.next;
 
           if (next !== undefined) {
             // not the most efficient thing ever but this is a pretty rare case
@@ -28449,12 +23816,7 @@ function handleInterpolation(mergedProps, registered, interpolation) {
             }
           }
 
-          var styles = interpolation.styles + ";";
-
-          if (process.env.NODE_ENV !== 'production' && interpolation.map !== undefined) {
-            styles += interpolation.map;
-          }
-
+          var styles = serializedStyles.styles + ";";
           return styles;
         }
 
@@ -28468,37 +23830,21 @@ function handleInterpolation(mergedProps, registered, interpolation) {
           var result = interpolation(mergedProps);
           cursor = previousCursor;
           return handleInterpolation(mergedProps, registered, result);
-        } else if (process.env.NODE_ENV !== 'production') {
-          console.error('Functions that are interpolated in css calls will be stringified.\n' + 'If you want to have a css call based on props, create a function that returns a css call like this\n' + 'let dynamicStyle = (props) => css`color: ${props.color}`\n' + 'It can be called directly with props or interpolated in a styled call like this\n' + "let SomeComponent = styled('div')`${dynamicStyle}`");
         }
 
         break;
       }
-
-    case 'string':
-      if (process.env.NODE_ENV !== 'production') {
-        var matched = [];
-        var replaced = interpolation.replace(animationRegex, function (match, p1, p2) {
-          var fakeVarName = "animation" + matched.length;
-          matched.push("const " + fakeVarName + " = keyframes`" + p2.replace(/^@keyframes animation-\w+/, '') + "`");
-          return "${" + fakeVarName + "}";
-        });
-
-        if (matched.length) {
-          console.error('`keyframes` output got interpolated into plain string, please wrap it with `css`.\n\n' + 'Instead of doing this:\n\n' + [].concat(matched, ["`" + replaced + "`"]).join('\n') + '\n\nYou should wrap it with `css` like this:\n\n' + ("css`" + replaced + "`"));
-        }
-      }
-
-      break;
   } // finalize string values (regular strings and functions interpolated into css calls)
 
 
+  var asString = interpolation;
+
   if (registered == null) {
-    return interpolation;
+    return asString;
   }
 
-  var cached = registered[interpolation];
-  return cached !== undefined ? cached : interpolation;
+  var cached = registered[asString];
+  return cached !== undefined ? cached : asString;
 }
 
 function createStringFromObject(mergedProps, registered, obj) {
@@ -28509,44 +23855,43 @@ function createStringFromObject(mergedProps, registered, obj) {
       string += handleInterpolation(mergedProps, registered, obj[i]) + ";";
     }
   } else {
-    for (var _key in obj) {
-      var value = obj[_key];
+    for (var key in obj) {
+      var value = obj[key];
 
       if (typeof value !== 'object') {
-        if (registered != null && registered[value] !== undefined) {
-          string += _key + "{" + registered[value] + "}";
-        } else if (isProcessableValue(value)) {
-          string += processStyleName(_key) + ":" + processStyleValue(_key, value) + ";";
+        var asString = value;
+
+        if (registered != null && registered[asString] !== undefined) {
+          string += key + "{" + registered[asString] + "}";
+        } else if (isProcessableValue(asString)) {
+          string += processStyleName(key) + ":" + processStyleValue(key, asString) + ";";
         }
       } else {
-        if (_key === 'NO_COMPONENT_SELECTOR' && process.env.NODE_ENV !== 'production') {
+        if (key === 'NO_COMPONENT_SELECTOR' && isDevelopment$2) {
           throw new Error(noComponentSelectorMessage);
         }
 
         if (Array.isArray(value) && typeof value[0] === 'string' && (registered == null || registered[value[0]] === undefined)) {
           for (var _i = 0; _i < value.length; _i++) {
             if (isProcessableValue(value[_i])) {
-              string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i]) + ";";
+              string += processStyleName(key) + ":" + processStyleValue(key, value[_i]) + ";";
             }
           }
         } else {
           var interpolated = handleInterpolation(mergedProps, registered, value);
 
-          switch (_key) {
+          switch (key) {
             case 'animation':
             case 'animationName':
               {
-                string += processStyleName(_key) + ":" + interpolated + ";";
+                string += processStyleName(key) + ":" + interpolated + ";";
                 break;
               }
 
             default:
               {
-                if (process.env.NODE_ENV !== 'production' && _key === 'undefined') {
-                  console.error(UNDEFINED_AS_OBJECT_KEY_ERROR);
-                }
 
-                string += _key + "{" + interpolated + "}";
+                string += key + "{" + interpolated + "}";
               }
           }
         }
@@ -28557,17 +23902,11 @@ function createStringFromObject(mergedProps, registered, obj) {
   return string;
 }
 
-var labelPattern = /label:\s*([^\s;\n{]+)\s*(;|$)/g;
-var sourceMapPattern;
-
-if (process.env.NODE_ENV !== 'production') {
-  sourceMapPattern = /\/\*#\ssourceMappingURL=data:application\/json;\S+\s+\*\//g;
-} // this is the cursor for keyframes
+var labelPattern = /label:\s*([^\s;{]+)\s*(;|$)/g; // this is the cursor for keyframes
 // keyframes are stored on the SerializedStyles object as a linked list
 
-
 var cursor;
-var serializeStyles = function serializeStyles(args, registered, mergedProps) {
+function serializeStyles(args, registered, mergedProps) {
   if (args.length === 1 && typeof args[0] === 'object' && args[0] !== null && args[0].styles !== undefined) {
     return args[0];
   }
@@ -28581,11 +23920,9 @@ var serializeStyles = function serializeStyles(args, registered, mergedProps) {
     stringMode = false;
     styles += handleInterpolation(mergedProps, registered, strings);
   } else {
-    if (process.env.NODE_ENV !== 'production' && strings[0] === undefined) {
-      console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR$1);
-    }
+    var asTemplateStringsArr = strings;
 
-    styles += strings[0];
+    styles += asTemplateStringsArr[0];
   } // we start at 1 since we've already handled the first arg
 
 
@@ -28593,21 +23930,10 @@ var serializeStyles = function serializeStyles(args, registered, mergedProps) {
     styles += handleInterpolation(mergedProps, registered, args[i]);
 
     if (stringMode) {
-      if (process.env.NODE_ENV !== 'production' && strings[i] === undefined) {
-        console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR$1);
-      }
+      var templateStringsArr = strings;
 
-      styles += strings[i];
+      styles += templateStringsArr[i];
     }
-  }
-
-  var sourceMap;
-
-  if (process.env.NODE_ENV !== 'production') {
-    styles = styles.replace(sourceMapPattern, function (match) {
-      sourceMap = match;
-      return '';
-    });
   } // using a global regex with .exec is stateful so lastIndex has to be reset each time
 
 
@@ -28616,38 +23942,96 @@ var serializeStyles = function serializeStyles(args, registered, mergedProps) {
   var match; // https://esbench.com/bench/5b809c2cf2949800a0f61fb5
 
   while ((match = labelPattern.exec(styles)) !== null) {
-    identifierName += '-' + // $FlowFixMe we know it's not null
-    match[1];
+    identifierName += '-' + match[1];
   }
 
   var name = murmur2(styles) + identifierName;
-
-  if (process.env.NODE_ENV !== 'production') {
-    // $FlowFixMe SerializedStyles type doesn't have toString property (and we don't want to add it)
-    return {
-      name: name,
-      styles: styles,
-      map: sourceMap,
-      next: cursor,
-      toString: function toString() {
-        return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).";
-      }
-    };
-  }
 
   return {
     name: name,
     styles: styles,
     next: cursor
   };
-};
+}
+
+var isBrowser$5 = typeof document !== 'undefined';
 
 var syncFallback = function syncFallback(create) {
   return create();
 };
 
 var useInsertionEffect = React['useInsertion' + 'Effect'] ? React['useInsertion' + 'Effect'] : false;
-var useInsertionEffectAlwaysWithSyncFallback = useInsertionEffect || syncFallback;
+var useInsertionEffectAlwaysWithSyncFallback = !isBrowser$5 ? syncFallback : useInsertionEffect || syncFallback;
+
+var isBrowser$4 = typeof document !== 'undefined';
+
+function getRegisteredStyles(registered, registeredStyles, classNames) {
+  var rawClassName = '';
+  classNames.split(' ').forEach(function (className) {
+    if (registered[className] !== undefined) {
+      registeredStyles.push(registered[className] + ";");
+    } else if (className) {
+      rawClassName += className + " ";
+    }
+  });
+  return rawClassName;
+}
+var registerStyles = function registerStyles(cache, serialized, isStringTag) {
+  var className = cache.key + "-" + serialized.name;
+
+  if ( // we only need to add the styles to the registered cache if the
+  // class name could be used further down
+  // the tree but if it's a string tag, we know it won't
+  // so we don't have to add it to registered cache.
+  // this improves memory usage since we can avoid storing the whole style string
+  (isStringTag === false || // we need to always store it if we're in compat mode and
+  // in node since emotion-server relies on whether a style is in
+  // the registered cache to know whether a style is global or not
+  // also, note that this check will be dead code eliminated in the browser
+  isBrowser$4 === false && cache.compat !== undefined) && cache.registered[className] === undefined) {
+    cache.registered[className] = serialized.styles;
+  }
+};
+var insertStyles = function insertStyles(cache, serialized, isStringTag) {
+  registerStyles(cache, serialized, isStringTag);
+  var className = cache.key + "-" + serialized.name;
+
+  if (cache.inserted[serialized.name] === undefined) {
+    var stylesForSSR = '';
+    var current = serialized;
+
+    do {
+      var maybeStyles = cache.insert(serialized === current ? "." + className : '', current, cache.sheet, true);
+
+      if (!isBrowser$4 && maybeStyles !== undefined) {
+        stylesForSSR += maybeStyles;
+      }
+
+      current = current.next;
+    } while (current !== undefined);
+
+    if (!isBrowser$4 && stylesForSSR.length !== 0) {
+      return stylesForSSR;
+    }
+  }
+};
+
+// eslint-disable-next-line no-undef
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|fetchpriority|fetchPriority|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
+
+var isPropValid = /* #__PURE__ */memoize$3(function (prop) {
+  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
+  /* o */
+  && prop.charCodeAt(1) === 110
+  /* n */
+  && prop.charCodeAt(2) < 91;
+}
+/* Z+1 */
+);
+
+var isBrowser$3 = typeof document !== 'undefined';
+
+var isDevelopment$1 = false;
 
 var testOmitPropsOnStringTag = isPropValid;
 
@@ -28678,26 +24062,35 @@ var composeShouldForwardProps = function composeShouldForwardProps(tag, options,
   return shouldForwardProp;
 };
 
-var ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
-
 var Insertion = function Insertion(_ref) {
   var cache = _ref.cache,
       serialized = _ref.serialized,
       isStringTag = _ref.isStringTag;
   registerStyles(cache, serialized, isStringTag);
-  useInsertionEffectAlwaysWithSyncFallback(function () {
+  var rules = useInsertionEffectAlwaysWithSyncFallback(function () {
     return insertStyles(cache, serialized, isStringTag);
   });
+
+  if (!isBrowser$3 && rules !== undefined) {
+    var _ref2;
+
+    var serializedNames = serialized.name;
+    var next = serialized.next;
+
+    while (next !== undefined) {
+      serializedNames += ' ' + next.name;
+      next = next.next;
+    }
+
+    return /*#__PURE__*/React.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
+      __html: rules
+    }, _ref2.nonce = cache.sheet.nonce, _ref2));
+  }
 
   return null;
 };
 
 var createStyled = function createStyled(tag, options) {
-  if (process.env.NODE_ENV !== 'production') {
-    if (tag === undefined) {
-      throw new Error('You are trying to create a styled element with an undefined component.\nYou may have forgotten to import it.');
-    }
-  }
 
   var isReal = tag.__emotion_real === tag;
   var baseTag = isReal && tag.__emotion_base || tag;
@@ -28713,6 +24106,7 @@ var createStyled = function createStyled(tag, options) {
   var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
   var shouldUseAs = !defaultShouldForwardProp('as');
   return function () {
+    // eslint-disable-next-line prefer-rest-params
     var args = arguments;
     var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
 
@@ -28721,25 +24115,20 @@ var createStyled = function createStyled(tag, options) {
     }
 
     if (args[0] == null || args[0].raw === undefined) {
+      // eslint-disable-next-line prefer-spread
       styles.push.apply(styles, args);
     } else {
-      if (process.env.NODE_ENV !== 'production' && args[0][0] === undefined) {
-        console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
-      }
+      var templateStringsArr = args[0];
 
-      styles.push(args[0][0]);
+      styles.push(templateStringsArr[0]);
       var len = args.length;
       var i = 1;
 
       for (; i < len; i++) {
-        if (process.env.NODE_ENV !== 'production' && args[0][i] === undefined) {
-          console.error(ILLEGAL_ESCAPE_SEQUENCE_ERROR);
-        }
 
-        styles.push(args[i], args[0][i]);
+        styles.push(args[i], templateStringsArr[i]);
       }
-    } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
-
+    }
 
     var Styled = withEmotionCache(function (props, cache, ref) {
       var FinalTag = shouldUseAs && props.as || baseTag;
@@ -28776,14 +24165,17 @@ var createStyled = function createStyled(tag, options) {
       for (var _key in props) {
         if (shouldUseAs && _key === 'as') continue;
 
-        if ( // $FlowFixMe
-        finalShouldForwardProp(_key)) {
+        if (finalShouldForwardProp(_key)) {
           newProps[_key] = props[_key];
         }
       }
 
       newProps.className = className;
-      newProps.ref = ref;
+
+      if (ref) {
+        newProps.ref = ref;
+      }
+
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Insertion, {
         cache: cache,
         serialized: serialized,
@@ -28798,19 +24190,19 @@ var createStyled = function createStyled(tag, options) {
     Styled.__emotion_forwardProp = shouldForwardProp;
     Object.defineProperty(Styled, 'toString', {
       value: function value() {
-        if (targetClassName === undefined && process.env.NODE_ENV !== 'production') {
+        if (targetClassName === undefined && isDevelopment$1) {
           return 'NO_COMPONENT_SELECTOR';
-        } // $FlowFixMe: coerce undefined to string
-
+        }
 
         return "." + targetClassName;
       }
     });
 
     Styled.withComponent = function (nextTag, nextOptions) {
-      return createStyled(nextTag, _extends({}, options, nextOptions, {
+      var newStyled = createStyled(nextTag, _extends({}, options, nextOptions, {
         shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
-      })).apply(void 0, styles);
+      }));
+      return newStyled.apply(void 0, styles);
     };
 
     return Styled;
@@ -28820,40 +24212,40 @@ var createStyled = function createStyled(tag, options) {
 var tags = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'marquee', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr', // SVG
 'circle', 'clipPath', 'defs', 'ellipse', 'foreignObject', 'g', 'image', 'line', 'linearGradient', 'mask', 'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect', 'stop', 'svg', 'text', 'tspan'];
 
-var newStyled = createStyled.bind();
+// bind it to avoid mutating the original function
+var styled$2 = createStyled.bind(null);
 tags.forEach(function (tagName) {
-  // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
-  newStyled[tagName] = newStyled(tagName);
+  styled$2[tagName] = styled$2(tagName);
 });
 
 var _a;
-var emotion_styled = (_a = newStyled.default) != null ? _a : newStyled;
-var toCSSObject = ({ baseStyle }) => (props) => {
+var emotion_styled$1 = (_a = styled$2.default) != null ? _a : styled$2;
+var toCSSObject$1 = ({ baseStyle }) => (props) => {
   const { theme, css: cssProp, __css, sx, ...rest } = props;
-  const styleProps = objectFilter(rest, (_, prop) => isStyleProp(prop));
-  const finalBaseStyle = runIfFn(baseStyle, props);
-  const finalStyles = assignAfter(
+  const styleProps = objectFilter(rest, (_, prop) => isStyleProp$1(prop));
+  const finalBaseStyle = runIfFn$2(baseStyle, props);
+  const finalStyles = assignAfter$1(
     {},
     __css,
     finalBaseStyle,
     filterUndefined(styleProps),
     sx
   );
-  const computedCSS = css$1(finalStyles)(props.theme);
+  const computedCSS = css$2(finalStyles)(props.theme);
   return cssProp ? [computedCSS, cssProp] : computedCSS;
 };
-function styled(component, options) {
+function styled$1(component, options) {
   const { baseStyle, ...styledOptions } = options != null ? options : {};
   if (!styledOptions.shouldForwardProp) {
-    styledOptions.shouldForwardProp = shouldForwardProp;
+    styledOptions.shouldForwardProp = shouldForwardProp$1;
   }
-  const styleObject = toCSSObject({ baseStyle });
-  const Component = emotion_styled(
+  const styleObject = toCSSObject$1({ baseStyle });
+  const Component = emotion_styled$1(
     component,
     styledOptions
   )(styleObject);
   const chakraComponent = React__default.forwardRef(function ChakraComponent(props, ref) {
-    const { colorMode, forced } = useColorMode();
+    const { colorMode, forced } = useColorMode$1();
     return React__default.createElement(Component, {
       ref,
       "data-theme": forced ? colorMode : void 0,
@@ -28864,16 +24256,16 @@ function styled(component, options) {
 }
 
 // src/factory.ts
-function factory() {
+function factory$1() {
   const cache = /* @__PURE__ */ new Map();
-  return new Proxy(styled, {
+  return new Proxy(styled$1, {
     /**
      * @example
      * const Div = chakra("div")
      * const WithChakra = chakra(AnotherComponent)
      */
     apply(target, thisArg, argArray) {
-      return styled(...argArray);
+      return styled$1(...argArray);
     },
     /**
      * @example
@@ -28881,80 +24273,20 @@ function factory() {
      */
     get(_, element) {
       if (!cache.has(element)) {
-        cache.set(element, styled(element));
+        cache.set(element, styled$1(element));
       }
       return cache.get(element);
     }
   });
 }
-var chakra = factory();
+var chakra$1 = factory$1();
 
-function forwardRef(component) {
-  return forwardRef$1(component);
-}
-
-// src/context.ts
-function createContext(options = {}) {
-  const {
-    strict = true,
-    errorMessage = "useContext: `context` is undefined. Seems you forgot to wrap component within the Provider",
-    name
-  } = options;
-  const Context = createContext$2(void 0);
-  Context.displayName = name;
-  function useContext$1() {
-    var _a;
-    const context = useContext(Context);
-    if (!context && strict) {
-      const error = new Error(errorMessage);
-      error.name = "ContextError";
-      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext$1);
-      throw error;
-    }
-    return context;
-  }
-  return [
-    Context.Provider,
-    useContext$1,
-    Context
-  ];
-}
-
-function ThemeProvider$1(props) {
-  const { cssVarsRoot, theme, children } = props;
-  const computedTheme = useMemo(() => toCSSVar(theme), [theme]);
-  return /* @__PURE__ */ jsxs(ThemeProvider$2, { theme: computedTheme, children: [
-    /* @__PURE__ */ jsx(CSSVars, { root: cssVarsRoot }),
-    children
-  ] });
-}
-function CSSVars({ root = ":host, :root" }) {
-  const selector = [root, `[data-theme]`].join(",");
-  return /* @__PURE__ */ jsx(Global, { styles: (theme) => ({ [selector]: theme.__cssVars }) });
-}
-createContext({
-  name: "StylesContext",
-  errorMessage: "useStyles: `styles` is undefined. Seems you forgot to wrap the components in `<StylesProvider />` "
-});
-function GlobalStyle() {
-  const { colorMode } = useColorMode();
-  return /* @__PURE__ */ jsx(
-    Global,
-    {
-      styles: (theme) => {
-        const styleObjectOrFn = memoizedGet(theme, "styles.global");
-        const globalStyles = runIfFn(styleObjectOrFn, { theme, colorMode });
-        if (!globalStyles)
-          return void 0;
-        const styles = css$1(globalStyles)(theme);
-        return styles;
-      }
-    }
-  );
+function forwardRef$1(component) {
+  return forwardRef$2(component);
 }
 
 function useButtonType(value) {
-  const [isButton, setIsButton] = useState(!value);
+  const [isButton, setIsButton] = useState$1(!value);
   const refCallback = useCallback((node) => {
     if (!node)
       return;
@@ -28970,9 +24302,9 @@ function ButtonIcon(props) {
     "aria-hidden": true,
     focusable: false
   }) : children;
-  const _className = cx("chakra-button__icon", className);
+  const _className = cx$2("chakra-button__icon", className);
   return /* @__PURE__ */ jsx(
-    chakra.span,
+    chakra$1.span,
     {
       display: "inline-flex",
       alignSelf: "center",
@@ -28985,7 +24317,7 @@ function ButtonIcon(props) {
 }
 ButtonIcon.displayName = "ButtonIcon";
 
-var spin = keyframes$1({
+var spin$1 = keyframes$1({
   "0%": {
     transform: "rotate(0deg)"
   },
@@ -28993,8 +24325,8 @@ var spin = keyframes$1({
     transform: "rotate(360deg)"
   }
 });
-var Spinner = forwardRef((props, ref) => {
-  const styles = useStyleConfig("Spinner", props);
+var Spinner$1 = forwardRef$1((props, ref) => {
+  const styles = useStyleConfig$1("Spinner", props);
   const {
     label = "Loading...",
     thickness = "2px",
@@ -29002,8 +24334,8 @@ var Spinner = forwardRef((props, ref) => {
     emptyColor = "transparent",
     className,
     ...rest
-  } = omitThemingProps(props);
-  const _className = cx("chakra-spinner", className);
+  } = omitThemingProps$1(props);
+  const _className = cx$2("chakra-spinner", className);
   const spinnerStyles = {
     display: "inline-block",
     borderColor: "currentColor",
@@ -29012,35 +24344,35 @@ var Spinner = forwardRef((props, ref) => {
     borderWidth: thickness,
     borderBottomColor: emptyColor,
     borderLeftColor: emptyColor,
-    animation: `${spin} ${speed} linear infinite`,
+    animation: `${spin$1} ${speed} linear infinite`,
     ...styles
   };
   return /* @__PURE__ */ jsx(
-    chakra.div,
+    chakra$1.div,
     {
       ref,
       __css: spinnerStyles,
       className: _className,
       ...rest,
-      children: label && /* @__PURE__ */ jsx(chakra.span, { srOnly: true, children: label })
+      children: label && /* @__PURE__ */ jsx(chakra$1.span, { srOnly: true, children: label })
     }
   );
 });
-Spinner.displayName = "Spinner";
+Spinner$1.displayName = "Spinner";
 
 function ButtonSpinner(props) {
   const {
     label,
     placement,
     spacing = "0.5rem",
-    children = /* @__PURE__ */ jsx(Spinner, { color: "currentColor", width: "1em", height: "1em" }),
+    children = /* @__PURE__ */ jsx(Spinner$1, { color: "currentColor", width: "1em", height: "1em" }),
     className,
     __css,
     ...rest
   } = props;
-  const _className = cx("chakra-button__spinner", className);
+  const _className = cx$2("chakra-button__spinner", className);
   const marginProp = placement === "start" ? "marginEnd" : "marginStart";
-  const spinnerStyles = useMemo(
+  const spinnerStyles = useMemo$1(
     () => ({
       display: "flex",
       alignItems: "center",
@@ -29052,11 +24384,11 @@ function ButtonSpinner(props) {
     }),
     [__css, label, marginProp, spacing]
   );
-  return /* @__PURE__ */ jsx(chakra.div, { className: _className, ...rest, __css: spinnerStyles, children });
+  return /* @__PURE__ */ jsx(chakra$1.div, { className: _className, ...rest, __css: spinnerStyles, children });
 }
 ButtonSpinner.displayName = "ButtonSpinner";
 
-function assignRef(ref, value) {
+function assignRef$1(ref, value) {
   if (ref == null)
     return;
   if (typeof ref === "function") {
@@ -29069,20 +24401,20 @@ function assignRef(ref, value) {
     throw new Error(`Cannot assign value '${value}' to ref '${ref}'`);
   }
 }
-function mergeRefs(...refs) {
+function mergeRefs$1(...refs) {
   return (node) => {
     refs.forEach((ref) => {
-      assignRef(ref, node);
+      assignRef$1(ref, node);
     });
   };
 }
 function useMergeRefs(...refs) {
-  return useMemo(() => mergeRefs(...refs), refs);
+  return useMemo$1(() => mergeRefs$1(...refs), refs);
 }
 
-var Button$1 = forwardRef((props, ref) => {
+var Button$1 = forwardRef$1((props, ref) => {
   const group = useButtonGroup();
-  const styles = useStyleConfig("Button", { ...group, ...props });
+  const styles = useStyleConfig$1("Button", { ...group, ...props });
   const {
     isDisabled = group == null ? void 0 : group.isDisabled,
     isLoading,
@@ -29098,8 +24430,8 @@ var Button$1 = forwardRef((props, ref) => {
     className,
     as,
     ...rest
-  } = omitThemingProps(props);
-  const buttonStyles = useMemo(() => {
+  } = omitThemingProps$1(props);
+  const buttonStyles = useMemo$1(() => {
     const _focus = { ...styles == null ? void 0 : styles["_focus"], zIndex: 1 };
     return {
       display: "inline-flex",
@@ -29118,15 +24450,15 @@ var Button$1 = forwardRef((props, ref) => {
   const { ref: _ref, type: defaultType } = useButtonType(as);
   const contentProps = { rightIcon, leftIcon, iconSpacing, children };
   return /* @__PURE__ */ jsxs(
-    chakra.button,
+    chakra$1.button,
     {
       ref: useMergeRefs(ref, _ref),
       as,
       type: type != null ? type : defaultType,
-      "data-active": dataAttr(isActive),
-      "data-loading": dataAttr(isLoading),
+      "data-active": dataAttr$1(isActive),
+      "data-loading": dataAttr$1(isLoading),
       __css: buttonStyles,
-      className: cx("chakra-button", className),
+      className: cx$2("chakra-button", className),
       ...rest,
       disabled: isDisabled || isLoading,
       children: [
@@ -29140,7 +24472,7 @@ var Button$1 = forwardRef((props, ref) => {
             children: spinner
           }
         ),
-        isLoading ? loadingText || /* @__PURE__ */ jsx(chakra.span, { opacity: 0, children: /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }) }) : /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }),
+        isLoading ? loadingText || /* @__PURE__ */ jsx(chakra$1.span, { opacity: 0, children: /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }) }) : /* @__PURE__ */ jsx(ButtonContent, { ...contentProps }),
         isLoading && spinnerPlacement === "end" && /* @__PURE__ */ jsx(
           ButtonSpinner,
           {
@@ -29165,7 +24497,7 @@ function ButtonContent(props) {
   ] });
 }
 
-var IconButton = forwardRef(
+var IconButton = forwardRef$1(
   (props, ref) => {
     const { icon, children, isRound, "aria-label": ariaLabel, ...rest } = props;
     const element = icon || children;
@@ -29188,12 +24520,12 @@ var IconButton = forwardRef(
 );
 IconButton.displayName = "IconButton";
 
-var colors$1 = {
+var colors$2 = {
     primary: "var(--color-primary)",
     error: "var(--color-text-error)",
 };
 
-var sizes$1 = {
+var sizes$o = {
     icon: {
         small: "1em",
         medium: "1.142em",
@@ -29332,7 +24664,7 @@ function PiCheckBold (props) {
 
 function Errors(_a) {
     var error = _a.error, _b = _a.centered, centered = _b === void 0 ? false : _b;
-    return error ? (jsx("div", __assign$1({ className: classes([style$a.errors, centered ? style$a.centered : undefined]) }, { children: jsxs("p", { children: [jsx(PiInfo, { size: sizes$1.icon.small }), error.toString()] }) }))) : null;
+    return error ? (jsx("div", __assign$1({ className: classes([style$a.errors, centered ? style$a.centered : undefined]) }, { children: jsxs("p", { children: [jsx(PiInfo, { size: sizes$o.icon.small }), error.toString()] }) }))) : null;
 }
 
 var css_248z$c = ".Stepper-module_stepper__2HBhf {\n  display: flex;\n  gap: var(--m);\n  margin: var(--m-xs) auto;\n  justify-content: center;\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz {\n  display: flex;\n  gap: var(--m-xxs);\n  align-items: center;\n  transition: all 0.3s ease-out;\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz .Stepper-module_badge__hPxie {\n  border-radius: 50%;\n  border: 1px solid var(--color-border);\n  aspect-ratio: 1;\n  width: 2em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.3s ease-out;\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_active__b7mrZ {\n  color: var(--color-primary);\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_active__b7mrZ .Stepper-module_badge__hPxie {\n  background-color: var(--color-primary);\n  color: var(--color-text-on-primary);\n  border: none;\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz.Stepper-module_done__1tk5O .Stepper-module_badge__hPxie {\n  border-color: var(--color-primary);\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_step__1xguz:not(:first-of-type):before {\n  content: \"\";\n  height: 1px;\n  width: min(140px, 4vw);\n  background-color: var(--color-border);\n  border-radius: 2px;\n  margin-right: var(--m-xs);\n}\n.Stepper-module_stepper__2HBhf .Stepper-module_stepWide__3ULer:not(:first-of-type):before {\n  width: min(120px, 10vw);\n}";
@@ -29356,12 +24688,12 @@ function Stepper(_a) {
             if (skipHeader && displayNumber > 1) {
                 displayNumber--;
             }
-            return (jsxs(Element, __assign$1({ className: classes([style$9.step, i === current ? style$9.active : done && style$9.done, steps.length < 4 && style$9.stepWide]) }, buttonProps, { children: [jsx("div", __assign$1({ className: style$9.badge }, { children: done ? jsx(PiCheckBold, { color: colors$1.primary }) : displayNumber })), jsx("div", __assign$1({ className: style$9.label }, { children: step.label }))] }), i));
+            return (jsxs(Element, __assign$1({ className: classes([style$9.step, i === current ? style$9.active : done && style$9.done, steps.length < 4 && style$9.stepWide]) }, buttonProps, { children: [jsx("div", __assign$1({ className: style$9.badge }, { children: done ? jsx(PiCheckBold, { color: colors$2.primary }) : displayNumber })), jsx("div", __assign$1({ className: style$9.label }, { children: step.label }))] }), i));
         }) })));
 }
 
 function useCustomStyles(customStyles) {
-    useEffect(function () {
+    useEffect$2(function () {
         if (customStyles) {
             var parsedStyles_1 = JSON.parse(customStyles);
             if (parsedStyles_1) {
@@ -29471,6 +24803,7 @@ function convertRawTemplate(rawTemplate) {
         var key = item.key || "";
         var description = item.description || "";
         var required = item.required || false;
+        var primary_key = item.primary_key || false;
         var suggestedMappings = item.suggested_mappings || [];
         if (name_1 === "") {
             return [null, "Invalid template: The parameter \"name\" is required for each column (check column ".concat(i, ")")];
@@ -29497,6 +24830,7 @@ function convertRawTemplate(rawTemplate) {
             description: description,
             required: required,
             suggested_mappings: suggestedMappings,
+            primary_key: primary_key,
         });
     }
     if (columns.length === 0) {
@@ -29507,8 +24841,8 @@ function convertRawTemplate(rawTemplate) {
 
 function useStepper(steps, initialStep, skipHeader) {
     if (initialStep === void 0) { initialStep = 0; }
-    var _a = useState(initialStep), current = _a[0], setCurrent = _a[1];
-    var step = useMemo(function () { return steps[current]; }, [current, steps]);
+    var _a = useState$1(initialStep), current = _a[0], setCurrent = _a[1];
+    var step = useMemo$1(function () { return steps[current]; }, [current, steps]);
     return { steps: steps, current: current, step: step, setCurrent: setCurrent, skipHeader: skipHeader };
 }
 
@@ -29538,8 +24872,8 @@ function useMutableLocalStorage(key, initialValue) {
             return initialValue;
         }
     };
-    var _a = useState(getLocalStorage()), storedValue = _a[0], setStoredValue = _a[1];
-    useEffect(function () {
+    var _a = useState$1(getLocalStorage()), storedValue = _a[0], setStoredValue = _a[1];
+    useEffect$2(function () {
         setStoredValue(getLocalStorage());
     }, [key]);
     // Return a wrapped version of useState's setter function that ...
@@ -29593,7 +24927,7 @@ function useStepNavigation(initialStep, skipHeader) {
     var _a;
     var stepper = useStepper(getStepConfig(skipHeader), StepEnum.Upload, skipHeader);
     var _b = useMutableLocalStorage("tf_steps", ""), storageStep = _b[0], setStorageStep = _b[1];
-    var _c = useState(initialStep), currentStep = _c[0], setCurrentStep = _c[1];
+    var _c = useState$1(initialStep), currentStep = _c[0], setCurrentStep = _c[1];
     var goBack = function (backStep) {
         if (backStep === void 0) { backStep = 0; }
         backStep = backStep || currentStep - 1 || 0;
@@ -29610,7 +24944,7 @@ function useStepNavigation(initialStep, skipHeader) {
         setStorageStep(newStep);
         stepper.setCurrent(newStep);
     };
-    useEffect(function () {
+    useEffect$2(function () {
         stepper.setCurrent(storageStep || 0);
         setCurrentStep(storageStep || 0);
     }, [storageStep]);
@@ -29674,12 +25008,12 @@ function Tooltip(_a) {
     var Tag = as || "span";
     var length = getStringLengthOfChildren(title);
     var wrapperClasses = classes([style$5.tooltip, className, length > 30 && style$5.multiline]);
-    var _c = useState(false), tooltipVisible = _c[0], setTooltipVisible = _c[1];
-    var _d = useState({ top: 0, left: 0 }), position = _d[0], setPosition = _d[1];
-    var targetRef = useRef(null);
+    var _c = useState$1(false), tooltipVisible = _c[0], setTooltipVisible = _c[1];
+    var _d = useState$1({ top: 0, left: 0 }), position = _d[0], setPosition = _d[1];
+    var targetRef = useRef$1(null);
     // Create a ref to attach the tooltip portal to
-    var tooltipContainer = useRef(document.createElement("div"));
-    useEffect(function () {
+    var tooltipContainer = useRef$1(document.createElement("div"));
+    useEffect$2(function () {
         // Appending the tooltip container to the body on mount
         document.body.appendChild(tooltipContainer.current);
         // Removing the tooltip container from the body on unmount
@@ -29704,7 +25038,7 @@ function Tooltip(_a) {
     return (jsxs(Tag, __assign$1({}, props, { className: wrapperClasses }, { children: [children, jsxs("span", __assign$1({ className: style$5.icon, onMouseEnter: showTooltip, onMouseLeave: hideTooltip, ref: targetRef }, { children: [icon, tooltipMessage] }))] })));
 }
 
-var TableContext = createContext$2({});
+var TableContext = createContext$3({});
 function Table(_a) {
     // THEME
     // Tables receive a full CSS module as theme or applies default styles
@@ -29799,7 +25133,7 @@ function Checkbox(_a) {
 
 function useClickOutside(ref, callback) {
     var staticCallback = useCallback(callback, []);
-    useEffect(function () {
+    useEffect$2(function () {
         var handleClickOutside = function (event) {
             if (ref && (ref === null || ref === void 0 ? void 0 : ref.current) && !ref.current.contains(event.target))
                 staticCallback(false);
@@ -29811,15 +25145,15 @@ function useClickOutside(ref, callback) {
     }, [ref, staticCallback]);
 }
 
-var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? useLayoutEffect$1 : useEffect$2;
 
 function useEventListener(eventName, handler, element) {
     // Create a ref that stores handler
-    var savedHandler = useRef(handler);
+    var savedHandler = useRef$1(handler);
     useIsomorphicLayoutEffect$1(function () {
         savedHandler.current = handler;
     }, [handler]);
-    useEffect(function () {
+    useEffect$2(function () {
         // Define the listening target
         var targetElement = (element === null || element === void 0 ? void 0 : element.current) || window;
         if (!(targetElement && targetElement.addEventListener)) {
@@ -29839,8 +25173,8 @@ function useRect() {
     // Mutable values like 'ref.current' aren't valid dependencies
     // because mutating them doesn't re-render the component.
     // Instead, we use a state as a ref to be reactive.
-    var _a = useState(null), ref = _a[0], setRef = _a[1];
-    var _b = useState({ x: 0, y: 0, width: 0, height: 0, top: 0, right: 0, bottom: 0, left: 0 }), size = _b[0], setSize = _b[1];
+    var _a = useState$1(null), ref = _a[0], setRef = _a[1];
+    var _b = useState$1({ x: 0, y: 0, width: 0, height: 0, top: 0, right: 0, bottom: 0, left: 0 }), size = _b[0], setSize = _b[1];
     // Prevent too many rendering using useCallback
     var updateRect = useCallback(function () {
         ref && setSize(ref.getBoundingClientRect());
@@ -29849,7 +25183,7 @@ function useRect() {
     useIsomorphicLayoutEffect$1(function () {
         updateRect();
     }, [ref === null || ref === void 0 ? void 0 : ref.offsetHeight, ref === null || ref === void 0 ? void 0 : ref.offsetWidth]);
-    useLayoutEffect(function () {
+    useLayoutEffect$1(function () {
         window.addEventListener("mresize", updateRect);
         return function () { return window.removeEventListener("mresize", updateRect); };
     }, []);
@@ -29857,8 +25191,8 @@ function useRect() {
 }
 
 function useWindowSize() {
-    var _a = useState([0, 0]), size = _a[0], setSize = _a[1];
-    useLayoutEffect(function () {
+    var _a = useState$1([0, 0]), size = _a[0], setSize = _a[1];
+    useLayoutEffect$1(function () {
         function updateSize() {
             setSize([window.innerWidth, window.innerHeight]);
         }
@@ -29881,13 +25215,13 @@ function Input(_a) {
     var icon1 = icon && jsx("span", __assign$1({ className: style$3.icon }, { children: icon }));
     var icon2 = iconAfter ? (jsx("span", __assign$1({ className: style$3.icon }, { children: iconAfter }))) : (error && (jsx("span", __assign$1({ className: style$3.icon }, { children: jsx(PiInfo, {}) }))));
     var iconSelect = options && (jsx("span", __assign$1({ className: classes([style$3.icon, style$3.dropdownIcon]) }, { children: jsx(PiCaretDown, {}) })));
-    var selectElement = options && options && jsx(Select, __assign$1({ options: options }, props));
+    var selectElement = options && options && jsx(Select$1, __assign$1({ options: options }, props));
     var inputWrapper = (jsxs("div", __assign$1({ className: classes([style$3.inputWrapper, error && style$3.hasError]) }, { children: [icon1, selectElement || jsx(Element, __assign$1({}, props, (options ? { type: "text" } : {}))), iconSelect, icon2] })));
     return (jsxs("div", __assign$1({ className: containerClassName }, { children: [jsxs("label", { children: [label ? jsx("span", __assign$1({ className: style$3.label }, { children: label })) : null, inputWrapper] }), error && jsx("div", __assign$1({ className: style$3.error }, { children: error })), children && jsx("div", __assign$1({ className: style$3.footer }, { children: children }))] })));
 }
-function Select(_a) {
+function Select$1(_a) {
     var _b = _a.options, options = _b === void 0 ? {} : _b, placeholder = _a.placeholder, props = __rest$1(_a, ["options", "placeholder"]);
-    var _c = useState(false), open = _c[0], setOpen = _c[1];
+    var _c = useState$1(false), open = _c[0], setOpen = _c[1];
     var onChangeOption = function (e) {
         var value = e.target.value;
         (props === null || props === void 0 ? void 0 : props.onChange) && (props === null || props === void 0 ? void 0 : props.onChange(value));
@@ -29913,19 +25247,19 @@ function Select(_a) {
     var onBlur = function () {
         setOpen(false);
     };
-    var ref = useRef(null);
+    var ref = useRef$1(null);
     useClickOutside(ref, onBlur);
     return (jsxs(Fragment$1, { children: [jsx("input", __assign$1({}, props, { value: selectedKey, className: classes([style$3.select, open && style$3.open]), readOnly: true, onFocus: onFocus, placeholder: placeholder })), jsx("div", { className: style$3.optionsRef, ref: setRef }), open && (jsx("div", __assign$1({ className: style$3.options, style: optionsPosition, ref: setRefPortal }, { children: jsxs("div", __assign$1({ className: style$3.inner, ref: ref }, { children: [placeholder && (jsx("button", __assign$1({ className: classes([style$3.option, style$3.placeholder]), onClick: onChangeOption }, { children: placeholder }), -1)), Object.keys(options).map(function (k, i) { return (jsxs("button", __assign$1({ className: classes([style$3.option, options[k].value === props.value && style$3.selected]), type: "button" }, options[k], { onClick: onChangeOption, autoFocus: i === 0 }, { children: [k, " ", options[k].required && jsx("span", __assign$1({ className: style$3.requiredMark }, { children: "*" }))] }), k)); })] })) })))] }));
 }
 
 function DropdownFields(_a) {
     var options = _a.options, value = _a.value, placeholder = _a.placeholder, onChange = _a.onChange, selectedValues = _a.selectedValues, updateSelectedValues = _a.updateSelectedValues;
-    var _b = useState(value), selectedOption = _b[0], setSelectedOption = _b[1];
-    var _c = useState({}), filteredOptions = _c[0], setFilteredOptions = _c[1];
-    useEffect(function () {
+    var _b = useState$1(value), selectedOption = _b[0], setSelectedOption = _b[1];
+    var _c = useState$1({}), filteredOptions = _c[0], setFilteredOptions = _c[1];
+    useEffect$2(function () {
         setSelectedOption(value);
     }, [selectedValues]);
-    useEffect(function () {
+    useEffect$2(function () {
         filterOptions();
     }, [options, selectedValues]);
     var handleInputChange = function (event) {
@@ -29958,6 +25292,428 @@ function DropdownFields(_a) {
         setFilteredOptions(newFilteredOptions);
     };
     return (jsx(Input, { options: filteredOptions, value: selectedOption, placeholder: placeholder, variants: ["small"], onChange: handleInputChange, disabled: Object.keys(filteredOptions).length === 0 }));
+}
+
+// src/index.ts
+var cx$1 = (...classNames) => classNames.filter(Boolean).join(" ");
+function isObject$2(value) {
+  const type = typeof value;
+  return value != null && (type === "object" || type === "function") && !Array.isArray(value);
+}
+var dataAttr = (condition) => condition ? "" : void 0;
+var ariaAttr = (condition) => condition ? true : void 0;
+function callAllHandlers(...fns) {
+  return function func(event) {
+    fns.some((fn) => {
+      fn == null ? void 0 : fn(event);
+      return event == null ? void 0 : event.defaultPrevented;
+    });
+  };
+}
+
+var SelectField = forwardRef$1(
+  function SelectField2(props, ref) {
+    const { children, placeholder, className, ...rest } = props;
+    return /* @__PURE__ */ jsxs(
+      chakra$1.select,
+      {
+        ...rest,
+        ref,
+        className: cx$1("chakra-select", className),
+        children: [
+          placeholder && /* @__PURE__ */ jsx("option", { value: "", children: placeholder }),
+          children
+        ]
+      }
+    );
+  }
+);
+SelectField.displayName = "SelectField";
+
+function getErrorMessage$1(hook, provider) {
+  return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
+}
+function createContext$1(options = {}) {
+  const {
+    name,
+    strict = true,
+    hookName = "useContext",
+    providerName = "Provider",
+    errorMessage,
+    defaultValue
+  } = options;
+  const Context = createContext$3(defaultValue);
+  Context.displayName = name;
+  function useContext$1() {
+    var _a;
+    const context = useContext(Context);
+    if (!context && strict) {
+      const error = new Error(
+        errorMessage != null ? errorMessage : getErrorMessage$1(hookName, providerName)
+      );
+      error.name = "ContextError";
+      (_a = Error.captureStackTrace) == null ? void 0 : _a.call(Error, error, useContext$1);
+      throw error;
+    }
+    return context;
+  }
+  return [Context.Provider, useContext$1, Context];
+}
+
+function assignRef(ref, value) {
+  if (ref == null)
+    return;
+  if (typeof ref === "function") {
+    ref(value);
+    return;
+  }
+  try {
+    ref.current = value;
+  } catch (error) {
+    throw new Error(`Cannot assign value '${value}' to ref '${ref}'`);
+  }
+}
+function mergeRefs(...refs) {
+  return (node) => {
+    refs.forEach((ref) => {
+      assignRef(ref, node);
+    });
+  };
+}
+
+var [FormControlStylesProvider, useFormControlStyles] = createContext$1({
+  name: `FormControlStylesContext`,
+  errorMessage: `useFormControlStyles returned is 'undefined'. Seems you forgot to wrap the components in "<FormControl />" `
+});
+var [FormControlProvider, useFormControlContext] = createContext$1({
+  strict: false,
+  name: "FormControlContext"
+});
+function useFormControlProvider(props) {
+  const {
+    id: idProp,
+    isRequired,
+    isInvalid,
+    isDisabled,
+    isReadOnly,
+    ...htmlProps
+  } = props;
+  const uuid = useId();
+  const id = idProp || `field-${uuid}`;
+  const labelId = `${id}-label`;
+  const feedbackId = `${id}-feedback`;
+  const helpTextId = `${id}-helptext`;
+  const [hasFeedbackText, setHasFeedbackText] = useState$1(false);
+  const [hasHelpText, setHasHelpText] = useState$1(false);
+  const [isFocused, setFocus] = useState$1(false);
+  const getHelpTextProps = useCallback(
+    (props2 = {}, forwardedRef = null) => ({
+      id: helpTextId,
+      ...props2,
+      /**
+       * Notify the field context when the help text is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, (node) => {
+        if (!node)
+          return;
+        setHasHelpText(true);
+      })
+    }),
+    [helpTextId]
+  );
+  const getLabelProps = useCallback(
+    (props2 = {}, forwardedRef = null) => ({
+      ...props2,
+      ref: forwardedRef,
+      "data-focus": dataAttr(isFocused),
+      "data-disabled": dataAttr(isDisabled),
+      "data-invalid": dataAttr(isInvalid),
+      "data-readonly": dataAttr(isReadOnly),
+      id: props2.id !== void 0 ? props2.id : labelId,
+      htmlFor: props2.htmlFor !== void 0 ? props2.htmlFor : id
+    }),
+    [id, isDisabled, isFocused, isInvalid, isReadOnly, labelId]
+  );
+  const getErrorMessageProps = useCallback(
+    (props2 = {}, forwardedRef = null) => ({
+      id: feedbackId,
+      ...props2,
+      /**
+       * Notify the field context when the error message is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, (node) => {
+        if (!node)
+          return;
+        setHasFeedbackText(true);
+      }),
+      "aria-live": "polite"
+    }),
+    [feedbackId]
+  );
+  const getRootProps = useCallback(
+    (props2 = {}, forwardedRef = null) => ({
+      ...props2,
+      ...htmlProps,
+      ref: forwardedRef,
+      role: "group",
+      "data-focus": dataAttr(isFocused),
+      "data-disabled": dataAttr(isDisabled),
+      "data-invalid": dataAttr(isInvalid),
+      "data-readonly": dataAttr(isReadOnly)
+    }),
+    [htmlProps, isDisabled, isFocused, isInvalid, isReadOnly]
+  );
+  const getRequiredIndicatorProps = useCallback(
+    (props2 = {}, forwardedRef = null) => ({
+      ...props2,
+      ref: forwardedRef,
+      role: "presentation",
+      "aria-hidden": true,
+      children: props2.children || "*"
+    }),
+    []
+  );
+  return {
+    isRequired: !!isRequired,
+    isInvalid: !!isInvalid,
+    isReadOnly: !!isReadOnly,
+    isDisabled: !!isDisabled,
+    isFocused: !!isFocused,
+    onFocus: () => setFocus(true),
+    onBlur: () => setFocus(false),
+    hasFeedbackText,
+    setHasFeedbackText,
+    hasHelpText,
+    setHasHelpText,
+    id,
+    labelId,
+    feedbackId,
+    helpTextId,
+    htmlProps,
+    getHelpTextProps,
+    getErrorMessageProps,
+    getRootProps,
+    getLabelProps,
+    getRequiredIndicatorProps
+  };
+}
+var FormControl = forwardRef$1(
+  function FormControl2(props, ref) {
+    const styles = useMultiStyleConfig$1("Form", props);
+    const ownProps = omitThemingProps$1(props);
+    const {
+      getRootProps,
+      htmlProps: _,
+      ...context
+    } = useFormControlProvider(ownProps);
+    const className = cx$1("chakra-form-control", props.className);
+    return /* @__PURE__ */ jsx(FormControlProvider, { value: context, children: /* @__PURE__ */ jsx(FormControlStylesProvider, { value: styles, children: /* @__PURE__ */ jsx(
+      chakra$1.div,
+      {
+        ...getRootProps({}, ref),
+        className,
+        __css: styles["container"]
+      }
+    ) }) });
+  }
+);
+FormControl.displayName = "FormControl";
+var FormHelperText = forwardRef$1(
+  function FormHelperText2(props, ref) {
+    const field = useFormControlContext();
+    const styles = useFormControlStyles();
+    const className = cx$1("chakra-form__helper-text", props.className);
+    return /* @__PURE__ */ jsx(
+      chakra$1.div,
+      {
+        ...field == null ? void 0 : field.getHelpTextProps(props, ref),
+        __css: styles.helperText,
+        className
+      }
+    );
+  }
+);
+FormHelperText.displayName = "FormHelperText";
+
+function useFormControl(props) {
+  const { isDisabled, isInvalid, isReadOnly, isRequired, ...rest } = useFormControlProps(props);
+  return {
+    ...rest,
+    disabled: isDisabled,
+    readOnly: isReadOnly,
+    required: isRequired,
+    "aria-invalid": ariaAttr(isInvalid),
+    "aria-required": ariaAttr(isRequired),
+    "aria-readonly": ariaAttr(isReadOnly)
+  };
+}
+function useFormControlProps(props) {
+  var _a, _b, _c;
+  const field = useFormControlContext();
+  const {
+    id,
+    disabled,
+    readOnly,
+    required,
+    isRequired,
+    isInvalid,
+    isReadOnly,
+    isDisabled,
+    onFocus,
+    onBlur,
+    ...rest
+  } = props;
+  const labelIds = props["aria-describedby"] ? [props["aria-describedby"]] : [];
+  if ((field == null ? void 0 : field.hasFeedbackText) && (field == null ? void 0 : field.isInvalid)) {
+    labelIds.push(field.feedbackId);
+  }
+  if (field == null ? void 0 : field.hasHelpText) {
+    labelIds.push(field.helpTextId);
+  }
+  return {
+    ...rest,
+    "aria-describedby": labelIds.join(" ") || void 0,
+    id: id != null ? id : field == null ? void 0 : field.id,
+    isDisabled: (_a = disabled != null ? disabled : isDisabled) != null ? _a : field == null ? void 0 : field.isDisabled,
+    isReadOnly: (_b = readOnly != null ? readOnly : isReadOnly) != null ? _b : field == null ? void 0 : field.isReadOnly,
+    isRequired: (_c = required != null ? required : isRequired) != null ? _c : field == null ? void 0 : field.isRequired,
+    isInvalid: isInvalid != null ? isInvalid : field == null ? void 0 : field.isInvalid,
+    onFocus: callAllHandlers(field == null ? void 0 : field.onFocus, onFocus),
+    onBlur: callAllHandlers(field == null ? void 0 : field.onBlur, onBlur)
+  };
+}
+
+// ../../utilities/object-utils/src/split.ts
+function split(object, keys) {
+  const picked = {};
+  const omitted = {};
+  for (const [key, value] of Object.entries(object)) {
+    if (keys.includes(key))
+      picked[key] = value;
+    else
+      omitted[key] = value;
+  }
+  return [picked, omitted];
+}
+var Select = forwardRef$1((props, ref) => {
+  var _a;
+  const styles = useMultiStyleConfig$1("Select", props);
+  const {
+    rootProps,
+    placeholder,
+    icon,
+    color,
+    height,
+    h,
+    minH,
+    minHeight,
+    iconColor,
+    iconSize,
+    ...rest
+  } = omitThemingProps$1(props);
+  const [layoutProps, otherProps] = split(rest, layoutPropNames);
+  const ownProps = useFormControl(otherProps);
+  const rootStyles = {
+    width: "100%",
+    height: "fit-content",
+    position: "relative",
+    color
+  };
+  const fieldStyles = {
+    paddingEnd: "2rem",
+    ...styles.field,
+    _focus: {
+      zIndex: "unset",
+      ...(_a = styles.field) == null ? void 0 : _a["_focus"]
+    }
+  };
+  return /* @__PURE__ */ jsxs(
+    chakra$1.div,
+    {
+      className: "chakra-select__wrapper",
+      __css: rootStyles,
+      ...layoutProps,
+      ...rootProps,
+      children: [
+        /* @__PURE__ */ jsx(
+          SelectField,
+          {
+            ref,
+            height: h != null ? h : height,
+            minH: minH != null ? minH : minHeight,
+            placeholder,
+            ...ownProps,
+            __css: fieldStyles,
+            children: props.children
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          SelectIcon,
+          {
+            "data-disabled": dataAttr(ownProps.disabled),
+            ...(iconColor || color) && { color: iconColor || color },
+            __css: styles.icon,
+            ...iconSize && { fontSize: iconSize },
+            children: icon
+          }
+        )
+      ]
+    }
+  );
+});
+Select.displayName = "Select";
+var DefaultIcon = (props) => /* @__PURE__ */ jsx("svg", { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+  }
+) });
+var IconWrapper = chakra$1("div", {
+  baseStyle: {
+    position: "absolute",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    pointerEvents: "none",
+    top: "50%",
+    transform: "translateY(-50%)"
+  }
+});
+var SelectIcon = (props) => {
+  const { children = /* @__PURE__ */ jsx(DefaultIcon, {}), ...rest } = props;
+  const clone = cloneElement(children, {
+    role: "presentation",
+    className: "chakra-select__icon",
+    focusable: false,
+    "aria-hidden": true,
+    // force icon to adhere to `IconWrapper` styles
+    style: {
+      width: "1em",
+      height: "1em",
+      color: "currentColor"
+    }
+  });
+  return /* @__PURE__ */ jsx(IconWrapper, { ...rest, className: "chakra-select__icon-wrapper", children: isValidElement(children) ? clone : null });
+};
+SelectIcon.displayName = "SelectIcon";
+
+var MergeStrategies = {
+    OVERWRITE: "overwrite",
+    FILL_IF_EMPTY: "fill_if_empty",
+    APPEND_COLLECTION: "append_collection",
+};
+
+var mergeStrategyOptions = [
+    { label: "Overwrite", value: MergeStrategies.OVERWRITE },
+    { label: "Fill If Empty", value: MergeStrategies.FILL_IF_EMPTY },
+    { label: "Append Collection", value: MergeStrategies.APPEND_COLLECTION },
+];
+function MergeStrategyDropdown(_a) {
+    var value = _a.value, disabled = _a.disabled, onChange = _a.onChange;
+    return (jsx(Select, __assign$1({ value: value, disabled: disabled, onChange: function (e) { return onChange(e.target.value); }, size: "sm", variant: "outline", placeholder: disabled ? "Select column first" : undefined }, { children: mergeStrategyOptions.map(function (option) { return (jsx("option", __assign$1({ value: option.value }, { children: option.label }), option.value)); }) })));
 }
 
 var css_248z$4 = ".MapColumns-module_content__20ZZ4 {\n  height: 100%;\n}\n.MapColumns-module_content__20ZZ4 form {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  gap: var(--m);\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_tableWrapper___b5Fy {\n  display: flex;\n  height: 100%;\n  overflow-y: auto;\n  padding: 1px;\n  margin-right: -20px;\n  padding-right: 21px;\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_actions__YEtCJ {\n  display: flex;\n  justify-content: space-between;\n}\n\n.MapColumns-module_samples__3WzLx {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1;\n  white-space: nowrap;\n}\n.MapColumns-module_samples__3WzLx > small {\n  background-color: var(--color-input-background);\n  font-family: monospace;\n  padding: var(--m-xxxxs);\n  border-radius: var(--border-radius-1);\n  font-size: var(--font-size-xs);\n  display: inline-block;\n}\n.MapColumns-module_samples__3WzLx > small + small {\n  margin-left: var(--m-xxxxs);\n}\n\n.MapColumns-module_spinner__2-3WS {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1);\n}\n\n.MapColumns-module_errorContainer__1FAaD {\n  display: flex;\n  justify-content: center;\n  max-width: 60vw;\n}\n\n.MapColumns-module_schemalessTextInput__2JguD {\n  width: 210px;\n}";
@@ -30017,7 +25773,7 @@ function editDistance(s1, s2) {
 
 function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoading) {
     if (templateColumns === void 0) { templateColumns = []; }
-    useEffect(function () {
+    useEffect$2(function () {
         Object.keys(columnsValues).map(function (uploadColumnIndexStr) {
             var uploadColumnIndex = Number(uploadColumnIndexStr);
             var templateKey = columnsValues[uploadColumnIndex].key;
@@ -30034,14 +25790,20 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
         }
         return templateColumn.suggested_mappings.some(function (suggestion) { return suggestion.toLowerCase() === uploadColumnName.toLowerCase(); });
     };
-    var _a = useState(function () {
+    var _a = useState$1(function () {
         var usedTemplateColumns = new Set();
         var initialObject = {};
         return uploadColumns.reduce(function (acc, uc) {
             var matchedSuggestedTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) { return isSuggestedMapping(tc, uc.name); });
             if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
                 usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
-                acc[uc.index] = { key: matchedSuggestedTemplateColumn.key, include: true };
+                acc[uc.index] = {
+                    key: matchedSuggestedTemplateColumn.key,
+                    include: true,
+                    name: uc.name,
+                    primary_key: matchedSuggestedTemplateColumn.primary_key || false,
+                    merge_strategy: MergeStrategies.OVERWRITE
+                };
                 return acc;
             }
             var similarTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) {
@@ -30055,22 +25817,26 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 key: (similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.key) || "",
                 include: !!(similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.key),
                 selected: !!(similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.key),
+                name: uc.name,
+                primary_key: !!(similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.primary_key),
+                merge_strategy: MergeStrategies.OVERWRITE
             };
             return acc;
         }, initialObject);
     }), values = _a[0], setValues = _a[1];
-    var _b = useState(Object.values(values).map(function (_a) {
+    var _b = useState$1(Object.values(values).map(function (_a) {
         var key = _a.key, selected = _a.selected;
         return ({ key: key, selected: selected });
     })), selectedValues = _b[0], setSelectedValues = _b[1];
-    var templateFields = useMemo(function () { return templateColumns.reduce(function (acc, tc) {
+    var templateFields = useMemo$1(function () { return templateColumns.reduce(function (acc, tc) {
         var _a;
         return (__assign$1(__assign$1({}, acc), (_a = {}, _a[tc.name] = { value: tc.key, required: tc.required }, _a)));
     }, {}); }, [JSON.stringify(templateColumns)]);
     var handleTemplateChange = function (uploadColumnIndex, key) {
         setValues(function (prev) {
             var _a;
-            var templatesFields = __assign$1(__assign$1({}, prev), (_a = {}, _a[uploadColumnIndex] = __assign$1(__assign$1({}, prev[uploadColumnIndex]), { key: key, include: !!key, selected: !!key }), _a));
+            var _b, _c;
+            var templatesFields = __assign$1(__assign$1({}, prev), (_a = {}, _a[uploadColumnIndex] = __assign$1(__assign$1({}, prev[uploadColumnIndex]), { key: key, include: !!key, selected: !!key, primary_key: ((_b = prev[uploadColumnIndex]) === null || _b === void 0 ? void 0 : _b.primary_key) || false, merge_strategy: ((_c = prev[uploadColumnIndex]) === null || _c === void 0 ? void 0 : _c.merge_strategy) || MergeStrategies.OVERWRITE }), _a));
             var templateFieldsObj = Object.values(templatesFields).map(function (_a) {
                 var key = _a.key, selected = _a.selected;
                 return ({ key: key, selected: selected });
@@ -30085,11 +25851,27 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
             return (__assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, prev[id]), { include: !!prev[id].key && value }), _a)));
         });
     };
-    var rows = useMemo(function () {
+    var handlePKChange = function (id, value) {
+        setValues(function (prev) {
+            var _a;
+            return (__assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, prev[id]), { primary_key: !!prev[id].key && value }), _a)));
+        });
+    };
+    var handleMergeStrategyChange = function (id, value) {
+        setValues(function (prev) {
+            var _a;
+            return (__assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, prev[id]), { merge_strategy: value }), _a)));
+        });
+    };
+    var rows = useMemo$1(function () {
         return uploadColumns.map(function (uc, index) {
             var name = uc.name, sample_data = uc.sample_data;
             var suggestion = (values === null || values === void 0 ? void 0 : values[index]) || {};
             var samples = sample_data.filter(function (d) { return d; });
+            // Find the template column to check if primary_key is required
+            var templateColumn = templateColumns.find(function (tc) { return tc.key === suggestion.key; });
+            var isPrimaryKeyRequired = templateColumn === null || templateColumn === void 0 ? void 0 : templateColumn.primary_key;
+            var isFieldRequired = templateColumn === null || templateColumn === void 0 ? void 0 : templateColumn.required;
             return {
                 "Your File Column": {
                     raw: name || false,
@@ -30105,7 +25887,15 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 },
                 Include: {
                     raw: false,
-                    content: (jsx(Checkbox, { checked: suggestion.include, disabled: !suggestion.key || isLoading, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
+                    content: (jsx(Checkbox, { checked: suggestion.include || false, disabled: !suggestion.key || isLoading || isFieldRequired, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
+                },
+                "Primary Key": {
+                    raw: false,
+                    content: (jsx(Checkbox, { checked: suggestion.primary_key || false, disabled: !suggestion.key || isLoading || isPrimaryKeyRequired, onChange: function (e) { return handlePKChange(index, e.target.checked); } })),
+                },
+                "Merge Strategy": {
+                    raw: suggestion.merge_strategy || MergeStrategies.OVERWRITE,
+                    content: (jsx(MergeStrategyDropdown, { value: suggestion.merge_strategy || MergeStrategies.OVERWRITE, disabled: !suggestion.key || !suggestion.include || isLoading, onChange: function (value) { return handleMergeStrategyChange(index, value); } })),
                 },
             };
         });
@@ -30130,11 +25920,14 @@ function MapColumns(_a) {
         };
     });
     var _c = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting), rows = _c.rows, formValues = _c.formValues;
-    var _d = useState(null), error = _d[0], setError = _d[1];
+    var _d = useState$1(null), error = _d[0], setError = _d[1];
     var verifyRequiredColumns = function (template, formValues) {
         var requiredColumns = template.columns.filter(function (column) { return column.required; });
         var includedValues = Object.values(formValues).filter(function (value) { return value.include; });
         return requiredColumns.every(function (requiredColumn) { return includedValues.some(function (includedValue) { return includedValue.key === requiredColumn.key; }); });
+    };
+    var verifyPrimaryKeyColumns = function (formValues) {
+        return Object.values(formValues).some(function (column) { return column.primary_key; });
     };
     var onSubmit = function (e) {
         e.preventDefault();
@@ -30150,12 +25943,16 @@ function MapColumns(_a) {
             setError("Please include all required columns");
             return;
         }
+        if (!verifyPrimaryKeyColumns(formValues)) {
+            setError("Please select at least one primary key column");
+            return;
+        }
         onSuccess(columns);
     };
-    return (jsx("div", __assign$1({ className: style$2.content }, { children: jsxs("form", __assign$1({ onSubmit: onSubmit }, { children: [data ? (jsx("div", __assign$1({ className: style$2.tableWrapper }, { children: jsx(Table, { data: rows, background: "dark", fixHeader: true, columnWidths: ["20%", "30%", "30%", "20%"], columnAlignments: ["", "", "", "center"] }) }))) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$2.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isSubmitting }, { children: skipHeaderRowSelection ? "Cancel" : "Back" })), !!error && (jsx("div", __assign$1({ className: style$2.errorContainer }, { children: jsx(Errors, { error: error }) }))), jsx(Button$1, __assign$1({ colorScheme: "primary", isLoading: isSubmitting, type: "submit" }, { children: "Submit" }))] }))] })) })));
+    return (jsx("div", __assign$1({ className: style$2.content }, { children: jsxs("form", __assign$1({ onSubmit: onSubmit }, { children: [data ? (jsx("div", __assign$1({ className: style$2.tableWrapper }, { children: jsx(Table, { data: rows, background: "dark", fixHeader: true, columnWidths: ["15%", "20%", "20%", "12%", "12%", "21%"], columnAlignments: ["", "", "", "center", "center", "center"] }) }))) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$2.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isSubmitting }, { children: skipHeaderRowSelection ? "Cancel" : "Back" })), !!error && (jsx("div", __assign$1({ className: style$2.errorContainer }, { children: jsx(Errors, { error: error }) }))), jsx(Button$1, __assign$1({ colorScheme: "primary", isLoading: isSubmitting, type: "submit" }, { children: "Submit" }))] }))] })) })));
 }
 
-var fallbackIcon = {
+var fallbackIcon$1 = {
   path: /* @__PURE__ */ jsxs("g", { stroke: "currentColor", strokeWidth: "1.5", children: [
     /* @__PURE__ */ jsx(
       "path",
@@ -30177,7 +25974,7 @@ var fallbackIcon = {
   ] }),
   viewBox: "0 0 24 24"
 };
-var Icon = forwardRef((props, ref) => {
+var Icon$1 = forwardRef$1((props, ref) => {
   const {
     as: element,
     viewBox,
@@ -30188,8 +25985,8 @@ var Icon = forwardRef((props, ref) => {
     __css,
     ...rest
   } = props;
-  const _className = cx("chakra-icon", className);
-  const customStyles = useStyleConfig("Icon", props);
+  const _className = cx$2("chakra-icon", className);
+  const customStyles = useStyleConfig$1("Icon", props);
   const styles = {
     w: "1em",
     h: "1em",
@@ -30206,17 +26003,17 @@ var Icon = forwardRef((props, ref) => {
     className: _className,
     __css: styles
   };
-  const _viewBox = viewBox != null ? viewBox : fallbackIcon.viewBox;
+  const _viewBox = viewBox != null ? viewBox : fallbackIcon$1.viewBox;
   if (element && typeof element !== "string") {
-    return /* @__PURE__ */ jsx(chakra.svg, { as: element, ...shared, ...rest });
+    return /* @__PURE__ */ jsx(chakra$1.svg, { as: element, ...shared, ...rest });
   }
-  const _path = children != null ? children : fallbackIcon.path;
-  return /* @__PURE__ */ jsx(chakra.svg, { verticalAlign: "middle", viewBox: _viewBox, ...shared, ...rest, children: _path });
+  const _path = children != null ? children : fallbackIcon$1.path;
+  return /* @__PURE__ */ jsx(chakra$1.svg, { verticalAlign: "middle", viewBox: _viewBox, ...shared, ...rest, children: _path });
 });
-Icon.displayName = "Icon";
+Icon$1.displayName = "Icon";
 
-function CheckIcon(props) {
-  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+function CheckIcon$1(props) {
+  return /* @__PURE__ */ jsx(Icon$1, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30224,8 +26021,8 @@ function CheckIcon(props) {
     }
   ) });
 }
-function InfoIcon(props) {
-  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+function InfoIcon$1(props) {
+  return /* @__PURE__ */ jsx(Icon$1, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30233,8 +26030,8 @@ function InfoIcon(props) {
     }
   ) });
 }
-function WarningIcon(props) {
-  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+function WarningIcon$1(props) {
+  return /* @__PURE__ */ jsx(Icon$1, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
     "path",
     {
       fill: "currentColor",
@@ -30243,94 +26040,32 @@ function WarningIcon(props) {
   ) });
 }
 
-var [AlertProvider, useAlertContext] = createContext$1({
+var [AlertProvider$1, useAlertContext$1] = createContext$2({
   name: "AlertContext",
   hookName: "useAlertContext",
   providerName: "<Alert />"
 });
-var [AlertStylesProvider, useAlertStyles] = createContext$1({
+var [AlertStylesProvider$1, useAlertStyles$1] = createContext$2({
   name: `AlertStylesContext`,
   hookName: `useAlertStyles`,
   providerName: "<Alert />"
 });
-var STATUSES = {
-  info: { icon: InfoIcon, colorScheme: "blue" },
-  warning: { icon: WarningIcon, colorScheme: "orange" },
-  success: { icon: CheckIcon, colorScheme: "green" },
-  error: { icon: WarningIcon, colorScheme: "red" },
-  loading: { icon: Spinner, colorScheme: "blue" }
+var STATUSES$1 = {
+  info: { icon: InfoIcon$1, colorScheme: "blue" },
+  warning: { icon: WarningIcon$1, colorScheme: "orange" },
+  success: { icon: CheckIcon$1, colorScheme: "green" },
+  error: { icon: WarningIcon$1, colorScheme: "red" },
+  loading: { icon: Spinner$1, colorScheme: "blue" }
 };
-function getStatusColorScheme(status) {
-  return STATUSES[status].colorScheme;
-}
-function getStatusIcon(status) {
-  return STATUSES[status].icon;
+function getStatusColorScheme$1(status) {
+  return STATUSES$1[status].colorScheme;
 }
 
-var AlertDescription = forwardRef(
-  function AlertDescription2(props, ref) {
-    const styles = useAlertStyles();
-    const { status } = useAlertContext();
-    const descriptionStyles = {
-      display: "inline",
-      ...styles.description
-    };
-    return /* @__PURE__ */ jsx(
-      chakra.div,
-      {
-        ref,
-        "data-status": status,
-        ...props,
-        className: cx("chakra-alert__desc", props.className),
-        __css: descriptionStyles
-      }
-    );
-  }
-);
-AlertDescription.displayName = "AlertDescription";
-
-function AlertIcon(props) {
-  const { status } = useAlertContext();
-  const BaseIcon = getStatusIcon(status);
-  const styles = useAlertStyles();
-  const css = status === "loading" ? styles.spinner : styles.icon;
-  return /* @__PURE__ */ jsx(
-    chakra.span,
-    {
-      display: "inherit",
-      "data-status": status,
-      ...props,
-      className: cx("chakra-alert__icon", props.className),
-      __css: css,
-      children: props.children || /* @__PURE__ */ jsx(BaseIcon, { h: "100%", w: "100%" })
-    }
-  );
-}
-AlertIcon.displayName = "AlertIcon";
-
-var AlertTitle = forwardRef(
-  function AlertTitle2(props, ref) {
-    const styles = useAlertStyles();
-    const { status } = useAlertContext();
-    return /* @__PURE__ */ jsx(
-      chakra.div,
-      {
-        ref,
-        "data-status": status,
-        ...props,
-        className: cx("chakra-alert__title", props.className),
-        __css: styles.title
-      }
-    );
-  }
-);
-AlertTitle.displayName = "AlertTitle";
-
-var Alert$1 = forwardRef(function Alert2(props, ref) {
+var Alert$2 = forwardRef$1(function Alert2(props, ref) {
   var _a;
-  const { status = "info", addRole = true, ...rest } = omitThemingProps(props);
-  const colorScheme = (_a = props.colorScheme) != null ? _a : getStatusColorScheme(status);
-  const styles = useMultiStyleConfig("Alert", { ...props, colorScheme });
+  const { status = "info", addRole = true, ...rest } = omitThemingProps$1(props);
+  const colorScheme = (_a = props.colorScheme) != null ? _a : getStatusColorScheme$1(status);
+  const styles = useMultiStyleConfig$1("Alert", { ...props, colorScheme });
   const alertStyles = {
     width: "100%",
     display: "flex",
@@ -30339,19 +26074,19 @@ var Alert$1 = forwardRef(function Alert2(props, ref) {
     overflow: "hidden",
     ...styles.container
   };
-  return /* @__PURE__ */ jsx(AlertProvider, { value: { status }, children: /* @__PURE__ */ jsx(AlertStylesProvider, { value: styles, children: /* @__PURE__ */ jsx(
-    chakra.div,
+  return /* @__PURE__ */ jsx(AlertProvider$1, { value: { status }, children: /* @__PURE__ */ jsx(AlertStylesProvider$1, { value: styles, children: /* @__PURE__ */ jsx(
+    chakra$1.div,
     {
       "data-status": status,
       role: addRole ? "alert" : void 0,
       ref,
       ...rest,
-      className: cx("chakra-alert", props.className),
+      className: cx$2("chakra-alert", props.className),
       __css: alertStyles
     }
   ) }) });
 });
-Alert$1.displayName = "Alert";
+Alert$2.displayName = "Alert";
 
 var css_248z$3 = ".RowSelection-module_content__1PR_8 {\n  flex-grow: 1;\n  height: 100%;\n}\n.RowSelection-module_content__1PR_8 form {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  gap: var(--m);\n}\n.RowSelection-module_content__1PR_8 form .RowSelection-module_tableWrapper__2xHWU {\n  display: flex;\n  overflow-y: auto;\n  padding: 1px;\n  margin-right: -20px;\n  padding-right: 21px;\n  height: calc(100vh - 160px);\n}\n.RowSelection-module_content__1PR_8 form .RowSelection-module_actions__1zprO {\n  display: flex;\n  justify-content: space-between;\n}\n\n.RowSelection-module_samples__2sQGP {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1;\n  white-space: nowrap;\n}\n.RowSelection-module_samples__2sQGP > small {\n  background-color: var(--color-input-background);\n  font-family: monospace;\n  padding: var(--m-xxxxs);\n  border-radius: var(--border-radius-1);\n  font-size: var(--font-size-xs);\n  display: inline-block;\n}\n.RowSelection-module_samples__2sQGP > small + small {\n  margin-left: var(--m-xxxxs);\n}\n\n.RowSelection-module_spinner__2yCHV {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1);\n}\n\n.RowSelection-module_inputRadio__3td6N {\n  margin-right: 10px;\n}\n\n.RowSelection-module_headingCaption__3CLAP {\n  padding: 12px 0 10px 0;\n  color: var(--color-text-secondary);\n  font-weight: 400;\n  height: 48px;\n  vertical-align: middle;\n  text-align: center;\n}\n.RowSelection-module_headingCaption__3CLAP span > span:nth-child(1) > span {\n  font-weight: 400;\n}\n\n.RowSelection-module_warningIcon__3B01J {\n  margin-right: 7px;\n}";
 var style$1 = {"content":"RowSelection-module_content__1PR_8","tableWrapper":"RowSelection-module_tableWrapper__2xHWU","actions":"RowSelection-module_actions__1zprO","samples":"RowSelection-module_samples__2sQGP","spinner":"RowSelection-module_spinner__2yCHV","inputRadio":"RowSelection-module_inputRadio__3td6N","headingCaption":"RowSelection-module_headingCaption__3CLAP","warningIcon":"RowSelection-module_warningIcon__3B01J"};
@@ -30360,7 +26095,7 @@ styleInject(css_248z$3);
 function RowSelection(_a) {
     var _b, _c;
     var data = _a.data, onSuccess = _a.onSuccess, onCancel = _a.onCancel, selectedHeaderRow = _a.selectedHeaderRow, setSelectedHeaderRow = _a.setSelectedHeaderRow;
-    var _d = useState(false), isLoading = _d[0], setIsLoading = _d[1];
+    var _d = useState$1(false), isLoading = _d[0], setIsLoading = _d[1];
     var handleRadioChange = function (e) {
         setSelectedHeaderRow(Number(e.target.value));
     };
@@ -30393,7 +26128,7 @@ function RowSelection(_a) {
         onSuccess();
         setIsLoading(false);
     };
-    return (jsx("div", __assign$1({ className: style$1.content }, { children: jsxs("form", { children: [data ? (jsxs(Fragment$1, { children: [hasMultipleExcelSheets ? (jsxs(Alert$1, __assign$1({ status: "info" }, { children: [jsx(PiWarningCircle, { className: style$1.warningIcon }), "Only the first sheet (\"", data.sheetList[0], "\") of the Excel file will be imported. To import multiple sheets, please upload each sheet individually."] }))) : null, jsx("div", __assign$1({ className: style$1.tableWrapper }, { children: jsx(Table, { fixHeader: true, mergeThemes: true, data: dataWithRadios || [], heading: jsx("div", __assign$1({ className: style$1.headingCaption }, { children: jsx(Tooltip, __assign$1({ title: "Select the row which contains the column headers" }, { children: "Select Header Row" })) })), keyAsId: "index", background: "zebra", columnWidths: columnWidths, columnAlignments: Array(numberOfColumns).fill("left"), onRowClick: function (row) { return setSelectedHeaderRow((dataWithRadios === null || dataWithRadios === void 0 ? void 0 : dataWithRadios.indexOf(row)) || 0); } }) }))] })) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$1.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isLoading }, { children: "Cancel" })), jsx(Button$1, __assign$1({ colorScheme: "primary", onClick: handleNextClick, isLoading: isLoading, type: "submit" }, { children: "Continue" }))] }))] }) })));
+    return (jsx("div", __assign$1({ className: style$1.content }, { children: jsxs("form", { children: [data ? (jsxs(Fragment$1, { children: [hasMultipleExcelSheets ? (jsxs(Alert$2, __assign$1({ status: "info" }, { children: [jsx(PiWarningCircle, { className: style$1.warningIcon }), "Only the first sheet (\"", data.sheetList[0], "\") of the Excel file will be imported. To import multiple sheets, please upload each sheet individually."] }))) : null, jsx("div", __assign$1({ className: style$1.tableWrapper }, { children: jsx(Table, { fixHeader: true, mergeThemes: true, data: dataWithRadios || [], heading: jsx("div", __assign$1({ className: style$1.headingCaption }, { children: jsx(Tooltip, __assign$1({ title: "Select the row which contains the column headers" }, { children: "Select Header Row" })) })), keyAsId: "index", background: "zebra", columnWidths: columnWidths, columnAlignments: Array(numberOfColumns).fill("left"), onRowClick: function (row) { return setSelectedHeaderRow((dataWithRadios === null || dataWithRadios === void 0 ? void 0 : dataWithRadios.indexOf(row)) || 0); } }) }))] })) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$1.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isLoading }, { children: "Cancel" })), jsx(Button$1, __assign$1({ colorScheme: "primary", onClick: handleNextClick, isLoading: isLoading, type: "submit" }, { children: "Continue" }))] }))] }) })));
 }
 
 /** @license React v16.13.1
@@ -30404,12 +26139,12 @@ function RowSelection(_a) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h$1=b?Symbol.for("react.provider"):60109,k$1=b?Symbol.for("react.context"):60110,l$1=b?Symbol.for("react.async_mode"):60111,m$1=b?Symbol.for("react.concurrent_mode"):60111,n$1=b?Symbol.for("react.forward_ref"):60112,p$2=b?Symbol.for("react.suspense"):60113,q$2=b?
-Symbol.for("react.suspense_list"):60120,r$2=b?Symbol.for("react.memo"):60115,t$2=b?Symbol.for("react.lazy"):60116,v$1=b?Symbol.for("react.block"):60121,w$1=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l$1:case m$1:case e:case g:case f:case p$2:return a;default:switch(a=a&&a.$$typeof,a){case k$1:case n$1:case t$2:case r$2:case h$1:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m$1}var AsyncMode=l$1;var ConcurrentMode=m$1;var ContextConsumer=k$1;var ContextProvider=h$1;var Element$1=c;var ForwardRef=n$1;var Fragment=e;var Lazy=t$2;var Memo=r$2;var Portal$1=d;
-var Profiler=g;var StrictMode=f;var Suspense=p$2;var isAsyncMode=function(a){return A(a)||z(a)===l$1};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k$1};var isContextProvider=function(a){return z(a)===h$1};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n$1};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t$2};
-var isMemo=function(a){return z(a)===r$2};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p$2};
-var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m$1||a===g||a===f||a===p$2||a===q$2||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r$2||a.$$typeof===h$1||a.$$typeof===k$1||a.$$typeof===n$1||a.$$typeof===w$1||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v$1)};var typeOf=z;
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
+Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t$2=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
+function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t$2:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element$1=c;var ForwardRef=n;var Fragment=e;var Lazy=t$2;var Memo=r;var Portal$1=d;
+var Profiler=g;var StrictMode=f;var Suspense=p;var isAsyncMode=function(a){return A(a)||z(a)===l};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k};var isContextProvider=function(a){return z(a)===h};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t$2};
+var isMemo=function(a){return z(a)===r};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p};
+var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};var typeOf=z;
 
 var reactIs_production_min = {
 	AsyncMode: AsyncMode,
@@ -31542,117 +27277,1272 @@ if (process.env.NODE_ENV !== 'production') {
 
 var PropTypes = propTypes;
 
-var COMMON_MIME_TYPES = new Map([
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-    ['aac', 'audio/aac'],
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __awaiter(thisArg, _arguments, P, generator) {
+  function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+  return new (P || (P = Promise))(function (resolve, reject) {
+      function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+      function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+      function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+  var e = new Error(message);
+  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+
+const COMMON_MIME_TYPES = new Map([
+    // https://github.com/guzzle/psr7/blob/2d9260799e713f1c475d3c5fdc3d6561ff7441b2/src/MimeType.php
+    ['1km', 'application/vnd.1000minds.decision-model+xml'],
+    ['3dml', 'text/vnd.in3d.3dml'],
+    ['3ds', 'image/x-3ds'],
+    ['3g2', 'video/3gpp2'],
+    ['3gp', 'video/3gp'],
+    ['3gpp', 'video/3gpp'],
+    ['3mf', 'model/3mf'],
+    ['7z', 'application/x-7z-compressed'],
+    ['7zip', 'application/x-7z-compressed'],
+    ['123', 'application/vnd.lotus-1-2-3'],
+    ['aab', 'application/x-authorware-bin'],
+    ['aac', 'audio/x-acc'],
+    ['aam', 'application/x-authorware-map'],
+    ['aas', 'application/x-authorware-seg'],
     ['abw', 'application/x-abiword'],
+    ['ac', 'application/vnd.nokia.n-gage.ac+xml'],
+    ['ac3', 'audio/ac3'],
+    ['acc', 'application/vnd.americandynamics.acc'],
+    ['ace', 'application/x-ace-compressed'],
+    ['acu', 'application/vnd.acucobol'],
+    ['acutc', 'application/vnd.acucorp'],
+    ['adp', 'audio/adpcm'],
+    ['aep', 'application/vnd.audiograph'],
+    ['afm', 'application/x-font-type1'],
+    ['afp', 'application/vnd.ibm.modcap'],
+    ['ahead', 'application/vnd.ahead.space'],
+    ['ai', 'application/pdf'],
+    ['aif', 'audio/x-aiff'],
+    ['aifc', 'audio/x-aiff'],
+    ['aiff', 'audio/x-aiff'],
+    ['air', 'application/vnd.adobe.air-application-installer-package+zip'],
+    ['ait', 'application/vnd.dvb.ait'],
+    ['ami', 'application/vnd.amiga.ami'],
+    ['amr', 'audio/amr'],
+    ['apk', 'application/vnd.android.package-archive'],
+    ['apng', 'image/apng'],
+    ['appcache', 'text/cache-manifest'],
+    ['application', 'application/x-ms-application'],
+    ['apr', 'application/vnd.lotus-approach'],
     ['arc', 'application/x-freearc'],
-    ['avif', 'image/avif'],
+    ['arj', 'application/x-arj'],
+    ['asc', 'application/pgp-signature'],
+    ['asf', 'video/x-ms-asf'],
+    ['asm', 'text/x-asm'],
+    ['aso', 'application/vnd.accpac.simply.aso'],
+    ['asx', 'video/x-ms-asf'],
+    ['atc', 'application/vnd.acucorp'],
+    ['atom', 'application/atom+xml'],
+    ['atomcat', 'application/atomcat+xml'],
+    ['atomdeleted', 'application/atomdeleted+xml'],
+    ['atomsvc', 'application/atomsvc+xml'],
+    ['atx', 'application/vnd.antix.game-component'],
+    ['au', 'audio/x-au'],
     ['avi', 'video/x-msvideo'],
+    ['avif', 'image/avif'],
+    ['aw', 'application/applixware'],
+    ['azf', 'application/vnd.airzip.filesecure.azf'],
+    ['azs', 'application/vnd.airzip.filesecure.azs'],
+    ['azv', 'image/vnd.airzip.accelerator.azv'],
     ['azw', 'application/vnd.amazon.ebook'],
+    ['b16', 'image/vnd.pco.b16'],
+    ['bat', 'application/x-msdownload'],
+    ['bcpio', 'application/x-bcpio'],
+    ['bdf', 'application/x-font-bdf'],
+    ['bdm', 'application/vnd.syncml.dm+wbxml'],
+    ['bdoc', 'application/x-bdoc'],
+    ['bed', 'application/vnd.realvnc.bed'],
+    ['bh2', 'application/vnd.fujitsu.oasysprs'],
     ['bin', 'application/octet-stream'],
+    ['blb', 'application/x-blorb'],
+    ['blorb', 'application/x-blorb'],
+    ['bmi', 'application/vnd.bmi'],
+    ['bmml', 'application/vnd.balsamiq.bmml+xml'],
     ['bmp', 'image/bmp'],
+    ['book', 'application/vnd.framemaker'],
+    ['box', 'application/vnd.previewsystems.box'],
+    ['boz', 'application/x-bzip2'],
+    ['bpk', 'application/octet-stream'],
+    ['bpmn', 'application/octet-stream'],
+    ['bsp', 'model/vnd.valve.source.compiled-map'],
+    ['btif', 'image/prs.btif'],
+    ['buffer', 'application/octet-stream'],
     ['bz', 'application/x-bzip'],
     ['bz2', 'application/x-bzip2'],
+    ['c', 'text/x-c'],
+    ['c4d', 'application/vnd.clonk.c4group'],
+    ['c4f', 'application/vnd.clonk.c4group'],
+    ['c4g', 'application/vnd.clonk.c4group'],
+    ['c4p', 'application/vnd.clonk.c4group'],
+    ['c4u', 'application/vnd.clonk.c4group'],
+    ['c11amc', 'application/vnd.cluetrust.cartomobile-config'],
+    ['c11amz', 'application/vnd.cluetrust.cartomobile-config-pkg'],
+    ['cab', 'application/vnd.ms-cab-compressed'],
+    ['caf', 'audio/x-caf'],
+    ['cap', 'application/vnd.tcpdump.pcap'],
+    ['car', 'application/vnd.curl.car'],
+    ['cat', 'application/vnd.ms-pki.seccat'],
+    ['cb7', 'application/x-cbr'],
+    ['cba', 'application/x-cbr'],
+    ['cbr', 'application/x-cbr'],
+    ['cbt', 'application/x-cbr'],
+    ['cbz', 'application/x-cbr'],
+    ['cc', 'text/x-c'],
+    ['cco', 'application/x-cocoa'],
+    ['cct', 'application/x-director'],
+    ['ccxml', 'application/ccxml+xml'],
+    ['cdbcmsg', 'application/vnd.contact.cmsg'],
     ['cda', 'application/x-cdf'],
+    ['cdf', 'application/x-netcdf'],
+    ['cdfx', 'application/cdfx+xml'],
+    ['cdkey', 'application/vnd.mediastation.cdkey'],
+    ['cdmia', 'application/cdmi-capability'],
+    ['cdmic', 'application/cdmi-container'],
+    ['cdmid', 'application/cdmi-domain'],
+    ['cdmio', 'application/cdmi-object'],
+    ['cdmiq', 'application/cdmi-queue'],
+    ['cdr', 'application/cdr'],
+    ['cdx', 'chemical/x-cdx'],
+    ['cdxml', 'application/vnd.chemdraw+xml'],
+    ['cdy', 'application/vnd.cinderella'],
+    ['cer', 'application/pkix-cert'],
+    ['cfs', 'application/x-cfs-compressed'],
+    ['cgm', 'image/cgm'],
+    ['chat', 'application/x-chat'],
+    ['chm', 'application/vnd.ms-htmlhelp'],
+    ['chrt', 'application/vnd.kde.kchart'],
+    ['cif', 'chemical/x-cif'],
+    ['cii', 'application/vnd.anser-web-certificate-issue-initiation'],
+    ['cil', 'application/vnd.ms-artgalry'],
+    ['cjs', 'application/node'],
+    ['cla', 'application/vnd.claymore'],
+    ['class', 'application/octet-stream'],
+    ['clkk', 'application/vnd.crick.clicker.keyboard'],
+    ['clkp', 'application/vnd.crick.clicker.palette'],
+    ['clkt', 'application/vnd.crick.clicker.template'],
+    ['clkw', 'application/vnd.crick.clicker.wordbank'],
+    ['clkx', 'application/vnd.crick.clicker'],
+    ['clp', 'application/x-msclip'],
+    ['cmc', 'application/vnd.cosmocaller'],
+    ['cmdf', 'chemical/x-cmdf'],
+    ['cml', 'chemical/x-cml'],
+    ['cmp', 'application/vnd.yellowriver-custom-menu'],
+    ['cmx', 'image/x-cmx'],
+    ['cod', 'application/vnd.rim.cod'],
+    ['coffee', 'text/coffeescript'],
+    ['com', 'application/x-msdownload'],
+    ['conf', 'text/plain'],
+    ['cpio', 'application/x-cpio'],
+    ['cpp', 'text/x-c'],
+    ['cpt', 'application/mac-compactpro'],
+    ['crd', 'application/x-mscardfile'],
+    ['crl', 'application/pkix-crl'],
+    ['crt', 'application/x-x509-ca-cert'],
+    ['crx', 'application/x-chrome-extension'],
+    ['cryptonote', 'application/vnd.rig.cryptonote'],
     ['csh', 'application/x-csh'],
+    ['csl', 'application/vnd.citationstyles.style+xml'],
+    ['csml', 'chemical/x-csml'],
+    ['csp', 'application/vnd.commonspace'],
+    ['csr', 'application/octet-stream'],
     ['css', 'text/css'],
+    ['cst', 'application/x-director'],
     ['csv', 'text/csv'],
+    ['cu', 'application/cu-seeme'],
+    ['curl', 'text/vnd.curl'],
+    ['cww', 'application/prs.cww'],
+    ['cxt', 'application/x-director'],
+    ['cxx', 'text/x-c'],
+    ['dae', 'model/vnd.collada+xml'],
+    ['daf', 'application/vnd.mobius.daf'],
+    ['dart', 'application/vnd.dart'],
+    ['dataless', 'application/vnd.fdsn.seed'],
+    ['davmount', 'application/davmount+xml'],
+    ['dbf', 'application/vnd.dbf'],
+    ['dbk', 'application/docbook+xml'],
+    ['dcr', 'application/x-director'],
+    ['dcurl', 'text/vnd.curl.dcurl'],
+    ['dd2', 'application/vnd.oma.dd2+xml'],
+    ['ddd', 'application/vnd.fujixerox.ddd'],
+    ['ddf', 'application/vnd.syncml.dmddf+xml'],
+    ['dds', 'image/vnd.ms-dds'],
+    ['deb', 'application/x-debian-package'],
+    ['def', 'text/plain'],
+    ['deploy', 'application/octet-stream'],
+    ['der', 'application/x-x509-ca-cert'],
+    ['dfac', 'application/vnd.dreamfactory'],
+    ['dgc', 'application/x-dgc-compressed'],
+    ['dic', 'text/x-c'],
+    ['dir', 'application/x-director'],
+    ['dis', 'application/vnd.mobius.dis'],
+    ['disposition-notification', 'message/disposition-notification'],
+    ['dist', 'application/octet-stream'],
+    ['distz', 'application/octet-stream'],
+    ['djv', 'image/vnd.djvu'],
+    ['djvu', 'image/vnd.djvu'],
+    ['dll', 'application/octet-stream'],
+    ['dmg', 'application/x-apple-diskimage'],
+    ['dmn', 'application/octet-stream'],
+    ['dmp', 'application/vnd.tcpdump.pcap'],
+    ['dms', 'application/octet-stream'],
+    ['dna', 'application/vnd.dna'],
     ['doc', 'application/msword'],
+    ['docm', 'application/vnd.ms-word.template.macroEnabled.12'],
     ['docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    ['dot', 'application/msword'],
+    ['dotm', 'application/vnd.ms-word.template.macroEnabled.12'],
+    ['dotx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.template'],
+    ['dp', 'application/vnd.osgi.dp'],
+    ['dpg', 'application/vnd.dpgraph'],
+    ['dra', 'audio/vnd.dra'],
+    ['drle', 'image/dicom-rle'],
+    ['dsc', 'text/prs.lines.tag'],
+    ['dssc', 'application/dssc+der'],
+    ['dtb', 'application/x-dtbook+xml'],
+    ['dtd', 'application/xml-dtd'],
+    ['dts', 'audio/vnd.dts'],
+    ['dtshd', 'audio/vnd.dts.hd'],
+    ['dump', 'application/octet-stream'],
+    ['dvb', 'video/vnd.dvb.file'],
+    ['dvi', 'application/x-dvi'],
+    ['dwd', 'application/atsc-dwd+xml'],
+    ['dwf', 'model/vnd.dwf'],
+    ['dwg', 'image/vnd.dwg'],
+    ['dxf', 'image/vnd.dxf'],
+    ['dxp', 'application/vnd.spotfire.dxp'],
+    ['dxr', 'application/x-director'],
+    ['ear', 'application/java-archive'],
+    ['ecelp4800', 'audio/vnd.nuera.ecelp4800'],
+    ['ecelp7470', 'audio/vnd.nuera.ecelp7470'],
+    ['ecelp9600', 'audio/vnd.nuera.ecelp9600'],
+    ['ecma', 'application/ecmascript'],
+    ['edm', 'application/vnd.novadigm.edm'],
+    ['edx', 'application/vnd.novadigm.edx'],
+    ['efif', 'application/vnd.picsel'],
+    ['ei6', 'application/vnd.pg.osasli'],
+    ['elc', 'application/octet-stream'],
+    ['emf', 'image/emf'],
+    ['eml', 'message/rfc822'],
+    ['emma', 'application/emma+xml'],
+    ['emotionml', 'application/emotionml+xml'],
+    ['emz', 'application/x-msmetafile'],
+    ['eol', 'audio/vnd.digital-winds'],
     ['eot', 'application/vnd.ms-fontobject'],
+    ['eps', 'application/postscript'],
     ['epub', 'application/epub+zip'],
-    ['gz', 'application/gzip'],
+    ['es', 'application/ecmascript'],
+    ['es3', 'application/vnd.eszigno3+xml'],
+    ['esa', 'application/vnd.osgi.subsystem'],
+    ['esf', 'application/vnd.epson.esf'],
+    ['et3', 'application/vnd.eszigno3+xml'],
+    ['etx', 'text/x-setext'],
+    ['eva', 'application/x-eva'],
+    ['evy', 'application/x-envoy'],
+    ['exe', 'application/octet-stream'],
+    ['exi', 'application/exi'],
+    ['exp', 'application/express'],
+    ['exr', 'image/aces'],
+    ['ext', 'application/vnd.novadigm.ext'],
+    ['ez', 'application/andrew-inset'],
+    ['ez2', 'application/vnd.ezpix-album'],
+    ['ez3', 'application/vnd.ezpix-package'],
+    ['f', 'text/x-fortran'],
+    ['f4v', 'video/mp4'],
+    ['f77', 'text/x-fortran'],
+    ['f90', 'text/x-fortran'],
+    ['fbs', 'image/vnd.fastbidsheet'],
+    ['fcdt', 'application/vnd.adobe.formscentral.fcdt'],
+    ['fcs', 'application/vnd.isac.fcs'],
+    ['fdf', 'application/vnd.fdf'],
+    ['fdt', 'application/fdt+xml'],
+    ['fe_launch', 'application/vnd.denovo.fcselayout-link'],
+    ['fg5', 'application/vnd.fujitsu.oasysgp'],
+    ['fgd', 'application/x-director'],
+    ['fh', 'image/x-freehand'],
+    ['fh4', 'image/x-freehand'],
+    ['fh5', 'image/x-freehand'],
+    ['fh7', 'image/x-freehand'],
+    ['fhc', 'image/x-freehand'],
+    ['fig', 'application/x-xfig'],
+    ['fits', 'image/fits'],
+    ['flac', 'audio/x-flac'],
+    ['fli', 'video/x-fli'],
+    ['flo', 'application/vnd.micrografx.flo'],
+    ['flv', 'video/x-flv'],
+    ['flw', 'application/vnd.kde.kivio'],
+    ['flx', 'text/vnd.fmi.flexstor'],
+    ['fly', 'text/vnd.fly'],
+    ['fm', 'application/vnd.framemaker'],
+    ['fnc', 'application/vnd.frogans.fnc'],
+    ['fo', 'application/vnd.software602.filler.form+xml'],
+    ['for', 'text/x-fortran'],
+    ['fpx', 'image/vnd.fpx'],
+    ['frame', 'application/vnd.framemaker'],
+    ['fsc', 'application/vnd.fsc.weblaunch'],
+    ['fst', 'image/vnd.fst'],
+    ['ftc', 'application/vnd.fluxtime.clip'],
+    ['fti', 'application/vnd.anser-web-funds-transfer-initiation'],
+    ['fvt', 'video/vnd.fvt'],
+    ['fxp', 'application/vnd.adobe.fxp'],
+    ['fxpl', 'application/vnd.adobe.fxp'],
+    ['fzs', 'application/vnd.fuzzysheet'],
+    ['g2w', 'application/vnd.geoplan'],
+    ['g3', 'image/g3fax'],
+    ['g3w', 'application/vnd.geospace'],
+    ['gac', 'application/vnd.groove-account'],
+    ['gam', 'application/x-tads'],
+    ['gbr', 'application/rpki-ghostbusters'],
+    ['gca', 'application/x-gca-compressed'],
+    ['gdl', 'model/vnd.gdl'],
+    ['gdoc', 'application/vnd.google-apps.document'],
+    ['geo', 'application/vnd.dynageo'],
+    ['geojson', 'application/geo+json'],
+    ['gex', 'application/vnd.geometry-explorer'],
+    ['ggb', 'application/vnd.geogebra.file'],
+    ['ggt', 'application/vnd.geogebra.tool'],
+    ['ghf', 'application/vnd.groove-help'],
     ['gif', 'image/gif'],
+    ['gim', 'application/vnd.groove-identity-message'],
+    ['glb', 'model/gltf-binary'],
+    ['gltf', 'model/gltf+json'],
+    ['gml', 'application/gml+xml'],
+    ['gmx', 'application/vnd.gmx'],
+    ['gnumeric', 'application/x-gnumeric'],
+    ['gpg', 'application/gpg-keys'],
+    ['gph', 'application/vnd.flographit'],
+    ['gpx', 'application/gpx+xml'],
+    ['gqf', 'application/vnd.grafeq'],
+    ['gqs', 'application/vnd.grafeq'],
+    ['gram', 'application/srgs'],
+    ['gramps', 'application/x-gramps-xml'],
+    ['gre', 'application/vnd.geometry-explorer'],
+    ['grv', 'application/vnd.groove-injector'],
+    ['grxml', 'application/srgs+xml'],
+    ['gsf', 'application/x-font-ghostscript'],
+    ['gsheet', 'application/vnd.google-apps.spreadsheet'],
+    ['gslides', 'application/vnd.google-apps.presentation'],
+    ['gtar', 'application/x-gtar'],
+    ['gtm', 'application/vnd.groove-tool-message'],
+    ['gtw', 'model/vnd.gtw'],
+    ['gv', 'text/vnd.graphviz'],
+    ['gxf', 'application/gxf'],
+    ['gxt', 'application/vnd.geonext'],
+    ['gz', 'application/gzip'],
+    ['gzip', 'application/gzip'],
+    ['h', 'text/x-c'],
+    ['h261', 'video/h261'],
+    ['h263', 'video/h263'],
+    ['h264', 'video/h264'],
+    ['hal', 'application/vnd.hal+xml'],
+    ['hbci', 'application/vnd.hbci'],
+    ['hbs', 'text/x-handlebars-template'],
+    ['hdd', 'application/x-virtualbox-hdd'],
+    ['hdf', 'application/x-hdf'],
     ['heic', 'image/heic'],
+    ['heics', 'image/heic-sequence'],
     ['heif', 'image/heif'],
+    ['heifs', 'image/heif-sequence'],
+    ['hej2', 'image/hej2k'],
+    ['held', 'application/atsc-held+xml'],
+    ['hh', 'text/x-c'],
+    ['hjson', 'application/hjson'],
+    ['hlp', 'application/winhlp'],
+    ['hpgl', 'application/vnd.hp-hpgl'],
+    ['hpid', 'application/vnd.hp-hpid'],
+    ['hps', 'application/vnd.hp-hps'],
+    ['hqx', 'application/mac-binhex40'],
+    ['hsj2', 'image/hsj2'],
+    ['htc', 'text/x-component'],
+    ['htke', 'application/vnd.kenameaapp'],
     ['htm', 'text/html'],
     ['html', 'text/html'],
-    ['ico', 'image/vnd.microsoft.icon'],
+    ['hvd', 'application/vnd.yamaha.hv-dic'],
+    ['hvp', 'application/vnd.yamaha.hv-voice'],
+    ['hvs', 'application/vnd.yamaha.hv-script'],
+    ['i2g', 'application/vnd.intergeo'],
+    ['icc', 'application/vnd.iccprofile'],
+    ['ice', 'x-conference/x-cooltalk'],
+    ['icm', 'application/vnd.iccprofile'],
+    ['ico', 'image/x-icon'],
     ['ics', 'text/calendar'],
+    ['ief', 'image/ief'],
+    ['ifb', 'text/calendar'],
+    ['ifm', 'application/vnd.shana.informed.formdata'],
+    ['iges', 'model/iges'],
+    ['igl', 'application/vnd.igloader'],
+    ['igm', 'application/vnd.insors.igm'],
+    ['igs', 'model/iges'],
+    ['igx', 'application/vnd.micrografx.igx'],
+    ['iif', 'application/vnd.shana.informed.interchange'],
+    ['img', 'application/octet-stream'],
+    ['imp', 'application/vnd.accpac.simply.imp'],
+    ['ims', 'application/vnd.ms-ims'],
+    ['in', 'text/plain'],
+    ['ini', 'text/plain'],
+    ['ink', 'application/inkml+xml'],
+    ['inkml', 'application/inkml+xml'],
+    ['install', 'application/x-install-instructions'],
+    ['iota', 'application/vnd.astraea-software.iota'],
+    ['ipfix', 'application/ipfix'],
+    ['ipk', 'application/vnd.shana.informed.package'],
+    ['irm', 'application/vnd.ibm.rights-management'],
+    ['irp', 'application/vnd.irepository.package+xml'],
+    ['iso', 'application/x-iso9660-image'],
+    ['itp', 'application/vnd.shana.informed.formtemplate'],
+    ['its', 'application/its+xml'],
+    ['ivp', 'application/vnd.immervision-ivp'],
+    ['ivu', 'application/vnd.immervision-ivu'],
+    ['jad', 'text/vnd.sun.j2me.app-descriptor'],
+    ['jade', 'text/jade'],
+    ['jam', 'application/vnd.jam'],
     ['jar', 'application/java-archive'],
+    ['jardiff', 'application/x-java-archive-diff'],
+    ['java', 'text/x-java-source'],
+    ['jhc', 'image/jphc'],
+    ['jisp', 'application/vnd.jisp'],
+    ['jls', 'image/jls'],
+    ['jlt', 'application/vnd.hp-jlyt'],
+    ['jng', 'image/x-jng'],
+    ['jnlp', 'application/x-java-jnlp-file'],
+    ['joda', 'application/vnd.joost.joda-archive'],
+    ['jp2', 'image/jp2'],
+    ['jpe', 'image/jpeg'],
     ['jpeg', 'image/jpeg'],
+    ['jpf', 'image/jpx'],
     ['jpg', 'image/jpeg'],
-    ['js', 'text/javascript'],
+    ['jpg2', 'image/jp2'],
+    ['jpgm', 'video/jpm'],
+    ['jpgv', 'video/jpeg'],
+    ['jph', 'image/jph'],
+    ['jpm', 'video/jpm'],
+    ['jpx', 'image/jpx'],
+    ['js', 'application/javascript'],
     ['json', 'application/json'],
+    ['json5', 'application/json5'],
     ['jsonld', 'application/ld+json'],
+    // https://jsonlines.org/
+    ['jsonl', 'application/jsonl'],
+    ['jsonml', 'application/jsonml+json'],
+    ['jsx', 'text/jsx'],
+    ['jxr', 'image/jxr'],
+    ['jxra', 'image/jxra'],
+    ['jxrs', 'image/jxrs'],
+    ['jxs', 'image/jxs'],
+    ['jxsc', 'image/jxsc'],
+    ['jxsi', 'image/jxsi'],
+    ['jxss', 'image/jxss'],
+    ['kar', 'audio/midi'],
+    ['karbon', 'application/vnd.kde.karbon'],
+    ['kdb', 'application/octet-stream'],
+    ['kdbx', 'application/x-keepass2'],
+    ['key', 'application/x-iwork-keynote-sffkey'],
+    ['kfo', 'application/vnd.kde.kformula'],
+    ['kia', 'application/vnd.kidspiration'],
+    ['kml', 'application/vnd.google-earth.kml+xml'],
+    ['kmz', 'application/vnd.google-earth.kmz'],
+    ['kne', 'application/vnd.kinar'],
+    ['knp', 'application/vnd.kinar'],
+    ['kon', 'application/vnd.kde.kontour'],
+    ['kpr', 'application/vnd.kde.kpresenter'],
+    ['kpt', 'application/vnd.kde.kpresenter'],
+    ['kpxx', 'application/vnd.ds-keypoint'],
+    ['ksp', 'application/vnd.kde.kspread'],
+    ['ktr', 'application/vnd.kahootz'],
+    ['ktx', 'image/ktx'],
+    ['ktx2', 'image/ktx2'],
+    ['ktz', 'application/vnd.kahootz'],
+    ['kwd', 'application/vnd.kde.kword'],
+    ['kwt', 'application/vnd.kde.kword'],
+    ['lasxml', 'application/vnd.las.las+xml'],
+    ['latex', 'application/x-latex'],
+    ['lbd', 'application/vnd.llamagraphics.life-balance.desktop'],
+    ['lbe', 'application/vnd.llamagraphics.life-balance.exchange+xml'],
+    ['les', 'application/vnd.hhe.lesson-player'],
+    ['less', 'text/less'],
+    ['lgr', 'application/lgr+xml'],
+    ['lha', 'application/octet-stream'],
+    ['link66', 'application/vnd.route66.link66+xml'],
+    ['list', 'text/plain'],
+    ['list3820', 'application/vnd.ibm.modcap'],
+    ['listafp', 'application/vnd.ibm.modcap'],
+    ['litcoffee', 'text/coffeescript'],
+    ['lnk', 'application/x-ms-shortcut'],
+    ['log', 'text/plain'],
+    ['lostxml', 'application/lost+xml'],
+    ['lrf', 'application/octet-stream'],
+    ['lrm', 'application/vnd.ms-lrm'],
+    ['ltf', 'application/vnd.frogans.ltf'],
+    ['lua', 'text/x-lua'],
+    ['luac', 'application/x-lua-bytecode'],
+    ['lvp', 'audio/vnd.lucent.voice'],
+    ['lwp', 'application/vnd.lotus-wordpro'],
+    ['lzh', 'application/octet-stream'],
+    ['m1v', 'video/mpeg'],
+    ['m2a', 'audio/mpeg'],
+    ['m2v', 'video/mpeg'],
+    ['m3a', 'audio/mpeg'],
+    ['m3u', 'text/plain'],
+    ['m3u8', 'application/vnd.apple.mpegurl'],
+    ['m4a', 'audio/x-m4a'],
+    ['m4p', 'application/mp4'],
+    ['m4s', 'video/iso.segment'],
+    ['m4u', 'application/vnd.mpegurl'],
+    ['m4v', 'video/x-m4v'],
+    ['m13', 'application/x-msmediaview'],
+    ['m14', 'application/x-msmediaview'],
+    ['m21', 'application/mp21'],
+    ['ma', 'application/mathematica'],
+    ['mads', 'application/mads+xml'],
+    ['maei', 'application/mmt-aei+xml'],
+    ['mag', 'application/vnd.ecowin.chart'],
+    ['maker', 'application/vnd.framemaker'],
+    ['man', 'text/troff'],
+    ['manifest', 'text/cache-manifest'],
+    ['map', 'application/json'],
+    ['mar', 'application/octet-stream'],
+    ['markdown', 'text/markdown'],
+    ['mathml', 'application/mathml+xml'],
+    ['mb', 'application/mathematica'],
+    ['mbk', 'application/vnd.mobius.mbk'],
+    ['mbox', 'application/mbox'],
+    ['mc1', 'application/vnd.medcalcdata'],
+    ['mcd', 'application/vnd.mcd'],
+    ['mcurl', 'text/vnd.curl.mcurl'],
+    ['md', 'text/markdown'],
+    ['mdb', 'application/x-msaccess'],
+    ['mdi', 'image/vnd.ms-modi'],
+    ['mdx', 'text/mdx'],
+    ['me', 'text/troff'],
+    ['mesh', 'model/mesh'],
+    ['meta4', 'application/metalink4+xml'],
+    ['metalink', 'application/metalink+xml'],
+    ['mets', 'application/mets+xml'],
+    ['mfm', 'application/vnd.mfmp'],
+    ['mft', 'application/rpki-manifest'],
+    ['mgp', 'application/vnd.osgeo.mapguide.package'],
+    ['mgz', 'application/vnd.proteus.magazine'],
     ['mid', 'audio/midi'],
     ['midi', 'audio/midi'],
-    ['mjs', 'text/javascript'],
+    ['mie', 'application/x-mie'],
+    ['mif', 'application/vnd.mif'],
+    ['mime', 'message/rfc822'],
+    ['mj2', 'video/mj2'],
+    ['mjp2', 'video/mj2'],
+    ['mjs', 'application/javascript'],
+    ['mk3d', 'video/x-matroska'],
+    ['mka', 'audio/x-matroska'],
+    ['mkd', 'text/x-markdown'],
+    ['mks', 'video/x-matroska'],
+    ['mkv', 'video/x-matroska'],
+    ['mlp', 'application/vnd.dolby.mlp'],
+    ['mmd', 'application/vnd.chipnuts.karaoke-mmd'],
+    ['mmf', 'application/vnd.smaf'],
+    ['mml', 'text/mathml'],
+    ['mmr', 'image/vnd.fujixerox.edmics-mmr'],
+    ['mng', 'video/x-mng'],
+    ['mny', 'application/x-msmoney'],
+    ['mobi', 'application/x-mobipocket-ebook'],
+    ['mods', 'application/mods+xml'],
+    ['mov', 'video/quicktime'],
+    ['movie', 'video/x-sgi-movie'],
+    ['mp2', 'audio/mpeg'],
+    ['mp2a', 'audio/mpeg'],
     ['mp3', 'audio/mpeg'],
     ['mp4', 'video/mp4'],
+    ['mp4a', 'audio/mp4'],
+    ['mp4s', 'application/mp4'],
+    ['mp4v', 'video/mp4'],
+    ['mp21', 'application/mp21'],
+    ['mpc', 'application/vnd.mophun.certificate'],
+    ['mpd', 'application/dash+xml'],
+    ['mpe', 'video/mpeg'],
     ['mpeg', 'video/mpeg'],
+    ['mpg', 'video/mpeg'],
+    ['mpg4', 'video/mp4'],
+    ['mpga', 'audio/mpeg'],
     ['mpkg', 'application/vnd.apple.installer+xml'],
+    ['mpm', 'application/vnd.blueice.multipass'],
+    ['mpn', 'application/vnd.mophun.application'],
+    ['mpp', 'application/vnd.ms-project'],
+    ['mpt', 'application/vnd.ms-project'],
+    ['mpy', 'application/vnd.ibm.minipay'],
+    ['mqy', 'application/vnd.mobius.mqy'],
+    ['mrc', 'application/marc'],
+    ['mrcx', 'application/marcxml+xml'],
+    ['ms', 'text/troff'],
+    ['mscml', 'application/mediaservercontrol+xml'],
+    ['mseed', 'application/vnd.fdsn.mseed'],
+    ['mseq', 'application/vnd.mseq'],
+    ['msf', 'application/vnd.epson.msf'],
+    ['msg', 'application/vnd.ms-outlook'],
+    ['msh', 'model/mesh'],
+    ['msi', 'application/x-msdownload'],
+    ['msl', 'application/vnd.mobius.msl'],
+    ['msm', 'application/octet-stream'],
+    ['msp', 'application/octet-stream'],
+    ['msty', 'application/vnd.muvee.style'],
+    ['mtl', 'model/mtl'],
+    ['mts', 'model/vnd.mts'],
+    ['mus', 'application/vnd.musician'],
+    ['musd', 'application/mmt-usd+xml'],
+    ['musicxml', 'application/vnd.recordare.musicxml+xml'],
+    ['mvb', 'application/x-msmediaview'],
+    ['mvt', 'application/vnd.mapbox-vector-tile'],
+    ['mwf', 'application/vnd.mfer'],
+    ['mxf', 'application/mxf'],
+    ['mxl', 'application/vnd.recordare.musicxml'],
+    ['mxmf', 'audio/mobile-xmf'],
+    ['mxml', 'application/xv+xml'],
+    ['mxs', 'application/vnd.triscape.mxs'],
+    ['mxu', 'video/vnd.mpegurl'],
+    ['n-gage', 'application/vnd.nokia.n-gage.symbian.install'],
+    ['n3', 'text/n3'],
+    ['nb', 'application/mathematica'],
+    ['nbp', 'application/vnd.wolfram.player'],
+    ['nc', 'application/x-netcdf'],
+    ['ncx', 'application/x-dtbncx+xml'],
+    ['nfo', 'text/x-nfo'],
+    ['ngdat', 'application/vnd.nokia.n-gage.data'],
+    ['nitf', 'application/vnd.nitf'],
+    ['nlu', 'application/vnd.neurolanguage.nlu'],
+    ['nml', 'application/vnd.enliven'],
+    ['nnd', 'application/vnd.noblenet-directory'],
+    ['nns', 'application/vnd.noblenet-sealer'],
+    ['nnw', 'application/vnd.noblenet-web'],
+    ['npx', 'image/vnd.net-fpx'],
+    ['nq', 'application/n-quads'],
+    ['nsc', 'application/x-conference'],
+    ['nsf', 'application/vnd.lotus-notes'],
+    ['nt', 'application/n-triples'],
+    ['ntf', 'application/vnd.nitf'],
+    ['numbers', 'application/x-iwork-numbers-sffnumbers'],
+    ['nzb', 'application/x-nzb'],
+    ['oa2', 'application/vnd.fujitsu.oasys2'],
+    ['oa3', 'application/vnd.fujitsu.oasys3'],
+    ['oas', 'application/vnd.fujitsu.oasys'],
+    ['obd', 'application/x-msbinder'],
+    ['obgx', 'application/vnd.openblox.game+xml'],
+    ['obj', 'model/obj'],
+    ['oda', 'application/oda'],
+    ['odb', 'application/vnd.oasis.opendocument.database'],
+    ['odc', 'application/vnd.oasis.opendocument.chart'],
+    ['odf', 'application/vnd.oasis.opendocument.formula'],
+    ['odft', 'application/vnd.oasis.opendocument.formula-template'],
+    ['odg', 'application/vnd.oasis.opendocument.graphics'],
+    ['odi', 'application/vnd.oasis.opendocument.image'],
+    ['odm', 'application/vnd.oasis.opendocument.text-master'],
     ['odp', 'application/vnd.oasis.opendocument.presentation'],
     ['ods', 'application/vnd.oasis.opendocument.spreadsheet'],
     ['odt', 'application/vnd.oasis.opendocument.text'],
     ['oga', 'audio/ogg'],
+    ['ogex', 'model/vnd.opengex'],
+    ['ogg', 'audio/ogg'],
     ['ogv', 'video/ogg'],
     ['ogx', 'application/ogg'],
-    ['opus', 'audio/opus'],
+    ['omdoc', 'application/omdoc+xml'],
+    ['onepkg', 'application/onenote'],
+    ['onetmp', 'application/onenote'],
+    ['onetoc', 'application/onenote'],
+    ['onetoc2', 'application/onenote'],
+    ['opf', 'application/oebps-package+xml'],
+    ['opml', 'text/x-opml'],
+    ['oprc', 'application/vnd.palm'],
+    ['opus', 'audio/ogg'],
+    ['org', 'text/x-org'],
+    ['osf', 'application/vnd.yamaha.openscoreformat'],
+    ['osfpvg', 'application/vnd.yamaha.openscoreformat.osfpvg+xml'],
+    ['osm', 'application/vnd.openstreetmap.data+xml'],
+    ['otc', 'application/vnd.oasis.opendocument.chart-template'],
     ['otf', 'font/otf'],
-    ['png', 'image/png'],
+    ['otg', 'application/vnd.oasis.opendocument.graphics-template'],
+    ['oth', 'application/vnd.oasis.opendocument.text-web'],
+    ['oti', 'application/vnd.oasis.opendocument.image-template'],
+    ['otp', 'application/vnd.oasis.opendocument.presentation-template'],
+    ['ots', 'application/vnd.oasis.opendocument.spreadsheet-template'],
+    ['ott', 'application/vnd.oasis.opendocument.text-template'],
+    ['ova', 'application/x-virtualbox-ova'],
+    ['ovf', 'application/x-virtualbox-ovf'],
+    ['owl', 'application/rdf+xml'],
+    ['oxps', 'application/oxps'],
+    ['oxt', 'application/vnd.openofficeorg.extension'],
+    ['p', 'text/x-pascal'],
+    ['p7a', 'application/x-pkcs7-signature'],
+    ['p7b', 'application/x-pkcs7-certificates'],
+    ['p7c', 'application/pkcs7-mime'],
+    ['p7m', 'application/pkcs7-mime'],
+    ['p7r', 'application/x-pkcs7-certreqresp'],
+    ['p7s', 'application/pkcs7-signature'],
+    ['p8', 'application/pkcs8'],
+    ['p10', 'application/x-pkcs10'],
+    ['p12', 'application/x-pkcs12'],
+    ['pac', 'application/x-ns-proxy-autoconfig'],
+    ['pages', 'application/x-iwork-pages-sffpages'],
+    ['pas', 'text/x-pascal'],
+    ['paw', 'application/vnd.pawaafile'],
+    ['pbd', 'application/vnd.powerbuilder6'],
+    ['pbm', 'image/x-portable-bitmap'],
+    ['pcap', 'application/vnd.tcpdump.pcap'],
+    ['pcf', 'application/x-font-pcf'],
+    ['pcl', 'application/vnd.hp-pcl'],
+    ['pclxl', 'application/vnd.hp-pclxl'],
+    ['pct', 'image/x-pict'],
+    ['pcurl', 'application/vnd.curl.pcurl'],
+    ['pcx', 'image/x-pcx'],
+    ['pdb', 'application/x-pilot'],
+    ['pde', 'text/x-processing'],
     ['pdf', 'application/pdf'],
+    ['pem', 'application/x-x509-user-cert'],
+    ['pfa', 'application/x-font-type1'],
+    ['pfb', 'application/x-font-type1'],
+    ['pfm', 'application/x-font-type1'],
+    ['pfr', 'application/font-tdpfr'],
+    ['pfx', 'application/x-pkcs12'],
+    ['pgm', 'image/x-portable-graymap'],
+    ['pgn', 'application/x-chess-pgn'],
+    ['pgp', 'application/pgp'],
     ['php', 'application/x-httpd-php'],
-    ['ppt', 'application/vnd.ms-powerpoint'],
+    ['php3', 'application/x-httpd-php'],
+    ['php4', 'application/x-httpd-php'],
+    ['phps', 'application/x-httpd-php-source'],
+    ['phtml', 'application/x-httpd-php'],
+    ['pic', 'image/x-pict'],
+    ['pkg', 'application/octet-stream'],
+    ['pki', 'application/pkixcmp'],
+    ['pkipath', 'application/pkix-pkipath'],
+    ['pkpass', 'application/vnd.apple.pkpass'],
+    ['pl', 'application/x-perl'],
+    ['plb', 'application/vnd.3gpp.pic-bw-large'],
+    ['plc', 'application/vnd.mobius.plc'],
+    ['plf', 'application/vnd.pocketlearn'],
+    ['pls', 'application/pls+xml'],
+    ['pm', 'application/x-perl'],
+    ['pml', 'application/vnd.ctc-posml'],
+    ['png', 'image/png'],
+    ['pnm', 'image/x-portable-anymap'],
+    ['portpkg', 'application/vnd.macports.portpkg'],
+    ['pot', 'application/vnd.ms-powerpoint'],
+    ['potm', 'application/vnd.ms-powerpoint.presentation.macroEnabled.12'],
+    ['potx', 'application/vnd.openxmlformats-officedocument.presentationml.template'],
+    ['ppa', 'application/vnd.ms-powerpoint'],
+    ['ppam', 'application/vnd.ms-powerpoint.addin.macroEnabled.12'],
+    ['ppd', 'application/vnd.cups-ppd'],
+    ['ppm', 'image/x-portable-pixmap'],
+    ['pps', 'application/vnd.ms-powerpoint'],
+    ['ppsm', 'application/vnd.ms-powerpoint.slideshow.macroEnabled.12'],
+    ['ppsx', 'application/vnd.openxmlformats-officedocument.presentationml.slideshow'],
+    ['ppt', 'application/powerpoint'],
+    ['pptm', 'application/vnd.ms-powerpoint.presentation.macroEnabled.12'],
     ['pptx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
-    ['rar', 'application/vnd.rar'],
-    ['rtf', 'application/rtf'],
+    ['pqa', 'application/vnd.palm'],
+    ['prc', 'application/x-pilot'],
+    ['pre', 'application/vnd.lotus-freelance'],
+    ['prf', 'application/pics-rules'],
+    ['provx', 'application/provenance+xml'],
+    ['ps', 'application/postscript'],
+    ['psb', 'application/vnd.3gpp.pic-bw-small'],
+    ['psd', 'application/x-photoshop'],
+    ['psf', 'application/x-font-linux-psf'],
+    ['pskcxml', 'application/pskc+xml'],
+    ['pti', 'image/prs.pti'],
+    ['ptid', 'application/vnd.pvi.ptid1'],
+    ['pub', 'application/x-mspublisher'],
+    ['pvb', 'application/vnd.3gpp.pic-bw-var'],
+    ['pwn', 'application/vnd.3m.post-it-notes'],
+    ['pya', 'audio/vnd.ms-playready.media.pya'],
+    ['pyv', 'video/vnd.ms-playready.media.pyv'],
+    ['qam', 'application/vnd.epson.quickanime'],
+    ['qbo', 'application/vnd.intu.qbo'],
+    ['qfx', 'application/vnd.intu.qfx'],
+    ['qps', 'application/vnd.publishare-delta-tree'],
+    ['qt', 'video/quicktime'],
+    ['qwd', 'application/vnd.quark.quarkxpress'],
+    ['qwt', 'application/vnd.quark.quarkxpress'],
+    ['qxb', 'application/vnd.quark.quarkxpress'],
+    ['qxd', 'application/vnd.quark.quarkxpress'],
+    ['qxl', 'application/vnd.quark.quarkxpress'],
+    ['qxt', 'application/vnd.quark.quarkxpress'],
+    ['ra', 'audio/x-realaudio'],
+    ['ram', 'audio/x-pn-realaudio'],
+    ['raml', 'application/raml+yaml'],
+    ['rapd', 'application/route-apd+xml'],
+    ['rar', 'application/x-rar'],
+    ['ras', 'image/x-cmu-raster'],
+    ['rcprofile', 'application/vnd.ipunplugged.rcprofile'],
+    ['rdf', 'application/rdf+xml'],
+    ['rdz', 'application/vnd.data-vision.rdz'],
+    ['relo', 'application/p2p-overlay+xml'],
+    ['rep', 'application/vnd.businessobjects'],
+    ['res', 'application/x-dtbresource+xml'],
+    ['rgb', 'image/x-rgb'],
+    ['rif', 'application/reginfo+xml'],
+    ['rip', 'audio/vnd.rip'],
+    ['ris', 'application/x-research-info-systems'],
+    ['rl', 'application/resource-lists+xml'],
+    ['rlc', 'image/vnd.fujixerox.edmics-rlc'],
+    ['rld', 'application/resource-lists-diff+xml'],
+    ['rm', 'audio/x-pn-realaudio'],
+    ['rmi', 'audio/midi'],
+    ['rmp', 'audio/x-pn-realaudio-plugin'],
+    ['rms', 'application/vnd.jcp.javame.midlet-rms'],
+    ['rmvb', 'application/vnd.rn-realmedia-vbr'],
+    ['rnc', 'application/relax-ng-compact-syntax'],
+    ['rng', 'application/xml'],
+    ['roa', 'application/rpki-roa'],
+    ['roff', 'text/troff'],
+    ['rp9', 'application/vnd.cloanto.rp9'],
+    ['rpm', 'audio/x-pn-realaudio-plugin'],
+    ['rpss', 'application/vnd.nokia.radio-presets'],
+    ['rpst', 'application/vnd.nokia.radio-preset'],
+    ['rq', 'application/sparql-query'],
+    ['rs', 'application/rls-services+xml'],
+    ['rsa', 'application/x-pkcs7'],
+    ['rsat', 'application/atsc-rsat+xml'],
+    ['rsd', 'application/rsd+xml'],
+    ['rsheet', 'application/urc-ressheet+xml'],
+    ['rss', 'application/rss+xml'],
+    ['rtf', 'text/rtf'],
+    ['rtx', 'text/richtext'],
+    ['run', 'application/x-makeself'],
+    ['rusd', 'application/route-usd+xml'],
+    ['rv', 'video/vnd.rn-realvideo'],
+    ['s', 'text/x-asm'],
+    ['s3m', 'audio/s3m'],
+    ['saf', 'application/vnd.yamaha.smaf-audio'],
+    ['sass', 'text/x-sass'],
+    ['sbml', 'application/sbml+xml'],
+    ['sc', 'application/vnd.ibm.secure-container'],
+    ['scd', 'application/x-msschedule'],
+    ['scm', 'application/vnd.lotus-screencam'],
+    ['scq', 'application/scvp-cv-request'],
+    ['scs', 'application/scvp-cv-response'],
+    ['scss', 'text/x-scss'],
+    ['scurl', 'text/vnd.curl.scurl'],
+    ['sda', 'application/vnd.stardivision.draw'],
+    ['sdc', 'application/vnd.stardivision.calc'],
+    ['sdd', 'application/vnd.stardivision.impress'],
+    ['sdkd', 'application/vnd.solent.sdkm+xml'],
+    ['sdkm', 'application/vnd.solent.sdkm+xml'],
+    ['sdp', 'application/sdp'],
+    ['sdw', 'application/vnd.stardivision.writer'],
+    ['sea', 'application/octet-stream'],
+    ['see', 'application/vnd.seemail'],
+    ['seed', 'application/vnd.fdsn.seed'],
+    ['sema', 'application/vnd.sema'],
+    ['semd', 'application/vnd.semd'],
+    ['semf', 'application/vnd.semf'],
+    ['senmlx', 'application/senml+xml'],
+    ['sensmlx', 'application/sensml+xml'],
+    ['ser', 'application/java-serialized-object'],
+    ['setpay', 'application/set-payment-initiation'],
+    ['setreg', 'application/set-registration-initiation'],
+    ['sfd-hdstx', 'application/vnd.hydrostatix.sof-data'],
+    ['sfs', 'application/vnd.spotfire.sfs'],
+    ['sfv', 'text/x-sfv'],
+    ['sgi', 'image/sgi'],
+    ['sgl', 'application/vnd.stardivision.writer-global'],
+    ['sgm', 'text/sgml'],
+    ['sgml', 'text/sgml'],
     ['sh', 'application/x-sh'],
+    ['shar', 'application/x-shar'],
+    ['shex', 'text/shex'],
+    ['shf', 'application/shf+xml'],
+    ['shtml', 'text/html'],
+    ['sid', 'image/x-mrsid-image'],
+    ['sieve', 'application/sieve'],
+    ['sig', 'application/pgp-signature'],
+    ['sil', 'audio/silk'],
+    ['silo', 'model/mesh'],
+    ['sis', 'application/vnd.symbian.install'],
+    ['sisx', 'application/vnd.symbian.install'],
+    ['sit', 'application/x-stuffit'],
+    ['sitx', 'application/x-stuffitx'],
+    ['siv', 'application/sieve'],
+    ['skd', 'application/vnd.koan'],
+    ['skm', 'application/vnd.koan'],
+    ['skp', 'application/vnd.koan'],
+    ['skt', 'application/vnd.koan'],
+    ['sldm', 'application/vnd.ms-powerpoint.slide.macroenabled.12'],
+    ['sldx', 'application/vnd.openxmlformats-officedocument.presentationml.slide'],
+    ['slim', 'text/slim'],
+    ['slm', 'text/slim'],
+    ['sls', 'application/route-s-tsid+xml'],
+    ['slt', 'application/vnd.epson.salt'],
+    ['sm', 'application/vnd.stepmania.stepchart'],
+    ['smf', 'application/vnd.stardivision.math'],
+    ['smi', 'application/smil'],
+    ['smil', 'application/smil'],
+    ['smv', 'video/x-smv'],
+    ['smzip', 'application/vnd.stepmania.package'],
+    ['snd', 'audio/basic'],
+    ['snf', 'application/x-font-snf'],
+    ['so', 'application/octet-stream'],
+    ['spc', 'application/x-pkcs7-certificates'],
+    ['spdx', 'text/spdx'],
+    ['spf', 'application/vnd.yamaha.smaf-phrase'],
+    ['spl', 'application/x-futuresplash'],
+    ['spot', 'text/vnd.in3d.spot'],
+    ['spp', 'application/scvp-vp-response'],
+    ['spq', 'application/scvp-vp-request'],
+    ['spx', 'audio/ogg'],
+    ['sql', 'application/x-sql'],
+    ['src', 'application/x-wais-source'],
+    ['srt', 'application/x-subrip'],
+    ['sru', 'application/sru+xml'],
+    ['srx', 'application/sparql-results+xml'],
+    ['ssdl', 'application/ssdl+xml'],
+    ['sse', 'application/vnd.kodak-descriptor'],
+    ['ssf', 'application/vnd.epson.ssf'],
+    ['ssml', 'application/ssml+xml'],
+    ['sst', 'application/octet-stream'],
+    ['st', 'application/vnd.sailingtracker.track'],
+    ['stc', 'application/vnd.sun.xml.calc.template'],
+    ['std', 'application/vnd.sun.xml.draw.template'],
+    ['stf', 'application/vnd.wt.stf'],
+    ['sti', 'application/vnd.sun.xml.impress.template'],
+    ['stk', 'application/hyperstudio'],
+    ['stl', 'model/stl'],
+    ['stpx', 'model/step+xml'],
+    ['stpxz', 'model/step-xml+zip'],
+    ['stpz', 'model/step+zip'],
+    ['str', 'application/vnd.pg.format'],
+    ['stw', 'application/vnd.sun.xml.writer.template'],
+    ['styl', 'text/stylus'],
+    ['stylus', 'text/stylus'],
+    ['sub', 'text/vnd.dvb.subtitle'],
+    ['sus', 'application/vnd.sus-calendar'],
+    ['susp', 'application/vnd.sus-calendar'],
+    ['sv4cpio', 'application/x-sv4cpio'],
+    ['sv4crc', 'application/x-sv4crc'],
+    ['svc', 'application/vnd.dvb.service'],
+    ['svd', 'application/vnd.svd'],
     ['svg', 'image/svg+xml'],
+    ['svgz', 'image/svg+xml'],
+    ['swa', 'application/x-director'],
     ['swf', 'application/x-shockwave-flash'],
+    ['swi', 'application/vnd.aristanetworks.swi'],
+    ['swidtag', 'application/swid+xml'],
+    ['sxc', 'application/vnd.sun.xml.calc'],
+    ['sxd', 'application/vnd.sun.xml.draw'],
+    ['sxg', 'application/vnd.sun.xml.writer.global'],
+    ['sxi', 'application/vnd.sun.xml.impress'],
+    ['sxm', 'application/vnd.sun.xml.math'],
+    ['sxw', 'application/vnd.sun.xml.writer'],
+    ['t', 'text/troff'],
+    ['t3', 'application/x-t3vm-image'],
+    ['t38', 'image/t38'],
+    ['taglet', 'application/vnd.mynfc'],
+    ['tao', 'application/vnd.tao.intent-module-archive'],
+    ['tap', 'image/vnd.tencent.tap'],
     ['tar', 'application/x-tar'],
+    ['tcap', 'application/vnd.3gpp2.tcap'],
+    ['tcl', 'application/x-tcl'],
+    ['td', 'application/urc-targetdesc+xml'],
+    ['teacher', 'application/vnd.smart.teacher'],
+    ['tei', 'application/tei+xml'],
+    ['teicorpus', 'application/tei+xml'],
+    ['tex', 'application/x-tex'],
+    ['texi', 'application/x-texinfo'],
+    ['texinfo', 'application/x-texinfo'],
+    ['text', 'text/plain'],
+    ['tfi', 'application/thraud+xml'],
+    ['tfm', 'application/x-tex-tfm'],
+    ['tfx', 'image/tiff-fx'],
+    ['tga', 'image/x-tga'],
+    ['tgz', 'application/x-tar'],
+    ['thmx', 'application/vnd.ms-officetheme'],
     ['tif', 'image/tiff'],
     ['tiff', 'image/tiff'],
+    ['tk', 'application/x-tcl'],
+    ['tmo', 'application/vnd.tmobile-livetv'],
+    ['toml', 'application/toml'],
+    ['torrent', 'application/x-bittorrent'],
+    ['tpl', 'application/vnd.groove-tool-template'],
+    ['tpt', 'application/vnd.trid.tpt'],
+    ['tr', 'text/troff'],
+    ['tra', 'application/vnd.trueapp'],
+    ['trig', 'application/trig'],
+    ['trm', 'application/x-msterminal'],
     ['ts', 'video/mp2t'],
+    ['tsd', 'application/timestamped-data'],
+    ['tsv', 'text/tab-separated-values'],
+    ['ttc', 'font/collection'],
     ['ttf', 'font/ttf'],
+    ['ttl', 'text/turtle'],
+    ['ttml', 'application/ttml+xml'],
+    ['twd', 'application/vnd.simtech-mindmapper'],
+    ['twds', 'application/vnd.simtech-mindmapper'],
+    ['txd', 'application/vnd.genomatix.tuxedo'],
+    ['txf', 'application/vnd.mobius.txf'],
     ['txt', 'text/plain'],
+    ['u8dsn', 'message/global-delivery-status'],
+    ['u8hdr', 'message/global-headers'],
+    ['u8mdn', 'message/global-disposition-notification'],
+    ['u8msg', 'message/global'],
+    ['u32', 'application/x-authorware-bin'],
+    ['ubj', 'application/ubjson'],
+    ['udeb', 'application/x-debian-package'],
+    ['ufd', 'application/vnd.ufdl'],
+    ['ufdl', 'application/vnd.ufdl'],
+    ['ulx', 'application/x-glulx'],
+    ['umj', 'application/vnd.umajin'],
+    ['unityweb', 'application/vnd.unity'],
+    ['uoml', 'application/vnd.uoml+xml'],
+    ['uri', 'text/uri-list'],
+    ['uris', 'text/uri-list'],
+    ['urls', 'text/uri-list'],
+    ['usdz', 'model/vnd.usdz+zip'],
+    ['ustar', 'application/x-ustar'],
+    ['utz', 'application/vnd.uiq.theme'],
+    ['uu', 'text/x-uuencode'],
+    ['uva', 'audio/vnd.dece.audio'],
+    ['uvd', 'application/vnd.dece.data'],
+    ['uvf', 'application/vnd.dece.data'],
+    ['uvg', 'image/vnd.dece.graphic'],
+    ['uvh', 'video/vnd.dece.hd'],
+    ['uvi', 'image/vnd.dece.graphic'],
+    ['uvm', 'video/vnd.dece.mobile'],
+    ['uvp', 'video/vnd.dece.pd'],
+    ['uvs', 'video/vnd.dece.sd'],
+    ['uvt', 'application/vnd.dece.ttml+xml'],
+    ['uvu', 'video/vnd.uvvu.mp4'],
+    ['uvv', 'video/vnd.dece.video'],
+    ['uvva', 'audio/vnd.dece.audio'],
+    ['uvvd', 'application/vnd.dece.data'],
+    ['uvvf', 'application/vnd.dece.data'],
+    ['uvvg', 'image/vnd.dece.graphic'],
+    ['uvvh', 'video/vnd.dece.hd'],
+    ['uvvi', 'image/vnd.dece.graphic'],
+    ['uvvm', 'video/vnd.dece.mobile'],
+    ['uvvp', 'video/vnd.dece.pd'],
+    ['uvvs', 'video/vnd.dece.sd'],
+    ['uvvt', 'application/vnd.dece.ttml+xml'],
+    ['uvvu', 'video/vnd.uvvu.mp4'],
+    ['uvvv', 'video/vnd.dece.video'],
+    ['uvvx', 'application/vnd.dece.unspecified'],
+    ['uvvz', 'application/vnd.dece.zip'],
+    ['uvx', 'application/vnd.dece.unspecified'],
+    ['uvz', 'application/vnd.dece.zip'],
+    ['vbox', 'application/x-virtualbox-vbox'],
+    ['vbox-extpack', 'application/x-virtualbox-vbox-extpack'],
+    ['vcard', 'text/vcard'],
+    ['vcd', 'application/x-cdlink'],
+    ['vcf', 'text/x-vcard'],
+    ['vcg', 'application/vnd.groove-vcard'],
+    ['vcs', 'text/x-vcalendar'],
+    ['vcx', 'application/vnd.vcx'],
+    ['vdi', 'application/x-virtualbox-vdi'],
+    ['vds', 'model/vnd.sap.vds'],
+    ['vhd', 'application/x-virtualbox-vhd'],
+    ['vis', 'application/vnd.visionary'],
+    ['viv', 'video/vnd.vivo'],
+    ['vlc', 'application/videolan'],
+    ['vmdk', 'application/x-virtualbox-vmdk'],
+    ['vob', 'video/x-ms-vob'],
+    ['vor', 'application/vnd.stardivision.writer'],
+    ['vox', 'application/x-authorware-bin'],
+    ['vrml', 'model/vrml'],
     ['vsd', 'application/vnd.visio'],
-    ['wav', 'audio/wav'],
+    ['vsf', 'application/vnd.vsf'],
+    ['vss', 'application/vnd.visio'],
+    ['vst', 'application/vnd.visio'],
+    ['vsw', 'application/vnd.visio'],
+    ['vtf', 'image/vnd.valve.source.texture'],
+    ['vtt', 'text/vtt'],
+    ['vtu', 'model/vnd.vtu'],
+    ['vxml', 'application/voicexml+xml'],
+    ['w3d', 'application/x-director'],
+    ['wad', 'application/x-doom'],
+    ['wadl', 'application/vnd.sun.wadl+xml'],
+    ['war', 'application/java-archive'],
+    ['wasm', 'application/wasm'],
+    ['wav', 'audio/x-wav'],
+    ['wax', 'audio/x-ms-wax'],
+    ['wbmp', 'image/vnd.wap.wbmp'],
+    ['wbs', 'application/vnd.criticaltools.wbs+xml'],
+    ['wbxml', 'application/wbxml'],
+    ['wcm', 'application/vnd.ms-works'],
+    ['wdb', 'application/vnd.ms-works'],
+    ['wdp', 'image/vnd.ms-photo'],
     ['weba', 'audio/webm'],
+    ['webapp', 'application/x-web-app-manifest+json'],
     ['webm', 'video/webm'],
+    ['webmanifest', 'application/manifest+json'],
     ['webp', 'image/webp'],
+    ['wg', 'application/vnd.pmi.widget'],
+    ['wgt', 'application/widget'],
+    ['wks', 'application/vnd.ms-works'],
+    ['wm', 'video/x-ms-wm'],
+    ['wma', 'audio/x-ms-wma'],
+    ['wmd', 'application/x-ms-wmd'],
+    ['wmf', 'image/wmf'],
+    ['wml', 'text/vnd.wap.wml'],
+    ['wmlc', 'application/wmlc'],
+    ['wmls', 'text/vnd.wap.wmlscript'],
+    ['wmlsc', 'application/vnd.wap.wmlscriptc'],
+    ['wmv', 'video/x-ms-wmv'],
+    ['wmx', 'video/x-ms-wmx'],
+    ['wmz', 'application/x-msmetafile'],
     ['woff', 'font/woff'],
     ['woff2', 'font/woff2'],
+    ['word', 'application/msword'],
+    ['wpd', 'application/vnd.wordperfect'],
+    ['wpl', 'application/vnd.ms-wpl'],
+    ['wps', 'application/vnd.ms-works'],
+    ['wqd', 'application/vnd.wqd'],
+    ['wri', 'application/x-mswrite'],
+    ['wrl', 'model/vrml'],
+    ['wsc', 'message/vnd.wfa.wsc'],
+    ['wsdl', 'application/wsdl+xml'],
+    ['wspolicy', 'application/wspolicy+xml'],
+    ['wtb', 'application/vnd.webturbo'],
+    ['wvx', 'video/x-ms-wvx'],
+    ['x3d', 'model/x3d+xml'],
+    ['x3db', 'model/x3d+fastinfoset'],
+    ['x3dbz', 'model/x3d+binary'],
+    ['x3dv', 'model/x3d-vrml'],
+    ['x3dvz', 'model/x3d+vrml'],
+    ['x3dz', 'model/x3d+xml'],
+    ['x32', 'application/x-authorware-bin'],
+    ['x_b', 'model/vnd.parasolid.transmit.binary'],
+    ['x_t', 'model/vnd.parasolid.transmit.text'],
+    ['xaml', 'application/xaml+xml'],
+    ['xap', 'application/x-silverlight-app'],
+    ['xar', 'application/vnd.xara'],
+    ['xav', 'application/xcap-att+xml'],
+    ['xbap', 'application/x-ms-xbap'],
+    ['xbd', 'application/vnd.fujixerox.docuworks.binder'],
+    ['xbm', 'image/x-xbitmap'],
+    ['xca', 'application/xcap-caps+xml'],
+    ['xcs', 'application/calendar+xml'],
+    ['xdf', 'application/xcap-diff+xml'],
+    ['xdm', 'application/vnd.syncml.dm+xml'],
+    ['xdp', 'application/vnd.adobe.xdp+xml'],
+    ['xdssc', 'application/dssc+xml'],
+    ['xdw', 'application/vnd.fujixerox.docuworks'],
+    ['xel', 'application/xcap-el+xml'],
+    ['xenc', 'application/xenc+xml'],
+    ['xer', 'application/patch-ops-error+xml'],
+    ['xfdf', 'application/vnd.adobe.xfdf'],
+    ['xfdl', 'application/vnd.xfdl'],
+    ['xht', 'application/xhtml+xml'],
     ['xhtml', 'application/xhtml+xml'],
+    ['xhvml', 'application/xv+xml'],
+    ['xif', 'image/vnd.xiff'],
+    ['xl', 'application/excel'],
+    ['xla', 'application/vnd.ms-excel'],
+    ['xlam', 'application/vnd.ms-excel.addin.macroEnabled.12'],
+    ['xlc', 'application/vnd.ms-excel'],
+    ['xlf', 'application/xliff+xml'],
+    ['xlm', 'application/vnd.ms-excel'],
     ['xls', 'application/vnd.ms-excel'],
+    ['xlsb', 'application/vnd.ms-excel.sheet.binary.macroEnabled.12'],
+    ['xlsm', 'application/vnd.ms-excel.sheet.macroEnabled.12'],
     ['xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    ['xlt', 'application/vnd.ms-excel'],
+    ['xltm', 'application/vnd.ms-excel.template.macroEnabled.12'],
+    ['xltx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.template'],
+    ['xlw', 'application/vnd.ms-excel'],
+    ['xm', 'audio/xm'],
     ['xml', 'application/xml'],
+    ['xns', 'application/xcap-ns+xml'],
+    ['xo', 'application/vnd.olpc-sugar'],
+    ['xop', 'application/xop+xml'],
+    ['xpi', 'application/x-xpinstall'],
+    ['xpl', 'application/xproc+xml'],
+    ['xpm', 'image/x-xpixmap'],
+    ['xpr', 'application/vnd.is-xpr'],
+    ['xps', 'application/vnd.ms-xpsdocument'],
+    ['xpw', 'application/vnd.intercon.formnet'],
+    ['xpx', 'application/vnd.intercon.formnet'],
+    ['xsd', 'application/xml'],
+    ['xsl', 'application/xml'],
+    ['xslt', 'application/xslt+xml'],
+    ['xsm', 'application/vnd.syncml+xml'],
+    ['xspf', 'application/xspf+xml'],
     ['xul', 'application/vnd.mozilla.xul+xml'],
+    ['xvm', 'application/xv+xml'],
+    ['xvml', 'application/xv+xml'],
+    ['xwd', 'image/x-xwindowdump'],
+    ['xyz', 'chemical/x-xyz'],
+    ['xz', 'application/x-xz'],
+    ['yaml', 'text/yaml'],
+    ['yang', 'application/yang'],
+    ['yin', 'application/yin+xml'],
+    ['yml', 'text/yaml'],
+    ['ymp', 'text/x-suse-ymp'],
+    ['z', 'application/x-compress'],
+    ['z1', 'application/x-zmachine'],
+    ['z2', 'application/x-zmachine'],
+    ['z3', 'application/x-zmachine'],
+    ['z4', 'application/x-zmachine'],
+    ['z5', 'application/x-zmachine'],
+    ['z6', 'application/x-zmachine'],
+    ['z7', 'application/x-zmachine'],
+    ['z8', 'application/x-zmachine'],
+    ['zaz', 'application/vnd.zzazz.deck+xml'],
     ['zip', 'application/zip'],
-    ['7z', 'application/x-7z-compressed'],
-    // Others
-    ['mkv', 'video/x-matroska'],
-    ['mov', 'video/quicktime'],
-    ['msg', 'application/vnd.ms-outlook']
+    ['zir', 'application/vnd.zul'],
+    ['zirz', 'application/vnd.zul'],
+    ['zmm', 'application/vnd.handheld-entertainment+xml'],
+    ['zsh', 'text/x-scriptzsh']
 ]);
-function toFileWithPath(file, path) {
-    var f = withMimeType(file);
+function toFileWithPath(file, path, h) {
+    const f = withMimeType(file);
+    const { webkitRelativePath } = file;
+    const p = typeof path === 'string'
+        ? path
+        // If <input webkitdirectory> is set,
+        // the File will have a {webkitRelativePath} property
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory
+        : typeof webkitRelativePath === 'string' && webkitRelativePath.length > 0
+            ? webkitRelativePath
+            : `./${file.name}`;
     if (typeof f.path !== 'string') { // on electron, path is already set to the absolute path
-        var webkitRelativePath = file.webkitRelativePath;
-        Object.defineProperty(f, 'path', {
-            value: typeof path === 'string'
-                ? path
-                // If <input webkitdirectory> is set,
-                // the File will have a {webkitRelativePath} property
-                // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory
-                : typeof webkitRelativePath === 'string' && webkitRelativePath.length > 0
-                    ? webkitRelativePath
-                    : file.name,
+        setObjProp(f, 'path', p);
+    }
+    if (h !== undefined) {
+        Object.defineProperty(f, 'handle', {
+            value: h,
             writable: false,
             configurable: false,
             enumerable: true
         });
     }
+    // Always populate a relative path so that even electron apps have access to a relativePath value
+    setObjProp(f, 'relativePath', p);
     return f;
 }
 function withMimeType(file) {
-    var name = file.name;
-    var hasExtension = name && name.lastIndexOf('.') !== -1;
+    const { name } = file;
+    const hasExtension = name && name.lastIndexOf('.') !== -1;
     if (hasExtension && !file.type) {
-        var ext = name.split('.')
+        const ext = name.split('.')
             .pop().toLowerCase();
-        var type = COMMON_MIME_TYPES.get(ext);
+        const type = COMMON_MIME_TYPES.get(ext);
         if (type) {
             Object.defineProperty(file, 'type', {
                 value: type,
@@ -31664,10 +28554,18 @@ function withMimeType(file) {
     }
     return file;
 }
+function setObjProp(f, key, value) {
+    Object.defineProperty(f, key, {
+        value,
+        writable: false,
+        configurable: false,
+        enumerable: true
+    });
+}
 
-var FILES_TO_IGNORE = [
+const FILES_TO_IGNORE = [
     // Thumbnail cache files for macOS and Windows
-    '.DS_Store',
+    '.DS_Store', // macOs
     'Thumbs.db' // Windows
 ];
 /**
@@ -31681,73 +28579,59 @@ var FILES_TO_IGNORE = [
  * @param evt
  */
 function fromEvent(evt) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            if (isObject(evt) && isDataTransfer(evt.dataTransfer)) {
-                return [2 /*return*/, getDataTransferFiles(evt.dataTransfer, evt.type)];
-            }
-            else if (isChangeEvt(evt)) {
-                return [2 /*return*/, getInputFiles(evt)];
-            }
-            else if (Array.isArray(evt) && evt.every(function (item) { return 'getFile' in item && typeof item.getFile === 'function'; })) {
-                return [2 /*return*/, getFsHandleFiles(evt)];
-            }
-            return [2 /*return*/, []];
-        });
+    return __awaiter(this, void 0, void 0, function* () {
+        if (isObject$1(evt) && isDataTransfer(evt.dataTransfer)) {
+            return getDataTransferFiles(evt.dataTransfer, evt.type);
+        }
+        else if (isChangeEvt(evt)) {
+            return getInputFiles(evt);
+        }
+        else if (Array.isArray(evt) && evt.every(item => 'getFile' in item && typeof item.getFile === 'function')) {
+            return getFsHandleFiles(evt);
+        }
+        return [];
     });
 }
 function isDataTransfer(value) {
-    return isObject(value);
+    return isObject$1(value);
 }
 function isChangeEvt(value) {
-    return isObject(value) && isObject(value.target);
+    return isObject$1(value) && isObject$1(value.target);
 }
-function isObject(v) {
+function isObject$1(v) {
     return typeof v === 'object' && v !== null;
 }
 function getInputFiles(evt) {
-    return fromList(evt.target.files).map(function (file) { return toFileWithPath(file); });
+    return fromList(evt.target.files).map(file => toFileWithPath(file));
 }
 // Ee expect each handle to be https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle
 function getFsHandleFiles(handles) {
-    return __awaiter(this, void 0, void 0, function () {
-        var files;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, Promise.all(handles.map(function (h) { return h.getFile(); }))];
-                case 1:
-                    files = _a.sent();
-                    return [2 /*return*/, files.map(function (file) { return toFileWithPath(file); })];
-            }
-        });
+    return __awaiter(this, void 0, void 0, function* () {
+        const files = yield Promise.all(handles.map(h => h.getFile()));
+        return files.map(file => toFileWithPath(file));
     });
 }
 function getDataTransferFiles(dt, type) {
-    return __awaiter(this, void 0, void 0, function () {
-        var items, files;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!dt.items) return [3 /*break*/, 2];
-                    items = fromList(dt.items)
-                        .filter(function (item) { return item.kind === 'file'; });
-                    // According to https://html.spec.whatwg.org/multipage/dnd.html#dndevents,
-                    // only 'dragstart' and 'drop' has access to the data (source node)
-                    if (type !== 'drop') {
-                        return [2 /*return*/, items];
-                    }
-                    return [4 /*yield*/, Promise.all(items.map(toFilePromises))];
-                case 1:
-                    files = _a.sent();
-                    return [2 /*return*/, noIgnoredFiles(flatten(files))];
-                case 2: return [2 /*return*/, noIgnoredFiles(fromList(dt.files)
-                        .map(function (file) { return toFileWithPath(file); }))];
+    return __awaiter(this, void 0, void 0, function* () {
+        // IE11 does not support dataTransfer.items
+        // See https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/items#Browser_compatibility
+        if (dt.items) {
+            const items = fromList(dt.items)
+                .filter(item => item.kind === 'file');
+            // According to https://html.spec.whatwg.org/multipage/dnd.html#dndevents,
+            // only 'dragstart' and 'drop' has access to the data (source node)
+            if (type !== 'drop') {
+                return items;
             }
-        });
+            const files = yield Promise.all(items.map(toFilePromises));
+            return noIgnoredFiles(flatten(files));
+        }
+        return noIgnoredFiles(fromList(dt.files)
+            .map(file => toFileWithPath(file)));
     });
 }
 function noIgnoredFiles(files) {
-    return files.filter(function (file) { return FILES_TO_IGNORE.indexOf(file.name) === -1; });
+    return files.filter(file => FILES_TO_IGNORE.indexOf(file.name) === -1);
 }
 // IE11 does not support Array.from()
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from#Browser_compatibility
@@ -31757,10 +28641,10 @@ function fromList(items) {
     if (items === null) {
         return [];
     }
-    var files = [];
+    const files = [];
     // tslint:disable: prefer-for-of
-    for (var i = 0; i < items.length; i++) {
-        var file = items[i];
+    for (let i = 0; i < items.length; i++) {
+        const file = items[i];
         files.push(file);
     }
     return files;
@@ -31770,72 +28654,83 @@ function toFilePromises(item) {
     if (typeof item.webkitGetAsEntry !== 'function') {
         return fromDataTransferItem(item);
     }
-    var entry = item.webkitGetAsEntry();
+    const entry = item.webkitGetAsEntry();
     // Safari supports dropping an image node from a different window and can be retrieved using
     // the DataTransferItem.getAsFile() API
     // NOTE: FileSystemEntry.file() throws if trying to get the file
     if (entry && entry.isDirectory) {
         return fromDirEntry(entry);
     }
-    return fromDataTransferItem(item);
+    return fromDataTransferItem(item, entry);
 }
 function flatten(items) {
-    return items.reduce(function (acc, files) { return __spreadArray(__spreadArray([], __read(acc), false), __read((Array.isArray(files) ? flatten(files) : [files])), false); }, []);
+    return items.reduce((acc, files) => [
+        ...acc,
+        ...(Array.isArray(files) ? flatten(files) : [files])
+    ], []);
 }
-function fromDataTransferItem(item) {
-    var file = item.getAsFile();
-    if (!file) {
-        return Promise.reject("".concat(item, " is not a File"));
-    }
-    var fwp = toFileWithPath(file);
-    return Promise.resolve(fwp);
+function fromDataTransferItem(item, entry) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var _a;
+        // Check if we're in a secure context; due to a bug in Chrome (as far as we know)
+        // the browser crashes when calling this API (yet to be confirmed as a consistent behaviour).
+        //
+        // See:
+        // - https://issues.chromium.org/issues/40186242
+        // - https://github.com/react-dropzone/react-dropzone/issues/1397
+        if (globalThis.isSecureContext && typeof item.getAsFileSystemHandle === 'function') {
+            const h = yield item.getAsFileSystemHandle();
+            if (h === null) {
+                throw new Error(`${item} is not a File`);
+            }
+            // It seems that the handle can be `undefined` (see https://github.com/react-dropzone/file-selector/issues/120),
+            // so we check if it isn't; if it is, the code path continues to the next API (`getAsFile`).
+            if (h !== undefined) {
+                const file = yield h.getFile();
+                file.handle = h;
+                return toFileWithPath(file);
+            }
+        }
+        const file = item.getAsFile();
+        if (!file) {
+            throw new Error(`${item} is not a File`);
+        }
+        const fwp = toFileWithPath(file, (_a = entry === null || entry === void 0 ? void 0 : entry.fullPath) !== null && _a !== void 0 ? _a : undefined);
+        return fwp;
+    });
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry
 function fromEntry(entry) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/, entry.isDirectory ? fromDirEntry(entry) : fromFileEntry(entry)];
-        });
+    return __awaiter(this, void 0, void 0, function* () {
+        return entry.isDirectory ? fromDirEntry(entry) : fromFileEntry(entry);
     });
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry
 function fromDirEntry(entry) {
-    var reader = entry.createReader();
-    return new Promise(function (resolve, reject) {
-        var entries = [];
+    const reader = entry.createReader();
+    return new Promise((resolve, reject) => {
+        const entries = [];
         function readEntries() {
-            var _this = this;
             // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/createReader
             // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries
-            reader.readEntries(function (batch) { return __awaiter(_this, void 0, void 0, function () {
-                var files, err_1, items;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            if (!!batch.length) return [3 /*break*/, 5];
-                            _a.label = 1;
-                        case 1:
-                            _a.trys.push([1, 3, , 4]);
-                            return [4 /*yield*/, Promise.all(entries)];
-                        case 2:
-                            files = _a.sent();
-                            resolve(files);
-                            return [3 /*break*/, 4];
-                        case 3:
-                            err_1 = _a.sent();
-                            reject(err_1);
-                            return [3 /*break*/, 4];
-                        case 4: return [3 /*break*/, 6];
-                        case 5:
-                            items = Promise.all(batch.map(fromEntry));
-                            entries.push(items);
-                            // Continue reading
-                            readEntries();
-                            _a.label = 6;
-                        case 6: return [2 /*return*/];
+            reader.readEntries((batch) => __awaiter(this, void 0, void 0, function* () {
+                if (!batch.length) {
+                    // Done reading directory
+                    try {
+                        const files = yield Promise.all(entries);
+                        resolve(files);
                     }
-                });
-            }); }, function (err) {
+                    catch (err) {
+                        reject(err);
+                    }
+                }
+                else {
+                    const items = Promise.all(batch.map(fromEntry));
+                    entries.push(items);
+                    // Continue reading
+                    readEntries();
+                }
+            }), (err) => {
                 reject(err);
             });
         }
@@ -31844,16 +28739,14 @@ function fromDirEntry(entry) {
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry
 function fromFileEntry(entry) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve, reject) {
-                    entry.file(function (file) {
-                        var fwp = toFileWithPath(file, entry.fullPath);
-                        resolve(fwp);
-                    }, function (err) {
-                        reject(err);
-                    });
-                })];
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            entry.file((file) => {
+                const fwp = toFileWithPath(file, entry.fullPath);
+                resolve(fwp);
+            }, (err) => {
+                reject(err);
+            });
         });
     });
 }
@@ -31861,6 +28754,11 @@ function fromFileEntry(entry) {
 var _default = function (file, acceptedFiles) {
   if (file && acceptedFiles) {
     var acceptedFilesArray = Array.isArray(acceptedFiles) ? acceptedFiles : acceptedFiles.split(',');
+
+    if (acceptedFilesArray.length === 0) {
+      return true;
+    }
+
     var fileName = file.name || '';
     var mimeType = (file.type || '').toLowerCase();
     var baseMimeType = mimeType.replace(/\/.*$/, '');
@@ -31880,8 +28778,6 @@ var _default = function (file, acceptedFiles) {
 
   return true;
 };
-
-var accepts = _default;
 
 function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread$1(); }
 
@@ -31908,18 +28804,24 @@ function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) le
 function _iterableToArrayLimit$1(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles$1(arr) { if (Array.isArray(arr)) return arr; }
+var accepts = typeof _default === "function" ? _default : _default.default; // Error codes
 
 var FILE_INVALID_TYPE = "file-invalid-type";
 var FILE_TOO_LARGE = "file-too-large";
 var FILE_TOO_SMALL = "file-too-small";
 var TOO_MANY_FILES = "too-many-files";
+/**
+ *
+ * @param {string} accept
+ */
 
-var getInvalidTypeRejectionErr = function getInvalidTypeRejectionErr(accept) {
-  accept = Array.isArray(accept) && accept.length === 1 ? accept[0] : accept;
-  var messageSuffix = Array.isArray(accept) ? "one of ".concat(accept.join(", ")) : accept;
+var getInvalidTypeRejectionErr = function getInvalidTypeRejectionErr() {
+  var accept = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var acceptArr = accept.split(",");
+  var msg = acceptArr.length > 1 ? "one of ".concat(acceptArr.join(", ")) : acceptArr[0];
   return {
     code: FILE_INVALID_TYPE,
-    message: "File type must be ".concat(messageSuffix)
+    message: "File type must be ".concat(msg)
   };
 };
 var getTooLargeRejectionErr = function getTooLargeRejectionErr(maxSize) {
@@ -31937,8 +28839,17 @@ var getTooSmallRejectionErr = function getTooSmallRejectionErr(minSize) {
 var TOO_MANY_FILES_REJECTION = {
   code: TOO_MANY_FILES,
   message: "Too many files"
-}; // Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
-// that MIME type will always be accepted
+};
+/**
+ * Check if file is accepted.
+ *
+ * Firefox versions prior to 53 return a bogus MIME type for every file drag,
+ * so dragovers with that MIME type will always be accepted.
+ *
+ * @param {File} file
+ * @param {string} accept
+ * @returns
+ */
 
 function fileAccepted(file, accept) {
   var isAcceptable = file.type === "application/x-moz-file" || accepts(file, accept);
@@ -31962,7 +28873,7 @@ function isDefined(value) {
  *
  * @param {object} options
  * @param {File[]} options.files
- * @param {string|string[]} [options.accept]
+ * @param {string} [options.accept]
  * @param {number} [options.minSize]
  * @param {number} [options.maxSize]
  * @param {boolean} [options.multiple]
@@ -32174,7 +29085,7 @@ function isSecurityError(v) {
  */
 
 function isMIMEType(v) {
-  return v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || /\w+\/[-+.\w]+/g.test(v);
+  return v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || v === "application/*" || /\w+\/[-+.\w]+/g.test(v);
 }
 /**
  * Check if v is a file extension.
@@ -32247,7 +29158,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * ```
  */
 
-var Dropzone = /*#__PURE__*/forwardRef$1(function (_ref, ref) {
+var Dropzone = /*#__PURE__*/forwardRef$2(function (_ref, ref) {
   var children = _ref.children,
       params = _objectWithoutProperties(_ref, _excluded);
 
@@ -32267,7 +29178,7 @@ var Dropzone = /*#__PURE__*/forwardRef$1(function (_ref, ref) {
 });
 Dropzone.displayName = "Dropzone"; // Add default props for react-docgen
 
-var defaultProps = {
+var defaultProps$1 = {
   disabled: false,
   getFilesFromEvent: fromEvent,
   maxSize: Infinity,
@@ -32280,10 +29191,10 @@ var defaultProps = {
   noDrag: false,
   noDragEventsBubbling: false,
   validator: null,
-  useFsAccessApi: true,
+  useFsAccessApi: false,
   autoFocus: false
 };
-Dropzone.defaultProps = defaultProps;
+Dropzone.defaultProps = defaultProps$1;
 Dropzone.propTypes = {
   /**
    * Render function that exposes the dropzone state and prop getter fns
@@ -32366,7 +29277,7 @@ Dropzone.propTypes = {
   /**
    * Use this to provide a custom file aggregator
    *
-   * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+   * @param {(DragEvent|Event|Array<FileSystemFileHandle>)} event A drag event or input change event (if files were selected via the file dialog)
    */
   getFilesFromEvent: PropTypes.func,
 
@@ -32519,7 +29430,7 @@ Dropzone.propTypes = {
  * in a asynchronous fashion, from drag or input change events.
  *
  * @callback getFilesFromEvent
- * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
+ * @param {(DragEvent|Event|Array<FileSystemFileHandle>)} event A drag event or input change event (if files were selected via the file dialog)
  * @returns {(File[]|Promise<File[]>)}
  */
 
@@ -32634,7 +29545,7 @@ var initialState$1 = {
 function useDropzone() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var _defaultProps$props = _objectSpread(_objectSpread({}, defaultProps), props),
+  var _defaultProps$props = _objectSpread(_objectSpread({}, defaultProps$1), props),
       accept = _defaultProps$props.accept,
       disabled = _defaultProps$props.disabled,
       getFilesFromEvent = _defaultProps$props.getFilesFromEvent,
@@ -32660,25 +29571,25 @@ function useDropzone() {
       onError = _defaultProps$props.onError,
       validator = _defaultProps$props.validator;
 
-  var acceptAttr = useMemo(function () {
+  var acceptAttr = useMemo$1(function () {
     return acceptPropAsAcceptAttr(accept);
   }, [accept]);
-  var pickerTypes = useMemo(function () {
+  var pickerTypes = useMemo$1(function () {
     return pickerOptionsFromAccept(accept);
   }, [accept]);
-  var onFileDialogOpenCb = useMemo(function () {
-    return typeof onFileDialogOpen === "function" ? onFileDialogOpen : noop$1;
+  var onFileDialogOpenCb = useMemo$1(function () {
+    return typeof onFileDialogOpen === "function" ? onFileDialogOpen : noop$2;
   }, [onFileDialogOpen]);
-  var onFileDialogCancelCb = useMemo(function () {
-    return typeof onFileDialogCancel === "function" ? onFileDialogCancel : noop$1;
+  var onFileDialogCancelCb = useMemo$1(function () {
+    return typeof onFileDialogCancel === "function" ? onFileDialogCancel : noop$2;
   }, [onFileDialogCancel]);
   /**
    * @constant
    * @type {React.MutableRefObject<HTMLElement>}
    */
 
-  var rootRef = useRef(null);
-  var inputRef = useRef(null);
+  var rootRef = useRef$1(null);
+  var inputRef = useRef$1(null);
 
   var _useReducer = useReducer(reducer, initialState$1),
       _useReducer2 = _slicedToArray(_useReducer, 2),
@@ -32687,7 +29598,7 @@ function useDropzone() {
 
   var isFocused = state.isFocused,
       isFileDialogActive = state.isFileDialogActive;
-  var fsAccessApiWorksRef = useRef(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && canUseFileSystemAccessAPI()); // Update file dialog active state when the window is focused on
+  var fsAccessApiWorksRef = useRef$1(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && canUseFileSystemAccessAPI()); // Update file dialog active state when the window is focused on
 
   var onWindowFocus = function onWindowFocus() {
     // Execute the timeout only if the file dialog is opened in the browser
@@ -32707,13 +29618,13 @@ function useDropzone() {
     }
   };
 
-  useEffect(function () {
+  useEffect$2(function () {
     window.addEventListener("focus", onWindowFocus, false);
     return function () {
       window.removeEventListener("focus", onWindowFocus, false);
     };
   }, [inputRef, isFileDialogActive, onFileDialogCancelCb, fsAccessApiWorksRef]);
-  var dragTargetsRef = useRef([]);
+  var dragTargetsRef = useRef$1([]);
 
   var onDocumentDrop = function onDocumentDrop(event) {
     if (rootRef.current && rootRef.current.contains(event.target)) {
@@ -32725,7 +29636,7 @@ function useDropzone() {
     dragTargetsRef.current = [];
   };
 
-  useEffect(function () {
+  useEffect$2(function () {
     if (preventDropOnDocument) {
       document.addEventListener("dragover", onDocumentDragOver, false);
       document.addEventListener("drop", onDocumentDrop, false);
@@ -32739,7 +29650,7 @@ function useDropzone() {
     };
   }, [rootRef, preventDropOnDocument]); // Auto focus the root when autoFocus is true
 
-  useEffect(function () {
+  useEffect$2(function () {
     if (!disabled && autoFocus && rootRef.current) {
       rootRef.current.focus();
     }
@@ -32894,6 +29805,7 @@ function useDropzone() {
     dispatch({
       acceptedFiles: acceptedFiles,
       fileRejections: fileRejections,
+      isDragReject: fileRejections.length > 0,
       type: "setFiles"
     });
 
@@ -33043,7 +29955,7 @@ function useDropzone() {
     }
   };
 
-  var getRootProps = useMemo(function () {
+  var getRootProps = useMemo$1(function () {
     return function () {
       var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref2$refKey = _ref2.refKey,
@@ -33077,7 +29989,7 @@ function useDropzone() {
   var onInputElementClick = useCallback(function (event) {
     event.stopPropagation();
   }, []);
-  var getInputProps = useMemo(function () {
+  var getInputProps = useMemo$1(function () {
     return function () {
       var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref3$refKey = _ref3.refKey,
@@ -33091,7 +30003,16 @@ function useDropzone() {
         multiple: multiple,
         type: "file",
         style: {
-          display: "none"
+          border: 0,
+          clip: "rect(0, 0, 0, 0)",
+          clipPath: "inset(50%)",
+          height: "1px",
+          margin: "0 -1px -1px 0",
+          overflow: "hidden",
+          padding: 0,
+          position: "absolute",
+          width: "1px",
+          whiteSpace: "nowrap"
         },
         onChange: composeHandler(composeEventHandlers(onChange, onDropCb)),
         onClick: composeHandler(composeEventHandlers(onClick, onInputElementClick)),
@@ -33149,7 +30070,8 @@ function reducer(state, action) {
     case "setFiles":
       return _objectSpread(_objectSpread({}, state), {}, {
         acceptedFiles: action.acceptedFiles,
-        fileRejections: action.fileRejections
+        fileRejections: action.fileRejections,
+        isDragReject: action.isDragReject
       });
 
     case "reset":
@@ -33160,10 +30082,6097 @@ function reducer(state, action) {
   }
 }
 
-function noop$1() {}
+function noop$2() {}
 
-var css = String.raw;
-var vhPolyfill = css`
+function isBrowser$2() {
+  return Boolean(globalThis?.document);
+}
+
+function assignAfter(target, ...sources) {
+  if (target == null) {
+    throw new TypeError("Cannot convert undefined or null to object");
+  }
+  const result = { ...target };
+  for (const nextSource of sources) {
+    if (nextSource == null)
+      continue;
+    for (const nextKey in nextSource) {
+      if (!Object.prototype.hasOwnProperty.call(nextSource, nextKey))
+        continue;
+      if (nextKey in result)
+        delete result[nextKey];
+      result[nextKey] = nextSource[nextKey];
+    }
+  }
+  return result;
+}
+
+function isArray(value) {
+  return Array.isArray(value);
+}
+function isObject(value) {
+  const type = typeof value;
+  return value != null && (type === "object" || type === "function") && !isArray(value);
+}
+
+function getLastItem(array) {
+  const length = array == null ? 0 : array.length;
+  return length ? array[length - 1] : void 0;
+}
+function analyzeCSSValue$2(value) {
+  const num = parseFloat(value.toString());
+  const unit = value.toString().replace(String(num), "");
+  return { unitless: !unit, value: num, unit };
+}
+function px$1(value) {
+  if (value == null)
+    return value;
+  const { unitless } = analyzeCSSValue$2(value);
+  return unitless || typeof value === "number" ? `${value}px` : value;
+}
+const sortByBreakpointValue = (a, b) => parseInt(a[1], 10) > parseInt(b[1], 10) ? 1 : -1;
+const sortBps = (breakpoints) => Object.fromEntries(Object.entries(breakpoints).sort(sortByBreakpointValue));
+function normalize$1(breakpoints) {
+  const sorted = sortBps(breakpoints);
+  return Object.assign(Object.values(sorted), sorted);
+}
+function keys(breakpoints) {
+  const value = Object.keys(sortBps(breakpoints));
+  return new Set(value);
+}
+function subtract$3(value) {
+  if (!value)
+    return value;
+  value = px$1(value) ?? value;
+  const OFFSET = -0.02;
+  return typeof value === "number" ? `${value + OFFSET}` : value.replace(/(\d+\.?\d*)/u, (m) => `${parseFloat(m) + OFFSET}`);
+}
+function toMediaQueryString(min, max) {
+  const query = ["@media screen"];
+  if (min)
+    query.push("and", `(min-width: ${px$1(min)})`);
+  if (max)
+    query.push("and", `(max-width: ${px$1(max)})`);
+  return query.join(" ");
+}
+function analyzeBreakpoints(breakpoints) {
+  if (!breakpoints)
+    return null;
+  breakpoints.base = breakpoints.base ?? "0px";
+  const normalized = normalize$1(breakpoints);
+  const queries = Object.entries(breakpoints).sort(sortByBreakpointValue).map(([breakpoint, minW], index, entry) => {
+    let [, maxW] = entry[index + 1] ?? [];
+    maxW = parseFloat(maxW) > 0 ? subtract$3(maxW) : void 0;
+    return {
+      _minW: subtract$3(minW),
+      breakpoint,
+      minW,
+      maxW,
+      maxWQuery: toMediaQueryString(null, maxW),
+      minWQuery: toMediaQueryString(minW),
+      minMaxQuery: toMediaQueryString(minW, maxW)
+    };
+  });
+  const _keys = keys(breakpoints);
+  const _keysArr = Array.from(_keys.values());
+  return {
+    keys: _keys,
+    normalized,
+    isResponsive(test) {
+      const keys2 = Object.keys(test);
+      return keys2.length > 0 && keys2.every((key) => _keys.has(key));
+    },
+    asObject: sortBps(breakpoints),
+    asArray: normalize$1(breakpoints),
+    details: queries,
+    get(key) {
+      return queries.find((q) => q.breakpoint === key);
+    },
+    media: [
+      null,
+      ...normalized.map((minW) => toMediaQueryString(minW)).slice(1)
+    ],
+    /**
+     * Converts the object responsive syntax to array syntax
+     *
+     * @example
+     * toArrayValue({ base: 1, sm: 2, md: 3 }) // => [1, 2, 3]
+     */
+    toArrayValue(test) {
+      if (!isObject(test)) {
+        throw new Error("toArrayValue: value must be an object");
+      }
+      const result = _keysArr.map((bp) => test[bp] ?? null);
+      while (getLastItem(result) === null) {
+        result.pop();
+      }
+      return result;
+    },
+    /**
+     * Converts the array responsive syntax to object syntax
+     *
+     * @example
+     * toObjectValue([1, 2, 3]) // => { base: 1, sm: 2, md: 3 }
+     */
+    toObjectValue(test) {
+      if (!Array.isArray(test)) {
+        throw new Error("toObjectValue: value must be an array");
+      }
+      return test.reduce(
+        (acc, value, index) => {
+          const key = _keysArr[index];
+          if (key != null && value != null)
+            acc[key] = value;
+          return acc;
+        },
+        {}
+      );
+    }
+  };
+}
+
+function compact(object) {
+  const clone = Object.assign({}, object);
+  for (let key in clone) {
+    if (clone[key] === void 0)
+      delete clone[key];
+  }
+  return clone;
+}
+
+function getErrorMessage(hook, provider) {
+  return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
+}
+function createContext(options = {}) {
+  const {
+    name,
+    strict = true,
+    hookName = "useContext",
+    providerName = "Provider",
+    errorMessage,
+    defaultValue
+  } = options;
+  const Context = createContext$3(defaultValue);
+  Context.displayName = name;
+  function useContext$1() {
+    const context = useContext(Context);
+    if (!context && strict) {
+      const error = new Error(
+        errorMessage ?? getErrorMessage(hookName, providerName)
+      );
+      error.name = "ContextError";
+      Error.captureStackTrace?.(error, useContext$1);
+      throw error;
+    }
+    return context;
+  }
+  return [Context.Provider, useContext$1, Context];
+}
+
+const cx = (...classNames) => classNames.filter(Boolean).join(" ");
+
+function get$3(obj, path, fallback, index) {
+  const key = typeof path === "string" ? path.split(".") : [path];
+  for (index = 0; index < key.length; index += 1) {
+    if (!obj)
+      break;
+    obj = obj[key[index]];
+  }
+  return obj === void 0 ? fallback : obj;
+}
+const memoize$2 = (fn) => {
+  const cache = /* @__PURE__ */ new WeakMap();
+  const memoizedFn = (obj, path, fallback, index) => {
+    if (typeof obj === "undefined") {
+      return fn(obj, path, fallback);
+    }
+    if (!cache.has(obj)) {
+      cache.set(obj, /* @__PURE__ */ new Map());
+    }
+    const map = cache.get(obj);
+    if (map.has(path)) {
+      return map.get(path);
+    }
+    const value = fn(obj, path, fallback, index);
+    map.set(path, value);
+    return value;
+  };
+  return memoizedFn;
+};
+const memoizedGet$2 = memoize$2(get$3);
+
+const interopDefault = (mod) => mod.default || mod;
+
+function omit(object, keysToOmit = []) {
+  const clone = Object.assign({}, object);
+  for (const key of keysToOmit) {
+    if (key in clone) {
+      delete clone[key];
+    }
+  }
+  return clone;
+}
+
+function pick(object, keysToPick) {
+  const result = {};
+  for (const key of keysToPick) {
+    if (key in object) {
+      result[key] = object[key];
+    }
+  }
+  return result;
+}
+
+const isFunction$2 = (value) => typeof value === "function";
+function runIfFn$1(valueOrFn, ...args) {
+  return isFunction$2(valueOrFn) ? valueOrFn(...args) : valueOrFn;
+}
+
+function splitProps(props, ...keys) {
+  const descriptors = Object.getOwnPropertyDescriptors(props);
+  const dKeys = Object.keys(descriptors);
+  const split = (k) => {
+    const clone = {};
+    for (let i = 0; i < k.length; i++) {
+      const key = k[i];
+      if (descriptors[key]) {
+        Object.defineProperty(clone, key, descriptors[key]);
+        delete descriptors[key];
+      }
+    }
+    return clone;
+  };
+  const fn = (key) => split(Array.isArray(key) ? key : dKeys.filter(key));
+  return keys.map(fn).concat(split(dKeys));
+}
+
+function walkObject(target, predicate, options = {}) {
+  const { stop, getKey } = options;
+  function inner(value, path = []) {
+    if (isObject(value) || Array.isArray(value)) {
+      const result = {};
+      for (const [prop, child] of Object.entries(value)) {
+        const key = getKey?.(prop) ?? prop;
+        const childPath = [...path, key];
+        if (stop?.(value, childPath)) {
+          return predicate(value, path);
+        }
+        result[key] = inner(child, childPath);
+      }
+      return result;
+    }
+    return predicate(value, path);
+  }
+  return inner(target);
+}
+
+function useCallbackRef(callback, deps = []) {
+  const callbackRef = useRef$1(callback);
+  useEffect$2(() => {
+    callbackRef.current = callback;
+  });
+  return useCallback((...args) => callbackRef.current?.(...args), deps);
+}
+
+const useSafeLayoutEffect$1 = Boolean(globalThis?.document) ? useLayoutEffect$1 : useEffect$2;
+
+const useUpdateEffect = (effect, deps) => {
+  const renderCycleRef = useRef$1(false);
+  const effectCycleRef = useRef$1(false);
+  useEffect$2(() => {
+    const isMounted = renderCycleRef.current;
+    const shouldRun = isMounted && effectCycleRef.current;
+    if (shouldRun) {
+      return effect();
+    }
+    effectCycleRef.current = true;
+  }, deps);
+  useEffect$2(() => {
+    renderCycleRef.current = true;
+    return () => {
+      renderCycleRef.current = false;
+    };
+  }, []);
+};
+
+function useTimeout(callback, delay) {
+  const fn = useCallbackRef(callback);
+  useEffect$2(() => {
+    if (delay == null)
+      return void 0;
+    let timeoutId = null;
+    timeoutId = window.setTimeout(() => {
+      fn();
+    }, delay);
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [delay, fn]);
+}
+
+const state$1 = {
+  open: (str, post) => `${str}[data-open], ${str}[open], ${str}[data-state=open] ${post}`,
+  closed: (str, post) => `${str}[data-closed], ${str}[data-state=closed] ${post}`,
+  hover: (str, post) => `${str}:hover ${post}, ${str}[data-hover] ${post}`,
+  focus: (str, post) => `${str}:focus ${post}, ${str}[data-focus] ${post}`,
+  focusVisible: (str, post) => `${str}:focus-visible ${post}`,
+  focusWithin: (str, post) => `${str}:focus-within ${post}`,
+  active: (str, post) => `${str}:active ${post}, ${str}[data-active] ${post}`,
+  disabled: (str, post) => `${str}:disabled ${post}, ${str}[data-disabled] ${post}`,
+  invalid: (str, post) => `${str}:invalid ${post}, ${str}[data-invalid] ${post}`,
+  checked: (str, post) => `${str}:checked ${post}, ${str}[data-checked] ${post}`,
+  indeterminate: (str, post) => `${str}:indeterminate ${post}, ${str}[aria-checked=mixed] ${post}, ${str}[data-indeterminate] ${post}`,
+  readOnly: (str, post) => `${str}:read-only ${post}, ${str}[readonly] ${post}, ${str}[data-read-only] ${post}`,
+  expanded: (str, post) => `${str}:read-only ${post}, ${str}[aria-expanded=true] ${post}, ${str}[data-expanded] ${post}`,
+  placeholderShown: (str, post) => `${str}:placeholder-shown ${post}`
+};
+const toGroup$1 = (fn) => merge$1((v) => fn(v, "&"), "[role=group]", "[data-group]", ".group");
+const toPeer$1 = (fn) => merge$1((v) => fn(v, "~ &"), "[data-peer]", ".peer");
+const merge$1 = (fn, ...selectors) => selectors.map(fn).join(", ");
+const pseudoSelectors$1 = {
+  /**
+   * Styles for CSS selector `&:hover`
+   */
+  _hover: "&:hover, &[data-hover]",
+  /**
+   * Styles for CSS Selector `&:active`
+   */
+  _active: "&:active, &[data-active]",
+  /**
+   * Styles for CSS selector `&:focus`
+   *
+   */
+  _focus: "&:focus, &[data-focus]",
+  /**
+   * Styles for the highlighted state.
+   */
+  _highlighted: "&[data-highlighted]",
+  /**
+   * Styles to apply when a child of this element has received focus
+   * - CSS Selector `&:focus-within`
+   */
+  _focusWithin: "&:focus-within, &[data-focus-within]",
+  /**
+   * Styles to apply when this element has received focus via tabbing
+   * - CSS Selector `&:focus-visible`
+   */
+  _focusVisible: "&:focus-visible, &[data-focus-visible]",
+  /**
+   * Styles to apply when this element is disabled. The passed styles are applied to these CSS selectors:
+   * - `&[aria-disabled=true]`
+   * - `&:disabled`
+   * - `&[data-disabled]`
+   * - `&[disabled]`
+   */
+  _disabled: "&:disabled, &[disabled], &[aria-disabled=true], &[data-disabled]",
+  /**
+   * Styles for CSS Selector `&:readonly`
+   */
+  _readOnly: "&[aria-readonly=true], &[readonly], &[data-readonly]",
+  /**
+   * Styles for CSS selector `&::before`
+   *
+   * NOTE:When using this, ensure the `content` is wrapped in a backtick.
+   * @example
+   * ```jsx
+   * <Box _before={{content:`""` }}/>
+   * ```
+   */
+  _before: "&::before",
+  /**
+   * Styles for CSS selector `&::after`
+   *
+   * NOTE:When using this, ensure the `content` is wrapped in a backtick.
+   * @example
+   * ```jsx
+   * <Box _after={{content:`""` }}/>
+   * ```
+   */
+  _after: "&::after",
+  /**
+   * Styles for CSS selector `&:empty`
+   */
+  _empty: "&:empty, &[data-empty]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-expanded` is `true`
+   * - CSS selector `&[aria-expanded=true]`
+   */
+  _expanded: "&[aria-expanded=true], &[data-expanded], &[data-state=expanded]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-checked` is `true`
+   * - CSS selector `&[aria-checked=true]`
+   */
+  _checked: "&[aria-checked=true], &[data-checked], &[data-state=checked]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-grabbed` is `true`
+   * - CSS selector `&[aria-grabbed=true]`
+   */
+  _grabbed: "&[aria-grabbed=true], &[data-grabbed]",
+  /**
+   * Styles for CSS Selector `&[aria-pressed=true]`
+   * Typically used to style the current "pressed" state of toggle buttons
+   */
+  _pressed: "&[aria-pressed=true], &[data-pressed]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-invalid` is `true`
+   * - CSS selector `&[aria-invalid=true]`
+   */
+  _invalid: "&[aria-invalid=true], &[data-invalid]",
+  /**
+   * Styles for the valid state
+   * - CSS selector `&[data-valid], &[data-state=valid]`
+   */
+  _valid: "&[data-valid], &[data-state=valid]",
+  /**
+   * Styles for CSS Selector `&[aria-busy=true]` or `&[data-loading=true]`.
+   * Useful for styling loading states
+   */
+  _loading: "&[data-loading], &[aria-busy=true]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-selected` is `true`
+   *
+   * - CSS selector `&[aria-selected=true]`
+   */
+  _selected: "&[aria-selected=true], &[data-selected]",
+  /**
+   * Styles for CSS Selector `[hidden=true]`
+   */
+  _hidden: "&[hidden], &[data-hidden]",
+  /**
+   * Styles for CSS Selector `&:-webkit-autofill`
+   */
+  _autofill: "&:-webkit-autofill",
+  /**
+   * Styles for CSS Selector `&:nth-child(even)`
+   */
+  _even: "&:nth-of-type(even)",
+  /**
+   * Styles for CSS Selector `&:nth-child(odd)`
+   */
+  _odd: "&:nth-of-type(odd)",
+  /**
+   * Styles for CSS Selector `&:first-of-type`
+   */
+  _first: "&:first-of-type",
+  /**
+   * Styles for CSS selector `&::first-letter`
+   *
+   * NOTE: This selector is only applied for block-level elements and not preceded by an image or table.
+   * @example
+   * ```jsx
+   * <Text _firstLetter={{ textDecoration: 'underline' }}>Once upon a time</Text>
+   * ```
+   */
+  _firstLetter: "&::first-letter",
+  /**
+   * Styles for CSS Selector `&:last-of-type`
+   */
+  _last: "&:last-of-type",
+  /**
+   * Styles for CSS Selector `&:not(:first-of-type)`
+   */
+  _notFirst: "&:not(:first-of-type)",
+  /**
+   * Styles for CSS Selector `&:not(:last-of-type)`
+   */
+  _notLast: "&:not(:last-of-type)",
+  /**
+   * Styles for CSS Selector `&:visited`
+   */
+  _visited: "&:visited",
+  /**
+   * Used to style the active link in a navigation
+   * Styles for CSS Selector `&[aria-current=page]`
+   */
+  _activeLink: "&[aria-current=page]",
+  /**
+   * Used to style the current step within a process
+   * Styles for CSS Selector `&[aria-current=step]`
+   */
+  _activeStep: "&[aria-current=step]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-checked` is `mixed`
+   * - CSS selector `&[aria-checked=mixed]`
+   */
+  _indeterminate: "&:indeterminate, &[aria-checked=mixed], &[data-indeterminate], &[data-state=indeterminate]",
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is open
+   */
+  _groupOpen: toGroup$1(state$1.open),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is closed
+   */
+  _groupClosed: toGroup$1(state$1.closed),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is hovered
+   */
+  _groupHover: toGroup$1(state$1.hover),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is hovered
+   */
+  _peerHover: toPeer$1(state$1.hover),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is focused
+   */
+  _groupFocus: toGroup$1(state$1.focus),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is focused
+   */
+  _peerFocus: toPeer$1(state$1.focus),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` has visible focus
+   */
+  _groupFocusVisible: toGroup$1(state$1.focusVisible),
+  /**
+   * Styles to apply when a sibling element with `.peer`or `data-peer` has visible focus
+   */
+  _peerFocusVisible: toPeer$1(state$1.focusVisible),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is active
+   */
+  _groupActive: toGroup$1(state$1.active),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is active
+   */
+  _peerActive: toPeer$1(state$1.active),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is disabled
+   */
+  _groupDisabled: toGroup$1(state$1.disabled),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` is disabled
+   */
+  _peerDisabled: toPeer$1(state$1.disabled),
+  /**
+   *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` is invalid
+   */
+  _groupInvalid: toGroup$1(state$1.invalid),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` is invalid
+   */
+  _peerInvalid: toPeer$1(state$1.invalid),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is checked
+   */
+  _groupChecked: toGroup$1(state$1.checked),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is checked
+   */
+  _peerChecked: toPeer$1(state$1.checked),
+  /**
+   *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` has focus within
+   */
+  _groupFocusWithin: toGroup$1(state$1.focusWithin),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` has focus within
+   */
+  _peerFocusWithin: toPeer$1(state$1.focusWithin),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` has placeholder shown
+   */
+  _peerPlaceholderShown: toPeer$1(state$1.placeholderShown),
+  /**
+   * Styles for CSS Selector `&::placeholder`.
+   */
+  _placeholder: "&::placeholder, &[data-placeholder]",
+  /**
+   * Styles for CSS Selector `&:placeholder-shown`.
+   */
+  _placeholderShown: "&:placeholder-shown, &[data-placeholder-shown]",
+  /**
+   * Styles for CSS Selector `&:fullscreen`.
+   */
+  _fullScreen: "&:fullscreen, &[data-fullscreen]",
+  /**
+   * Styles for CSS Selector `&::selection`
+   */
+  _selection: "&::selection",
+  /**
+   * Styles for CSS Selector `[dir=rtl] &`
+   * It is applied when a parent element or this element has `dir="rtl"`
+   */
+  _rtl: "[dir=rtl] &, &[dir=rtl]",
+  /**
+   * Styles for CSS Selector `[dir=ltr] &`
+   * It is applied when a parent element or this element has `dir="ltr"`
+   */
+  _ltr: "[dir=ltr] &, &[dir=ltr]",
+  /**
+   * Styles for CSS Selector `@media (prefers-color-scheme: dark)`
+   * It is used when the user has requested the system use a light or dark color theme.
+   */
+  _mediaDark: "@media (prefers-color-scheme: dark)",
+  /**
+   * Styles for CSS Selector `@media (prefers-reduced-motion: reduce)`
+   * It is used when the user has requested the system to reduce the amount of animations.
+   */
+  _mediaReduceMotion: "@media (prefers-reduced-motion: reduce)",
+  /**
+   * Styles for when `data-theme` is applied to any parent of
+   * this component or element.
+   */
+  _dark: ".chakra-ui-dark &:not([data-theme]),[data-theme=dark] &:not([data-theme]),&[data-theme=dark]",
+  /**
+   * Styles for when `data-theme` is applied to any parent of
+   * this component or element.
+   */
+  _light: ".chakra-ui-light &:not([data-theme]),[data-theme=light] &:not([data-theme]),&[data-theme=light]",
+  /**
+   * Styles for the CSS Selector `&[data-orientation=horizontal]`
+   */
+  _horizontal: "&[data-orientation=horizontal]",
+  /**
+   * Styles for the CSS Selector `&[data-orientation=vertical]`
+   */
+  _vertical: "&[data-orientation=vertical]",
+  /**
+   * Styles for the CSS Selector `&[data-open], &[open], &[data-state=open]`
+   */
+  _open: "&[data-open], &[open], &[data-state=open]",
+  /**
+   * Styles for the CSS Selector `&[data-closed], &[data-state=closed]`
+   */
+  _closed: "&[data-closed], &[data-state=closed]",
+  /**
+   * Styles for the CSS Selector `&[data-complete]`
+   */
+  _complete: "&[data-complete]",
+  /**
+   * Styles for the CSS Selector `&[data-incomplete]`
+   */
+  _incomplete: "&[data-incomplete]",
+  /**
+   * Styles for the CSS Selector `&[data-current]`
+   */
+  _current: "&[data-current]"
+};
+const pseudoPropNames$1 = Object.keys(
+  pseudoSelectors$1
+);
+
+const isImportant$1 = (value) => /!(important)?$/.test(value);
+const withoutImportant$1 = (value) => typeof value === "string" ? value.replace(/!(important)?$/, "").trim() : value;
+const tokenToCSSVar$1 = (scale, value) => (theme) => {
+  const valueStr = String(value);
+  const important = isImportant$1(valueStr);
+  const valueWithoutImportant = withoutImportant$1(valueStr);
+  const key = scale ? `${scale}.${valueWithoutImportant}` : valueWithoutImportant;
+  let transformed = isObject(theme.__cssMap) && key in theme.__cssMap ? theme.__cssMap[key].varRef : value;
+  transformed = withoutImportant$1(transformed);
+  return important ? `${transformed} !important` : transformed;
+};
+function createTransform$1(options) {
+  const { scale, transform, compose } = options;
+  const fn = (value, theme) => {
+    const _value = tokenToCSSVar$1(scale, value)(theme);
+    let result = transform?.(_value, theme) ?? _value;
+    if (compose) {
+      result = compose(result, theme);
+    }
+    return result;
+  };
+  return fn;
+}
+
+const pipe$3 = (...fns) => (v) => fns.reduce((a, b) => b(a), v);
+
+function toConfig$1(scale, transform) {
+  return (property) => {
+    const result = { property, scale };
+    result.transform = createTransform$1({
+      scale,
+      transform
+    });
+    return result;
+  };
+}
+const getRtl$1 = ({ rtl, ltr }) => (theme) => theme.direction === "rtl" ? rtl : ltr;
+function logical$1(options) {
+  const { property, scale, transform } = options;
+  return {
+    scale,
+    property: getRtl$1(property),
+    transform: scale ? createTransform$1({
+      scale,
+      compose: transform
+    }) : transform
+  };
+}
+
+const transformTemplate$1 = [
+  "rotate(var(--chakra-rotate, 0))",
+  "scaleX(var(--chakra-scale-x, 1))",
+  "scaleY(var(--chakra-scale-y, 1))",
+  "skewX(var(--chakra-skew-x, 0))",
+  "skewY(var(--chakra-skew-y, 0))"
+];
+function getTransformTemplate$1() {
+  return [
+    "translateX(var(--chakra-translate-x, 0))",
+    "translateY(var(--chakra-translate-y, 0))",
+    ...transformTemplate$1
+  ].join(" ");
+}
+function getTransformGpuTemplate$1() {
+  return [
+    "translate3d(var(--chakra-translate-x, 0), var(--chakra-translate-y, 0), 0)",
+    ...transformTemplate$1
+  ].join(" ");
+}
+const filterTemplate$1 = {
+  "--chakra-blur": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-brightness": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-contrast": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-grayscale": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-hue-rotate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-invert": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-saturate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-sepia": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-drop-shadow": "var(--chakra-empty,/*!*/ /*!*/)",
+  filter: [
+    "var(--chakra-blur)",
+    "var(--chakra-brightness)",
+    "var(--chakra-contrast)",
+    "var(--chakra-grayscale)",
+    "var(--chakra-hue-rotate)",
+    "var(--chakra-invert)",
+    "var(--chakra-saturate)",
+    "var(--chakra-sepia)",
+    "var(--chakra-drop-shadow)"
+  ].join(" ")
+};
+const backdropFilterTemplate$1 = {
+  backdropFilter: [
+    "var(--chakra-backdrop-blur)",
+    "var(--chakra-backdrop-brightness)",
+    "var(--chakra-backdrop-contrast)",
+    "var(--chakra-backdrop-grayscale)",
+    "var(--chakra-backdrop-hue-rotate)",
+    "var(--chakra-backdrop-invert)",
+    "var(--chakra-backdrop-opacity)",
+    "var(--chakra-backdrop-saturate)",
+    "var(--chakra-backdrop-sepia)"
+  ].join(" "),
+  "--chakra-backdrop-blur": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-brightness": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-contrast": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-grayscale": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-hue-rotate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-invert": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-opacity": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-saturate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-sepia": "var(--chakra-empty,/*!*/ /*!*/)"
+};
+function getRingTemplate$1(value) {
+  return {
+    "--chakra-ring-offset-shadow": `var(--chakra-ring-inset) 0 0 0 var(--chakra-ring-offset-width) var(--chakra-ring-offset-color)`,
+    "--chakra-ring-shadow": `var(--chakra-ring-inset) 0 0 0 calc(var(--chakra-ring-width) + var(--chakra-ring-offset-width)) var(--chakra-ring-color)`,
+    "--chakra-ring-width": value,
+    boxShadow: [
+      `var(--chakra-ring-offset-shadow)`,
+      `var(--chakra-ring-shadow)`,
+      `var(--chakra-shadow, 0 0 #0000)`
+    ].join(", ")
+  };
+}
+const flexDirectionTemplate$1 = {
+  "row-reverse": {
+    space: "--chakra-space-x-reverse",
+    divide: "--chakra-divide-x-reverse"
+  },
+  "column-reverse": {
+    space: "--chakra-space-y-reverse",
+    divide: "--chakra-divide-y-reverse"
+  }
+};
+
+const directionMap$1 = {
+  "to-t": "to top",
+  "to-tr": "to top right",
+  "to-r": "to right",
+  "to-br": "to bottom right",
+  "to-b": "to bottom",
+  "to-bl": "to bottom left",
+  "to-l": "to left",
+  "to-tl": "to top left"
+};
+const valueSet$1 = new Set(Object.values(directionMap$1));
+const globalSet$1 = /* @__PURE__ */ new Set([
+  "none",
+  "-moz-initial",
+  "inherit",
+  "initial",
+  "revert",
+  "unset"
+]);
+const trimSpace$1 = (str) => str.trim();
+function parseGradient$1(value, theme) {
+  if (value == null || globalSet$1.has(value))
+    return value;
+  const prevent = isCSSFunction$1(value) || globalSet$1.has(value);
+  if (!prevent)
+    return `url('${value}')`;
+  const regex = /(^[a-z-A-Z]+)\((.*)\)/g;
+  const results = regex.exec(value);
+  const type = results?.[1];
+  const values = results?.[2];
+  if (!type || !values)
+    return value;
+  const _type = type.includes("-gradient") ? type : `${type}-gradient`;
+  const [maybeDirection, ...stops] = values.split(",").map(trimSpace$1).filter(Boolean);
+  if (stops?.length === 0)
+    return value;
+  const direction = maybeDirection in directionMap$1 ? directionMap$1[maybeDirection] : maybeDirection;
+  stops.unshift(direction);
+  const _values = stops.map((stop) => {
+    if (valueSet$1.has(stop))
+      return stop;
+    const firstStop = stop.indexOf(" ");
+    const [_color, _stop] = firstStop !== -1 ? [stop.substr(0, firstStop), stop.substr(firstStop + 1)] : [stop];
+    const _stopOrFunc = isCSSFunction$1(_stop) ? _stop : _stop && _stop.split(" ");
+    const key = `colors.${_color}`;
+    const color = key in theme.__cssMap ? theme.__cssMap[key].varRef : _color;
+    return _stopOrFunc ? [
+      color,
+      ...Array.isArray(_stopOrFunc) ? _stopOrFunc : [_stopOrFunc]
+    ].join(" ") : color;
+  });
+  return `${_type}(${_values.join(", ")})`;
+}
+const isCSSFunction$1 = (value) => {
+  return typeof value === "string" && value.includes("(") && value.includes(")");
+};
+const gradientTransform$1 = (value, theme) => parseGradient$1(value, theme ?? {});
+
+function isCssVar$2(value) {
+  return /^var\(--.+\)$/.test(value);
+}
+const analyzeCSSValue$1 = (value) => {
+  const num = parseFloat(value.toString());
+  const unit = value.toString().replace(String(num), "");
+  return { unitless: !unit, value: num, unit };
+};
+const wrap$1 = (str) => (value) => `${str}(${value})`;
+const transformFunctions$1 = {
+  filter(value) {
+    return value !== "auto" ? value : filterTemplate$1;
+  },
+  backdropFilter(value) {
+    return value !== "auto" ? value : backdropFilterTemplate$1;
+  },
+  ring(value) {
+    return getRingTemplate$1(transformFunctions$1.px(value));
+  },
+  bgClip(value) {
+    return value === "text" ? { color: "transparent", backgroundClip: "text" } : { backgroundClip: value };
+  },
+  transform(value) {
+    if (value === "auto")
+      return getTransformTemplate$1();
+    if (value === "auto-gpu")
+      return getTransformGpuTemplate$1();
+    return value;
+  },
+  vh(value) {
+    return value === "$100vh" ? "var(--chakra-vh)" : value;
+  },
+  px(value) {
+    if (value == null)
+      return value;
+    const { unitless } = analyzeCSSValue$1(value);
+    return unitless || typeof value === "number" ? `${value}px` : value;
+  },
+  fraction(value) {
+    return !(typeof value === "number") || value > 1 ? value : `${value * 100}%`;
+  },
+  float(value, theme) {
+    const map = { left: "right", right: "left" };
+    return theme.direction === "rtl" ? map[value] : value;
+  },
+  degree(value) {
+    if (isCssVar$2(value) || value == null)
+      return value;
+    const unitless = typeof value === "string" && !value.endsWith("deg");
+    return typeof value === "number" || unitless ? `${value}deg` : value;
+  },
+  gradient: gradientTransform$1,
+  blur: wrap$1("blur"),
+  opacity: wrap$1("opacity"),
+  brightness: wrap$1("brightness"),
+  contrast: wrap$1("contrast"),
+  dropShadow: wrap$1("drop-shadow"),
+  grayscale: wrap$1("grayscale"),
+  hueRotate: (value) => wrap$1("hue-rotate")(transformFunctions$1.degree(value)),
+  invert: wrap$1("invert"),
+  saturate: wrap$1("saturate"),
+  sepia: wrap$1("sepia"),
+  bgImage(value) {
+    if (value == null)
+      return value;
+    const prevent = isCSSFunction$1(value) || globalSet$1.has(value);
+    return !prevent ? `url(${value})` : value;
+  },
+  outline(value) {
+    const isNoneOrZero = String(value) === "0" || String(value) === "none";
+    return value !== null && isNoneOrZero ? { outline: "2px solid transparent", outlineOffset: "2px" } : { outline: value };
+  },
+  flexDirection(value) {
+    const { space, divide } = flexDirectionTemplate$1[value] ?? {};
+    const result = { flexDirection: value };
+    if (space)
+      result[space] = 1;
+    if (divide)
+      result[divide] = 1;
+    return result;
+  }
+};
+
+const t$1 = {
+  borderWidths: toConfig$1("borderWidths"),
+  borderStyles: toConfig$1("borderStyles"),
+  colors: toConfig$1("colors"),
+  borders: toConfig$1("borders"),
+  gradients: toConfig$1("gradients", transformFunctions$1.gradient),
+  radii: toConfig$1("radii", transformFunctions$1.px),
+  space: toConfig$1("space", pipe$3(transformFunctions$1.vh, transformFunctions$1.px)),
+  spaceT: toConfig$1("space", pipe$3(transformFunctions$1.vh, transformFunctions$1.px)),
+  degreeT(property) {
+    return { property, transform: transformFunctions$1.degree };
+  },
+  prop(property, scale, transform) {
+    return {
+      property,
+      scale,
+      ...scale && {
+        transform: createTransform$1({ scale, transform })
+      }
+    };
+  },
+  propT(property, transform) {
+    return { property, transform };
+  },
+  sizes: toConfig$1("sizes", pipe$3(transformFunctions$1.vh, transformFunctions$1.px)),
+  sizesT: toConfig$1("sizes", pipe$3(transformFunctions$1.vh, transformFunctions$1.fraction)),
+  shadows: toConfig$1("shadows"),
+  logical: logical$1,
+  blur: toConfig$1("blur", transformFunctions$1.blur)
+};
+
+const background$1 = {
+  background: t$1.colors("background"),
+  backgroundColor: t$1.colors("backgroundColor"),
+  backgroundImage: t$1.gradients("backgroundImage"),
+  backgroundSize: true,
+  backgroundPosition: true,
+  backgroundRepeat: true,
+  backgroundAttachment: true,
+  backgroundClip: { transform: transformFunctions$1.bgClip },
+  bgSize: t$1.prop("backgroundSize"),
+  bgPosition: t$1.prop("backgroundPosition"),
+  bg: t$1.colors("background"),
+  bgColor: t$1.colors("backgroundColor"),
+  bgPos: t$1.prop("backgroundPosition"),
+  bgRepeat: t$1.prop("backgroundRepeat"),
+  bgAttachment: t$1.prop("backgroundAttachment"),
+  bgGradient: t$1.gradients("backgroundImage"),
+  bgClip: { transform: transformFunctions$1.bgClip }
+};
+Object.assign(background$1, {
+  bgImage: background$1.backgroundImage,
+  bgImg: background$1.backgroundImage
+});
+
+const border$1 = {
+  border: t$1.borders("border"),
+  borderWidth: t$1.borderWidths("borderWidth"),
+  borderStyle: t$1.borderStyles("borderStyle"),
+  borderColor: t$1.colors("borderColor"),
+  borderRadius: t$1.radii("borderRadius"),
+  borderTop: t$1.borders("borderTop"),
+  borderBlockStart: t$1.borders("borderBlockStart"),
+  borderTopLeftRadius: t$1.radii("borderTopLeftRadius"),
+  borderStartStartRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderTopLeftRadius",
+      rtl: "borderTopRightRadius"
+    }
+  }),
+  borderEndStartRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderBottomLeftRadius",
+      rtl: "borderBottomRightRadius"
+    }
+  }),
+  borderTopRightRadius: t$1.radii("borderTopRightRadius"),
+  borderStartEndRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderTopRightRadius",
+      rtl: "borderTopLeftRadius"
+    }
+  }),
+  borderEndEndRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderBottomRightRadius",
+      rtl: "borderBottomLeftRadius"
+    }
+  }),
+  borderRight: t$1.borders("borderRight"),
+  borderInlineEnd: t$1.borders("borderInlineEnd"),
+  borderBottom: t$1.borders("borderBottom"),
+  borderBlockEnd: t$1.borders("borderBlockEnd"),
+  borderBottomLeftRadius: t$1.radii("borderBottomLeftRadius"),
+  borderBottomRightRadius: t$1.radii("borderBottomRightRadius"),
+  borderLeft: t$1.borders("borderLeft"),
+  borderInlineStart: {
+    property: "borderInlineStart",
+    scale: "borders"
+  },
+  borderInlineStartRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: ["borderTopLeftRadius", "borderBottomLeftRadius"],
+      rtl: ["borderTopRightRadius", "borderBottomRightRadius"]
+    }
+  }),
+  borderInlineEndRadius: t$1.logical({
+    scale: "radii",
+    property: {
+      ltr: ["borderTopRightRadius", "borderBottomRightRadius"],
+      rtl: ["borderTopLeftRadius", "borderBottomLeftRadius"]
+    }
+  }),
+  borderX: t$1.borders(["borderLeft", "borderRight"]),
+  borderInline: t$1.borders("borderInline"),
+  borderY: t$1.borders(["borderTop", "borderBottom"]),
+  borderBlock: t$1.borders("borderBlock"),
+  borderTopWidth: t$1.borderWidths("borderTopWidth"),
+  borderBlockStartWidth: t$1.borderWidths("borderBlockStartWidth"),
+  borderTopColor: t$1.colors("borderTopColor"),
+  borderBlockStartColor: t$1.colors("borderBlockStartColor"),
+  borderTopStyle: t$1.borderStyles("borderTopStyle"),
+  borderBlockStartStyle: t$1.borderStyles("borderBlockStartStyle"),
+  borderBottomWidth: t$1.borderWidths("borderBottomWidth"),
+  borderBlockEndWidth: t$1.borderWidths("borderBlockEndWidth"),
+  borderBottomColor: t$1.colors("borderBottomColor"),
+  borderBlockEndColor: t$1.colors("borderBlockEndColor"),
+  borderBottomStyle: t$1.borderStyles("borderBottomStyle"),
+  borderBlockEndStyle: t$1.borderStyles("borderBlockEndStyle"),
+  borderLeftWidth: t$1.borderWidths("borderLeftWidth"),
+  borderInlineStartWidth: t$1.borderWidths("borderInlineStartWidth"),
+  borderLeftColor: t$1.colors("borderLeftColor"),
+  borderInlineStartColor: t$1.colors("borderInlineStartColor"),
+  borderLeftStyle: t$1.borderStyles("borderLeftStyle"),
+  borderInlineStartStyle: t$1.borderStyles("borderInlineStartStyle"),
+  borderRightWidth: t$1.borderWidths("borderRightWidth"),
+  borderInlineEndWidth: t$1.borderWidths("borderInlineEndWidth"),
+  borderRightColor: t$1.colors("borderRightColor"),
+  borderInlineEndColor: t$1.colors("borderInlineEndColor"),
+  borderRightStyle: t$1.borderStyles("borderRightStyle"),
+  borderInlineEndStyle: t$1.borderStyles("borderInlineEndStyle"),
+  borderTopRadius: t$1.radii(["borderTopLeftRadius", "borderTopRightRadius"]),
+  borderBottomRadius: t$1.radii([
+    "borderBottomLeftRadius",
+    "borderBottomRightRadius"
+  ]),
+  borderLeftRadius: t$1.radii(["borderTopLeftRadius", "borderBottomLeftRadius"]),
+  borderRightRadius: t$1.radii([
+    "borderTopRightRadius",
+    "borderBottomRightRadius"
+  ])
+};
+Object.assign(border$1, {
+  rounded: border$1.borderRadius,
+  roundedTop: border$1.borderTopRadius,
+  roundedTopLeft: border$1.borderTopLeftRadius,
+  roundedTopRight: border$1.borderTopRightRadius,
+  roundedTopStart: border$1.borderStartStartRadius,
+  roundedTopEnd: border$1.borderStartEndRadius,
+  roundedBottom: border$1.borderBottomRadius,
+  roundedBottomLeft: border$1.borderBottomLeftRadius,
+  roundedBottomRight: border$1.borderBottomRightRadius,
+  roundedBottomStart: border$1.borderEndStartRadius,
+  roundedBottomEnd: border$1.borderEndEndRadius,
+  roundedLeft: border$1.borderLeftRadius,
+  roundedRight: border$1.borderRightRadius,
+  roundedStart: border$1.borderInlineStartRadius,
+  roundedEnd: border$1.borderInlineEndRadius,
+  borderStart: border$1.borderInlineStart,
+  borderEnd: border$1.borderInlineEnd,
+  borderTopStartRadius: border$1.borderStartStartRadius,
+  borderTopEndRadius: border$1.borderStartEndRadius,
+  borderBottomStartRadius: border$1.borderEndStartRadius,
+  borderBottomEndRadius: border$1.borderEndEndRadius,
+  borderStartRadius: border$1.borderInlineStartRadius,
+  borderEndRadius: border$1.borderInlineEndRadius,
+  borderStartWidth: border$1.borderInlineStartWidth,
+  borderEndWidth: border$1.borderInlineEndWidth,
+  borderStartColor: border$1.borderInlineStartColor,
+  borderEndColor: border$1.borderInlineEndColor,
+  borderStartStyle: border$1.borderInlineStartStyle,
+  borderEndStyle: border$1.borderInlineEndStyle
+});
+
+const color$2 = {
+  color: t$1.colors("color"),
+  textColor: t$1.colors("color"),
+  fill: t$1.colors("fill"),
+  stroke: t$1.colors("stroke"),
+  accentColor: t$1.colors("accentColor"),
+  textFillColor: t$1.colors("textFillColor")
+};
+
+const flexbox$1 = {
+  alignItems: true,
+  alignContent: true,
+  justifyItems: true,
+  justifyContent: true,
+  flexWrap: true,
+  flexDirection: { transform: transformFunctions$1.flexDirection },
+  flex: true,
+  flexFlow: true,
+  flexGrow: true,
+  flexShrink: true,
+  flexBasis: t$1.sizes("flexBasis"),
+  justifySelf: true,
+  alignSelf: true,
+  order: true,
+  placeItems: true,
+  placeContent: true,
+  placeSelf: true,
+  gap: t$1.space("gap"),
+  rowGap: t$1.space("rowGap"),
+  columnGap: t$1.space("columnGap")
+};
+Object.assign(flexbox$1, {
+  flexDir: flexbox$1.flexDirection
+});
+
+const layout$2 = {
+  width: t$1.sizesT("width"),
+  inlineSize: t$1.sizesT("inlineSize"),
+  height: t$1.sizes("height"),
+  blockSize: t$1.sizes("blockSize"),
+  boxSize: t$1.sizes(["width", "height"]),
+  minWidth: t$1.sizes("minWidth"),
+  minInlineSize: t$1.sizes("minInlineSize"),
+  minHeight: t$1.sizes("minHeight"),
+  minBlockSize: t$1.sizes("minBlockSize"),
+  maxWidth: t$1.sizes("maxWidth"),
+  maxInlineSize: t$1.sizes("maxInlineSize"),
+  maxHeight: t$1.sizes("maxHeight"),
+  maxBlockSize: t$1.sizes("maxBlockSize"),
+  overflow: true,
+  overflowX: true,
+  overflowY: true,
+  overscrollBehavior: true,
+  overscrollBehaviorX: true,
+  overscrollBehaviorY: true,
+  display: true,
+  aspectRatio: true,
+  hideFrom: {
+    scale: "breakpoints",
+    transform: (value, theme) => {
+      const breakpoint = theme.__breakpoints?.get(value)?.minW ?? value;
+      const mq = `@media screen and (min-width: ${breakpoint})`;
+      return { [mq]: { display: "none" } };
+    }
+  },
+  hideBelow: {
+    scale: "breakpoints",
+    transform: (value, theme) => {
+      const breakpoint = theme.__breakpoints?.get(value)?._minW ?? value;
+      const mq = `@media screen and (max-width: ${breakpoint})`;
+      return { [mq]: { display: "none" } };
+    }
+  },
+  verticalAlign: true,
+  boxSizing: true,
+  boxDecorationBreak: true,
+  float: t$1.propT("float", transformFunctions$1.float),
+  objectFit: true,
+  objectPosition: true,
+  visibility: true,
+  isolation: true
+};
+Object.assign(layout$2, {
+  w: layout$2.width,
+  h: layout$2.height,
+  minW: layout$2.minWidth,
+  maxW: layout$2.maxWidth,
+  minH: layout$2.minHeight,
+  maxH: layout$2.maxHeight,
+  overscroll: layout$2.overscrollBehavior,
+  overscrollX: layout$2.overscrollBehaviorX,
+  overscrollY: layout$2.overscrollBehaviorY
+});
+
+const filter$2 = {
+  filter: { transform: transformFunctions$1.filter },
+  blur: t$1.blur("--chakra-blur"),
+  brightness: t$1.propT("--chakra-brightness", transformFunctions$1.brightness),
+  contrast: t$1.propT("--chakra-contrast", transformFunctions$1.contrast),
+  hueRotate: t$1.propT("--chakra-hue-rotate", transformFunctions$1.hueRotate),
+  invert: t$1.propT("--chakra-invert", transformFunctions$1.invert),
+  saturate: t$1.propT("--chakra-saturate", transformFunctions$1.saturate),
+  dropShadow: t$1.propT("--chakra-drop-shadow", transformFunctions$1.dropShadow),
+  backdropFilter: { transform: transformFunctions$1.backdropFilter },
+  backdropBlur: t$1.blur("--chakra-backdrop-blur"),
+  backdropBrightness: t$1.propT(
+    "--chakra-backdrop-brightness",
+    transformFunctions$1.brightness
+  ),
+  backdropContrast: t$1.propT("--chakra-backdrop-contrast", transformFunctions$1.contrast),
+  backdropHueRotate: t$1.propT(
+    "--chakra-backdrop-hue-rotate",
+    transformFunctions$1.hueRotate
+  ),
+  backdropInvert: t$1.propT("--chakra-backdrop-invert", transformFunctions$1.invert),
+  backdropSaturate: t$1.propT("--chakra-backdrop-saturate", transformFunctions$1.saturate)
+};
+
+const ring$1 = {
+  ring: { transform: transformFunctions$1.ring },
+  ringColor: t$1.colors("--chakra-ring-color"),
+  ringOffset: t$1.prop("--chakra-ring-offset-width"),
+  ringOffsetColor: t$1.colors("--chakra-ring-offset-color"),
+  ringInset: t$1.prop("--chakra-ring-inset")
+};
+
+const interactivity$1 = {
+  appearance: true,
+  cursor: true,
+  resize: true,
+  userSelect: true,
+  pointerEvents: true,
+  outline: { transform: transformFunctions$1.outline },
+  outlineOffset: true,
+  outlineColor: t$1.colors("outlineColor")
+};
+
+const grid$1 = {
+  gridGap: t$1.space("gridGap"),
+  gridColumnGap: t$1.space("gridColumnGap"),
+  gridRowGap: t$1.space("gridRowGap"),
+  gridColumn: true,
+  gridRow: true,
+  gridAutoFlow: true,
+  gridAutoColumns: true,
+  gridColumnStart: true,
+  gridColumnEnd: true,
+  gridRowStart: true,
+  gridRowEnd: true,
+  gridAutoRows: true,
+  gridTemplate: true,
+  gridTemplateColumns: true,
+  gridTemplateRows: true,
+  gridTemplateAreas: true,
+  gridArea: true
+};
+
+function get$2(obj, path, fallback, index) {
+  const key = typeof path === "string" ? path.split(".") : [path];
+  for (index = 0; index < key.length; index += 1) {
+    if (!obj)
+      break;
+    obj = obj[key[index]];
+  }
+  return obj === void 0 ? fallback : obj;
+}
+const memoize$1 = (fn) => {
+  const cache = /* @__PURE__ */ new WeakMap();
+  const memoizedFn = (obj, path, fallback, index) => {
+    if (typeof obj === "undefined") {
+      return fn(obj, path, fallback);
+    }
+    if (!cache.has(obj)) {
+      cache.set(obj, /* @__PURE__ */ new Map());
+    }
+    const map = cache.get(obj);
+    if (map.has(path)) {
+      return map.get(path);
+    }
+    const value = fn(obj, path, fallback, index);
+    map.set(path, value);
+    return value;
+  };
+  return memoizedFn;
+};
+const memoizedGet$1 = memoize$1(get$2);
+
+const srOnly$1 = {
+  border: "0px",
+  clip: "rect(0, 0, 0, 0)",
+  width: "1px",
+  height: "1px",
+  margin: "-1px",
+  padding: "0px",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  position: "absolute"
+};
+const srFocusable$1 = {
+  position: "static",
+  width: "auto",
+  height: "auto",
+  clip: "auto",
+  padding: "0",
+  margin: "0",
+  overflow: "visible",
+  whiteSpace: "normal"
+};
+const getWithPriority$1 = (theme, key, styles) => {
+  const result = {};
+  const obj = memoizedGet$1(theme, key, {});
+  for (const prop in obj) {
+    const isInStyles = prop in styles && styles[prop] != null;
+    if (!isInStyles)
+      result[prop] = obj[prop];
+  }
+  return result;
+};
+const others$1 = {
+  srOnly: {
+    transform(value) {
+      if (value === true)
+        return srOnly$1;
+      if (value === "focusable")
+        return srFocusable$1;
+      return {};
+    }
+  },
+  layerStyle: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority$1(theme, `layerStyles.${value}`, styles)
+  },
+  textStyle: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority$1(theme, `textStyles.${value}`, styles)
+  },
+  apply: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority$1(theme, value, styles)
+  }
+};
+
+const position$2 = {
+  position: true,
+  pos: t$1.prop("position"),
+  zIndex: t$1.prop("zIndex", "zIndices"),
+  inset: t$1.spaceT("inset"),
+  insetX: t$1.spaceT(["left", "right"]),
+  insetInline: t$1.spaceT("insetInline"),
+  insetY: t$1.spaceT(["top", "bottom"]),
+  insetBlock: t$1.spaceT("insetBlock"),
+  top: t$1.spaceT("top"),
+  insetBlockStart: t$1.spaceT("insetBlockStart"),
+  bottom: t$1.spaceT("bottom"),
+  insetBlockEnd: t$1.spaceT("insetBlockEnd"),
+  left: t$1.spaceT("left"),
+  insetInlineStart: t$1.logical({
+    scale: "space",
+    property: { ltr: "left", rtl: "right" }
+  }),
+  right: t$1.spaceT("right"),
+  insetInlineEnd: t$1.logical({
+    scale: "space",
+    property: { ltr: "right", rtl: "left" }
+  })
+};
+Object.assign(position$2, {
+  insetStart: position$2.insetInlineStart,
+  insetEnd: position$2.insetInlineEnd
+});
+
+const effect$1 = {
+  boxShadow: t$1.shadows("boxShadow"),
+  mixBlendMode: true,
+  blendMode: t$1.prop("mixBlendMode"),
+  backgroundBlendMode: true,
+  bgBlendMode: t$1.prop("backgroundBlendMode"),
+  opacity: true
+};
+Object.assign(effect$1, {
+  shadow: effect$1.boxShadow
+});
+
+const space$1 = {
+  margin: t$1.spaceT("margin"),
+  marginTop: t$1.spaceT("marginTop"),
+  marginBlockStart: t$1.spaceT("marginBlockStart"),
+  marginRight: t$1.spaceT("marginRight"),
+  marginInlineEnd: t$1.spaceT("marginInlineEnd"),
+  marginBottom: t$1.spaceT("marginBottom"),
+  marginBlockEnd: t$1.spaceT("marginBlockEnd"),
+  marginLeft: t$1.spaceT("marginLeft"),
+  marginInlineStart: t$1.spaceT("marginInlineStart"),
+  marginX: t$1.spaceT(["marginInlineStart", "marginInlineEnd"]),
+  marginInline: t$1.spaceT("marginInline"),
+  marginY: t$1.spaceT(["marginTop", "marginBottom"]),
+  marginBlock: t$1.spaceT("marginBlock"),
+  padding: t$1.space("padding"),
+  paddingTop: t$1.space("paddingTop"),
+  paddingBlockStart: t$1.space("paddingBlockStart"),
+  paddingRight: t$1.space("paddingRight"),
+  paddingBottom: t$1.space("paddingBottom"),
+  paddingBlockEnd: t$1.space("paddingBlockEnd"),
+  paddingLeft: t$1.space("paddingLeft"),
+  paddingInlineStart: t$1.space("paddingInlineStart"),
+  paddingInlineEnd: t$1.space("paddingInlineEnd"),
+  paddingX: t$1.space(["paddingInlineStart", "paddingInlineEnd"]),
+  paddingInline: t$1.space("paddingInline"),
+  paddingY: t$1.space(["paddingTop", "paddingBottom"]),
+  paddingBlock: t$1.space("paddingBlock")
+};
+Object.assign(space$1, {
+  m: space$1.margin,
+  mt: space$1.marginTop,
+  mr: space$1.marginRight,
+  me: space$1.marginInlineEnd,
+  marginEnd: space$1.marginInlineEnd,
+  mb: space$1.marginBottom,
+  ml: space$1.marginLeft,
+  ms: space$1.marginInlineStart,
+  marginStart: space$1.marginInlineStart,
+  mx: space$1.marginX,
+  my: space$1.marginY,
+  p: space$1.padding,
+  pt: space$1.paddingTop,
+  py: space$1.paddingY,
+  px: space$1.paddingX,
+  pb: space$1.paddingBottom,
+  pl: space$1.paddingLeft,
+  ps: space$1.paddingInlineStart,
+  paddingStart: space$1.paddingInlineStart,
+  pr: space$1.paddingRight,
+  pe: space$1.paddingInlineEnd,
+  paddingEnd: space$1.paddingInlineEnd
+});
+
+const scroll$1 = {
+  scrollBehavior: true,
+  scrollSnapAlign: true,
+  scrollSnapStop: true,
+  scrollSnapType: true,
+  // scroll margin
+  scrollMargin: t$1.spaceT("scrollMargin"),
+  scrollMarginTop: t$1.spaceT("scrollMarginTop"),
+  scrollMarginBottom: t$1.spaceT("scrollMarginBottom"),
+  scrollMarginLeft: t$1.spaceT("scrollMarginLeft"),
+  scrollMarginRight: t$1.spaceT("scrollMarginRight"),
+  scrollMarginX: t$1.spaceT(["scrollMarginLeft", "scrollMarginRight"]),
+  scrollMarginY: t$1.spaceT(["scrollMarginTop", "scrollMarginBottom"]),
+  // scroll padding
+  scrollPadding: t$1.spaceT("scrollPadding"),
+  scrollPaddingTop: t$1.spaceT("scrollPaddingTop"),
+  scrollPaddingBottom: t$1.spaceT("scrollPaddingBottom"),
+  scrollPaddingLeft: t$1.spaceT("scrollPaddingLeft"),
+  scrollPaddingRight: t$1.spaceT("scrollPaddingRight"),
+  scrollPaddingX: t$1.spaceT(["scrollPaddingLeft", "scrollPaddingRight"]),
+  scrollPaddingY: t$1.spaceT(["scrollPaddingTop", "scrollPaddingBottom"])
+};
+
+const typography$3 = {
+  fontFamily: t$1.prop("fontFamily", "fonts"),
+  fontSize: t$1.prop("fontSize", "fontSizes", transformFunctions$1.px),
+  fontWeight: t$1.prop("fontWeight", "fontWeights"),
+  lineHeight: t$1.prop("lineHeight", "lineHeights"),
+  letterSpacing: t$1.prop("letterSpacing", "letterSpacings"),
+  textAlign: true,
+  fontStyle: true,
+  textIndent: true,
+  wordBreak: true,
+  overflowWrap: true,
+  textOverflow: true,
+  textTransform: true,
+  whiteSpace: true,
+  isTruncated: {
+    transform(value) {
+      if (value === true) {
+        return {
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        };
+      }
+    }
+  },
+  noOfLines: {
+    static: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      //@ts-ignore
+      WebkitLineClamp: "var(--chakra-line-clamp)"
+    },
+    property: "--chakra-line-clamp"
+  }
+};
+
+const textDecoration$1 = {
+  textDecorationColor: t$1.colors("textDecorationColor"),
+  textDecoration: true,
+  textDecor: { property: "textDecoration" },
+  textDecorationLine: true,
+  textDecorationStyle: true,
+  textDecorationThickness: true,
+  textUnderlineOffset: true,
+  textShadow: t$1.shadows("textShadow")
+};
+
+const transform$1 = {
+  clipPath: true,
+  transform: t$1.propT("transform", transformFunctions$1.transform),
+  transformOrigin: true,
+  translateX: t$1.spaceT("--chakra-translate-x"),
+  translateY: t$1.spaceT("--chakra-translate-y"),
+  skewX: t$1.degreeT("--chakra-skew-x"),
+  skewY: t$1.degreeT("--chakra-skew-y"),
+  scaleX: t$1.prop("--chakra-scale-x"),
+  scaleY: t$1.prop("--chakra-scale-y"),
+  scale: t$1.prop(["--chakra-scale-x", "--chakra-scale-y"]),
+  rotate: t$1.degreeT("--chakra-rotate")
+};
+
+const list$1 = {
+  listStyleType: true,
+  listStylePosition: true,
+  listStylePos: t$1.prop("listStylePosition"),
+  listStyleImage: true,
+  listStyleImg: t$1.prop("listStyleImage")
+};
+
+const transition$3 = {
+  transition: true,
+  transitionDelay: true,
+  animation: true,
+  willChange: true,
+  transitionDuration: t$1.prop("transitionDuration", "transition.duration"),
+  transitionProperty: t$1.prop("transitionProperty", "transition.property"),
+  transitionTimingFunction: t$1.prop(
+    "transitionTimingFunction",
+    "transition.easing"
+  )
+};
+
+const systemProps$1 = mergeWith(
+  {},
+  background$1,
+  border$1,
+  color$2,
+  flexbox$1,
+  layout$2,
+  filter$2,
+  ring$1,
+  interactivity$1,
+  grid$1,
+  others$1,
+  position$2,
+  effect$1,
+  space$1,
+  scroll$1,
+  typography$3,
+  textDecoration$1,
+  transform$1,
+  list$1,
+  transition$3
+);
+Object.assign({}, space$1, layout$2, flexbox$1, grid$1, position$2);
+const propNames = [...Object.keys(systemProps$1), ...pseudoPropNames$1];
+const styleProps = { ...systemProps$1, ...pseudoSelectors$1 };
+const isStyleProp = (prop) => prop in styleProps;
+
+const expandResponsive = (styles) => (theme) => {
+  if (!theme.__breakpoints)
+    return styles;
+  const { isResponsive, toArrayValue, media: medias } = theme.__breakpoints;
+  const computedStyles = {};
+  for (const key in styles) {
+    let value = runIfFn$1(styles[key], theme);
+    if (value == null)
+      continue;
+    value = isObject(value) && isResponsive(value) ? toArrayValue(value) : value;
+    if (!Array.isArray(value)) {
+      computedStyles[key] = value;
+      continue;
+    }
+    const queries = value.slice(0, medias.length).length;
+    for (let index = 0; index < queries; index += 1) {
+      const media = medias?.[index];
+      if (!media) {
+        computedStyles[key] = value[index];
+        continue;
+      }
+      computedStyles[media] = computedStyles[media] || {};
+      if (value[index] == null) {
+        continue;
+      }
+      computedStyles[media][key] = value[index];
+    }
+  }
+  return computedStyles;
+};
+
+function splitByComma(value) {
+  const chunks = [];
+  let chunk = "";
+  let inParens = false;
+  for (let i = 0; i < value.length; i++) {
+    const char = value[i];
+    if (char === "(") {
+      inParens = true;
+      chunk += char;
+    } else if (char === ")") {
+      inParens = false;
+      chunk += char;
+    } else if (char === "," && !inParens) {
+      chunks.push(chunk);
+      chunk = "";
+    } else {
+      chunk += char;
+    }
+  }
+  chunk = chunk.trim();
+  if (chunk) {
+    chunks.push(chunk);
+  }
+  return chunks;
+}
+
+function isCssVar$1(value) {
+  return /^var\(--.+\)$/.test(value);
+}
+const isCSSVariableTokenValue = (key, value) => key.startsWith("--") && typeof value === "string" && !isCssVar$1(value);
+const resolveTokenValue = (theme, value) => {
+  if (value == null)
+    return value;
+  const getVar = (val) => theme.__cssMap?.[val]?.varRef;
+  const getValue = (val) => getVar(val) ?? val;
+  const [tokenValue, fallbackValue] = splitByComma(value);
+  value = getVar(tokenValue) ?? getValue(fallbackValue) ?? getValue(value);
+  return value;
+};
+function getCss(options) {
+  const { configs = {}, pseudos = {}, theme } = options;
+  const css2 = (stylesOrFn, nested = false) => {
+    const _styles = runIfFn$1(stylesOrFn, theme);
+    const styles = expandResponsive(_styles)(theme);
+    let computedStyles = {};
+    for (let key in styles) {
+      const valueOrFn = styles[key];
+      let value = runIfFn$1(valueOrFn, theme);
+      if (key in pseudos) {
+        key = pseudos[key];
+      }
+      if (isCSSVariableTokenValue(key, value)) {
+        value = resolveTokenValue(theme, value);
+      }
+      let config = configs[key];
+      if (config === true) {
+        config = { property: key };
+      }
+      if (isObject(value)) {
+        computedStyles[key] = computedStyles[key] ?? {};
+        computedStyles[key] = mergeWith(
+          {},
+          computedStyles[key],
+          css2(value, true)
+        );
+        continue;
+      }
+      let rawValue = config?.transform?.(value, theme, _styles) ?? value;
+      rawValue = config?.processResult ? css2(rawValue, true) : rawValue;
+      const configProperty = runIfFn$1(config?.property, theme);
+      if (!nested && config?.static) {
+        const staticStyles = runIfFn$1(config.static, theme);
+        computedStyles = mergeWith({}, computedStyles, staticStyles);
+      }
+      if (configProperty && Array.isArray(configProperty)) {
+        for (const property of configProperty) {
+          computedStyles[property] = rawValue;
+        }
+        continue;
+      }
+      if (configProperty) {
+        if (configProperty === "&" && isObject(rawValue)) {
+          computedStyles = mergeWith({}, computedStyles, rawValue);
+        } else {
+          computedStyles[configProperty] = rawValue;
+        }
+        continue;
+      }
+      if (isObject(rawValue)) {
+        computedStyles = mergeWith({}, computedStyles, rawValue);
+        continue;
+      }
+      computedStyles[key] = rawValue;
+    }
+    return computedStyles;
+  };
+  return css2;
+}
+const css$1 = (styles) => (theme) => {
+  const cssFn = getCss({
+    theme,
+    pseudos: pseudoSelectors$1,
+    configs: systemProps$1
+  });
+  return cssFn(styles);
+};
+
+function defineStyle(styles) {
+  return styles;
+}
+function defineStyleConfig$1(config) {
+  return config;
+}
+function createMultiStyleConfigHelpers(parts) {
+  return {
+    definePartsStyle(config) {
+      return config;
+    },
+    defineMultiStyleConfig(config) {
+      return { parts, ...config };
+    }
+  };
+}
+
+function normalize(value, toArray) {
+  if (Array.isArray(value))
+    return value;
+  if (isObject(value))
+    return toArray(value);
+  if (value != null)
+    return [value];
+}
+function getNextIndex(values, i) {
+  for (let j = i + 1; j < values.length; j++) {
+    if (values[j] != null)
+      return j;
+  }
+  return -1;
+}
+function createResolver(theme) {
+  const breakpointUtil = theme.__breakpoints;
+  return function resolver(config, prop, value, props) {
+    if (!breakpointUtil)
+      return;
+    const result = {};
+    const normalized = normalize(value, breakpointUtil.toArrayValue);
+    if (!normalized)
+      return result;
+    const len = normalized.length;
+    const isSingle = len === 1;
+    const isMultipart = !!config.parts;
+    for (let i = 0; i < len; i++) {
+      const key = breakpointUtil.details[i];
+      const nextKey = breakpointUtil.details[getNextIndex(normalized, i)];
+      const query = toMediaQueryString(key.minW, nextKey?._minW);
+      const styles = runIfFn$1(config[prop]?.[normalized[i]], props);
+      if (!styles)
+        continue;
+      if (isMultipart) {
+        config.parts?.forEach((part) => {
+          mergeWith(result, {
+            [part]: isSingle ? styles[part] : { [query]: styles[part] }
+          });
+        });
+        continue;
+      }
+      if (!isMultipart) {
+        if (isSingle)
+          mergeWith(result, styles);
+        else
+          result[query] = styles;
+        continue;
+      }
+      result[query] = styles;
+    }
+    return result;
+  };
+}
+function resolveStyleConfig(config) {
+  return (props) => {
+    const { variant, size, theme } = props;
+    const recipe = createResolver(theme);
+    return mergeWith(
+      {},
+      runIfFn$1(config.baseStyle ?? {}, props),
+      recipe(config, "sizes", size, props),
+      recipe(config, "variants", variant, props)
+    );
+  };
+}
+
+function omitThemingProps(props) {
+  return omit(props, ["styleConfig", "size", "variant", "colorScheme"]);
+}
+
+function resolveReference$1(operand) {
+  if (isObject(operand) && operand.reference) {
+    return operand.reference;
+  }
+  return String(operand);
+}
+const toExpression$1 = (operator, ...operands) => operands.map(resolveReference$1).join(` ${operator} `).replace(/calc/g, "");
+const add$2 = (...operands) => `calc(${toExpression$1("+", ...operands)})`;
+const subtract$2 = (...operands) => `calc(${toExpression$1("-", ...operands)})`;
+const multiply$2 = (...operands) => `calc(${toExpression$1("*", ...operands)})`;
+const divide$2 = (...operands) => `calc(${toExpression$1("/", ...operands)})`;
+const negate$2 = (x) => {
+  const value = resolveReference$1(x);
+  if (value != null && !Number.isNaN(parseFloat(value))) {
+    return String(value).startsWith("-") ? String(value).slice(1) : `-${value}`;
+  }
+  return multiply$2(value, -1);
+};
+const calc$2 = Object.assign(
+  (x) => ({
+    add: (...operands) => calc$2(add$2(x, ...operands)),
+    subtract: (...operands) => calc$2(subtract$2(x, ...operands)),
+    multiply: (...operands) => calc$2(multiply$2(x, ...operands)),
+    divide: (...operands) => calc$2(divide$2(x, ...operands)),
+    negate: () => calc$2(negate$2(x)),
+    toString: () => x.toString()
+  }),
+  {
+    add: add$2,
+    subtract: subtract$2,
+    multiply: multiply$2,
+    divide: divide$2,
+    negate: negate$2
+  }
+);
+
+function replaceWhiteSpace$1(value, replaceValue = "-") {
+  return value.replace(/\s+/g, replaceValue);
+}
+function escape$1(value) {
+  const valueStr = replaceWhiteSpace$1(value.toString());
+  return escapeSymbol(escapeDot(valueStr));
+}
+function escapeDot(value) {
+  if (value.includes("\\."))
+    return value;
+  const isDecimal = !Number.isInteger(parseFloat(value.toString()));
+  return isDecimal ? value.replace(".", `\\.`) : value;
+}
+function escapeSymbol(value) {
+  return value.replace(/[!-,/:-@[-^`{-~]/g, "\\$&");
+}
+function addPrefix$1(value, prefix = "") {
+  return [prefix, value].filter(Boolean).join("-");
+}
+function toVarReference(name, fallback) {
+  return `var(${name}${fallback ? `, ${fallback}` : ""})`;
+}
+function toVarDefinition(value, prefix = "") {
+  return escape$1(`--${addPrefix$1(value, prefix)}`);
+}
+function cssVar$1(name, fallback, cssVarPrefix) {
+  const cssVariable = toVarDefinition(name, cssVarPrefix);
+  return {
+    variable: cssVariable,
+    reference: toVarReference(cssVariable, fallback)
+  };
+}
+function defineCssVars(scope, keys) {
+  const vars = {};
+  for (const key of keys) {
+    if (Array.isArray(key)) {
+      const [name, fallback] = key;
+      vars[name] = cssVar$1(`${scope}-${name}`, fallback);
+      continue;
+    }
+    vars[key] = cssVar$1(`${scope}-${key}`);
+  }
+  return vars;
+}
+
+const tokens = [
+  "colors",
+  "borders",
+  "borderWidths",
+  "borderStyles",
+  "fonts",
+  "fontSizes",
+  "fontWeights",
+  "gradients",
+  "letterSpacings",
+  "lineHeights",
+  "radii",
+  "space",
+  "shadows",
+  "sizes",
+  "zIndices",
+  "transition",
+  "blur",
+  "breakpoints"
+];
+function extractTokens(theme) {
+  const _tokens = tokens;
+  return pick(theme, _tokens);
+}
+function extractSemanticTokens(theme) {
+  return theme.semanticTokens;
+}
+function omitVars(rawTheme) {
+  const { __cssMap, __cssVars, __breakpoints, ...cleanTheme } = rawTheme;
+  return cleanTheme;
+}
+
+function flattenTokens(theme) {
+  const tokens = extractTokens(theme);
+  const semanticTokens = extractSemanticTokens(theme);
+  const isSemanticCondition = (key) => (
+    // @ts-ignore
+    pseudoPropNames$1.includes(key) || "default" === key
+  );
+  const result = {};
+  walkObject(tokens, (value, path) => {
+    if (value == null)
+      return;
+    result[path.join(".")] = { isSemantic: false, value };
+  });
+  walkObject(
+    semanticTokens,
+    (value, path) => {
+      if (value == null)
+        return;
+      result[path.join(".")] = { isSemantic: true, value };
+    },
+    {
+      stop: (value) => Object.keys(value).every(isSemanticCondition)
+    }
+  );
+  return result;
+}
+
+function tokenToCssVar(token, prefix) {
+  return cssVar$1(String(token).replace(/\./g, "-"), void 0, prefix);
+}
+function createThemeVars(theme) {
+  const flatTokens = flattenTokens(theme);
+  const cssVarPrefix = theme.config?.cssVarPrefix;
+  let cssVars = {};
+  const cssMap = {};
+  function lookupToken(token, maybeToken) {
+    const scale = String(token).split(".")[0];
+    const withScale = [scale, maybeToken].join(".");
+    const resolvedTokenValue = flatTokens[withScale];
+    if (!resolvedTokenValue)
+      return maybeToken;
+    const { reference } = tokenToCssVar(withScale, cssVarPrefix);
+    return reference;
+  }
+  for (const [token, tokenValue] of Object.entries(flatTokens)) {
+    const { isSemantic, value } = tokenValue;
+    const { variable, reference } = tokenToCssVar(token, cssVarPrefix);
+    if (!isSemantic) {
+      if (token.startsWith("space")) {
+        const keys = token.split(".");
+        const [firstKey, ...referenceKeys] = keys;
+        const negativeLookupKey = `${firstKey}.-${referenceKeys.join(".")}`;
+        const negativeValue = calc$2.negate(value);
+        const negatedReference = calc$2.negate(reference);
+        cssMap[negativeLookupKey] = {
+          value: negativeValue,
+          var: variable,
+          varRef: negatedReference
+        };
+      }
+      cssVars[variable] = value;
+      cssMap[token] = {
+        value,
+        var: variable,
+        varRef: reference
+      };
+      continue;
+    }
+    const normalizedValue = isObject(value) ? value : { default: value };
+    cssVars = mergeWith(
+      cssVars,
+      Object.entries(normalizedValue).reduce(
+        (acc, [conditionAlias, conditionValue]) => {
+          if (!conditionValue)
+            return acc;
+          const tokenReference = lookupToken(token, `${conditionValue}`);
+          if (conditionAlias === "default") {
+            acc[variable] = tokenReference;
+            return acc;
+          }
+          const conditionSelector = pseudoSelectors$1?.[conditionAlias] ?? conditionAlias;
+          acc[conditionSelector] = { [variable]: tokenReference };
+          return acc;
+        },
+        {}
+      )
+    );
+    cssMap[token] = {
+      value: reference,
+      var: variable,
+      varRef: reference
+    };
+  }
+  return {
+    cssVars,
+    cssMap
+  };
+}
+
+function toCSSVar(rawTheme) {
+  const theme = omitVars(rawTheme);
+  const {
+    /**
+     * This is more like a dictionary of tokens users will type `green.500`,
+     * and their equivalent css variable.
+     */
+    cssMap,
+    /**
+     * The extracted css variables will be stored here, and used in
+     * the emotion's <Global/> component to attach variables to `:root`
+     */
+    cssVars
+  } = createThemeVars(theme);
+  const defaultCssVars = {
+    "--chakra-ring-inset": "var(--chakra-empty,/*!*/ /*!*/)",
+    "--chakra-ring-offset-width": "0px",
+    "--chakra-ring-offset-color": "#fff",
+    "--chakra-ring-color": "rgba(66, 153, 225, 0.6)",
+    "--chakra-ring-offset-shadow": "0 0 #0000",
+    "--chakra-ring-shadow": "0 0 #0000",
+    "--chakra-space-x-reverse": "0",
+    "--chakra-space-y-reverse": "0"
+  };
+  Object.assign(theme, {
+    __cssVars: { ...defaultCssVars, ...cssVars },
+    __cssMap: cssMap,
+    __breakpoints: analyzeBreakpoints(theme.breakpoints)
+  });
+  return theme;
+}
+
+function anatomy(name, map = {}) {
+  let called = false;
+  function assert() {
+    if (!called) {
+      called = true;
+      return;
+    }
+    throw new Error(
+      "[anatomy] .part(...) should only be called once. Did you mean to use .extend(...) ?"
+    );
+  }
+  function parts(...values) {
+    assert();
+    for (const part of values) {
+      map[part] = toPart(part);
+    }
+    return anatomy(name, map);
+  }
+  function extend(...parts2) {
+    for (const part of parts2) {
+      if (part in map)
+        continue;
+      map[part] = toPart(part);
+    }
+    return anatomy(name, map);
+  }
+  function selectors() {
+    const value = Object.fromEntries(
+      Object.entries(map).map(([key, part]) => [key, part.selector])
+    );
+    return value;
+  }
+  function classnames() {
+    const value = Object.fromEntries(
+      Object.entries(map).map(([key, part]) => [key, part.className])
+    );
+    return value;
+  }
+  function toPart(part) {
+    const el = ["container", "root"].includes(part ?? "") ? [name] : [name, part];
+    const attr = el.filter(Boolean).join("__");
+    const className = `chakra-${attr}`;
+    const partObj = {
+      className,
+      selector: `.${className}`,
+      toString: () => part
+    };
+    return partObj;
+  }
+  const __type = {};
+  return {
+    parts,
+    toPart,
+    extend,
+    selectors,
+    classnames,
+    get keys() {
+      return Object.keys(map);
+    },
+    __type
+  };
+}
+
+const accordionAnatomy = anatomy("accordion").parts(
+  "root",
+  "container",
+  "button",
+  "panel",
+  "icon"
+);
+const alertAnatomy = anatomy("alert").parts(
+  "title",
+  "description",
+  "container",
+  "icon",
+  "spinner"
+);
+const avatarAnatomy = anatomy("avatar").parts(
+  "label",
+  "badge",
+  "container",
+  "excessLabel",
+  "group"
+);
+const breadcrumbAnatomy = anatomy("breadcrumb").parts(
+  "link",
+  "item",
+  "container",
+  "separator"
+);
+anatomy("button").parts();
+const checkboxAnatomy = anatomy("checkbox").parts(
+  "control",
+  "icon",
+  "container",
+  "label"
+);
+anatomy("progress").parts(
+  "track",
+  "filledTrack",
+  "label"
+);
+const drawerAnatomy = anatomy("drawer").parts(
+  "overlay",
+  "dialogContainer",
+  "dialog",
+  "header",
+  "closeButton",
+  "body",
+  "footer"
+);
+const editableAnatomy = anatomy("editable").parts(
+  "preview",
+  "input",
+  "textarea"
+);
+const formAnatomy = anatomy("form").parts(
+  "container",
+  "requiredIndicator",
+  "helperText"
+);
+const formErrorAnatomy = anatomy("formError").parts("text", "icon");
+const inputAnatomy = anatomy("input").parts(
+  "addon",
+  "field",
+  "element",
+  "group"
+);
+const listAnatomy = anatomy("list").parts("container", "item", "icon");
+const menuAnatomy = anatomy("menu").parts(
+  "button",
+  "list",
+  "item",
+  "groupTitle",
+  "icon",
+  "command",
+  "divider"
+);
+const modalAnatomy = anatomy("modal").parts(
+  "overlay",
+  "dialogContainer",
+  "dialog",
+  "header",
+  "closeButton",
+  "body",
+  "footer"
+);
+const numberInputAnatomy = anatomy("numberinput").parts(
+  "root",
+  "field",
+  "stepperGroup",
+  "stepper"
+);
+anatomy("pininput").parts("field");
+const popoverAnatomy = anatomy("popover").parts(
+  "content",
+  "header",
+  "body",
+  "footer",
+  "popper",
+  "arrow",
+  "closeButton"
+);
+const progressAnatomy = anatomy("progress").parts(
+  "label",
+  "filledTrack",
+  "track"
+);
+const radioAnatomy = anatomy("radio").parts(
+  "container",
+  "control",
+  "label"
+);
+const selectAnatomy = anatomy("select").parts("field", "icon");
+const sliderAnatomy = anatomy("slider").parts(
+  "container",
+  "track",
+  "thumb",
+  "filledTrack",
+  "mark"
+);
+const statAnatomy = anatomy("stat").parts(
+  "container",
+  "label",
+  "helpText",
+  "number",
+  "icon"
+);
+const switchAnatomy = anatomy("switch").parts(
+  "container",
+  "track",
+  "thumb",
+  "label"
+);
+const tableAnatomy = anatomy("table").parts(
+  "table",
+  "thead",
+  "tbody",
+  "tr",
+  "th",
+  "td",
+  "tfoot",
+  "caption"
+);
+const tabsAnatomy = anatomy("tabs").parts(
+  "root",
+  "tab",
+  "tablist",
+  "tabpanel",
+  "tabpanels",
+  "indicator"
+);
+const tagAnatomy = anatomy("tag").parts(
+  "container",
+  "label",
+  "closeButton"
+);
+const cardAnatomy = anatomy("card").parts(
+  "container",
+  "header",
+  "body",
+  "footer"
+);
+anatomy("stepper").parts(
+  "stepper",
+  "step",
+  "title",
+  "description",
+  "indicator",
+  "separator",
+  "icon",
+  "number"
+);
+
+const { definePartsStyle: definePartsStyle$p, defineMultiStyleConfig: defineMultiStyleConfig$p } = createMultiStyleConfigHelpers(accordionAnatomy.keys);
+const baseStyleContainer$4 = defineStyle({
+  borderTopWidth: "1px",
+  borderColor: "inherit",
+  _last: {
+    borderBottomWidth: "1px"
+  }
+});
+const baseStyleButton$1 = defineStyle({
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  fontSize: "md",
+  _focusVisible: {
+    boxShadow: "outline"
+  },
+  _hover: {
+    bg: "blackAlpha.50"
+  },
+  _disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed"
+  },
+  px: "4",
+  py: "2"
+});
+const baseStylePanel = defineStyle({
+  pt: "2",
+  px: "4",
+  pb: "5"
+});
+const baseStyleIcon$6 = defineStyle({
+  fontSize: "1.25em"
+});
+const baseStyle$F = definePartsStyle$p({
+  container: baseStyleContainer$4,
+  button: baseStyleButton$1,
+  panel: baseStylePanel,
+  icon: baseStyleIcon$6
+});
+const accordionTheme = defineMultiStyleConfig$p({ baseStyle: baseStyle$F });
+
+const isEmptyObject = (obj) => Object.keys(obj).length === 0;
+function get$1(obj, key, def, p, undef) {
+  key = key.split ? key.split(".") : key;
+  for (p = 0; p < key.length; p++) {
+    obj = obj ? obj[key[p]] : undef;
+  }
+  return obj === undef ? def : obj;
+}
+const getColor = (theme, color, fallback) => {
+  const hex = get$1(theme, `colors.${color}`, color);
+  try {
+    toHex(hex);
+    return hex;
+  } catch {
+    return fallback ?? "#000000";
+  }
+};
+const getBrightness = (color) => {
+  const [r, g, b] = parseToRgba(color);
+  return (r * 299 + g * 587 + b * 114) / 1e3;
+};
+const tone = (color) => (theme) => {
+  const hex = getColor(theme, color);
+  const brightness = getBrightness(hex);
+  const isDark2 = brightness < 128;
+  return isDark2 ? "dark" : "light";
+};
+const isDark = (color) => (theme) => tone(color)(theme) === "dark";
+const transparentize = (color, opacity) => (theme) => {
+  const raw = getColor(theme, color);
+  return transparentize$1(raw, 1 - opacity);
+};
+function generateStripe(size = "1rem", color = "rgba(255, 255, 255, 0.15)") {
+  return {
+    backgroundImage: `linear-gradient(
+    45deg,
+    ${color} 25%,
+    transparent 25%,
+    transparent 50%,
+    ${color} 50%,
+    ${color} 75%,
+    transparent 75%,
+    transparent
+  )`,
+    backgroundSize: `${size} ${size}`
+  };
+}
+const randomHex = () => `#${Math.floor(Math.random() * 16777215).toString(16).padEnd(6, "0")}`;
+function randomColor(opts) {
+  const fallback = randomHex();
+  if (!opts || isEmptyObject(opts)) {
+    return fallback;
+  }
+  if (opts.string && opts.colors) {
+    return randomColorFromList(opts.string, opts.colors);
+  }
+  if (opts.string && !opts.colors) {
+    return randomColorFromString(opts.string);
+  }
+  if (opts.colors && !opts.string) {
+    return randomFromList(opts.colors);
+  }
+  return fallback;
+}
+function randomColorFromString(str) {
+  let hash = 0;
+  if (str.length === 0)
+    return hash.toString();
+  for (let i = 0; i < str.length; i += 1) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    hash = hash & hash;
+  }
+  let color = "#";
+  for (let j = 0; j < 3; j += 1) {
+    const value = hash >> j * 8 & 255;
+    color += `00${value.toString(16)}`.substr(-2);
+  }
+  return color;
+}
+function randomColorFromList(str, list) {
+  let index = 0;
+  if (str.length === 0)
+    return list[0];
+  for (let i = 0; i < str.length; i += 1) {
+    index = str.charCodeAt(i) + ((index << 5) - index);
+    index = index & index;
+  }
+  index = (index % list.length + list.length) % list.length;
+  return list[index];
+}
+function randomFromList(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+function mode(light, dark) {
+  return (props) => props.colorMode === "dark" ? dark : light;
+}
+function orient(options) {
+  const { orientation, vertical, horizontal } = options;
+  if (!orientation)
+    return {};
+  return orientation === "vertical" ? vertical : horizontal;
+}
+
+function toRef(operand) {
+  if (isObject(operand) && operand.reference) {
+    return operand.reference;
+  }
+  return String(operand);
+}
+const toExpr = (operator, ...operands) => operands.map(toRef).join(` ${operator} `).replace(/calc/g, "");
+const add$1 = (...operands) => `calc(${toExpr("+", ...operands)})`;
+const subtract$1 = (...operands) => `calc(${toExpr("-", ...operands)})`;
+const multiply$1 = (...operands) => `calc(${toExpr("*", ...operands)})`;
+const divide$1 = (...operands) => `calc(${toExpr("/", ...operands)})`;
+const negate$1 = (x) => {
+  const value = toRef(x);
+  if (value != null && !Number.isNaN(parseFloat(value))) {
+    return String(value).startsWith("-") ? String(value).slice(1) : `-${value}`;
+  }
+  return multiply$1(value, -1);
+};
+const calc$1 = Object.assign(
+  (x) => ({
+    add: (...operands) => calc$1(add$1(x, ...operands)),
+    subtract: (...operands) => calc$1(subtract$1(x, ...operands)),
+    multiply: (...operands) => calc$1(multiply$1(x, ...operands)),
+    divide: (...operands) => calc$1(divide$1(x, ...operands)),
+    negate: () => calc$1(negate$1(x)),
+    toString: () => x.toString()
+  }),
+  {
+    add: add$1,
+    subtract: subtract$1,
+    multiply: multiply$1,
+    divide: divide$1,
+    negate: negate$1
+  }
+);
+
+function isDecimal(value) {
+  return !Number.isInteger(parseFloat(value.toString()));
+}
+function replaceWhiteSpace(value, replaceValue = "-") {
+  return value.replace(/\s+/g, replaceValue);
+}
+function escape(value) {
+  const valueStr = replaceWhiteSpace(value.toString());
+  if (valueStr.includes("\\."))
+    return value;
+  return isDecimal(value) ? valueStr.replace(".", `\\.`) : value;
+}
+function addPrefix(value, prefix = "") {
+  return [prefix, escape(value)].filter(Boolean).join("-");
+}
+function toVarRef(name, fallback) {
+  return `var(${escape(name)}${fallback ? `, ${fallback}` : ""})`;
+}
+function toVar(value, prefix = "") {
+  return `--${addPrefix(value, prefix)}`;
+}
+function cssVar(name, options) {
+  const cssVariable = toVar(name, options?.prefix);
+  return {
+    variable: cssVariable,
+    reference: toVarRef(cssVariable, getFallback(options?.fallback))
+  };
+}
+function getFallback(fallback) {
+  if (typeof fallback === "string")
+    return fallback;
+  return fallback?.reference;
+}
+
+const { definePartsStyle: definePartsStyle$o, defineMultiStyleConfig: defineMultiStyleConfig$o } = createMultiStyleConfigHelpers(alertAnatomy.keys);
+const $fg$5 = cssVar$1("alert-fg");
+const $bg$f = cssVar$1("alert-bg");
+const baseStyle$E = definePartsStyle$o({
+  container: {
+    bg: $bg$f.reference,
+    px: "4",
+    py: "3"
+  },
+  title: {
+    fontWeight: "bold",
+    lineHeight: "6",
+    marginEnd: "2"
+  },
+  description: {
+    lineHeight: "6"
+  },
+  icon: {
+    color: $fg$5.reference,
+    flexShrink: 0,
+    marginEnd: "3",
+    w: "5",
+    h: "6"
+  },
+  spinner: {
+    color: $fg$5.reference,
+    flexShrink: 0,
+    marginEnd: "3",
+    w: "5",
+    h: "5"
+  }
+});
+function getBg(props) {
+  const { theme, colorScheme: c } = props;
+  const darkBg = transparentize(`${c}.200`, 0.16)(theme);
+  return {
+    light: `colors.${c}.100`,
+    dark: darkBg
+  };
+}
+const variantSubtle$1 = definePartsStyle$o((props) => {
+  const { colorScheme: c } = props;
+  const bg = getBg(props);
+  return {
+    container: {
+      [$fg$5.variable]: `colors.${c}.600`,
+      [$bg$f.variable]: bg.light,
+      _dark: {
+        [$fg$5.variable]: `colors.${c}.200`,
+        [$bg$f.variable]: bg.dark
+      }
+    }
+  };
+});
+const variantLeftAccent = definePartsStyle$o((props) => {
+  const { colorScheme: c } = props;
+  const bg = getBg(props);
+  return {
+    container: {
+      [$fg$5.variable]: `colors.${c}.600`,
+      [$bg$f.variable]: bg.light,
+      _dark: {
+        [$fg$5.variable]: `colors.${c}.200`,
+        [$bg$f.variable]: bg.dark
+      },
+      paddingStart: "3",
+      borderStartWidth: "4px",
+      borderStartColor: $fg$5.reference
+    }
+  };
+});
+const variantTopAccent = definePartsStyle$o((props) => {
+  const { colorScheme: c } = props;
+  const bg = getBg(props);
+  return {
+    container: {
+      [$fg$5.variable]: `colors.${c}.600`,
+      [$bg$f.variable]: bg.light,
+      _dark: {
+        [$fg$5.variable]: `colors.${c}.200`,
+        [$bg$f.variable]: bg.dark
+      },
+      pt: "2",
+      borderTopWidth: "4px",
+      borderTopColor: $fg$5.reference
+    }
+  };
+});
+const variantSolid$3 = definePartsStyle$o((props) => {
+  const { colorScheme: c } = props;
+  return {
+    container: {
+      [$fg$5.variable]: `colors.white`,
+      [$bg$f.variable]: `colors.${c}.600`,
+      _dark: {
+        [$fg$5.variable]: `colors.gray.900`,
+        [$bg$f.variable]: `colors.${c}.200`
+      },
+      color: $fg$5.reference
+    }
+  };
+});
+const variants$b = {
+  subtle: variantSubtle$1,
+  "left-accent": variantLeftAccent,
+  "top-accent": variantTopAccent,
+  solid: variantSolid$3
+};
+const alertTheme = defineMultiStyleConfig$o({
+  baseStyle: baseStyle$E,
+  variants: variants$b,
+  defaultProps: {
+    variant: "subtle",
+    colorScheme: "blue"
+  }
+});
+
+const spacing$1 = {
+  px: "1px",
+  0.5: "0.125rem",
+  1: "0.25rem",
+  1.5: "0.375rem",
+  2: "0.5rem",
+  2.5: "0.625rem",
+  3: "0.75rem",
+  3.5: "0.875rem",
+  4: "1rem",
+  5: "1.25rem",
+  6: "1.5rem",
+  7: "1.75rem",
+  8: "2rem",
+  9: "2.25rem",
+  10: "2.5rem",
+  12: "3rem",
+  14: "3.5rem",
+  16: "4rem",
+  20: "5rem",
+  24: "6rem",
+  28: "7rem",
+  32: "8rem",
+  36: "9rem",
+  40: "10rem",
+  44: "11rem",
+  48: "12rem",
+  52: "13rem",
+  56: "14rem",
+  60: "15rem",
+  64: "16rem",
+  72: "18rem",
+  80: "20rem",
+  96: "24rem"
+};
+
+const largeSizes$1 = {
+  max: "max-content",
+  min: "min-content",
+  full: "100%",
+  "3xs": "14rem",
+  "2xs": "16rem",
+  xs: "20rem",
+  sm: "24rem",
+  md: "28rem",
+  lg: "32rem",
+  xl: "36rem",
+  "2xl": "42rem",
+  "3xl": "48rem",
+  "4xl": "56rem",
+  "5xl": "64rem",
+  "6xl": "72rem",
+  "7xl": "80rem",
+  "8xl": "90rem",
+  prose: "60ch"
+};
+const container$1 = {
+  sm: "640px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1280px"
+};
+const sizes$n = {
+  ...spacing$1,
+  ...largeSizes$1,
+  container: container$1
+};
+
+const isFunction$1 = (value) => typeof value === "function";
+function runIfFn(valueOrFn, ...args) {
+  return isFunction$1(valueOrFn) ? valueOrFn(...args) : valueOrFn;
+}
+
+const { definePartsStyle: definePartsStyle$n, defineMultiStyleConfig: defineMultiStyleConfig$n } = createMultiStyleConfigHelpers(avatarAnatomy.keys);
+const $border$3 = cssVar$1("avatar-border-color");
+const $bg$e = cssVar$1("avatar-bg");
+const $fs = cssVar$1("avatar-font-size");
+const $size$4 = cssVar$1("avatar-size");
+const baseStyleBadge = defineStyle({
+  borderRadius: "full",
+  border: "0.2em solid",
+  borderColor: $border$3.reference,
+  [$border$3.variable]: "white",
+  _dark: {
+    [$border$3.variable]: "colors.gray.800"
+  }
+});
+const baseStyleExcessLabel = defineStyle({
+  bg: $bg$e.reference,
+  fontSize: $fs.reference,
+  width: $size$4.reference,
+  height: $size$4.reference,
+  lineHeight: "1",
+  [$bg$e.variable]: "colors.gray.200",
+  _dark: {
+    [$bg$e.variable]: "colors.whiteAlpha.400"
+  }
+});
+const baseStyleContainer$3 = defineStyle((props) => {
+  const { name, theme } = props;
+  const bg = name ? randomColor({ string: name }) : "colors.gray.400";
+  const isBgDark = isDark(bg)(theme);
+  let color = "white";
+  if (!isBgDark)
+    color = "gray.800";
+  return {
+    bg: $bg$e.reference,
+    fontSize: $fs.reference,
+    color,
+    borderColor: $border$3.reference,
+    verticalAlign: "top",
+    width: $size$4.reference,
+    height: $size$4.reference,
+    "&:not([data-loaded])": {
+      [$bg$e.variable]: bg
+    },
+    [$border$3.variable]: "colors.white",
+    _dark: {
+      [$border$3.variable]: "colors.gray.800"
+    }
+  };
+});
+const baseStyleLabel$4 = defineStyle({
+  fontSize: $fs.reference,
+  lineHeight: "1"
+});
+const baseStyle$D = definePartsStyle$n((props) => ({
+  badge: runIfFn(baseStyleBadge, props),
+  excessLabel: runIfFn(baseStyleExcessLabel, props),
+  container: runIfFn(baseStyleContainer$3, props),
+  label: baseStyleLabel$4
+}));
+function getSize$3(size) {
+  const themeSize = size !== "100%" ? sizes$n[size] : void 0;
+  return definePartsStyle$n({
+    container: {
+      [$size$4.variable]: themeSize ?? size,
+      [$fs.variable]: `calc(${themeSize ?? size} / 2.5)`
+    },
+    excessLabel: {
+      [$size$4.variable]: themeSize ?? size,
+      [$fs.variable]: `calc(${themeSize ?? size} / 2.5)`
+    }
+  });
+}
+const sizes$m = {
+  "2xs": getSize$3(4),
+  xs: getSize$3(6),
+  sm: getSize$3(8),
+  md: getSize$3(12),
+  lg: getSize$3(16),
+  xl: getSize$3(24),
+  "2xl": getSize$3(32),
+  full: getSize$3("100%")
+};
+const avatarTheme = defineMultiStyleConfig$n({
+  baseStyle: baseStyle$D,
+  sizes: sizes$m,
+  defaultProps: {
+    size: "md"
+  }
+});
+
+const vars = defineCssVars("badge", ["bg", "color", "shadow"]);
+const baseStyle$C = defineStyle({
+  px: 1,
+  textTransform: "uppercase",
+  fontSize: "xs",
+  borderRadius: "sm",
+  fontWeight: "bold",
+  bg: vars.bg.reference,
+  color: vars.color.reference,
+  boxShadow: vars.shadow.reference
+});
+const variantSolid$2 = defineStyle((props) => {
+  const { colorScheme: c, theme } = props;
+  const dark = transparentize(`${c}.500`, 0.6)(theme);
+  return {
+    [vars.bg.variable]: `colors.${c}.500`,
+    [vars.color.variable]: `colors.white`,
+    _dark: {
+      [vars.bg.variable]: dark,
+      [vars.color.variable]: `colors.whiteAlpha.800`
+    }
+  };
+});
+const variantSubtle = defineStyle((props) => {
+  const { colorScheme: c, theme } = props;
+  const darkBg = transparentize(`${c}.200`, 0.16)(theme);
+  return {
+    [vars.bg.variable]: `colors.${c}.100`,
+    [vars.color.variable]: `colors.${c}.800`,
+    _dark: {
+      [vars.bg.variable]: darkBg,
+      [vars.color.variable]: `colors.${c}.200`
+    }
+  };
+});
+const variantOutline$2 = defineStyle((props) => {
+  const { colorScheme: c, theme } = props;
+  const darkColor = transparentize(`${c}.200`, 0.8)(theme);
+  return {
+    [vars.color.variable]: `colors.${c}.500`,
+    _dark: {
+      [vars.color.variable]: darkColor
+    },
+    [vars.shadow.variable]: `inset 0 0 0px 1px ${vars.color.reference}`
+  };
+});
+const variants$a = {
+  solid: variantSolid$2,
+  subtle: variantSubtle,
+  outline: variantOutline$2
+};
+const badgeTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$C,
+  variants: variants$a,
+  defaultProps: {
+    variant: "subtle",
+    colorScheme: "gray"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$m, definePartsStyle: definePartsStyle$m } = createMultiStyleConfigHelpers(breadcrumbAnatomy.keys);
+const $decor = cssVar$1("breadcrumb-link-decor");
+const baseStyleLink = defineStyle({
+  transitionProperty: "common",
+  transitionDuration: "fast",
+  transitionTimingFunction: "ease-out",
+  outline: "none",
+  color: "inherit",
+  textDecoration: $decor.reference,
+  [$decor.variable]: "none",
+  "&:not([aria-current=page])": {
+    cursor: "pointer",
+    _hover: {
+      [$decor.variable]: "underline"
+    },
+    _focusVisible: {
+      boxShadow: "outline"
+    }
+  }
+});
+const baseStyle$B = definePartsStyle$m({
+  link: baseStyleLink
+});
+const breadcrumbTheme = defineMultiStyleConfig$m({
+  baseStyle: baseStyle$B
+});
+
+const baseStyle$A = defineStyle({
+  lineHeight: "1.2",
+  borderRadius: "md",
+  fontWeight: "semibold",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  _focusVisible: {
+    boxShadow: "outline"
+  },
+  _disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed",
+    boxShadow: "none"
+  },
+  _hover: {
+    _disabled: {
+      bg: "initial"
+    }
+  }
+});
+const variantGhost = defineStyle((props) => {
+  const { colorScheme: c, theme } = props;
+  if (c === "gray") {
+    return {
+      color: mode(`gray.800`, `whiteAlpha.900`)(props),
+      _hover: {
+        bg: mode(`gray.100`, `whiteAlpha.200`)(props)
+      },
+      _active: { bg: mode(`gray.200`, `whiteAlpha.300`)(props) }
+    };
+  }
+  const darkHoverBg = transparentize(`${c}.200`, 0.12)(theme);
+  const darkActiveBg = transparentize(`${c}.200`, 0.24)(theme);
+  return {
+    color: mode(`${c}.600`, `${c}.200`)(props),
+    bg: "transparent",
+    _hover: {
+      bg: mode(`${c}.50`, darkHoverBg)(props)
+    },
+    _active: {
+      bg: mode(`${c}.100`, darkActiveBg)(props)
+    }
+  };
+});
+const variantOutline$1 = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  const borderColor = mode(`gray.200`, `whiteAlpha.300`)(props);
+  return {
+    border: "1px solid",
+    borderColor: c === "gray" ? borderColor : "currentColor",
+    ".chakra-button__group[data-attached][data-orientation=horizontal] > &:not(:last-of-type)": { marginEnd: "-1px" },
+    ".chakra-button__group[data-attached][data-orientation=vertical] > &:not(:last-of-type)": { marginBottom: "-1px" },
+    ...runIfFn(variantGhost, props)
+  };
+});
+const accessibleColorMap = {
+  yellow: {
+    bg: "yellow.400",
+    color: "black",
+    hoverBg: "yellow.500",
+    activeBg: "yellow.600"
+  },
+  cyan: {
+    bg: "cyan.400",
+    color: "black",
+    hoverBg: "cyan.500",
+    activeBg: "cyan.600"
+  }
+};
+const variantSolid$1 = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  if (c === "gray") {
+    const bg2 = mode(`gray.100`, `whiteAlpha.200`)(props);
+    return {
+      bg: bg2,
+      color: mode(`gray.800`, `whiteAlpha.900`)(props),
+      _hover: {
+        bg: mode(`gray.200`, `whiteAlpha.300`)(props),
+        _disabled: {
+          bg: bg2
+        }
+      },
+      _active: { bg: mode(`gray.300`, `whiteAlpha.400`)(props) }
+    };
+  }
+  const {
+    bg = `${c}.500`,
+    color = "white",
+    hoverBg = `${c}.600`,
+    activeBg = `${c}.700`
+  } = accessibleColorMap[c] ?? {};
+  const background = mode(bg, `${c}.200`)(props);
+  return {
+    bg: background,
+    color: mode(color, `gray.800`)(props),
+    _hover: {
+      bg: mode(hoverBg, `${c}.300`)(props),
+      _disabled: {
+        bg: background
+      }
+    },
+    _active: { bg: mode(activeBg, `${c}.400`)(props) }
+  };
+});
+const variantLink = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  return {
+    padding: 0,
+    height: "auto",
+    lineHeight: "normal",
+    verticalAlign: "baseline",
+    color: mode(`${c}.500`, `${c}.200`)(props),
+    _hover: {
+      textDecoration: "underline",
+      _disabled: {
+        textDecoration: "none"
+      }
+    },
+    _active: {
+      color: mode(`${c}.700`, `${c}.500`)(props)
+    }
+  };
+});
+const variantUnstyled$2 = defineStyle({
+  bg: "none",
+  color: "inherit",
+  display: "inline",
+  lineHeight: "inherit",
+  m: "0",
+  p: "0"
+});
+const variants$9 = {
+  ghost: variantGhost,
+  outline: variantOutline$1,
+  solid: variantSolid$1,
+  link: variantLink,
+  unstyled: variantUnstyled$2
+};
+const sizes$l = {
+  lg: defineStyle({
+    h: "12",
+    minW: "12",
+    fontSize: "lg",
+    px: "6"
+  }),
+  md: defineStyle({
+    h: "10",
+    minW: "10",
+    fontSize: "md",
+    px: "4"
+  }),
+  sm: defineStyle({
+    h: "8",
+    minW: "8",
+    fontSize: "sm",
+    px: "3"
+  }),
+  xs: defineStyle({
+    h: "6",
+    minW: "6",
+    fontSize: "xs",
+    px: "2"
+  })
+};
+const buttonTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$A,
+  variants: variants$9,
+  sizes: sizes$l,
+  defaultProps: {
+    variant: "solid",
+    size: "md",
+    colorScheme: "gray"
+  }
+});
+
+const { definePartsStyle: definePartsStyle$l, defineMultiStyleConfig: defineMultiStyleConfig$l } = createMultiStyleConfigHelpers(cardAnatomy.keys);
+const $bg$d = cssVar$1("card-bg");
+const $padding$1 = cssVar$1("card-padding");
+const $shadow$3 = cssVar$1("card-shadow");
+const $radius = cssVar$1("card-radius");
+const $border$2 = cssVar$1("card-border-width", "0");
+const $borderColor = cssVar$1("card-border-color");
+const baseStyle$z = definePartsStyle$l({
+  container: {
+    [$bg$d.variable]: "colors.chakra-body-bg",
+    backgroundColor: $bg$d.reference,
+    boxShadow: $shadow$3.reference,
+    borderRadius: $radius.reference,
+    color: "chakra-body-text",
+    borderWidth: $border$2.reference,
+    borderColor: $borderColor.reference
+  },
+  body: {
+    padding: $padding$1.reference,
+    flex: "1 1 0%"
+  },
+  header: {
+    padding: $padding$1.reference
+  },
+  footer: {
+    padding: $padding$1.reference
+  }
+});
+const sizes$k = {
+  sm: definePartsStyle$l({
+    container: {
+      [$radius.variable]: "radii.base",
+      [$padding$1.variable]: "space.3"
+    }
+  }),
+  md: definePartsStyle$l({
+    container: {
+      [$radius.variable]: "radii.md",
+      [$padding$1.variable]: "space.5"
+    }
+  }),
+  lg: definePartsStyle$l({
+    container: {
+      [$radius.variable]: "radii.xl",
+      [$padding$1.variable]: "space.7"
+    }
+  })
+};
+const variants$8 = {
+  elevated: definePartsStyle$l({
+    container: {
+      [$shadow$3.variable]: "shadows.base",
+      _dark: {
+        [$bg$d.variable]: "colors.gray.700"
+      }
+    }
+  }),
+  outline: definePartsStyle$l({
+    container: {
+      [$border$2.variable]: "1px",
+      [$borderColor.variable]: "colors.chakra-border-color"
+    }
+  }),
+  filled: definePartsStyle$l({
+    container: {
+      [$bg$d.variable]: "colors.chakra-subtle-bg"
+    }
+  }),
+  unstyled: {
+    body: {
+      [$padding$1.variable]: 0
+    },
+    header: {
+      [$padding$1.variable]: 0
+    },
+    footer: {
+      [$padding$1.variable]: 0
+    }
+  }
+};
+const cardTheme = defineMultiStyleConfig$l({
+  baseStyle: baseStyle$z,
+  variants: variants$8,
+  sizes: sizes$k,
+  defaultProps: {
+    variant: "elevated",
+    size: "md"
+  }
+});
+
+const { definePartsStyle: definePartsStyle$k, defineMultiStyleConfig: defineMultiStyleConfig$k } = createMultiStyleConfigHelpers(checkboxAnatomy.keys);
+const $size$3 = cssVar$1("checkbox-size");
+const baseStyleControl$1 = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  return {
+    w: $size$3.reference,
+    h: $size$3.reference,
+    transitionProperty: "box-shadow",
+    transitionDuration: "normal",
+    border: "2px solid",
+    borderRadius: "sm",
+    borderColor: "inherit",
+    color: "white",
+    _checked: {
+      bg: mode(`${c}.500`, `${c}.200`)(props),
+      borderColor: mode(`${c}.500`, `${c}.200`)(props),
+      color: mode("white", "gray.900")(props),
+      _hover: {
+        bg: mode(`${c}.600`, `${c}.300`)(props),
+        borderColor: mode(`${c}.600`, `${c}.300`)(props)
+      },
+      _disabled: {
+        borderColor: mode("gray.200", "transparent")(props),
+        bg: mode("gray.200", "whiteAlpha.300")(props),
+        color: mode("gray.500", "whiteAlpha.500")(props)
+      }
+    },
+    _indeterminate: {
+      bg: mode(`${c}.500`, `${c}.200`)(props),
+      borderColor: mode(`${c}.500`, `${c}.200`)(props),
+      color: mode("white", "gray.900")(props)
+    },
+    _disabled: {
+      bg: mode("gray.100", "whiteAlpha.100")(props),
+      borderColor: mode("gray.100", "transparent")(props)
+    },
+    _focusVisible: {
+      boxShadow: "outline"
+    },
+    _invalid: {
+      borderColor: mode("red.500", "red.300")(props)
+    }
+  };
+});
+const baseStyleContainer$2 = defineStyle({
+  _disabled: { cursor: "not-allowed" }
+});
+const baseStyleLabel$3 = defineStyle({
+  userSelect: "none",
+  _disabled: { opacity: 0.4 }
+});
+const baseStyleIcon$5 = defineStyle({
+  transitionProperty: "transform",
+  transitionDuration: "normal"
+});
+const baseStyle$y = definePartsStyle$k((props) => ({
+  icon: baseStyleIcon$5,
+  container: baseStyleContainer$2,
+  control: runIfFn(baseStyleControl$1, props),
+  label: baseStyleLabel$3
+}));
+const sizes$j = {
+  sm: definePartsStyle$k({
+    control: { [$size$3.variable]: "sizes.3" },
+    label: { fontSize: "sm" },
+    icon: { fontSize: "3xs" }
+  }),
+  md: definePartsStyle$k({
+    control: { [$size$3.variable]: "sizes.4" },
+    label: { fontSize: "md" },
+    icon: { fontSize: "2xs" }
+  }),
+  lg: definePartsStyle$k({
+    control: { [$size$3.variable]: "sizes.5" },
+    label: { fontSize: "lg" },
+    icon: { fontSize: "2xs" }
+  })
+};
+const checkboxTheme = defineMultiStyleConfig$k({
+  baseStyle: baseStyle$y,
+  sizes: sizes$j,
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const $size$2 = cssVar("close-button-size");
+const $bg$c = cssVar("close-button-bg");
+const baseStyle$x = defineStyle({
+  w: [$size$2.reference],
+  h: [$size$2.reference],
+  borderRadius: "md",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  _disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed",
+    boxShadow: "none"
+  },
+  _hover: {
+    [$bg$c.variable]: "colors.blackAlpha.100",
+    _dark: {
+      [$bg$c.variable]: "colors.whiteAlpha.100"
+    }
+  },
+  _active: {
+    [$bg$c.variable]: "colors.blackAlpha.200",
+    _dark: {
+      [$bg$c.variable]: "colors.whiteAlpha.200"
+    }
+  },
+  _focusVisible: {
+    boxShadow: "outline"
+  },
+  bg: $bg$c.reference
+});
+const sizes$i = {
+  lg: defineStyle({
+    [$size$2.variable]: "sizes.10",
+    fontSize: "md"
+  }),
+  md: defineStyle({
+    [$size$2.variable]: "sizes.8",
+    fontSize: "xs"
+  }),
+  sm: defineStyle({
+    [$size$2.variable]: "sizes.6",
+    fontSize: "2xs"
+  })
+};
+const closeButtonTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$x,
+  sizes: sizes$i,
+  defaultProps: {
+    size: "md"
+  }
+});
+
+const { variants: variants$7, defaultProps } = badgeTheme;
+const baseStyle$w = defineStyle({
+  fontFamily: "mono",
+  fontSize: "sm",
+  px: "0.2em",
+  borderRadius: "sm",
+  bg: vars.bg.reference,
+  color: vars.color.reference,
+  boxShadow: vars.shadow.reference
+});
+const codeTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$w,
+  variants: variants$7,
+  defaultProps
+});
+
+const baseStyle$v = defineStyle({
+  w: "100%",
+  mx: "auto",
+  maxW: "prose",
+  px: "4"
+});
+const containerTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$v
+});
+
+const baseStyle$u = defineStyle({
+  opacity: 0.6,
+  borderColor: "inherit"
+});
+const variantSolid = defineStyle({
+  borderStyle: "solid"
+});
+const variantDashed = defineStyle({
+  borderStyle: "dashed"
+});
+const variants$6 = {
+  solid: variantSolid,
+  dashed: variantDashed
+};
+const dividerTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$u,
+  variants: variants$6,
+  defaultProps: {
+    variant: "solid"
+  }
+});
+
+const { definePartsStyle: definePartsStyle$j, defineMultiStyleConfig: defineMultiStyleConfig$j } = createMultiStyleConfigHelpers(drawerAnatomy.keys);
+const $bg$b = cssVar$1("drawer-bg");
+const $bs = cssVar$1("drawer-box-shadow");
+function getSize$2(value) {
+  if (value === "full") {
+    return definePartsStyle$j({
+      dialog: { maxW: "100vw", h: "100vh" }
+    });
+  }
+  return definePartsStyle$j({
+    dialog: { maxW: value }
+  });
+}
+const baseStyleOverlay$1 = defineStyle({
+  bg: "blackAlpha.600",
+  zIndex: "modal"
+});
+const baseStyleDialogContainer$1 = defineStyle({
+  display: "flex",
+  zIndex: "modal",
+  justifyContent: "center"
+});
+const baseStyleDialog$1 = defineStyle((props) => {
+  const { isFullHeight } = props;
+  return {
+    ...isFullHeight && { height: "100vh" },
+    zIndex: "modal",
+    maxH: "100vh",
+    color: "inherit",
+    [$bg$b.variable]: "colors.white",
+    [$bs.variable]: "shadows.lg",
+    _dark: {
+      [$bg$b.variable]: "colors.gray.700",
+      [$bs.variable]: "shadows.dark-lg"
+    },
+    bg: $bg$b.reference,
+    boxShadow: $bs.reference
+  };
+});
+const baseStyleHeader$2 = defineStyle({
+  px: "6",
+  py: "4",
+  fontSize: "xl",
+  fontWeight: "semibold"
+});
+const baseStyleCloseButton$3 = defineStyle({
+  position: "absolute",
+  top: "2",
+  insetEnd: "3"
+});
+const baseStyleBody$2 = defineStyle({
+  px: "6",
+  py: "2",
+  flex: "1",
+  overflow: "auto"
+});
+const baseStyleFooter$2 = defineStyle({
+  px: "6",
+  py: "4"
+});
+const baseStyle$t = definePartsStyle$j((props) => ({
+  overlay: baseStyleOverlay$1,
+  dialogContainer: baseStyleDialogContainer$1,
+  dialog: runIfFn(baseStyleDialog$1, props),
+  header: baseStyleHeader$2,
+  closeButton: baseStyleCloseButton$3,
+  body: baseStyleBody$2,
+  footer: baseStyleFooter$2
+}));
+const sizes$h = {
+  xs: getSize$2("xs"),
+  sm: getSize$2("md"),
+  md: getSize$2("lg"),
+  lg: getSize$2("2xl"),
+  xl: getSize$2("4xl"),
+  full: getSize$2("full")
+};
+const drawerTheme = defineMultiStyleConfig$j({
+  baseStyle: baseStyle$t,
+  sizes: sizes$h,
+  defaultProps: {
+    size: "xs"
+  }
+});
+
+const { definePartsStyle: definePartsStyle$i, defineMultiStyleConfig: defineMultiStyleConfig$i } = createMultiStyleConfigHelpers(editableAnatomy.keys);
+const baseStylePreview = defineStyle({
+  borderRadius: "md",
+  py: "1",
+  transitionProperty: "common",
+  transitionDuration: "normal"
+});
+const baseStyleInput = defineStyle({
+  borderRadius: "md",
+  py: "1",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  width: "full",
+  _focusVisible: { boxShadow: "outline" },
+  _placeholder: { opacity: 0.6 }
+});
+const baseStyleTextarea = defineStyle({
+  borderRadius: "md",
+  py: "1",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  width: "full",
+  _focusVisible: { boxShadow: "outline" },
+  _placeholder: { opacity: 0.6 }
+});
+const baseStyle$s = definePartsStyle$i({
+  preview: baseStylePreview,
+  input: baseStyleInput,
+  textarea: baseStyleTextarea
+});
+const editableTheme = defineMultiStyleConfig$i({
+  baseStyle: baseStyle$s
+});
+
+const { definePartsStyle: definePartsStyle$h, defineMultiStyleConfig: defineMultiStyleConfig$h } = createMultiStyleConfigHelpers(formAnatomy.keys);
+const $fg$4 = cssVar$1("form-control-color");
+const baseStyleRequiredIndicator = defineStyle({
+  marginStart: "1",
+  [$fg$4.variable]: "colors.red.500",
+  _dark: {
+    [$fg$4.variable]: "colors.red.300"
+  },
+  color: $fg$4.reference
+});
+const baseStyleHelperText = defineStyle({
+  mt: "2",
+  [$fg$4.variable]: "colors.gray.600",
+  _dark: {
+    [$fg$4.variable]: "colors.whiteAlpha.600"
+  },
+  color: $fg$4.reference,
+  lineHeight: "normal",
+  fontSize: "sm"
+});
+const baseStyle$r = definePartsStyle$h({
+  container: {
+    width: "100%",
+    position: "relative"
+  },
+  requiredIndicator: baseStyleRequiredIndicator,
+  helperText: baseStyleHelperText
+});
+const formTheme = defineMultiStyleConfig$h({
+  baseStyle: baseStyle$r
+});
+
+const { definePartsStyle: definePartsStyle$g, defineMultiStyleConfig: defineMultiStyleConfig$g } = createMultiStyleConfigHelpers(formErrorAnatomy.keys);
+const $fg$3 = cssVar$1("form-error-color");
+const baseStyleText = defineStyle({
+  [$fg$3.variable]: `colors.red.500`,
+  _dark: {
+    [$fg$3.variable]: `colors.red.300`
+  },
+  color: $fg$3.reference,
+  mt: "2",
+  fontSize: "sm",
+  lineHeight: "normal"
+});
+const baseStyleIcon$4 = defineStyle({
+  marginEnd: "0.5em",
+  [$fg$3.variable]: `colors.red.500`,
+  _dark: {
+    [$fg$3.variable]: `colors.red.300`
+  },
+  color: $fg$3.reference
+});
+const baseStyle$q = definePartsStyle$g({
+  text: baseStyleText,
+  icon: baseStyleIcon$4
+});
+const formErrorTheme = defineMultiStyleConfig$g({
+  baseStyle: baseStyle$q
+});
+
+const baseStyle$p = defineStyle({
+  fontSize: "md",
+  marginEnd: "3",
+  mb: "2",
+  fontWeight: "medium",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  opacity: 1,
+  _disabled: {
+    opacity: 0.4
+  }
+});
+const formLabelTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$p
+});
+
+const baseStyle$o = defineStyle({
+  fontFamily: "heading",
+  fontWeight: "bold"
+});
+const sizes$g = {
+  "4xl": defineStyle({
+    fontSize: ["6xl", null, "7xl"],
+    lineHeight: 1
+  }),
+  "3xl": defineStyle({
+    fontSize: ["5xl", null, "6xl"],
+    lineHeight: 1
+  }),
+  "2xl": defineStyle({
+    fontSize: ["4xl", null, "5xl"],
+    lineHeight: [1.2, null, 1]
+  }),
+  xl: defineStyle({
+    fontSize: ["3xl", null, "4xl"],
+    lineHeight: [1.33, null, 1.2]
+  }),
+  lg: defineStyle({
+    fontSize: ["2xl", null, "3xl"],
+    lineHeight: [1.33, null, 1.2]
+  }),
+  md: defineStyle({
+    fontSize: "xl",
+    lineHeight: 1.2
+  }),
+  sm: defineStyle({
+    fontSize: "md",
+    lineHeight: 1.2
+  }),
+  xs: defineStyle({
+    fontSize: "sm",
+    lineHeight: 1.2
+  })
+};
+const headingTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$o,
+  sizes: sizes$g,
+  defaultProps: {
+    size: "xl"
+  }
+});
+
+const { definePartsStyle: definePartsStyle$f, defineMultiStyleConfig: defineMultiStyleConfig$f } = createMultiStyleConfigHelpers(inputAnatomy.keys);
+const $height$1 = cssVar$1("input-height");
+const $fontSize$1 = cssVar$1("input-font-size");
+const $padding = cssVar$1("input-padding");
+const $borderRadius = cssVar$1("input-border-radius");
+const baseStyle$n = definePartsStyle$f({
+  addon: {
+    height: $height$1.reference,
+    fontSize: $fontSize$1.reference,
+    px: $padding.reference,
+    borderRadius: $borderRadius.reference
+  },
+  field: {
+    width: "100%",
+    height: $height$1.reference,
+    fontSize: $fontSize$1.reference,
+    px: $padding.reference,
+    borderRadius: $borderRadius.reference,
+    minWidth: 0,
+    outline: 0,
+    position: "relative",
+    appearance: "none",
+    transitionProperty: "common",
+    transitionDuration: "normal",
+    _disabled: {
+      opacity: 0.4,
+      cursor: "not-allowed"
+    }
+  }
+});
+const size = {
+  lg: defineStyle({
+    [$fontSize$1.variable]: "fontSizes.lg",
+    [$padding.variable]: "space.4",
+    [$borderRadius.variable]: "radii.md",
+    [$height$1.variable]: "sizes.12"
+  }),
+  md: defineStyle({
+    [$fontSize$1.variable]: "fontSizes.md",
+    [$padding.variable]: "space.4",
+    [$borderRadius.variable]: "radii.md",
+    [$height$1.variable]: "sizes.10"
+  }),
+  sm: defineStyle({
+    [$fontSize$1.variable]: "fontSizes.sm",
+    [$padding.variable]: "space.3",
+    [$borderRadius.variable]: "radii.sm",
+    [$height$1.variable]: "sizes.8"
+  }),
+  xs: defineStyle({
+    [$fontSize$1.variable]: "fontSizes.xs",
+    [$padding.variable]: "space.2",
+    [$borderRadius.variable]: "radii.sm",
+    [$height$1.variable]: "sizes.6"
+  })
+};
+const sizes$f = {
+  lg: definePartsStyle$f({
+    field: size.lg,
+    group: size.lg
+  }),
+  md: definePartsStyle$f({
+    field: size.md,
+    group: size.md
+  }),
+  sm: definePartsStyle$f({
+    field: size.sm,
+    group: size.sm
+  }),
+  xs: definePartsStyle$f({
+    field: size.xs,
+    group: size.xs
+  })
+};
+function getDefaults(props) {
+  const { focusBorderColor: fc, errorBorderColor: ec } = props;
+  return {
+    focusBorderColor: fc || mode("blue.500", "blue.300")(props),
+    errorBorderColor: ec || mode("red.500", "red.300")(props)
+  };
+}
+const variantOutline = definePartsStyle$f((props) => {
+  const { theme } = props;
+  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+  return {
+    field: {
+      border: "1px solid",
+      borderColor: "inherit",
+      bg: "inherit",
+      _hover: {
+        borderColor: mode("gray.300", "whiteAlpha.400")(props)
+      },
+      _readOnly: {
+        boxShadow: "none !important",
+        userSelect: "all"
+      },
+      _invalid: {
+        borderColor: getColor(theme, ec),
+        boxShadow: `0 0 0 1px ${getColor(theme, ec)}`
+      },
+      _focusVisible: {
+        zIndex: 1,
+        borderColor: getColor(theme, fc),
+        boxShadow: `0 0 0 1px ${getColor(theme, fc)}`
+      }
+    },
+    addon: {
+      border: "1px solid",
+      borderColor: mode("inherit", "whiteAlpha.50")(props),
+      bg: mode("gray.100", "whiteAlpha.300")(props)
+    }
+  };
+});
+const variantFilled = definePartsStyle$f((props) => {
+  const { theme } = props;
+  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+  return {
+    field: {
+      border: "2px solid",
+      borderColor: "transparent",
+      bg: mode("gray.100", "whiteAlpha.50")(props),
+      _hover: {
+        bg: mode("gray.200", "whiteAlpha.100")(props)
+      },
+      _readOnly: {
+        boxShadow: "none !important",
+        userSelect: "all"
+      },
+      _invalid: {
+        borderColor: getColor(theme, ec)
+      },
+      _focusVisible: {
+        bg: "transparent",
+        borderColor: getColor(theme, fc)
+      }
+    },
+    addon: {
+      border: "2px solid",
+      borderColor: "transparent",
+      bg: mode("gray.100", "whiteAlpha.50")(props)
+    }
+  };
+});
+const variantFlushed = definePartsStyle$f((props) => {
+  const { theme } = props;
+  const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+  return {
+    field: {
+      borderBottom: "1px solid",
+      borderColor: "inherit",
+      borderRadius: "0",
+      px: "0",
+      bg: "transparent",
+      _readOnly: {
+        boxShadow: "none !important",
+        userSelect: "all"
+      },
+      _invalid: {
+        borderColor: getColor(theme, ec),
+        boxShadow: `0px 1px 0px 0px ${getColor(theme, ec)}`
+      },
+      _focusVisible: {
+        borderColor: getColor(theme, fc),
+        boxShadow: `0px 1px 0px 0px ${getColor(theme, fc)}`
+      }
+    },
+    addon: {
+      borderBottom: "2px solid",
+      borderColor: "inherit",
+      borderRadius: "0",
+      px: "0",
+      bg: "transparent"
+    }
+  };
+});
+const variantUnstyled$1 = definePartsStyle$f({
+  field: {
+    bg: "transparent",
+    px: "0",
+    height: "auto"
+  },
+  addon: {
+    bg: "transparent",
+    px: "0",
+    height: "auto"
+  }
+});
+const variants$5 = {
+  outline: variantOutline,
+  filled: variantFilled,
+  flushed: variantFlushed,
+  unstyled: variantUnstyled$1
+};
+const inputTheme = defineMultiStyleConfig$f({
+  baseStyle: baseStyle$n,
+  sizes: sizes$f,
+  variants: variants$5,
+  defaultProps: {
+    size: "md",
+    variant: "outline"
+  }
+});
+
+const $bg$a = cssVar$1("kbd-bg");
+const baseStyle$m = defineStyle({
+  [$bg$a.variable]: "colors.gray.100",
+  _dark: {
+    [$bg$a.variable]: "colors.whiteAlpha.100"
+  },
+  bg: $bg$a.reference,
+  borderRadius: "md",
+  borderWidth: "1px",
+  borderBottomWidth: "3px",
+  fontSize: "0.8em",
+  fontWeight: "bold",
+  lineHeight: "normal",
+  px: "0.4em",
+  whiteSpace: "nowrap"
+});
+const kbdTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$m
+});
+
+const baseStyle$l = defineStyle({
+  transitionProperty: "common",
+  transitionDuration: "fast",
+  transitionTimingFunction: "ease-out",
+  cursor: "pointer",
+  textDecoration: "none",
+  outline: "none",
+  color: "inherit",
+  _hover: {
+    textDecoration: "underline"
+  },
+  _focusVisible: {
+    boxShadow: "outline"
+  }
+});
+const linkTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$l
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$e, definePartsStyle: definePartsStyle$e } = createMultiStyleConfigHelpers(listAnatomy.keys);
+const baseStyleIcon$3 = defineStyle({
+  marginEnd: "2",
+  display: "inline",
+  verticalAlign: "text-bottom"
+});
+const baseStyle$k = definePartsStyle$e({
+  icon: baseStyleIcon$3
+});
+const listTheme = defineMultiStyleConfig$e({
+  baseStyle: baseStyle$k
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$d, definePartsStyle: definePartsStyle$d } = createMultiStyleConfigHelpers(menuAnatomy.keys);
+const $bg$9 = cssVar$1("menu-bg");
+const $shadow$2 = cssVar$1("menu-shadow");
+const baseStyleList = defineStyle({
+  [$bg$9.variable]: "#fff",
+  [$shadow$2.variable]: "shadows.sm",
+  _dark: {
+    [$bg$9.variable]: "colors.gray.700",
+    [$shadow$2.variable]: "shadows.dark-lg"
+  },
+  color: "inherit",
+  minW: "3xs",
+  py: "2",
+  zIndex: "dropdown",
+  borderRadius: "md",
+  borderWidth: "1px",
+  bg: $bg$9.reference,
+  boxShadow: $shadow$2.reference
+});
+const baseStyleItem = defineStyle({
+  py: "1.5",
+  px: "3",
+  transitionProperty: "background",
+  transitionDuration: "ultra-fast",
+  transitionTimingFunction: "ease-in",
+  _focus: {
+    [$bg$9.variable]: "colors.gray.100",
+    _dark: {
+      [$bg$9.variable]: "colors.whiteAlpha.100"
+    }
+  },
+  _active: {
+    [$bg$9.variable]: "colors.gray.200",
+    _dark: {
+      [$bg$9.variable]: "colors.whiteAlpha.200"
+    }
+  },
+  _expanded: {
+    [$bg$9.variable]: "colors.gray.100",
+    _dark: {
+      [$bg$9.variable]: "colors.whiteAlpha.100"
+    }
+  },
+  _disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed"
+  },
+  bg: $bg$9.reference
+});
+const baseStyleGroupTitle = defineStyle({
+  mx: 4,
+  my: 2,
+  fontWeight: "semibold",
+  fontSize: "sm"
+});
+const baseStyleIcon$2 = defineStyle({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexShrink: 0
+});
+const baseStyleCommand = defineStyle({
+  opacity: 0.6
+});
+const baseStyleDivider = defineStyle({
+  border: 0,
+  borderBottom: "1px solid",
+  borderColor: "inherit",
+  my: "2",
+  opacity: 0.6
+});
+const baseStyleButton = defineStyle({
+  transitionProperty: "common",
+  transitionDuration: "normal"
+});
+const baseStyle$j = definePartsStyle$d({
+  button: baseStyleButton,
+  list: baseStyleList,
+  item: baseStyleItem,
+  groupTitle: baseStyleGroupTitle,
+  icon: baseStyleIcon$2,
+  command: baseStyleCommand,
+  divider: baseStyleDivider
+});
+const menuTheme = defineMultiStyleConfig$d({
+  baseStyle: baseStyle$j
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$c, definePartsStyle: definePartsStyle$c } = createMultiStyleConfigHelpers(modalAnatomy.keys);
+const $bg$8 = cssVar$1("modal-bg");
+const $shadow$1 = cssVar$1("modal-shadow");
+const baseStyleOverlay = defineStyle({
+  bg: "blackAlpha.600",
+  zIndex: "modal"
+});
+const baseStyleDialogContainer = defineStyle((props) => {
+  const { isCentered, scrollBehavior } = props;
+  return {
+    display: "flex",
+    zIndex: "modal",
+    justifyContent: "center",
+    alignItems: isCentered ? "center" : "flex-start",
+    overflow: scrollBehavior === "inside" ? "hidden" : "auto",
+    overscrollBehaviorY: "none"
+  };
+});
+const baseStyleDialog = defineStyle((props) => {
+  const { isCentered, scrollBehavior } = props;
+  return {
+    borderRadius: "md",
+    color: "inherit",
+    my: isCentered ? "auto" : "16",
+    mx: isCentered ? "auto" : void 0,
+    zIndex: "modal",
+    maxH: scrollBehavior === "inside" ? "calc(100% - 7.5rem)" : void 0,
+    [$bg$8.variable]: "colors.white",
+    [$shadow$1.variable]: "shadows.lg",
+    _dark: {
+      [$bg$8.variable]: "colors.gray.700",
+      [$shadow$1.variable]: "shadows.dark-lg"
+    },
+    bg: $bg$8.reference,
+    boxShadow: $shadow$1.reference
+  };
+});
+const baseStyleHeader$1 = defineStyle({
+  px: "6",
+  py: "4",
+  fontSize: "xl",
+  fontWeight: "semibold"
+});
+const baseStyleCloseButton$2 = defineStyle({
+  position: "absolute",
+  top: "2",
+  insetEnd: "3"
+});
+const baseStyleBody$1 = defineStyle((props) => {
+  const { scrollBehavior } = props;
+  return {
+    px: "6",
+    py: "2",
+    flex: "1",
+    overflow: scrollBehavior === "inside" ? "auto" : void 0
+  };
+});
+const baseStyleFooter$1 = defineStyle({
+  px: "6",
+  py: "4"
+});
+const baseStyle$i = definePartsStyle$c((props) => ({
+  overlay: baseStyleOverlay,
+  dialogContainer: runIfFn(baseStyleDialogContainer, props),
+  dialog: runIfFn(baseStyleDialog, props),
+  header: baseStyleHeader$1,
+  closeButton: baseStyleCloseButton$2,
+  body: runIfFn(baseStyleBody$1, props),
+  footer: baseStyleFooter$1
+}));
+function getSize$1(value) {
+  if (value === "full") {
+    return definePartsStyle$c({
+      dialog: {
+        maxW: "100vw",
+        minH: "$100vh",
+        my: "0",
+        borderRadius: "0"
+      }
+    });
+  }
+  return definePartsStyle$c({
+    dialog: { maxW: value }
+  });
+}
+const sizes$e = {
+  xs: getSize$1("xs"),
+  sm: getSize$1("sm"),
+  md: getSize$1("md"),
+  lg: getSize$1("lg"),
+  xl: getSize$1("xl"),
+  "2xl": getSize$1("2xl"),
+  "3xl": getSize$1("3xl"),
+  "4xl": getSize$1("4xl"),
+  "5xl": getSize$1("5xl"),
+  "6xl": getSize$1("6xl"),
+  full: getSize$1("full")
+};
+const modalTheme = defineMultiStyleConfig$c({
+  baseStyle: baseStyle$i,
+  sizes: sizes$e,
+  defaultProps: { size: "md" }
+});
+
+const typography$2 = {
+  letterSpacings: {
+    tighter: "-0.05em",
+    tight: "-0.025em",
+    normal: "0",
+    wide: "0.025em",
+    wider: "0.05em",
+    widest: "0.1em"
+  },
+  lineHeights: {
+    normal: "normal",
+    none: 1,
+    shorter: 1.25,
+    short: 1.375,
+    base: 1.5,
+    tall: 1.625,
+    taller: "2",
+    "3": ".75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "7": "1.75rem",
+    "8": "2rem",
+    "9": "2.25rem",
+    "10": "2.5rem"
+  },
+  fontWeights: {
+    hairline: 100,
+    thin: 200,
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+    black: 900
+  },
+  fonts: {
+    heading: `-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    mono: `SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`
+  },
+  fontSizes: {
+    "3xs": "0.45rem",
+    "2xs": "0.625rem",
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
+    "3xl": "1.875rem",
+    "4xl": "2.25rem",
+    "5xl": "3rem",
+    "6xl": "3.75rem",
+    "7xl": "4.5rem",
+    "8xl": "6rem",
+    "9xl": "8rem"
+  }
+};
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$b, definePartsStyle: definePartsStyle$b } = createMultiStyleConfigHelpers(numberInputAnatomy.keys);
+const $stepperWidth = cssVar("number-input-stepper-width");
+const $inputPadding = cssVar("number-input-input-padding");
+const inputPaddingValue = calc$1($stepperWidth).add("0.5rem").toString();
+const $bg$7 = cssVar("number-input-bg");
+const $fg$2 = cssVar("number-input-color");
+const $border$1 = cssVar("number-input-border-color");
+const baseStyleRoot$1 = defineStyle({
+  [$stepperWidth.variable]: "sizes.6",
+  [$inputPadding.variable]: inputPaddingValue
+});
+const baseStyleField$1 = defineStyle(
+  (props) => runIfFn(inputTheme.baseStyle, props)?.field ?? {}
+);
+const baseStyleStepperGroup = defineStyle({
+  width: $stepperWidth.reference
+});
+const baseStyleStepper = defineStyle({
+  borderStart: "1px solid",
+  borderStartColor: $border$1.reference,
+  color: $fg$2.reference,
+  bg: $bg$7.reference,
+  [$fg$2.variable]: "colors.chakra-body-text",
+  [$border$1.variable]: "colors.chakra-border-color",
+  _dark: {
+    [$fg$2.variable]: "colors.whiteAlpha.800",
+    [$border$1.variable]: "colors.whiteAlpha.300"
+  },
+  _active: {
+    [$bg$7.variable]: "colors.gray.200",
+    _dark: {
+      [$bg$7.variable]: "colors.whiteAlpha.300"
+    }
+  },
+  _disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed"
+  }
+});
+const baseStyle$h = definePartsStyle$b((props) => ({
+  root: baseStyleRoot$1,
+  field: runIfFn(baseStyleField$1, props) ?? {},
+  stepperGroup: baseStyleStepperGroup,
+  stepper: baseStyleStepper
+}));
+function getSize(size) {
+  const sizeStyle = inputTheme.sizes?.[size];
+  const radius = {
+    lg: "md",
+    md: "md",
+    sm: "sm",
+    xs: "sm"
+  };
+  const _fontSize = sizeStyle.field?.fontSize ?? "md";
+  const fontSize = typography$2.fontSizes[_fontSize];
+  return definePartsStyle$b({
+    field: {
+      ...sizeStyle.field,
+      paddingInlineEnd: $inputPadding.reference,
+      verticalAlign: "top"
+    },
+    stepper: {
+      fontSize: calc$1(fontSize).multiply(0.75).toString(),
+      _first: {
+        borderTopEndRadius: radius[size]
+      },
+      _last: {
+        borderBottomEndRadius: radius[size],
+        mt: "-1px",
+        borderTopWidth: 1
+      }
+    }
+  });
+}
+const sizes$d = {
+  xs: getSize("xs"),
+  sm: getSize("sm"),
+  md: getSize("md"),
+  lg: getSize("lg")
+};
+const numberInputTheme = defineMultiStyleConfig$b({
+  baseStyle: baseStyle$h,
+  sizes: sizes$d,
+  variants: inputTheme.variants,
+  defaultProps: inputTheme.defaultProps
+});
+
+const baseStyle$g = defineStyle({
+  ...inputTheme.baseStyle?.field,
+  textAlign: "center"
+});
+const sizes$c = {
+  lg: defineStyle({
+    fontSize: "lg",
+    w: 12,
+    h: 12,
+    borderRadius: "md"
+  }),
+  md: defineStyle({
+    fontSize: "md",
+    w: 10,
+    h: 10,
+    borderRadius: "md"
+  }),
+  sm: defineStyle({
+    fontSize: "sm",
+    w: 8,
+    h: 8,
+    borderRadius: "sm"
+  }),
+  xs: defineStyle({
+    fontSize: "xs",
+    w: 6,
+    h: 6,
+    borderRadius: "sm"
+  })
+};
+const variants$4 = {
+  outline: defineStyle(
+    (props) => runIfFn(inputTheme.variants?.outline, props)?.field ?? {}
+  ),
+  flushed: defineStyle(
+    (props) => runIfFn(inputTheme.variants?.flushed, props)?.field ?? {}
+  ),
+  filled: defineStyle(
+    (props) => runIfFn(inputTheme.variants?.filled, props)?.field ?? {}
+  ),
+  unstyled: inputTheme.variants?.unstyled.field ?? {}
+};
+const pinInputTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$g,
+  sizes: sizes$c,
+  variants: variants$4,
+  defaultProps: inputTheme.defaultProps
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$a, definePartsStyle: definePartsStyle$a } = createMultiStyleConfigHelpers(popoverAnatomy.keys);
+const $popperBg = cssVar("popper-bg");
+const $arrowBg$1 = cssVar("popper-arrow-bg");
+const $arrowShadowColor = cssVar("popper-arrow-shadow-color");
+const baseStylePopper = defineStyle({
+  zIndex: "popover"
+});
+const baseStyleContent = defineStyle({
+  [$popperBg.variable]: `colors.white`,
+  bg: $popperBg.reference,
+  [$arrowBg$1.variable]: $popperBg.reference,
+  [$arrowShadowColor.variable]: `colors.gray.200`,
+  _dark: {
+    [$popperBg.variable]: `colors.gray.700`,
+    [$arrowShadowColor.variable]: `colors.whiteAlpha.300`
+  },
+  width: "xs",
+  border: "1px solid",
+  borderColor: "inherit",
+  borderRadius: "md",
+  boxShadow: "sm",
+  zIndex: "inherit",
+  _focusVisible: {
+    outline: 0,
+    boxShadow: "outline"
+  }
+});
+const baseStyleHeader = defineStyle({
+  px: 3,
+  py: 2,
+  borderBottomWidth: "1px"
+});
+const baseStyleBody = defineStyle({
+  px: 3,
+  py: 2
+});
+const baseStyleFooter = defineStyle({
+  px: 3,
+  py: 2,
+  borderTopWidth: "1px"
+});
+const baseStyleCloseButton$1 = defineStyle({
+  position: "absolute",
+  borderRadius: "md",
+  top: 1,
+  insetEnd: 2,
+  padding: 2
+});
+const baseStyle$f = definePartsStyle$a({
+  popper: baseStylePopper,
+  content: baseStyleContent,
+  header: baseStyleHeader,
+  body: baseStyleBody,
+  footer: baseStyleFooter,
+  closeButton: baseStyleCloseButton$1
+});
+const popoverTheme = defineMultiStyleConfig$a({
+  baseStyle: baseStyle$f
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$9, definePartsStyle: definePartsStyle$9 } = createMultiStyleConfigHelpers(progressAnatomy.keys);
+const filledStyle = defineStyle((props) => {
+  const { colorScheme: c, theme: t, isIndeterminate, hasStripe } = props;
+  const stripeStyle = mode(
+    generateStripe(),
+    generateStripe("1rem", "rgba(0,0,0,0.1)")
+  )(props);
+  const bgColor = mode(`${c}.500`, `${c}.200`)(props);
+  const gradient = `linear-gradient(
+    to right,
+    transparent 0%,
+    ${getColor(t, bgColor)} 50%,
+    transparent 100%
+  )`;
+  const addStripe = !isIndeterminate && hasStripe;
+  return {
+    ...addStripe && stripeStyle,
+    ...isIndeterminate ? { bgImage: gradient } : { bgColor }
+  };
+});
+const baseStyleLabel$2 = defineStyle({
+  lineHeight: "1",
+  fontSize: "0.25em",
+  fontWeight: "bold",
+  color: "white"
+});
+const baseStyleTrack$2 = defineStyle((props) => {
+  return {
+    bg: mode("gray.100", "whiteAlpha.300")(props)
+  };
+});
+const baseStyleFilledTrack$1 = defineStyle((props) => {
+  return {
+    transitionProperty: "common",
+    transitionDuration: "slow",
+    ...filledStyle(props)
+  };
+});
+const baseStyle$e = definePartsStyle$9((props) => ({
+  label: baseStyleLabel$2,
+  filledTrack: baseStyleFilledTrack$1(props),
+  track: baseStyleTrack$2(props)
+}));
+const sizes$b = {
+  xs: definePartsStyle$9({
+    track: { h: "1" }
+  }),
+  sm: definePartsStyle$9({
+    track: { h: "2" }
+  }),
+  md: definePartsStyle$9({
+    track: { h: "3" }
+  }),
+  lg: definePartsStyle$9({
+    track: { h: "4" }
+  })
+};
+const progressTheme = defineMultiStyleConfig$9({
+  sizes: sizes$b,
+  baseStyle: baseStyle$e,
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$8, definePartsStyle: definePartsStyle$8 } = createMultiStyleConfigHelpers(radioAnatomy.keys);
+const baseStyleControl = defineStyle((props) => {
+  const controlStyle = runIfFn(checkboxTheme.baseStyle, props)?.control;
+  return {
+    ...controlStyle,
+    borderRadius: "full",
+    _checked: {
+      ...controlStyle?.["_checked"],
+      _before: {
+        content: `""`,
+        display: "inline-block",
+        pos: "relative",
+        w: "50%",
+        h: "50%",
+        borderRadius: "50%",
+        bg: "currentColor"
+      }
+    }
+  };
+});
+const baseStyle$d = definePartsStyle$8((props) => ({
+  label: checkboxTheme.baseStyle?.(props).label,
+  container: checkboxTheme.baseStyle?.(props).container,
+  control: baseStyleControl(props)
+}));
+const sizes$a = {
+  md: definePartsStyle$8({
+    control: { w: "4", h: "4" },
+    label: { fontSize: "md" }
+  }),
+  lg: definePartsStyle$8({
+    control: { w: "5", h: "5" },
+    label: { fontSize: "lg" }
+  }),
+  sm: definePartsStyle$8({
+    control: { width: "3", height: "3" },
+    label: { fontSize: "sm" }
+  })
+};
+const radioTheme = defineMultiStyleConfig$8({
+  baseStyle: baseStyle$d,
+  sizes: sizes$a,
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$7, definePartsStyle: definePartsStyle$7 } = createMultiStyleConfigHelpers(selectAnatomy.keys);
+const $bg$6 = cssVar$1("select-bg");
+const baseStyleField = defineStyle({
+  ...inputTheme.baseStyle?.field,
+  appearance: "none",
+  paddingBottom: "1px",
+  lineHeight: "normal",
+  bg: $bg$6.reference,
+  [$bg$6.variable]: "colors.white",
+  _dark: {
+    [$bg$6.variable]: "colors.gray.700"
+  },
+  "> option, > optgroup": {
+    bg: $bg$6.reference
+  }
+});
+const baseStyleIcon$1 = defineStyle({
+  width: "6",
+  height: "100%",
+  insetEnd: "2",
+  position: "relative",
+  color: "currentColor",
+  fontSize: "xl",
+  _disabled: {
+    opacity: 0.5
+  }
+});
+const baseStyle$c = definePartsStyle$7({
+  field: baseStyleField,
+  icon: baseStyleIcon$1
+});
+const iconSpacing = defineStyle({
+  paddingInlineEnd: "8"
+});
+const sizes$9 = {
+  lg: {
+    ...inputTheme.sizes?.lg,
+    field: {
+      ...inputTheme.sizes?.lg.field,
+      ...iconSpacing
+    }
+  },
+  md: {
+    ...inputTheme.sizes?.md,
+    field: {
+      ...inputTheme.sizes?.md.field,
+      ...iconSpacing
+    }
+  },
+  sm: {
+    ...inputTheme.sizes?.sm,
+    field: {
+      ...inputTheme.sizes?.sm.field,
+      ...iconSpacing
+    }
+  },
+  xs: {
+    ...inputTheme.sizes?.xs,
+    field: {
+      ...inputTheme.sizes?.xs.field,
+      ...iconSpacing
+    },
+    icon: {
+      insetEnd: "1"
+    }
+  }
+};
+const selectTheme = defineMultiStyleConfig$7({
+  baseStyle: baseStyle$c,
+  sizes: sizes$9,
+  variants: inputTheme.variants,
+  defaultProps: inputTheme.defaultProps
+});
+
+const $startColor = cssVar$1("skeleton-start-color");
+const $endColor = cssVar$1("skeleton-end-color");
+const baseStyle$b = defineStyle({
+  [$startColor.variable]: "colors.gray.100",
+  [$endColor.variable]: "colors.gray.400",
+  _dark: {
+    [$startColor.variable]: "colors.gray.800",
+    [$endColor.variable]: "colors.gray.600"
+  },
+  background: $startColor.reference,
+  borderColor: $endColor.reference,
+  opacity: 0.7,
+  borderRadius: "sm"
+});
+const skeletonTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$b
+});
+
+const $bg$5 = cssVar$1("skip-link-bg");
+const baseStyle$a = defineStyle({
+  borderRadius: "md",
+  fontWeight: "semibold",
+  _focusVisible: {
+    boxShadow: "outline",
+    padding: "4",
+    position: "fixed",
+    top: "6",
+    insetStart: "6",
+    [$bg$5.variable]: "colors.white",
+    _dark: {
+      [$bg$5.variable]: "colors.gray.700"
+    },
+    bg: $bg$5.reference
+  }
+});
+const skipLinkTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$a
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$6, definePartsStyle: definePartsStyle$6 } = createMultiStyleConfigHelpers(sliderAnatomy.keys);
+const $thumbSize = cssVar$1("slider-thumb-size");
+const $trackSize = cssVar$1("slider-track-size");
+const $bg$4 = cssVar$1("slider-bg");
+const baseStyleContainer$1 = defineStyle((props) => {
+  const { orientation } = props;
+  return {
+    display: "inline-block",
+    position: "relative",
+    cursor: "pointer",
+    _disabled: {
+      opacity: 0.6,
+      cursor: "default",
+      pointerEvents: "none"
+    },
+    ...orient({
+      orientation,
+      vertical: {
+        h: "100%",
+        px: calc$2($thumbSize.reference).divide(2).toString()
+      },
+      horizontal: {
+        w: "100%",
+        py: calc$2($thumbSize.reference).divide(2).toString()
+      }
+    })
+  };
+});
+const baseStyleTrack$1 = defineStyle((props) => {
+  const orientationStyles = orient({
+    orientation: props.orientation,
+    horizontal: { h: $trackSize.reference },
+    vertical: { w: $trackSize.reference }
+  });
+  return {
+    ...orientationStyles,
+    overflow: "hidden",
+    borderRadius: "sm",
+    [$bg$4.variable]: "colors.gray.200",
+    _dark: {
+      [$bg$4.variable]: "colors.whiteAlpha.200"
+    },
+    _disabled: {
+      [$bg$4.variable]: "colors.gray.300",
+      _dark: {
+        [$bg$4.variable]: "colors.whiteAlpha.300"
+      }
+    },
+    bg: $bg$4.reference
+  };
+});
+const baseStyleThumb$1 = defineStyle((props) => {
+  const { orientation } = props;
+  const orientationStyle = orient({
+    orientation,
+    vertical: { left: "50%" },
+    horizontal: { top: "50%" }
+  });
+  return {
+    ...orientationStyle,
+    w: $thumbSize.reference,
+    h: $thumbSize.reference,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    outline: 0,
+    zIndex: 1,
+    borderRadius: "full",
+    bg: "white",
+    boxShadow: "base",
+    border: "1px solid",
+    borderColor: "transparent",
+    transitionProperty: "transform",
+    transitionDuration: "normal",
+    _focusVisible: {
+      boxShadow: "outline"
+    },
+    _active: {
+      "--slider-thumb-scale": `1.15`
+    },
+    _disabled: {
+      bg: "gray.300"
+    }
+  };
+});
+const baseStyleFilledTrack = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  return {
+    width: "inherit",
+    height: "inherit",
+    [$bg$4.variable]: `colors.${c}.500`,
+    _dark: {
+      [$bg$4.variable]: `colors.${c}.200`
+    },
+    bg: $bg$4.reference
+  };
+});
+const baseStyle$9 = definePartsStyle$6((props) => ({
+  container: baseStyleContainer$1(props),
+  track: baseStyleTrack$1(props),
+  thumb: baseStyleThumb$1(props),
+  filledTrack: baseStyleFilledTrack(props)
+}));
+const sizeLg = definePartsStyle$6({
+  container: {
+    [$thumbSize.variable]: `sizes.4`,
+    [$trackSize.variable]: `sizes.1`
+  }
+});
+const sizeMd = definePartsStyle$6({
+  container: {
+    [$thumbSize.variable]: `sizes.3.5`,
+    [$trackSize.variable]: `sizes.1`
+  }
+});
+const sizeSm = definePartsStyle$6({
+  container: {
+    [$thumbSize.variable]: `sizes.2.5`,
+    [$trackSize.variable]: `sizes.0.5`
+  }
+});
+const sizes$8 = {
+  lg: sizeLg,
+  md: sizeMd,
+  sm: sizeSm
+};
+const sliderTheme = defineMultiStyleConfig$6({
+  baseStyle: baseStyle$9,
+  sizes: sizes$8,
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const $size$1 = cssVar("spinner-size");
+const baseStyle$8 = defineStyle({
+  width: [$size$1.reference],
+  height: [$size$1.reference]
+});
+const sizes$7 = {
+  xs: defineStyle({
+    [$size$1.variable]: "sizes.3"
+  }),
+  sm: defineStyle({
+    [$size$1.variable]: "sizes.4"
+  }),
+  md: defineStyle({
+    [$size$1.variable]: "sizes.6"
+  }),
+  lg: defineStyle({
+    [$size$1.variable]: "sizes.8"
+  }),
+  xl: defineStyle({
+    [$size$1.variable]: "sizes.12"
+  })
+};
+const spinnerTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$8,
+  sizes: sizes$7,
+  defaultProps: {
+    size: "md"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$5, definePartsStyle: definePartsStyle$5 } = createMultiStyleConfigHelpers(statAnatomy.keys);
+const baseStyleLabel$1 = defineStyle({
+  fontWeight: "medium"
+});
+const baseStyleHelpText = defineStyle({
+  opacity: 0.8,
+  marginBottom: "2"
+});
+const baseStyleNumber = defineStyle({
+  verticalAlign: "baseline",
+  fontWeight: "semibold"
+});
+const baseStyleIcon = defineStyle({
+  marginEnd: 1,
+  w: "3.5",
+  h: "3.5",
+  verticalAlign: "middle"
+});
+const baseStyle$7 = definePartsStyle$5({
+  container: {},
+  label: baseStyleLabel$1,
+  helpText: baseStyleHelpText,
+  number: baseStyleNumber,
+  icon: baseStyleIcon
+});
+const sizes$6 = {
+  md: definePartsStyle$5({
+    label: { fontSize: "sm" },
+    helpText: { fontSize: "sm" },
+    number: { fontSize: "2xl" }
+  })
+};
+const statTheme = defineMultiStyleConfig$5({
+  baseStyle: baseStyle$7,
+  sizes: sizes$6,
+  defaultProps: {
+    size: "md"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$4, definePartsStyle: definePartsStyle$4 } = createMultiStyleConfigHelpers([
+  "stepper",
+  "step",
+  "title",
+  "description",
+  "indicator",
+  "separator",
+  "icon",
+  "number"
+]);
+const $size = cssVar$1("stepper-indicator-size");
+const $iconSize = cssVar$1("stepper-icon-size");
+const $titleFontSize = cssVar$1("stepper-title-font-size");
+const $descFontSize = cssVar$1("stepper-description-font-size");
+const $accentColor = cssVar$1("stepper-accent-color");
+const baseStyle$6 = definePartsStyle$4(({ colorScheme: c }) => ({
+  stepper: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "4",
+    "&[data-orientation=vertical]": {
+      flexDirection: "column",
+      alignItems: "flex-start"
+    },
+    "&[data-orientation=horizontal]": {
+      flexDirection: "row",
+      alignItems: "center"
+    },
+    [$accentColor.variable]: `colors.${c}.500`,
+    _dark: {
+      [$accentColor.variable]: `colors.${c}.200`
+    }
+  },
+  title: {
+    fontSize: $titleFontSize.reference,
+    fontWeight: "medium"
+  },
+  description: {
+    fontSize: $descFontSize.reference,
+    color: "chakra-subtle-text"
+  },
+  number: {
+    fontSize: $titleFontSize.reference
+  },
+  step: {
+    flexShrink: 0,
+    position: "relative",
+    display: "flex",
+    gap: "2",
+    "&[data-orientation=horizontal]": {
+      alignItems: "center"
+    },
+    flex: "1",
+    "&:last-of-type:not([data-stretch])": {
+      flex: "initial"
+    }
+  },
+  icon: {
+    flexShrink: 0,
+    width: $iconSize.reference,
+    height: $iconSize.reference
+  },
+  indicator: {
+    flexShrink: 0,
+    borderRadius: "full",
+    width: $size.reference,
+    height: $size.reference,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "&[data-status=active]": {
+      borderWidth: "2px",
+      borderColor: $accentColor.reference
+    },
+    "&[data-status=complete]": {
+      bg: $accentColor.reference,
+      color: "chakra-inverse-text"
+    },
+    "&[data-status=incomplete]": {
+      borderWidth: "2px"
+    }
+  },
+  separator: {
+    bg: "chakra-border-color",
+    flex: "1",
+    "&[data-status=complete]": {
+      bg: $accentColor.reference
+    },
+    "&[data-orientation=horizontal]": {
+      width: "100%",
+      height: "2px",
+      marginStart: "2"
+    },
+    "&[data-orientation=vertical]": {
+      width: "2px",
+      position: "absolute",
+      height: "100%",
+      maxHeight: `calc(100% - ${$size.reference} - 8px)`,
+      top: `calc(${$size.reference} + 4px)`,
+      insetStart: `calc(${$size.reference} / 2 - 1px)`
+    }
+  }
+}));
+const stepperTheme = defineMultiStyleConfig$4({
+  baseStyle: baseStyle$6,
+  sizes: {
+    xs: definePartsStyle$4({
+      stepper: {
+        [$size.variable]: "sizes.4",
+        [$iconSize.variable]: "sizes.3",
+        [$titleFontSize.variable]: "fontSizes.xs",
+        [$descFontSize.variable]: "fontSizes.xs"
+      }
+    }),
+    sm: definePartsStyle$4({
+      stepper: {
+        [$size.variable]: "sizes.6",
+        [$iconSize.variable]: "sizes.4",
+        [$titleFontSize.variable]: "fontSizes.sm",
+        [$descFontSize.variable]: "fontSizes.xs"
+      }
+    }),
+    md: definePartsStyle$4({
+      stepper: {
+        [$size.variable]: "sizes.8",
+        [$iconSize.variable]: "sizes.5",
+        [$titleFontSize.variable]: "fontSizes.md",
+        [$descFontSize.variable]: "fontSizes.sm"
+      }
+    }),
+    lg: definePartsStyle$4({
+      stepper: {
+        [$size.variable]: "sizes.10",
+        [$iconSize.variable]: "sizes.6",
+        [$titleFontSize.variable]: "fontSizes.lg",
+        [$descFontSize.variable]: "fontSizes.md"
+      }
+    })
+  },
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$3, definePartsStyle: definePartsStyle$3 } = createMultiStyleConfigHelpers(switchAnatomy.keys);
+const $width = cssVar("switch-track-width");
+const $height = cssVar("switch-track-height");
+const $diff = cssVar("switch-track-diff");
+const diffValue = calc$1.subtract($width, $height);
+const $translateX = cssVar("switch-thumb-x");
+const $bg$3 = cssVar("switch-bg");
+const baseStyleTrack = defineStyle((props) => {
+  const { colorScheme: c } = props;
+  return {
+    borderRadius: "full",
+    p: "0.5",
+    width: [$width.reference],
+    height: [$height.reference],
+    transitionProperty: "common",
+    transitionDuration: "fast",
+    [$bg$3.variable]: "colors.gray.300",
+    _dark: {
+      [$bg$3.variable]: "colors.whiteAlpha.400"
+    },
+    _focusVisible: {
+      boxShadow: "outline"
+    },
+    _disabled: {
+      opacity: 0.4,
+      cursor: "not-allowed"
+    },
+    _checked: {
+      [$bg$3.variable]: `colors.${c}.500`,
+      _dark: {
+        [$bg$3.variable]: `colors.${c}.200`
+      }
+    },
+    bg: $bg$3.reference
+  };
+});
+const baseStyleThumb = defineStyle({
+  bg: "white",
+  transitionProperty: "transform",
+  transitionDuration: "normal",
+  borderRadius: "inherit",
+  width: [$height.reference],
+  height: [$height.reference],
+  _checked: {
+    transform: `translateX(${$translateX.reference})`
+  }
+});
+const baseStyle$5 = definePartsStyle$3((props) => ({
+  container: {
+    [$diff.variable]: diffValue,
+    [$translateX.variable]: $diff.reference,
+    _rtl: {
+      [$translateX.variable]: calc$1($diff).negate().toString()
+    }
+  },
+  track: baseStyleTrack(props),
+  thumb: baseStyleThumb
+}));
+const sizes$5 = {
+  sm: definePartsStyle$3({
+    container: {
+      [$width.variable]: "1.375rem",
+      [$height.variable]: "sizes.3"
+    }
+  }),
+  md: definePartsStyle$3({
+    container: {
+      [$width.variable]: "1.875rem",
+      [$height.variable]: "sizes.4"
+    }
+  }),
+  lg: definePartsStyle$3({
+    container: {
+      [$width.variable]: "2.875rem",
+      [$height.variable]: "sizes.6"
+    }
+  })
+};
+const switchTheme = defineMultiStyleConfig$3({
+  baseStyle: baseStyle$5,
+  sizes: sizes$5,
+  defaultProps: {
+    size: "md",
+    colorScheme: "blue"
+  }
+});
+
+const { defineMultiStyleConfig: defineMultiStyleConfig$2, definePartsStyle: definePartsStyle$2 } = createMultiStyleConfigHelpers(tableAnatomy.keys);
+const baseStyle$4 = definePartsStyle$2({
+  table: {
+    fontVariantNumeric: "lining-nums tabular-nums",
+    borderCollapse: "collapse",
+    width: "full"
+  },
+  th: {
+    fontFamily: "heading",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: "wider",
+    textAlign: "start"
+  },
+  td: {
+    textAlign: "start"
+  },
+  caption: {
+    mt: 4,
+    fontFamily: "heading",
+    textAlign: "center",
+    fontWeight: "medium"
+  }
+});
+const numericStyles = defineStyle({
+  "&[data-is-numeric=true]": {
+    textAlign: "end"
+  }
+});
+const variantSimple = definePartsStyle$2((props) => {
+  const { colorScheme: c } = props;
+  return {
+    th: {
+      color: mode("gray.600", "gray.400")(props),
+      borderBottom: "1px",
+      borderColor: mode(`${c}.100`, `${c}.700`)(props),
+      ...numericStyles
+    },
+    td: {
+      borderBottom: "1px",
+      borderColor: mode(`${c}.100`, `${c}.700`)(props),
+      ...numericStyles
+    },
+    caption: {
+      color: mode("gray.600", "gray.100")(props)
+    },
+    tfoot: {
+      tr: {
+        "&:last-of-type": {
+          th: { borderBottomWidth: 0 }
+        }
+      }
+    }
+  };
+});
+const variantStripe = definePartsStyle$2((props) => {
+  const { colorScheme: c } = props;
+  return {
+    th: {
+      color: mode("gray.600", "gray.400")(props),
+      borderBottom: "1px",
+      borderColor: mode(`${c}.100`, `${c}.700`)(props),
+      ...numericStyles
+    },
+    td: {
+      borderBottom: "1px",
+      borderColor: mode(`${c}.100`, `${c}.700`)(props),
+      ...numericStyles
+    },
+    caption: {
+      color: mode("gray.600", "gray.100")(props)
+    },
+    tbody: {
+      tr: {
+        "&:nth-of-type(odd)": {
+          "th, td": {
+            borderBottomWidth: "1px",
+            borderColor: mode(`${c}.100`, `${c}.700`)(props)
+          },
+          td: {
+            background: mode(`${c}.100`, `${c}.700`)(props)
+          }
+        }
+      }
+    },
+    tfoot: {
+      tr: {
+        "&:last-of-type": {
+          th: { borderBottomWidth: 0 }
+        }
+      }
+    }
+  };
+});
+const variants$3 = {
+  simple: variantSimple,
+  striped: variantStripe,
+  unstyled: defineStyle({})
+};
+const sizes$4 = {
+  sm: definePartsStyle$2({
+    th: {
+      px: "4",
+      py: "1",
+      lineHeight: "4",
+      fontSize: "xs"
+    },
+    td: {
+      px: "4",
+      py: "2",
+      fontSize: "sm",
+      lineHeight: "4"
+    },
+    caption: {
+      px: "4",
+      py: "2",
+      fontSize: "xs"
+    }
+  }),
+  md: definePartsStyle$2({
+    th: {
+      px: "6",
+      py: "3",
+      lineHeight: "4",
+      fontSize: "xs"
+    },
+    td: {
+      px: "6",
+      py: "4",
+      lineHeight: "5"
+    },
+    caption: {
+      px: "6",
+      py: "2",
+      fontSize: "sm"
+    }
+  }),
+  lg: definePartsStyle$2({
+    th: {
+      px: "8",
+      py: "4",
+      lineHeight: "5",
+      fontSize: "sm"
+    },
+    td: {
+      px: "8",
+      py: "5",
+      lineHeight: "6"
+    },
+    caption: {
+      px: "6",
+      py: "2",
+      fontSize: "md"
+    }
+  })
+};
+const tableTheme = defineMultiStyleConfig$2({
+  baseStyle: baseStyle$4,
+  variants: variants$3,
+  sizes: sizes$4,
+  defaultProps: {
+    variant: "simple",
+    size: "md",
+    colorScheme: "gray"
+  }
+});
+
+const $fg$1 = cssVar$1("tabs-color");
+const $bg$2 = cssVar$1("tabs-bg");
+const $border = cssVar$1("tabs-border-color");
+const { defineMultiStyleConfig: defineMultiStyleConfig$1, definePartsStyle: definePartsStyle$1 } = createMultiStyleConfigHelpers(tabsAnatomy.keys);
+const baseStyleRoot = defineStyle((props) => {
+  const { orientation } = props;
+  return {
+    display: orientation === "vertical" ? "flex" : "block"
+  };
+});
+const baseStyleTab = defineStyle((props) => {
+  const { isFitted } = props;
+  return {
+    flex: isFitted ? 1 : void 0,
+    transitionProperty: "common",
+    transitionDuration: "normal",
+    _focusVisible: {
+      zIndex: 1,
+      boxShadow: "outline"
+    },
+    _disabled: {
+      cursor: "not-allowed",
+      opacity: 0.4
+    }
+  };
+});
+const baseStyleTablist = defineStyle((props) => {
+  const { align = "start", orientation } = props;
+  const alignments = {
+    end: "flex-end",
+    center: "center",
+    start: "flex-start"
+  };
+  return {
+    justifyContent: alignments[align],
+    flexDirection: orientation === "vertical" ? "column" : "row"
+  };
+});
+const baseStyleTabpanel = defineStyle({
+  p: 4
+});
+const baseStyle$3 = definePartsStyle$1((props) => ({
+  root: baseStyleRoot(props),
+  tab: baseStyleTab(props),
+  tablist: baseStyleTablist(props),
+  tabpanel: baseStyleTabpanel
+}));
+const sizes$3 = {
+  sm: definePartsStyle$1({
+    tab: {
+      py: 1,
+      px: 4,
+      fontSize: "sm"
+    }
+  }),
+  md: definePartsStyle$1({
+    tab: {
+      fontSize: "md",
+      py: 2,
+      px: 4
+    }
+  }),
+  lg: definePartsStyle$1({
+    tab: {
+      fontSize: "lg",
+      py: 3,
+      px: 4
+    }
+  })
+};
+const variantLine = definePartsStyle$1((props) => {
+  const { colorScheme: c, orientation } = props;
+  const isVertical = orientation === "vertical";
+  const borderProp = isVertical ? "borderStart" : "borderBottom";
+  const marginProp = isVertical ? "marginStart" : "marginBottom";
+  return {
+    tablist: {
+      [borderProp]: "2px solid",
+      borderColor: "inherit"
+    },
+    tab: {
+      [borderProp]: "2px solid",
+      borderColor: "transparent",
+      [marginProp]: "-2px",
+      _selected: {
+        [$fg$1.variable]: `colors.${c}.600`,
+        _dark: {
+          [$fg$1.variable]: `colors.${c}.300`
+        },
+        borderColor: "currentColor"
+      },
+      _active: {
+        [$bg$2.variable]: "colors.gray.200",
+        _dark: {
+          [$bg$2.variable]: "colors.whiteAlpha.300"
+        }
+      },
+      _disabled: {
+        _active: { bg: "none" }
+      },
+      color: $fg$1.reference,
+      bg: $bg$2.reference
+    }
+  };
+});
+const variantEnclosed = definePartsStyle$1((props) => {
+  const { colorScheme: c } = props;
+  return {
+    tab: {
+      borderTopRadius: "md",
+      border: "1px solid",
+      borderColor: "transparent",
+      mb: "-1px",
+      [$border.variable]: "transparent",
+      _selected: {
+        [$fg$1.variable]: `colors.${c}.600`,
+        [$border.variable]: `colors.white`,
+        _dark: {
+          [$fg$1.variable]: `colors.${c}.300`,
+          [$border.variable]: `colors.gray.800`
+        },
+        borderColor: "inherit",
+        borderBottomColor: $border.reference
+      },
+      color: $fg$1.reference
+    },
+    tablist: {
+      mb: "-1px",
+      borderBottom: "1px solid",
+      borderColor: "inherit"
+    }
+  };
+});
+const variantEnclosedColored = definePartsStyle$1((props) => {
+  const { colorScheme: c } = props;
+  return {
+    tab: {
+      border: "1px solid",
+      borderColor: "inherit",
+      [$bg$2.variable]: "colors.gray.50",
+      _dark: {
+        [$bg$2.variable]: "colors.whiteAlpha.50"
+      },
+      mb: "-1px",
+      _notLast: {
+        marginEnd: "-1px"
+      },
+      _selected: {
+        [$bg$2.variable]: "colors.white",
+        [$fg$1.variable]: `colors.${c}.600`,
+        _dark: {
+          [$bg$2.variable]: "colors.gray.800",
+          [$fg$1.variable]: `colors.${c}.300`
+        },
+        borderColor: "inherit",
+        borderTopColor: "currentColor",
+        borderBottomColor: "transparent"
+      },
+      color: $fg$1.reference,
+      bg: $bg$2.reference
+    },
+    tablist: {
+      mb: "-1px",
+      borderBottom: "1px solid",
+      borderColor: "inherit"
+    }
+  };
+});
+const variantSoftRounded = definePartsStyle$1((props) => {
+  const { colorScheme: c, theme } = props;
+  return {
+    tab: {
+      borderRadius: "full",
+      fontWeight: "semibold",
+      color: "gray.600",
+      _selected: {
+        color: getColor(theme, `${c}.700`),
+        bg: getColor(theme, `${c}.100`)
+      }
+    }
+  };
+});
+const variantSolidRounded = definePartsStyle$1((props) => {
+  const { colorScheme: c } = props;
+  return {
+    tab: {
+      borderRadius: "full",
+      fontWeight: "semibold",
+      [$fg$1.variable]: "colors.gray.600",
+      _dark: {
+        [$fg$1.variable]: "inherit"
+      },
+      _selected: {
+        [$fg$1.variable]: "colors.white",
+        [$bg$2.variable]: `colors.${c}.600`,
+        _dark: {
+          [$fg$1.variable]: "colors.gray.800",
+          [$bg$2.variable]: `colors.${c}.300`
+        }
+      },
+      color: $fg$1.reference,
+      bg: $bg$2.reference
+    }
+  };
+});
+const variantUnstyled = definePartsStyle$1({});
+const variants$2 = {
+  line: variantLine,
+  enclosed: variantEnclosed,
+  "enclosed-colored": variantEnclosedColored,
+  "soft-rounded": variantSoftRounded,
+  "solid-rounded": variantSolidRounded,
+  unstyled: variantUnstyled
+};
+const tabsTheme = defineMultiStyleConfig$1({
+  baseStyle: baseStyle$3,
+  sizes: sizes$3,
+  variants: variants$2,
+  defaultProps: {
+    size: "md",
+    variant: "line",
+    colorScheme: "blue"
+  }
+});
+
+const { defineMultiStyleConfig, definePartsStyle } = createMultiStyleConfigHelpers(tagAnatomy.keys);
+const $bg$1 = cssVar$1("tag-bg");
+const $color = cssVar$1("tag-color");
+const $shadow = cssVar$1("tag-shadow");
+const $minH = cssVar$1("tag-min-height");
+const $minW = cssVar$1("tag-min-width");
+const $fontSize = cssVar$1("tag-font-size");
+const $paddingX = cssVar$1("tag-padding-inline");
+const baseStyleContainer = defineStyle({
+  fontWeight: "medium",
+  lineHeight: 1.2,
+  outline: 0,
+  [$color.variable]: vars.color.reference,
+  [$bg$1.variable]: vars.bg.reference,
+  [$shadow.variable]: vars.shadow.reference,
+  color: $color.reference,
+  bg: $bg$1.reference,
+  boxShadow: $shadow.reference,
+  borderRadius: "md",
+  minH: $minH.reference,
+  minW: $minW.reference,
+  fontSize: $fontSize.reference,
+  px: $paddingX.reference,
+  _focusVisible: {
+    [$shadow.variable]: "shadows.outline"
+  }
+});
+const baseStyleLabel = defineStyle({
+  lineHeight: 1.2,
+  overflow: "visible"
+});
+const baseStyleCloseButton = defineStyle({
+  fontSize: "lg",
+  w: "5",
+  h: "5",
+  transitionProperty: "common",
+  transitionDuration: "normal",
+  borderRadius: "full",
+  marginStart: "1.5",
+  marginEnd: "-1",
+  opacity: 0.5,
+  _disabled: {
+    opacity: 0.4
+  },
+  _focusVisible: {
+    boxShadow: "outline",
+    bg: "rgba(0, 0, 0, 0.14)"
+  },
+  _hover: {
+    opacity: 0.8
+  },
+  _active: {
+    opacity: 1
+  }
+});
+const baseStyle$2 = definePartsStyle({
+  container: baseStyleContainer,
+  label: baseStyleLabel,
+  closeButton: baseStyleCloseButton
+});
+const sizes$2 = {
+  sm: definePartsStyle({
+    container: {
+      [$minH.variable]: "sizes.5",
+      [$minW.variable]: "sizes.5",
+      [$fontSize.variable]: "fontSizes.xs",
+      [$paddingX.variable]: "space.2"
+    },
+    closeButton: {
+      marginEnd: "-2px",
+      marginStart: "0.35rem"
+    }
+  }),
+  md: definePartsStyle({
+    container: {
+      [$minH.variable]: "sizes.6",
+      [$minW.variable]: "sizes.6",
+      [$fontSize.variable]: "fontSizes.sm",
+      [$paddingX.variable]: "space.2"
+    }
+  }),
+  lg: definePartsStyle({
+    container: {
+      [$minH.variable]: "sizes.8",
+      [$minW.variable]: "sizes.8",
+      [$fontSize.variable]: "fontSizes.md",
+      [$paddingX.variable]: "space.3"
+    }
+  })
+};
+const variants$1 = {
+  subtle: definePartsStyle((props) => ({
+    container: badgeTheme.variants?.subtle(props)
+  })),
+  solid: definePartsStyle((props) => ({
+    container: badgeTheme.variants?.solid(props)
+  })),
+  outline: definePartsStyle((props) => ({
+    container: badgeTheme.variants?.outline(props)
+  }))
+};
+const tagTheme = defineMultiStyleConfig({
+  variants: variants$1,
+  baseStyle: baseStyle$2,
+  sizes: sizes$2,
+  defaultProps: {
+    size: "md",
+    variant: "subtle",
+    colorScheme: "gray"
+  }
+});
+
+const baseStyle$1 = defineStyle({
+  ...inputTheme.baseStyle?.field,
+  paddingY: "2",
+  minHeight: "20",
+  lineHeight: "short",
+  verticalAlign: "top"
+});
+const variants = {
+  outline: defineStyle(
+    (props) => inputTheme.variants?.outline(props).field ?? {}
+  ),
+  flushed: defineStyle(
+    (props) => inputTheme.variants?.flushed(props).field ?? {}
+  ),
+  filled: defineStyle(
+    (props) => inputTheme.variants?.filled(props).field ?? {}
+  ),
+  unstyled: inputTheme.variants?.unstyled.field ?? {}
+};
+const sizes$1 = {
+  xs: inputTheme.sizes?.xs.field ?? {},
+  sm: inputTheme.sizes?.sm.field ?? {},
+  md: inputTheme.sizes?.md.field ?? {},
+  lg: inputTheme.sizes?.lg.field ?? {}
+};
+const textareaTheme = defineStyleConfig$1({
+  baseStyle: baseStyle$1,
+  sizes: sizes$1,
+  variants,
+  defaultProps: {
+    size: "md",
+    variant: "outline"
+  }
+});
+
+const $bg = cssVar("tooltip-bg");
+const $fg = cssVar("tooltip-fg");
+const $arrowBg = cssVar("popper-arrow-bg");
+const baseStyle = defineStyle({
+  bg: $bg.reference,
+  color: $fg.reference,
+  [$bg.variable]: "colors.gray.700",
+  [$fg.variable]: "colors.whiteAlpha.900",
+  _dark: {
+    [$bg.variable]: "colors.gray.300",
+    [$fg.variable]: "colors.gray.900"
+  },
+  [$arrowBg.variable]: $bg.reference,
+  px: "2",
+  py: "0.5",
+  borderRadius: "sm",
+  fontWeight: "medium",
+  fontSize: "sm",
+  boxShadow: "md",
+  maxW: "xs",
+  zIndex: "tooltip"
+});
+const tooltipTheme = defineStyleConfig$1({
+  baseStyle
+});
+
+const components = {
+  Accordion: accordionTheme,
+  Alert: alertTheme,
+  Avatar: avatarTheme,
+  Badge: badgeTheme,
+  Breadcrumb: breadcrumbTheme,
+  Button: buttonTheme,
+  Checkbox: checkboxTheme,
+  CloseButton: closeButtonTheme,
+  Code: codeTheme,
+  Container: containerTheme,
+  Divider: dividerTheme,
+  Drawer: drawerTheme,
+  Editable: editableTheme,
+  Form: formTheme,
+  FormError: formErrorTheme,
+  FormLabel: formLabelTheme,
+  Heading: headingTheme,
+  Input: inputTheme,
+  Kbd: kbdTheme,
+  Link: linkTheme,
+  List: listTheme,
+  Menu: menuTheme,
+  Modal: modalTheme,
+  NumberInput: numberInputTheme,
+  PinInput: pinInputTheme,
+  Popover: popoverTheme,
+  Progress: progressTheme,
+  Radio: radioTheme,
+  Select: selectTheme,
+  Skeleton: skeletonTheme,
+  SkipLink: skipLinkTheme,
+  Slider: sliderTheme,
+  Spinner: spinnerTheme,
+  Stat: statTheme,
+  Switch: switchTheme,
+  Table: tableTheme,
+  Tabs: tabsTheme,
+  Tag: tagTheme,
+  Textarea: textareaTheme,
+  Tooltip: tooltipTheme,
+  Card: cardTheme,
+  Stepper: stepperTheme
+};
+
+const borders$2 = {
+  none: 0,
+  "1px": "1px solid",
+  "2px": "2px solid",
+  "4px": "4px solid",
+  "8px": "8px solid"
+};
+
+const breakpoints$1 = {
+  base: "0em",
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em"
+};
+
+const colors$1 = {
+  transparent: "transparent",
+  current: "currentColor",
+  black: "#000000",
+  white: "#FFFFFF",
+  whiteAlpha: {
+    50: "rgba(255, 255, 255, 0.04)",
+    100: "rgba(255, 255, 255, 0.06)",
+    200: "rgba(255, 255, 255, 0.08)",
+    300: "rgba(255, 255, 255, 0.16)",
+    400: "rgba(255, 255, 255, 0.24)",
+    500: "rgba(255, 255, 255, 0.36)",
+    600: "rgba(255, 255, 255, 0.48)",
+    700: "rgba(255, 255, 255, 0.64)",
+    800: "rgba(255, 255, 255, 0.80)",
+    900: "rgba(255, 255, 255, 0.92)"
+  },
+  blackAlpha: {
+    50: "rgba(0, 0, 0, 0.04)",
+    100: "rgba(0, 0, 0, 0.06)",
+    200: "rgba(0, 0, 0, 0.08)",
+    300: "rgba(0, 0, 0, 0.16)",
+    400: "rgba(0, 0, 0, 0.24)",
+    500: "rgba(0, 0, 0, 0.36)",
+    600: "rgba(0, 0, 0, 0.48)",
+    700: "rgba(0, 0, 0, 0.64)",
+    800: "rgba(0, 0, 0, 0.80)",
+    900: "rgba(0, 0, 0, 0.92)"
+  },
+  gray: {
+    50: "#F7FAFC",
+    100: "#EDF2F7",
+    200: "#E2E8F0",
+    300: "#CBD5E0",
+    400: "#A0AEC0",
+    500: "#718096",
+    600: "#4A5568",
+    700: "#2D3748",
+    800: "#1A202C",
+    900: "#171923"
+  },
+  red: {
+    50: "#FFF5F5",
+    100: "#FED7D7",
+    200: "#FEB2B2",
+    300: "#FC8181",
+    400: "#F56565",
+    500: "#E53E3E",
+    600: "#C53030",
+    700: "#9B2C2C",
+    800: "#822727",
+    900: "#63171B"
+  },
+  orange: {
+    50: "#FFFAF0",
+    100: "#FEEBC8",
+    200: "#FBD38D",
+    300: "#F6AD55",
+    400: "#ED8936",
+    500: "#DD6B20",
+    600: "#C05621",
+    700: "#9C4221",
+    800: "#7B341E",
+    900: "#652B19"
+  },
+  yellow: {
+    50: "#FFFFF0",
+    100: "#FEFCBF",
+    200: "#FAF089",
+    300: "#F6E05E",
+    400: "#ECC94B",
+    500: "#D69E2E",
+    600: "#B7791F",
+    700: "#975A16",
+    800: "#744210",
+    900: "#5F370E"
+  },
+  green: {
+    50: "#F0FFF4",
+    100: "#C6F6D5",
+    200: "#9AE6B4",
+    300: "#68D391",
+    400: "#48BB78",
+    500: "#38A169",
+    600: "#2F855A",
+    700: "#276749",
+    800: "#22543D",
+    900: "#1C4532"
+  },
+  teal: {
+    50: "#E6FFFA",
+    100: "#B2F5EA",
+    200: "#81E6D9",
+    300: "#4FD1C5",
+    400: "#38B2AC",
+    500: "#319795",
+    600: "#2C7A7B",
+    700: "#285E61",
+    800: "#234E52",
+    900: "#1D4044"
+  },
+  blue: {
+    50: "#ebf8ff",
+    100: "#bee3f8",
+    200: "#90cdf4",
+    300: "#63b3ed",
+    400: "#4299e1",
+    500: "#3182ce",
+    600: "#2b6cb0",
+    700: "#2c5282",
+    800: "#2a4365",
+    900: "#1A365D"
+  },
+  cyan: {
+    50: "#EDFDFD",
+    100: "#C4F1F9",
+    200: "#9DECF9",
+    300: "#76E4F7",
+    400: "#0BC5EA",
+    500: "#00B5D8",
+    600: "#00A3C4",
+    700: "#0987A0",
+    800: "#086F83",
+    900: "#065666"
+  },
+  purple: {
+    50: "#FAF5FF",
+    100: "#E9D8FD",
+    200: "#D6BCFA",
+    300: "#B794F4",
+    400: "#9F7AEA",
+    500: "#805AD5",
+    600: "#6B46C1",
+    700: "#553C9A",
+    800: "#44337A",
+    900: "#322659"
+  },
+  pink: {
+    50: "#FFF5F7",
+    100: "#FED7E2",
+    200: "#FBB6CE",
+    300: "#F687B3",
+    400: "#ED64A6",
+    500: "#D53F8C",
+    600: "#B83280",
+    700: "#97266D",
+    800: "#702459",
+    900: "#521B41"
+  }
+};
+
+const radii$1 = {
+  none: "0",
+  sm: "0.125rem",
+  base: "0.25rem",
+  md: "0.375rem",
+  lg: "0.5rem",
+  xl: "0.75rem",
+  "2xl": "1rem",
+  "3xl": "1.5rem",
+  full: "9999px"
+};
+
+const shadows$1 = {
+  xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
+  sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+  base: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+  md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+  lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+  "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+  outline: "0 0 0 3px rgba(66, 153, 225, 0.6)",
+  inner: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
+  none: "none",
+  "dark-lg": "rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px"
+};
+
+const transitionProperty$1 = {
+  common: "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform",
+  colors: "background-color, border-color, color, fill, stroke",
+  dimensions: "width, height",
+  position: "left, right, top, bottom",
+  background: "background-color, background-image, background-position"
+};
+const transitionTimingFunction$1 = {
+  "ease-in": "cubic-bezier(0.4, 0, 1, 1)",
+  "ease-out": "cubic-bezier(0, 0, 0.2, 1)",
+  "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)"
+};
+const transitionDuration$1 = {
+  "ultra-fast": "50ms",
+  faster: "100ms",
+  fast: "150ms",
+  normal: "200ms",
+  slow: "300ms",
+  slower: "400ms",
+  "ultra-slow": "500ms"
+};
+const transition$2 = {
+  property: transitionProperty$1,
+  easing: transitionTimingFunction$1,
+  duration: transitionDuration$1
+};
+
+const zIndices$1 = {
+  hide: -1,
+  auto: "auto",
+  base: 0,
+  docked: 10,
+  dropdown: 1e3,
+  sticky: 1100,
+  banner: 1200,
+  overlay: 1300,
+  modal: 1400,
+  popover: 1500,
+  skipLink: 1600,
+  toast: 1700,
+  tooltip: 1800
+};
+
+const blur$1 = {
+  none: 0,
+  sm: "4px",
+  base: "8px",
+  md: "12px",
+  lg: "16px",
+  xl: "24px",
+  "2xl": "40px",
+  "3xl": "64px"
+};
+
+const foundations$1 = {
+  breakpoints: breakpoints$1,
+  zIndices: zIndices$1,
+  radii: radii$1,
+  blur: blur$1,
+  colors: colors$1,
+  ...typography$2,
+  sizes: sizes$n,
+  shadows: shadows$1,
+  space: spacing$1,
+  borders: borders$2,
+  transition: transition$2
+};
+
+const semanticTokens$1 = {
+  colors: {
+    "chakra-body-text": { _light: "gray.800", _dark: "whiteAlpha.900" },
+    "chakra-body-bg": { _light: "white", _dark: "gray.800" },
+    "chakra-border-color": { _light: "gray.200", _dark: "whiteAlpha.300" },
+    "chakra-inverse-text": { _light: "white", _dark: "gray.800" },
+    "chakra-subtle-bg": { _light: "gray.100", _dark: "gray.700" },
+    "chakra-subtle-text": { _light: "gray.600", _dark: "gray.400" },
+    "chakra-placeholder-color": { _light: "gray.500", _dark: "whiteAlpha.400" }
+  }
+};
+
+const styles$1 = {
+  global: {
+    body: {
+      fontFamily: "body",
+      color: "chakra-body-text",
+      bg: "chakra-body-bg",
+      transitionProperty: "background-color",
+      transitionDuration: "normal",
+      lineHeight: "base"
+    },
+    "*::placeholder": {
+      color: "chakra-placeholder-color"
+    },
+    "*, *::before, &::after": {
+      borderColor: "chakra-border-color"
+    }
+  }
+};
+
+const requiredChakraThemeKeys = [
+  "borders",
+  "breakpoints",
+  "colors",
+  "components",
+  "config",
+  "direction",
+  "fonts",
+  "fontSizes",
+  "fontWeights",
+  "letterSpacings",
+  "lineHeights",
+  "radii",
+  "shadows",
+  "sizes",
+  "space",
+  "styles",
+  "transition",
+  "zIndices"
+];
+function isChakraTheme(unit) {
+  if (!isObject(unit)) {
+    return false;
+  }
+  return requiredChakraThemeKeys.every(
+    (propertyName) => Object.prototype.hasOwnProperty.call(unit, propertyName)
+  );
+}
+
+const direction$1 = "ltr";
+const config$1 = {
+  useSystemColorMode: false,
+  initialColorMode: "light",
+  cssVarPrefix: "chakra"
+};
+const theme$1 = {
+  semanticTokens: semanticTokens$1,
+  direction: direction$1,
+  ...foundations$1,
+  components,
+  styles: styles$1,
+  config: config$1
+};
+const baseTheme = {
+  semanticTokens: semanticTokens$1,
+  direction: direction$1,
+  components: {},
+  ...foundations$1,
+  styles: styles$1,
+  config: config$1
+};
+
+const ColorModeContext = createContext$3({});
+ColorModeContext.displayName = "ColorModeContext";
+function useColorMode() {
+  const context = useContext(ColorModeContext);
+  if (context === void 0) {
+    throw new Error("useColorMode must be used within a ColorModeProvider");
+  }
+  return context;
+}
+
+const classNames = {
+  light: "chakra-ui-light",
+  dark: "chakra-ui-dark"
+};
+function getColorModeUtils(options = {}) {
+  const { preventTransition = true, nonce } = options;
+  const utils = {
+    setDataset: (value) => {
+      const cleanup = preventTransition ? utils.preventTransition() : void 0;
+      document.documentElement.dataset.theme = value;
+      document.documentElement.style.colorScheme = value;
+      cleanup?.();
+    },
+    setClassName(dark) {
+      document.body.classList.add(dark ? classNames.dark : classNames.light);
+      document.body.classList.remove(dark ? classNames.light : classNames.dark);
+    },
+    query() {
+      return window.matchMedia("(prefers-color-scheme: dark)");
+    },
+    getSystemTheme(fallback) {
+      const dark = utils.query().matches ?? fallback === "dark";
+      return dark ? "dark" : "light";
+    },
+    addListener(fn) {
+      const mql = utils.query();
+      const listener = (e) => {
+        fn(e.matches ? "dark" : "light");
+      };
+      if (typeof mql.addListener === "function")
+        mql.addListener(listener);
+      else
+        mql.addEventListener("change", listener);
+      return () => {
+        if (typeof mql.removeListener === "function")
+          mql.removeListener(listener);
+        else
+          mql.removeEventListener("change", listener);
+      };
+    },
+    preventTransition() {
+      const css = document.createElement("style");
+      css.appendChild(
+        document.createTextNode(
+          `*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`
+        )
+      );
+      if (nonce !== void 0) {
+        css.nonce = nonce;
+      }
+      document.head.appendChild(css);
+      return () => {
+        (() => window.getComputedStyle(document.body))();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            document.head.removeChild(css);
+          });
+        });
+      };
+    }
+  };
+  return utils;
+}
+
+const STORAGE_KEY$1 = "chakra-ui-color-mode";
+function createLocalStorageManager(key) {
+  return {
+    ssr: false,
+    type: "localStorage",
+    get(init) {
+      if (!globalThis?.document)
+        return init;
+      let value;
+      try {
+        value = localStorage.getItem(key) || init;
+      } catch (e) {
+      }
+      return value || init;
+    },
+    set(value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+      }
+    }
+  };
+}
+const localStorageManager = createLocalStorageManager(STORAGE_KEY$1);
+
+const noop$1 = () => {
+};
+const useSafeLayoutEffect = isBrowser$2() ? useLayoutEffect$1 : useEffect$2;
+function getTheme(manager, fallback) {
+  return manager.type === "cookie" && manager.ssr ? manager.get(fallback) : fallback;
+}
+const ColorModeProvider = function ColorModeProvider2(props) {
+  const {
+    value,
+    children,
+    options: {
+      useSystemColorMode,
+      initialColorMode,
+      disableTransitionOnChange
+    } = {},
+    colorModeManager = localStorageManager
+  } = props;
+  const cache = __unsafe_useEmotionCache();
+  const defaultColorMode = initialColorMode === "dark" ? "dark" : "light";
+  const [colorMode, rawSetColorMode] = useState$1(
+    () => getTheme(colorModeManager, defaultColorMode)
+  );
+  const [resolvedColorMode, setResolvedColorMode] = useState$1(
+    () => getTheme(colorModeManager)
+  );
+  const { getSystemTheme, setClassName, setDataset, addListener } = useMemo$1(
+    () => getColorModeUtils({
+      preventTransition: disableTransitionOnChange,
+      nonce: cache?.nonce
+    }),
+    [disableTransitionOnChange, cache?.nonce]
+  );
+  const resolvedValue = initialColorMode === "system" && !colorMode ? resolvedColorMode : colorMode;
+  const setColorMode = useCallback(
+    (value2) => {
+      const resolved = value2 === "system" ? getSystemTheme() : value2;
+      rawSetColorMode(resolved);
+      setClassName(resolved === "dark");
+      setDataset(resolved);
+      colorModeManager.set(resolved);
+    },
+    [colorModeManager, getSystemTheme, setClassName, setDataset]
+  );
+  useSafeLayoutEffect(() => {
+    if (initialColorMode === "system") {
+      setResolvedColorMode(getSystemTheme());
+    }
+  }, []);
+  useEffect$2(() => {
+    const managerValue = colorModeManager.get();
+    if (managerValue) {
+      setColorMode(managerValue);
+      return;
+    }
+    if (initialColorMode === "system") {
+      setColorMode("system");
+      return;
+    }
+    setColorMode(defaultColorMode);
+  }, [colorModeManager, defaultColorMode, initialColorMode, setColorMode]);
+  const toggleColorMode = useCallback(() => {
+    setColorMode(resolvedValue === "dark" ? "light" : "dark");
+  }, [resolvedValue, setColorMode]);
+  useEffect$2(() => {
+    if (!useSystemColorMode)
+      return;
+    return addListener(setColorMode);
+  }, [useSystemColorMode, addListener, setColorMode]);
+  const context = useMemo$1(
+    () => ({
+      colorMode: value ?? resolvedValue,
+      toggleColorMode: value ? noop$1 : toggleColorMode,
+      setColorMode: value ? noop$1 : setColorMode,
+      forced: value !== void 0
+    }),
+    [resolvedValue, toggleColorMode, setColorMode, value]
+  );
+  return /* @__PURE__ */ jsx(ColorModeContext.Provider, { value: context, children });
+};
+ColorModeProvider.displayName = "ColorModeProvider";
+
+const css = String.raw;
+const vhPolyfill = css`
   :root,
   :host {
     --chakra-vh: 100vh;
@@ -33190,8 +36199,8 @@ var vhPolyfill = css`
     }
   }
 `;
-var CSSPolyfill = () => /* @__PURE__ */ jsx(Global, { styles: vhPolyfill });
-var CSSReset = ({ scope = "" }) => /* @__PURE__ */ jsx(
+const CSSPolyfill = () => /* @__PURE__ */ jsx(Global, { styles: vhPolyfill });
+const CSSReset = ({ scope = "" }) => /* @__PURE__ */ jsx(
   Global,
   {
     styles: css`
@@ -33451,7 +36460,40 @@ var CSSReset = ({ scope = "" }) => /* @__PURE__ */ jsx(
   }
 );
 
-var [PortalManagerContextProvider, usePortalManager] = createContext$1({
+function ThemeProvider$1(props) {
+  const { cssVarsRoot, theme, children } = props;
+  const computedTheme = useMemo$1(() => toCSSVar(theme), [theme]);
+  return /* @__PURE__ */ jsxs(ThemeProvider$2, { theme: computedTheme, children: [
+    /* @__PURE__ */ jsx(CSSVars, { root: cssVarsRoot }),
+    children
+  ] });
+}
+function CSSVars({ root = ":host, :root" }) {
+  const selector = [root, `[data-theme]`].join(",");
+  return /* @__PURE__ */ jsx(Global, { styles: (theme) => ({ [selector]: theme.__cssVars }) });
+}
+createContext({
+  name: "StylesContext",
+  errorMessage: "useStyles: `styles` is undefined. Seems you forgot to wrap the components in `<StylesProvider />` "
+});
+function GlobalStyle() {
+  const { colorMode } = useColorMode();
+  return /* @__PURE__ */ jsx(
+    Global,
+    {
+      styles: (theme) => {
+        const styleObjectOrFn = memoizedGet$2(theme, "styles.global");
+        const globalStyles = runIfFn$1(styleObjectOrFn, { theme, colorMode });
+        if (!globalStyles)
+          return void 0;
+        const styles = css$1(globalStyles)(theme);
+        return styles;
+      }
+    }
+  );
+}
+
+const [PortalManagerContextProvider, usePortalManager] = createContext({
   strict: false,
   name: "PortalManagerContext"
 });
@@ -33461,109 +36503,7 @@ function PortalManager(props) {
 }
 PortalManager.displayName = "PortalManager";
 
-var [PortalContextProvider, usePortalContext] = createContext$1({
-  strict: false,
-  name: "PortalContext"
-});
-var PORTAL_CLASSNAME = "chakra-portal";
-var PORTAL_SELECTOR = `.chakra-portal`;
-var Container = (props) => /* @__PURE__ */ jsx(
-  "div",
-  {
-    className: "chakra-portal-zIndex",
-    style: {
-      position: "absolute",
-      zIndex: props.zIndex,
-      top: 0,
-      left: 0,
-      right: 0
-      // NB: Don't add `bottom: 0`, it makes the entire app unusable
-      // @see https://github.com/chakra-ui/chakra-ui/issues/3201
-    },
-    children: props.children
-  }
-);
-var DefaultPortal = (props) => {
-  const { appendToParentPortal, children } = props;
-  const [tempNode, setTempNode] = useState(null);
-  const portal = useRef(null);
-  const [, forceUpdate] = useState({});
-  useEffect(() => forceUpdate({}), []);
-  const parentPortal = usePortalContext();
-  const manager = usePortalManager();
-  useSafeLayoutEffect(() => {
-    if (!tempNode)
-      return;
-    const doc = tempNode.ownerDocument;
-    const host = appendToParentPortal ? parentPortal != null ? parentPortal : doc.body : doc.body;
-    if (!host)
-      return;
-    portal.current = doc.createElement("div");
-    portal.current.className = PORTAL_CLASSNAME;
-    host.appendChild(portal.current);
-    forceUpdate({});
-    const portalNode = portal.current;
-    return () => {
-      if (host.contains(portalNode)) {
-        host.removeChild(portalNode);
-      }
-    };
-  }, [tempNode]);
-  const _children = (manager == null ? void 0 : manager.zIndex) ? /* @__PURE__ */ jsx(Container, { zIndex: manager == null ? void 0 : manager.zIndex, children }) : children;
-  return portal.current ? createPortal(
-    /* @__PURE__ */ jsx(PortalContextProvider, { value: portal.current, children: _children }),
-    portal.current
-  ) : /* @__PURE__ */ jsx(
-    "span",
-    {
-      ref: (el) => {
-        if (el)
-          setTempNode(el);
-      }
-    }
-  );
-};
-var ContainerPortal = (props) => {
-  const { children, containerRef, appendToParentPortal } = props;
-  const containerEl = containerRef.current;
-  const host = containerEl != null ? containerEl : typeof window !== "undefined" ? document.body : void 0;
-  const portal = useMemo(() => {
-    const node = containerEl == null ? void 0 : containerEl.ownerDocument.createElement("div");
-    if (node)
-      node.className = PORTAL_CLASSNAME;
-    return node;
-  }, [containerEl]);
-  const [, forceUpdate] = useState({});
-  useSafeLayoutEffect(() => forceUpdate({}), []);
-  useSafeLayoutEffect(() => {
-    if (!portal || !host)
-      return;
-    host.appendChild(portal);
-    return () => {
-      host.removeChild(portal);
-    };
-  }, [portal, host]);
-  if (host && portal) {
-    return createPortal(
-      /* @__PURE__ */ jsx(PortalContextProvider, { value: appendToParentPortal ? portal : null, children }),
-      portal
-    );
-  }
-  return null;
-};
-function Portal(props) {
-  const portalProps = {
-    appendToParentPortal: true,
-    ...props
-  };
-  const { containerRef, ...rest } = portalProps;
-  return containerRef ? /* @__PURE__ */ jsx(ContainerPortal, { containerRef, ...rest }) : /* @__PURE__ */ jsx(DefaultPortal, { ...rest });
-}
-Portal.className = PORTAL_CLASSNAME;
-Portal.selector = PORTAL_SELECTOR;
-Portal.displayName = "Portal";
-
-var EnvironmentContext = createContext$2({
+const EnvironmentContext = createContext$3({
   getDocument() {
     return document;
   },
@@ -33574,19 +36514,13 @@ var EnvironmentContext = createContext$2({
 EnvironmentContext.displayName = "EnvironmentContext";
 function EnvironmentProvider(props) {
   const { children, environment: environmentProp, disabled } = props;
-  const ref = useRef(null);
-  const context = useMemo(() => {
+  const ref = useRef$1(null);
+  const context = useMemo$1(() => {
     if (environmentProp)
       return environmentProp;
     return {
-      getDocument: () => {
-        var _a, _b;
-        return (_b = (_a = ref.current) == null ? void 0 : _a.ownerDocument) != null ? _b : document;
-      },
-      getWindow: () => {
-        var _a, _b;
-        return (_b = (_a = ref.current) == null ? void 0 : _a.ownerDocument.defaultView) != null ? _b : window;
-      }
+      getDocument: () => ref.current?.ownerDocument ?? document,
+      getWindow: () => ref.current?.ownerDocument.defaultView ?? window
     };
   }, [environmentProp]);
   const showSpan = !disabled || !environmentProp;
@@ -33597,7 +36531,7 @@ function EnvironmentProvider(props) {
 }
 EnvironmentProvider.displayName = "EnvironmentProvider";
 
-var ChakraProvider$1 = (props) => {
+const Provider = (props) => {
   const {
     children,
     colorModeManager,
@@ -33632,126 +36566,27 @@ var ChakraProvider$1 = (props) => {
   ) });
 };
 
-// src/toast.utils.ts
-var findById = (arr, id) => arr.find((toast) => toast.id === id);
-function findToast(toasts, id) {
-  const position = getToastPosition(toasts, id);
-  const index = position ? toasts[position].findIndex((toast) => toast.id === id) : -1;
-  return {
-    position,
-    index
-  };
-}
-function getToastPosition(toasts, id) {
-  for (const [position, values] of Object.entries(toasts)) {
-    if (findById(values, id)) {
-      return position;
-    }
-  }
-}
-function getToastStyle(position) {
-  const isRighty = position.includes("right");
-  const isLefty = position.includes("left");
-  let alignItems = "center";
-  if (isRighty)
-    alignItems = "flex-end";
-  if (isLefty)
-    alignItems = "flex-start";
-  return {
-    display: "flex",
-    flexDirection: "column",
-    alignItems
-  };
-}
-function getToastListStyle(position) {
-  const isTopOrBottom = position === "top" || position === "bottom";
-  const margin = isTopOrBottom ? "0 auto" : void 0;
-  const top = position.includes("top") ? "env(safe-area-inset-top, 0px)" : void 0;
-  const bottom = position.includes("bottom") ? "env(safe-area-inset-bottom, 0px)" : void 0;
-  const right = !position.includes("left") ? "env(safe-area-inset-right, 0px)" : void 0;
-  const left = !position.includes("right") ? "env(safe-area-inset-left, 0px)" : void 0;
-  return {
-    position: "fixed",
-    zIndex: "var(--toast-z-index, 5500)",
-    pointerEvents: "none",
-    display: "flex",
-    flexDirection: "column",
-    margin,
-    top,
-    bottom,
-    right,
-    left
-  };
-}
-
-function useCallbackRef(callback, deps = []) {
-  const callbackRef = useRef(callback);
-  useEffect(() => {
-    callbackRef.current = callback;
-  });
-  return useCallback((...args) => {
-    var _a;
-    return (_a = callbackRef.current) == null ? void 0 : _a.call(callbackRef, ...args);
-  }, deps);
-}
-
-function useTimeout(callback, delay) {
-  const fn = useCallbackRef(callback);
-  useEffect(() => {
-    if (delay == null)
-      return void 0;
-    let timeoutId = null;
-    timeoutId = window.setTimeout(() => {
-      fn();
-    }, delay);
-    return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-    };
-  }, [delay, fn]);
-}
-
-function useUpdateEffect(callback, deps) {
-  const renderCycleRef = useRef(false);
-  const effectCycleRef = useRef(false);
-  useEffect(() => {
-    const mounted = renderCycleRef.current;
-    const run = mounted && effectCycleRef.current;
-    if (run) {
-      return callback();
-    }
-    effectCycleRef.current = true;
-  }, deps);
-  useEffect(() => {
-    renderCycleRef.current = true;
-    return () => {
-      renderCycleRef.current = false;
-    };
-  }, []);
-}
-
 /**
  * @public
  */
-const MotionConfigContext = createContext$2({
+const MotionConfigContext = createContext$3({
     transformPagePoint: (p) => p,
     isStatic: false,
     reducedMotion: "never",
 });
 
-const MotionContext = createContext$2({});
+const MotionContext = createContext$3({});
 
 /**
  * @public
  */
-const PresenceContext = createContext$2(null);
+const PresenceContext = createContext$3(null);
 
-const isBrowser = typeof document !== "undefined";
+const isBrowser$1 = typeof document !== "undefined";
 
-const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect = isBrowser$1 ? useLayoutEffect$1 : useEffect$2;
 
-const LazyContext = createContext$2({ strict: false });
+const LazyContext = createContext$3({ strict: false });
 
 /**
  * Convert camelCase to dash-case properties.
@@ -33766,7 +36601,7 @@ function useVisualElement(Component, visualState, props, createVisualElement) {
     const lazyContext = useContext(LazyContext);
     const presenceContext = useContext(PresenceContext);
     const reducedMotionConfig = useContext(MotionConfigContext).reducedMotion;
-    const visualElementRef = useRef();
+    const visualElementRef = useRef$1();
     /**
      * If we haven't preloaded a renderer, check to see if we have one lazy-loaded
      */
@@ -33791,7 +36626,7 @@ function useVisualElement(Component, visualState, props, createVisualElement) {
      * Cache this value as we want to know whether HandoffAppearAnimations
      * was present on initial render - it will be deleted after this.
      */
-    const wantsHandoff = useRef(Boolean(props[optimizedAppearDataAttribute] && !window.HandoffComplete));
+    const wantsHandoff = useRef$1(Boolean(props[optimizedAppearDataAttribute] && !window.HandoffComplete));
     useIsomorphicLayoutEffect(() => {
         if (!visualElement)
             return;
@@ -33810,7 +36645,7 @@ function useVisualElement(Component, visualState, props, createVisualElement) {
             visualElement.animationState.animateChanges();
         }
     });
-    useEffect(() => {
+    useEffect$2(() => {
         if (!visualElement)
             return;
         visualElement.updateFeatures();
@@ -33908,7 +36743,7 @@ function getCurrentTreeVariants(props, context) {
 
 function useCreateMotionContext(props) {
     const { initial, animate } = getCurrentTreeVariants(props, useContext(MotionContext));
-    return useMemo(() => ({ initial, animate }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate)]);
+    return useMemo$1(() => ({ initial, animate }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate)]);
 }
 function variantLabelsAsDependency(prop) {
     return Array.isArray(prop) ? prop.join(" ") : prop;
@@ -33950,12 +36785,12 @@ function loadFeatures(features) {
     }
 }
 
-const LayoutGroupContext = createContext$2({});
+const LayoutGroupContext = createContext$3({});
 
 /**
  * Internal, exported only for usage in Framer
  */
-const SwitchLayoutGroupContext = createContext$2({});
+const SwitchLayoutGroupContext = createContext$3({});
 
 const motionComponentSymbol = Symbol.for("motionComponentSymbol");
 
@@ -33984,7 +36819,7 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, useRend
         const { isStatic } = configAndProps;
         const context = useCreateMotionContext(props);
         const visualState = useVisualState(props, isStatic);
-        if (!isStatic && isBrowser) {
+        if (!isStatic && isBrowser$1) {
             /**
              * Create a VisualElement for this component. A VisualElement provides a common
              * interface to renderer-specific APIs (ie DOM/Three.js etc) as well as
@@ -34012,7 +36847,7 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, useRend
             MeasureLayout && context.visualElement ? (React.createElement(MeasureLayout, { visualElement: context.visualElement, ...configAndProps })) : null,
             useRender(Component, props, useMotionRef(visualState, context.visualElement, externalRef), visualState, isStatic, context.visualElement)));
     }
-    const ForwardRefComponent = forwardRef$1(MotionComponent);
+    const ForwardRefComponent = forwardRef$2(MotionComponent);
     ForwardRefComponent[motionComponentSymbol] = Component;
     return ForwardRefComponent;
 }
@@ -34423,7 +37258,7 @@ function copyRawValuesOnly(target, source, props) {
     }
 }
 function useInitialMotionValues({ transformTemplate }, visualState, isStatic) {
-    return useMemo(() => {
+    return useMemo$1(() => {
         const state = createHtmlRenderState();
         buildHTMLStyles(state, visualState, { enableHardwareAcceleration: !isStatic }, transformTemplate);
         return Object.assign({}, state.vars, state.style);
@@ -34675,7 +37510,7 @@ const createSvgRenderState = () => ({
 const isSVGTag = (tag) => typeof tag === "string" && tag.toLowerCase() === "svg";
 
 function useSVGProps(props, visualState, _isStatic, Component) {
-    const visualProps = useMemo(() => {
+    const visualProps = useMemo$1(() => {
         const state = createSvgRenderState();
         buildSVGAttrs(state, visualState, { enableHardwareAcceleration: false }, isSVGTag(Component), props.transformTemplate);
         return {
@@ -34709,7 +37544,7 @@ function createUseRender(forwardMotionProps = false) {
          * will be handled by the onChange handler
          */
         const { children } = props;
-        const renderedChildren = useMemo(() => (isMotionValue(children) ? children.get() : children), [children]);
+        const renderedChildren = useMemo$1(() => (isMotionValue(children) ? children.get() : children), [children]);
         return createElement(Component, {
             ...elementProps,
             children: renderedChildren,
@@ -34821,7 +37656,7 @@ function resolveVariantFromProps(props, definition, custom, currentValues = {}, 
  * you can ensure that initialisers don't execute twice or more.
  */
 function useConstant(init) {
-    const ref = useRef(null);
+    const ref = useRef$1(null);
     if (ref.current === null) {
         ref.current = init();
     }
@@ -35184,7 +38019,7 @@ function addPointerEvent(target, eventName, handler, options) {
  * @return {function}
  */
 const combineFunctions = (a, b) => (v) => b(a(v));
-const pipe = (...transformers) => transformers.reduce(combineFunctions);
+const pipe$2 = (...transformers) => transformers.reduce(combineFunctions);
 
 function createLock(name) {
     let lock = null;
@@ -35266,7 +38101,7 @@ function addHoverEvent(node, isActive) {
 }
 class HoverGesture extends Feature {
     mount() {
-        this.unmount = pipe(addHoverEvent(this.node, true), addHoverEvent(this.node, false));
+        this.unmount = pipe$2(addHoverEvent(this.node, true), addHoverEvent(this.node, false));
     }
     unmount() { }
 }
@@ -35302,7 +38137,7 @@ class FocusGesture extends Feature {
         this.isActive = false;
     }
     mount() {
-        this.unmount = pipe(addDomEvent(this.node.current, "focus", () => this.onFocus()), addDomEvent(this.node.current, "blur", () => this.onBlur()));
+        this.unmount = pipe$2(addDomEvent(this.node.current, "focus", () => this.onFocus()), addDomEvent(this.node.current, "blur", () => this.onBlur()));
     }
     unmount() { }
 }
@@ -35360,7 +38195,7 @@ class PressGesture extends Feature {
             };
             const removePointerUpListener = addPointerEvent(window, "pointerup", endPointerPress, { passive: !(props.onTap || props["onPointerUp"]) });
             const removePointerCancelListener = addPointerEvent(window, "pointercancel", (cancelEvent, cancelInfo) => this.cancelPress(cancelEvent, cancelInfo), { passive: !(props.onTapCancel || props["onPointerCancel"]) });
-            this.removeEndListeners = pipe(removePointerUpListener, removePointerCancelListener);
+            this.removeEndListeners = pipe$2(removePointerUpListener, removePointerCancelListener);
             this.startPress(startEvent, startInfo);
         };
         this.startAccessiblePress = () => {
@@ -35390,7 +38225,7 @@ class PressGesture extends Feature {
                 fireSyntheticPointerEvent("cancel", (cancelEvent, cancelInfo) => this.cancelPress(cancelEvent, cancelInfo));
             };
             const removeBlurListener = addDomEvent(this.node.current, "blur", handleBlur);
-            this.removeAccessibleListeners = pipe(removeKeydownListener, removeBlurListener);
+            this.removeAccessibleListeners = pipe$2(removeKeydownListener, removeBlurListener);
         };
     }
     startPress(event, info) {
@@ -35427,7 +38262,7 @@ class PressGesture extends Feature {
         const props = this.node.getProps();
         const removePointerListener = addPointerEvent(props.globalTapTarget ? window : this.node.current, "pointerdown", this.startPointerPress, { passive: !(props.onTapStart || props["onPointerStart"]) });
         const removeFocusListener = addDomEvent(this.node.current, "focus", this.startAccessiblePress);
-        this.removeStartListeners = pipe(removePointerListener, removeFocusListener);
+        this.removeStartListeners = pipe$2(removePointerListener, removeFocusListener);
     }
     unmount() {
         this.removeStartListeners();
@@ -35879,7 +38714,7 @@ const hsla = {
     },
 };
 
-const color = {
+const color$1 = {
     test: (v) => rgba.test(v) || hex.test(v) || hsla.test(v),
     parse: (v) => {
         if (rgba.test(v)) {
@@ -36015,7 +38850,7 @@ const colorTokeniser = {
     regex: colorRegex,
     countKey: "Colors",
     token: "${c}",
-    parse: color.parse,
+    parse: color$1.parse,
 };
 const numberTokeniser = {
     regex: floatRegex,
@@ -36060,7 +38895,7 @@ function createTransformer(source) {
                 output = output.replace(cssVarTokeniser.token, v[i]);
             }
             else if (i < numVars + numColors) {
-                output = output.replace(colorTokeniser.token, color.transform(v[i]));
+                output = output.replace(colorTokeniser.token, color$1.transform(v[i]));
             }
             else {
                 output = output.replace(numberTokeniser.token, sanitize(v[i]));
@@ -36087,7 +38922,7 @@ function getMixer(origin, target) {
     if (typeof origin === "number") {
         return (v) => mix(origin, target, v);
     }
-    else if (color.test(origin)) {
+    else if (color$1.test(origin)) {
         return mixColor(origin, target);
     }
     else {
@@ -36130,7 +38965,7 @@ const mixComplex = (origin, target) => {
         originStats.numColors === targetStats.numColors &&
         originStats.numNumbers >= targetStats.numNumbers;
     if (canInterpolate) {
-        return pipe(mixArray(originStats.values, targetStats.values), template);
+        return pipe$2(mixArray(originStats.values, targetStats.values), template);
     }
     else {
         warning(true, `Complex values '${origin}' and '${target}' too different to mix. Ensure all colors are of the same type, and that each contains the same quantity of number and color values. Falling back to instant transition.`);
@@ -36161,7 +38996,7 @@ function detectMixerFactory(v) {
         return mixNumber;
     }
     else if (typeof v === "string") {
-        return color.test(v) ? mixColor : mixComplex;
+        return color$1.test(v) ? mixColor : mixComplex;
     }
     else if (Array.isArray(v)) {
         return mixArray;
@@ -36179,7 +39014,7 @@ function createMixers(output, ease, customMixer) {
         let mixer = mixerFactory(output[i], output[i + 1]);
         if (ease) {
             const easingFunction = Array.isArray(ease) ? ease[i] || noop : ease;
-            mixer = pipe(easingFunction, mixer);
+            mixer = pipe$2(easingFunction, mixer);
         }
         mixers.push(mixer);
     }
@@ -37245,7 +40080,7 @@ function applyDefaultFilter(v) {
     return name + "(" + defaultValue + unit + ")";
 }
 const functionRegex = /([a-z-]*)\(.*?\)/g;
-const filter = {
+const filter$1 = {
     ...complex,
     getAnimatableNone: (v) => {
         const functions = v.match(functionRegex);
@@ -37259,19 +40094,19 @@ const filter = {
 const defaultValueTypes = {
     ...numberValueTypes,
     // Color props
-    color,
-    backgroundColor: color,
-    outlineColor: color,
-    fill: color,
-    stroke: color,
+    color: color$1,
+    backgroundColor: color$1,
+    outlineColor: color$1,
+    fill: color$1,
+    stroke: color$1,
     // Border props
-    borderColor: color,
-    borderTopColor: color,
-    borderRightColor: color,
-    borderBottomColor: color,
-    borderLeftColor: color,
-    filter,
-    WebkitFilter: filter,
+    borderColor: color$1,
+    borderTopColor: color$1,
+    borderRightColor: color$1,
+    borderBottomColor: color$1,
+    borderLeftColor: color$1,
+    filter: filter$1,
+    WebkitFilter: filter$1,
 };
 /**
  * Gets the default ValueType for the provided value key
@@ -37280,7 +40115,7 @@ const getDefaultValueType = (key) => defaultValueTypes[key];
 
 function getAnimatableNone(key, value) {
     let defaultValueType = getDefaultValueType(key);
-    if (defaultValueType !== filter)
+    if (defaultValueType !== filter$1)
         defaultValueType = complex;
     // If value is not recognised as animatable, ie "none", create an animatable version origin based on the target
     return defaultValueType.getAnimatableNone
@@ -37877,7 +40712,7 @@ const findDimensionValueType = (v) => dimensionValueTypes.find(testValueType(v))
 /**
  * A list of all ValueTypes
  */
-const valueTypes = [...dimensionValueTypes, color, complex];
+const valueTypes = [...dimensionValueTypes, color$1, complex];
 /**
  * Tests a value against the list of ValueTypes
  */
@@ -38609,7 +41444,7 @@ class PanSession {
         const { onSessionStart } = handlers;
         onSessionStart &&
             onSessionStart(event, getPanInfo(initialInfo, this.history));
-        this.removeListeners = pipe(addPointerEvent(this.contextWindow, "pointermove", this.handlePointerMove), addPointerEvent(this.contextWindow, "pointerup", this.handlePointerUp), addPointerEvent(this.contextWindow, "pointercancel", this.handlePointerUp));
+        this.removeListeners = pipe$2(addPointerEvent(this.contextWindow, "pointermove", this.handlePointerMove), addPointerEvent(this.contextWindow, "pointerup", this.handlePointerUp), addPointerEvent(this.contextWindow, "pointercancel", this.handlePointerUp));
     }
     updateHandlers(handlers) {
         this.handlers = handlers;
@@ -39598,7 +42433,7 @@ function usePresence() {
     // It's safe to call the following hooks conditionally (after an early return) because the context will always
     // either be null or non-null for the lifespan of the component.
     const id = useId();
-    useEffect(() => register(id), []);
+    useEffect$2(() => register(id), []);
     const safeToRemove = () => onExitComplete && onExitComplete(id);
     return !isPresent && onExitComplete ? [false, safeToRemove] : [true];
 }
@@ -42013,7 +44848,7 @@ const checkAndConvertChangedValueTypes = (visualElement, target, origin = {}, tr
         // Reapply original values
         visualElement.render();
         // Restore scroll position
-        if (isBrowser && scrollY !== null) {
+        if (isBrowser$1 && scrollY !== null) {
             window.scrollTo({ top: scrollY });
         }
         return { target: convertedTarget, transitionEnd };
@@ -42052,7 +44887,7 @@ const hasReducedMotionListener = { current: false };
 
 function initPrefersReducedMotion() {
     hasReducedMotionListener.current = true;
-    if (!isBrowser)
+    if (!isBrowser$1)
         return;
     if (window.matchMedia) {
         const motionMediaQuery = window.matchMedia("(prefers-reduced-motion)");
@@ -42744,7 +45579,7 @@ const createDomVisualElement = (Component, options) => {
         : new HTMLVisualElement(options, { enableHardwareAcceleration: true });
 };
 
-const layout = {
+const layout$1 = {
     layout: {
         ProjectionNode: HTMLProjectionNode,
         MeasureLayout,
@@ -42755,7 +45590,7 @@ const preloadedFeatures = {
     ...animations,
     ...gestureAnimations,
     ...drag,
-    ...layout,
+    ...layout$1,
 };
 /**
  * HTML & SVG components, optimised for use with gestures and animation. These can be used as
@@ -42766,7 +45601,7 @@ const preloadedFeatures = {
 const motion = /*@__PURE__*/ createMotionProxy((Component, config) => createDomMotionConfig(Component, config, preloadedFeatures, createDomVisualElement));
 
 function useIsMounted() {
-    const isMounted = useRef(false);
+    const isMounted = useRef$1(false);
     useIsomorphicLayoutEffect(() => {
         isMounted.current = true;
         return () => {
@@ -42778,7 +45613,7 @@ function useIsMounted() {
 
 function useForceUpdate() {
     const isMounted = useIsMounted();
-    const [forcedRenderCount, setForcedRenderCount] = useState(0);
+    const [forcedRenderCount, setForcedRenderCount] = useState$1(0);
     const forceRender = useCallback(() => {
         isMounted.current && setForcedRenderCount(forcedRenderCount + 1);
     }, [forcedRenderCount]);
@@ -42816,8 +45651,8 @@ class PopChildMeasure extends React.Component {
 }
 function PopChild({ children, isPresent }) {
     const id = useId();
-    const ref = useRef(null);
-    const size = useRef({
+    const ref = useRef$1(null);
+    const size = useRef$1({
         width: 0,
         height: 0,
         top: 0,
@@ -42860,7 +45695,7 @@ function PopChild({ children, isPresent }) {
 const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, presenceAffectsLayout, mode, }) => {
     const presenceChildren = useConstant(newChildrenMap);
     const id = useId();
-    const context = useMemo(() => ({
+    const context = useMemo$1(() => ({
         id,
         initial,
         isPresent,
@@ -42884,7 +45719,7 @@ const PresenceChild = ({ children, initial, isPresent, onExitComplete, custom, p
      * so they can detect that layout change.
      */
     presenceAffectsLayout ? undefined : [isPresent]);
-    useMemo(() => {
+    useMemo$1(() => {
         presenceChildren.forEach((_, key) => presenceChildren.set(key, false));
     }, [isPresent]);
     /**
@@ -42907,7 +45742,7 @@ function newChildrenMap() {
 }
 
 function useUnmountEffect(callback) {
-    return useEffect(() => () => callback(), []);
+    return useEffect$2(() => () => callback(), []);
 }
 
 const getChildKey = (child) => child.key || "";
@@ -42968,15 +45803,15 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
     // Filter out any children that aren't ReactElements. We can only track ReactElements with a props.key
     const filteredChildren = onlyElements(children);
     let childrenToRender = filteredChildren;
-    const exitingChildren = useRef(new Map()).current;
+    const exitingChildren = useRef$1(new Map()).current;
     // Keep a living record of the children we're actually rendering so we
     // can diff to figure out which are entering and exiting
-    const presentChildren = useRef(childrenToRender);
+    const presentChildren = useRef$1(childrenToRender);
     // A lookup table to quickly reference components by key
-    const allChildren = useRef(new Map()).current;
+    const allChildren = useRef$1(new Map()).current;
     // If this is the initial component render, just deal with logic surrounding whether
     // we play onMount animations or not.
-    const isInitialRender = useRef(true);
+    const isInitialRender = useRef$1(true);
     useIsomorphicLayoutEffect(() => {
         isInitialRender.current = false;
         updateChildLookup(filteredChildren, allChildren);
@@ -43068,7 +45903,146 @@ const AnimatePresence = ({ children, custom, initial = true, onExitComplete, exi
         : childrenToRender.map((child) => cloneElement(child))));
 };
 
-var toastMotionVariants = {
+const findById = (arr, id) => arr.find((toast) => toast.id === id);
+function findToast(toasts, id) {
+  const position = getToastPosition(toasts, id);
+  const index = position ? toasts[position].findIndex((toast) => toast.id === id) : -1;
+  return {
+    position,
+    index
+  };
+}
+function getToastPosition(toasts, id) {
+  for (const [position, values] of Object.entries(toasts)) {
+    if (findById(values, id)) {
+      return position;
+    }
+  }
+}
+function getToastStyle(position) {
+  const isRighty = position.includes("right");
+  const isLefty = position.includes("left");
+  let alignItems = "center";
+  if (isRighty)
+    alignItems = "flex-end";
+  if (isLefty)
+    alignItems = "flex-start";
+  return {
+    display: "flex",
+    flexDirection: "column",
+    alignItems
+  };
+}
+function getToastListStyle(position) {
+  const isTopOrBottom = position === "top" || position === "bottom";
+  const margin = isTopOrBottom ? "0 auto" : void 0;
+  const top = position.includes("top") ? "env(safe-area-inset-top, 0px)" : void 0;
+  const bottom = position.includes("bottom") ? "env(safe-area-inset-bottom, 0px)" : void 0;
+  const right = !position.includes("left") ? "env(safe-area-inset-right, 0px)" : void 0;
+  const left = !position.includes("right") ? "env(safe-area-inset-left, 0px)" : void 0;
+  return {
+    position: "fixed",
+    zIndex: "var(--toast-z-index, 5500)",
+    pointerEvents: "none",
+    display: "flex",
+    flexDirection: "column",
+    margin,
+    top,
+    bottom,
+    right,
+    left
+  };
+}
+
+const allPropNames = /* @__PURE__ */ new Set([
+  ...propNames,
+  "textStyle",
+  "layerStyle",
+  "apply",
+  "noOfLines",
+  "focusBorderColor",
+  "errorBorderColor",
+  "as",
+  "__css",
+  "css",
+  "sx"
+]);
+const validHTMLProps = /* @__PURE__ */ new Set([
+  "htmlWidth",
+  "htmlHeight",
+  "htmlSize",
+  "htmlTranslate"
+]);
+function shouldForwardProp(prop) {
+  return (validHTMLProps.has(prop) || !allPropNames.has(prop)) && prop[0] !== "_";
+}
+
+const emotion_styled = interopDefault(styled$2);
+const toCSSObject = ({ baseStyle }) => (props) => {
+  const { theme, css: cssProp, __css, sx, ...restProps } = props;
+  const [styleProps] = splitProps(restProps, isStyleProp);
+  const finalBaseStyle = runIfFn$1(baseStyle, props);
+  const finalStyles = assignAfter(
+    {},
+    __css,
+    finalBaseStyle,
+    compact(styleProps),
+    sx
+  );
+  const computedCSS = css$1(finalStyles)(props.theme);
+  return cssProp ? [computedCSS, cssProp] : computedCSS;
+};
+function styled(component, options) {
+  const { baseStyle, ...styledOptions } = options ?? {};
+  if (!styledOptions.shouldForwardProp) {
+    styledOptions.shouldForwardProp = shouldForwardProp;
+  }
+  const styleObject = toCSSObject({ baseStyle });
+  const Component = emotion_styled(
+    component,
+    styledOptions
+  )(styleObject);
+  const chakraComponent = forwardRef$2(
+    function ChakraComponent2(props, ref) {
+      const { children, ...restProps } = props;
+      const { colorMode, forced } = useColorMode();
+      const dataTheme = forced ? colorMode : void 0;
+      return createElement(
+        Component,
+        { ref, "data-theme": dataTheme, ...restProps },
+        children
+      );
+    }
+  );
+  return chakraComponent;
+}
+
+function factory() {
+  const cache = /* @__PURE__ */ new Map();
+  return new Proxy(styled, {
+    /**
+     * @example
+     * const Div = chakra("div")
+     * const WithChakra = chakra(AnotherComponent)
+     */
+    apply(target, thisArg, argArray) {
+      return styled(...argArray);
+    },
+    /**
+     * @example
+     * <chakra.div />
+     */
+    get(_, element) {
+      if (!cache.has(element)) {
+        cache.set(element, styled(element));
+      }
+      return cache.get(element);
+    }
+  });
+}
+const chakra = factory();
+
+const toastMotionVariants = {
   initial: (props) => {
     const { position } = props;
     const dir = ["top", "bottom"].includes(position) ? "y" : "x";
@@ -43099,7 +46073,7 @@ var toastMotionVariants = {
     }
   }
 };
-var ToastComponent = memo$1((props) => {
+const ToastComponent = memo$1((props) => {
   const {
     id,
     message,
@@ -43112,11 +46086,11 @@ var ToastComponent = memo$1((props) => {
     motionVariants = toastMotionVariants,
     toastSpacing = "0.5rem"
   } = props;
-  const [delay, setDelay] = useState(duration);
+  const [delay, setDelay] = useState$1(duration);
   const isPresent = useIsPresent();
   useUpdateEffect(() => {
     if (!isPresent) {
-      onCloseComplete == null ? void 0 : onCloseComplete();
+      onCloseComplete?.();
     }
   }, [isPresent]);
   useUpdateEffect(() => {
@@ -43128,13 +46102,13 @@ var ToastComponent = memo$1((props) => {
     if (isPresent)
       onRequestRemove();
   };
-  useEffect(() => {
+  useEffect$2(() => {
     if (isPresent && requestClose) {
       onRequestRemove();
     }
   }, [isPresent, requestClose, onRequestRemove]);
   useTimeout(close, delay);
-  const containerStyles = useMemo(
+  const containerStyles = useMemo$1(
     () => ({
       pointerEvents: "auto",
       maxWidth: 560,
@@ -43144,7 +46118,7 @@ var ToastComponent = memo$1((props) => {
     }),
     [containerStyle, toastSpacing]
   );
-  const toastStyle = useMemo(() => getToastStyle(position), [position]);
+  const toastStyle = useMemo$1(() => getToastStyle(position), [position]);
   return /* @__PURE__ */ jsx(
     motion.div,
     {
@@ -43165,13 +46139,311 @@ var ToastComponent = memo$1((props) => {
           "aria-atomic": "true",
           className: "chakra-toast__inner",
           __css: containerStyles,
-          children: runIfFn$2(message, { id, onClose: close })
+          children: runIfFn$1(message, { id, onClose: close })
         }
       )
     }
   );
 });
 ToastComponent.displayName = "ToastComponent";
+
+function forwardRef(component) {
+  return forwardRef$2(component);
+}
+
+function useTheme() {
+  const theme = useContext(
+    ThemeContext
+  );
+  if (!theme) {
+    throw Error(
+      "useTheme: `theme` is undefined. Seems you forgot to wrap your app in `<ChakraProvider />` or `<ThemeProvider />`"
+    );
+  }
+  return theme;
+}
+
+function useChakra() {
+  const colorModeResult = useColorMode();
+  const theme = useTheme();
+  return { ...colorModeResult, theme };
+}
+
+function omitReactElements(props) {
+  return Object.fromEntries(
+    Object.entries(props).filter(([key, value]) => {
+      return value !== void 0 && key !== "children" && !isValidElement(value);
+    })
+  );
+}
+function useStyleConfigImpl(themeKey, props = {}) {
+  const { styleConfig: styleConfigProp, ...rest } = props;
+  const { theme, colorMode } = useChakra();
+  const themeStyleConfig = themeKey ? memoizedGet$2(theme, `components.${themeKey}`) : void 0;
+  const styleConfig = styleConfigProp || themeStyleConfig;
+  const mergedProps = mergeWith(
+    { theme, colorMode },
+    styleConfig?.defaultProps ?? {},
+    omitReactElements(rest),
+    (obj, src) => !obj ? src : void 0
+  );
+  const stylesRef = useRef$1({});
+  if (styleConfig) {
+    const getStyles = resolveStyleConfig(styleConfig);
+    const styles = getStyles(mergedProps);
+    const isStyleEqual = reactFastCompare(stylesRef.current, styles);
+    if (!isStyleEqual) {
+      stylesRef.current = styles;
+    }
+  }
+  return stylesRef.current;
+}
+function useStyleConfig(themeKey, props = {}) {
+  return useStyleConfigImpl(themeKey, props);
+}
+function useMultiStyleConfig(themeKey, props = {}) {
+  return useStyleConfigImpl(themeKey, props);
+}
+
+const fallbackIcon = {
+  path: /* @__PURE__ */ jsxs("g", { stroke: "currentColor", strokeWidth: "1.5", children: [
+    /* @__PURE__ */ jsx(
+      "path",
+      {
+        strokeLinecap: "round",
+        fill: "none",
+        d: "M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
+      }
+    ),
+    /* @__PURE__ */ jsx(
+      "path",
+      {
+        fill: "currentColor",
+        strokeLinecap: "round",
+        d: "M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
+      }
+    ),
+    /* @__PURE__ */ jsx("circle", { fill: "none", strokeMiterlimit: "10", cx: "12", cy: "12", r: "11.25" })
+  ] }),
+  viewBox: "0 0 24 24"
+};
+const Icon = forwardRef((props, ref) => {
+  const {
+    as: element,
+    viewBox,
+    color = "currentColor",
+    focusable = false,
+    children,
+    className,
+    __css,
+    ...rest
+  } = props;
+  const _className = cx("chakra-icon", className);
+  const customStyles = useStyleConfig("Icon", props);
+  const styles = {
+    w: "1em",
+    h: "1em",
+    display: "inline-block",
+    lineHeight: "1em",
+    flexShrink: 0,
+    color,
+    ...__css,
+    ...customStyles
+  };
+  const shared = {
+    ref,
+    focusable,
+    className: _className,
+    __css: styles
+  };
+  const _viewBox = viewBox ?? fallbackIcon.viewBox;
+  if (element && typeof element !== "string") {
+    return /* @__PURE__ */ jsx(chakra.svg, { as: element, ...shared, ...rest });
+  }
+  const _path = children ?? fallbackIcon.path;
+  return /* @__PURE__ */ jsx(chakra.svg, { verticalAlign: "middle", viewBox: _viewBox, ...shared, ...rest, children: _path });
+});
+Icon.displayName = "Icon";
+
+function CheckIcon(props) {
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+    "path",
+    {
+      fill: "currentColor",
+      d: "M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
+    }
+  ) });
+}
+function InfoIcon(props) {
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+    "path",
+    {
+      fill: "currentColor",
+      d: "M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+    }
+  ) });
+}
+function WarningIcon(props) {
+  return /* @__PURE__ */ jsx(Icon, { viewBox: "0 0 24 24", ...props, children: /* @__PURE__ */ jsx(
+    "path",
+    {
+      fill: "currentColor",
+      d: "M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z"
+    }
+  ) });
+}
+
+const spin = keyframes$1({
+  "0%": {
+    transform: "rotate(0deg)"
+  },
+  "100%": {
+    transform: "rotate(360deg)"
+  }
+});
+const Spinner = forwardRef((props, ref) => {
+  const styles = useStyleConfig("Spinner", props);
+  const {
+    label = "Loading...",
+    thickness = "2px",
+    speed = "0.45s",
+    emptyColor = "transparent",
+    className,
+    ...rest
+  } = omitThemingProps(props);
+  const _className = cx("chakra-spinner", className);
+  const spinnerStyles = {
+    display: "inline-block",
+    borderColor: "currentColor",
+    borderStyle: "solid",
+    borderRadius: "99999px",
+    borderWidth: thickness,
+    borderBottomColor: emptyColor,
+    borderLeftColor: emptyColor,
+    animation: `${spin} ${speed} linear infinite`,
+    ...styles
+  };
+  return /* @__PURE__ */ jsx(
+    chakra.div,
+    {
+      ref,
+      __css: spinnerStyles,
+      className: _className,
+      ...rest,
+      children: label && /* @__PURE__ */ jsx(chakra.span, { srOnly: true, children: label })
+    }
+  );
+});
+Spinner.displayName = "Spinner";
+
+const [AlertProvider, useAlertContext] = createContext({
+  name: "AlertContext",
+  hookName: "useAlertContext",
+  providerName: "<Alert />"
+});
+const [AlertStylesProvider, useAlertStyles] = createContext({
+  name: `AlertStylesContext`,
+  hookName: `useAlertStyles`,
+  providerName: "<Alert />"
+});
+const STATUSES = {
+  info: { icon: InfoIcon, colorScheme: "blue" },
+  warning: { icon: WarningIcon, colorScheme: "orange" },
+  success: { icon: CheckIcon, colorScheme: "green" },
+  error: { icon: WarningIcon, colorScheme: "red" },
+  loading: { icon: Spinner, colorScheme: "blue" }
+};
+function getStatusColorScheme(status) {
+  return STATUSES[status].colorScheme;
+}
+function getStatusIcon(status) {
+  return STATUSES[status].icon;
+}
+
+const Alert$1 = forwardRef(function Alert2(props, ref) {
+  const { status = "info", addRole = true, ...rest } = omitThemingProps(props);
+  const colorScheme = props.colorScheme ?? getStatusColorScheme(status);
+  const styles = useMultiStyleConfig("Alert", { ...props, colorScheme });
+  const alertStyles = defineStyle({
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    position: "relative",
+    overflow: "hidden",
+    ...styles.container
+  });
+  return /* @__PURE__ */ jsx(AlertProvider, { value: { status }, children: /* @__PURE__ */ jsx(AlertStylesProvider, { value: styles, children: /* @__PURE__ */ jsx(
+    chakra.div,
+    {
+      "data-status": status,
+      role: addRole ? "alert" : void 0,
+      ref,
+      ...rest,
+      className: cx("chakra-alert", props.className),
+      __css: alertStyles
+    }
+  ) }) });
+});
+Alert$1.displayName = "Alert";
+
+function AlertIcon(props) {
+  const { status } = useAlertContext();
+  const BaseIcon = getStatusIcon(status);
+  const styles = useAlertStyles();
+  const css = status === "loading" ? styles.spinner : styles.icon;
+  return /* @__PURE__ */ jsx(
+    chakra.span,
+    {
+      display: "inherit",
+      "data-status": status,
+      ...props,
+      className: cx("chakra-alert__icon", props.className),
+      __css: css,
+      children: props.children || /* @__PURE__ */ jsx(BaseIcon, { h: "100%", w: "100%" })
+    }
+  );
+}
+AlertIcon.displayName = "AlertIcon";
+
+const AlertTitle = forwardRef(
+  function AlertTitle2(props, ref) {
+    const styles = useAlertStyles();
+    const { status } = useAlertContext();
+    return /* @__PURE__ */ jsx(
+      chakra.div,
+      {
+        ref,
+        "data-status": status,
+        ...props,
+        className: cx("chakra-alert__title", props.className),
+        __css: styles.title
+      }
+    );
+  }
+);
+AlertTitle.displayName = "AlertTitle";
+
+const AlertDescription = forwardRef(
+  function AlertDescription2(props, ref) {
+    const { status } = useAlertContext();
+    const styles = useAlertStyles();
+    const descriptionStyles = defineStyle({
+      display: "inline",
+      ...styles.description
+    });
+    return /* @__PURE__ */ jsx(
+      chakra.div,
+      {
+        ref,
+        "data-status": status,
+        ...props,
+        className: cx("chakra-alert__desc", props.className),
+        __css: descriptionStyles
+      }
+    );
+  }
+);
+AlertDescription.displayName = "AlertDescription";
 
 function CloseIcon(props) {
   return /* @__PURE__ */ jsx(Icon, { focusable: "false", "aria-hidden": true, ...props, children: /* @__PURE__ */ jsx(
@@ -43182,7 +46454,7 @@ function CloseIcon(props) {
     }
   ) });
 }
-var CloseButton = forwardRef(
+const CloseButton = forwardRef(
   function CloseButton2(props, ref) {
     const styles = useStyleConfig("CloseButton", props);
     const { children, isDisabled, __css, ...rest } = omitThemingProps(props);
@@ -43213,8 +46485,69 @@ var CloseButton = forwardRef(
 );
 CloseButton.displayName = "CloseButton";
 
-// src/toast.store.ts
-var initialState = {
+const Toast = (props) => {
+  const {
+    status,
+    variant = "solid",
+    id,
+    title,
+    isClosable,
+    onClose,
+    description,
+    colorScheme,
+    icon
+  } = props;
+  const ids = id ? {
+    root: `toast-${id}`,
+    title: `toast-${id}-title`,
+    description: `toast-${id}-description`
+  } : void 0;
+  return /* @__PURE__ */ jsxs(
+    Alert$1,
+    {
+      addRole: false,
+      status,
+      variant,
+      id: ids?.root,
+      alignItems: "start",
+      borderRadius: "md",
+      boxShadow: "lg",
+      paddingEnd: 8,
+      textAlign: "start",
+      width: "auto",
+      colorScheme,
+      children: [
+        /* @__PURE__ */ jsx(AlertIcon, { children: icon }),
+        /* @__PURE__ */ jsxs(chakra.div, { flex: "1", maxWidth: "100%", children: [
+          title && /* @__PURE__ */ jsx(AlertTitle, { id: ids?.title, children: title }),
+          description && /* @__PURE__ */ jsx(AlertDescription, { id: ids?.description, display: "block", children: description })
+        ] }),
+        isClosable && /* @__PURE__ */ jsx(
+          CloseButton,
+          {
+            size: "sm",
+            onClick: onClose,
+            position: "absolute",
+            insetEnd: 1,
+            top: 1
+          }
+        )
+      ]
+    }
+  );
+};
+function createRenderToast(options = {}) {
+  const { render, toastComponent: ToastComponent = Toast } = options;
+  const renderToast = (props) => {
+    if (typeof render === "function") {
+      return render({ ...props, ...options });
+    }
+    return /* @__PURE__ */ jsx(ToastComponent, { ...props, ...options });
+  };
+  return renderToast;
+}
+
+const initialState = {
   top: [],
   "top-left": [],
   "top-right": [],
@@ -43222,7 +46555,7 @@ var initialState = {
   bottom: [],
   "bottom-right": []
 };
-var toastStore = createStore$1(initialState);
+const toastStore = createStore$1(initialState);
 function createStore$1(initialState2) {
   let state = initialState2;
   const listeners = /* @__PURE__ */ new Set();
@@ -43254,9 +46587,8 @@ function createStore$1(initialState2) {
       const toast = createToast(message, options);
       const { position, id } = toast;
       setState((prevToasts) => {
-        var _a, _b;
         const isTop = position.includes("top");
-        const toasts = isTop ? [toast, ...(_a = prevToasts[position]) != null ? _a : []] : [...(_b = prevToasts[position]) != null ? _b : [], toast];
+        const toasts = isTop ? [toast, ...prevToasts[position] ?? []] : [...prevToasts[position] ?? [], toast];
         return {
           ...prevToasts,
           [position]: toasts
@@ -43290,7 +46622,7 @@ function createStore$1(initialState2) {
           "top-left",
           "top-right"
         ];
-        const positionsToClose = positions != null ? positions : allPositions;
+        const positionsToClose = positions ?? allPositions;
         return positionsToClose.reduce(
           (acc, position) => {
             acc[position] = prev[position].map((toast) => ({
@@ -43325,12 +46657,11 @@ function createStore$1(initialState2) {
     isActive: (id) => Boolean(findToast(toastStore.getState(), id).position)
   };
 }
-var counter = 0;
+let counter = 0;
 function createToast(message, options = {}) {
-  var _a, _b;
   counter += 1;
-  const id = (_a = options.id) != null ? _a : counter;
-  const position = (_b = options.position) != null ? _b : "bottom";
+  const id = options.id ?? counter;
+  const position = options.position ?? "bottom";
   return {
     id,
     message,
@@ -43343,74 +46674,115 @@ function createToast(message, options = {}) {
     containerStyle: options.containerStyle
   };
 }
-var Toast = (props) => {
-  const {
-    status,
-    variant = "solid",
-    id,
-    title,
-    isClosable,
-    onClose,
-    description,
-    colorScheme,
-    icon
-  } = props;
-  const ids = id ? {
-    root: `toast-${id}`,
-    title: `toast-${id}-title`,
-    description: `toast-${id}-description`
-  } : void 0;
-  return /* @__PURE__ */ jsxs(
-    Alert$1,
+
+const [PortalContextProvider, usePortalContext] = createContext({
+  strict: false,
+  name: "PortalContext"
+});
+const PORTAL_CLASSNAME = "chakra-portal";
+const PORTAL_SELECTOR = `.chakra-portal`;
+const Container = (props) => /* @__PURE__ */ jsx(
+  "div",
+  {
+    className: "chakra-portal-zIndex",
+    style: {
+      position: "absolute",
+      zIndex: props.zIndex,
+      top: 0,
+      left: 0,
+      right: 0
+      // NB: Don't add `bottom: 0`, it makes the entire app unusable
+      // @see https://github.com/chakra-ui/chakra-ui/issues/3201
+    },
+    children: props.children
+  }
+);
+const DefaultPortal = (props) => {
+  const { appendToParentPortal, children } = props;
+  const [tempNode, setTempNode] = useState$1(null);
+  const portal = useRef$1(null);
+  const [, forceUpdate] = useState$1({});
+  useEffect$2(() => forceUpdate({}), []);
+  const parentPortal = usePortalContext();
+  const manager = usePortalManager();
+  useSafeLayoutEffect$1(() => {
+    if (!tempNode)
+      return;
+    const doc = tempNode.ownerDocument;
+    const host = appendToParentPortal ? parentPortal ?? doc.body : doc.body;
+    if (!host)
+      return;
+    portal.current = doc.createElement("div");
+    portal.current.className = PORTAL_CLASSNAME;
+    host.appendChild(portal.current);
+    forceUpdate({});
+    const portalNode = portal.current;
+    return () => {
+      if (host.contains(portalNode)) {
+        host.removeChild(portalNode);
+      }
+    };
+  }, [tempNode]);
+  const _children = manager?.zIndex ? /* @__PURE__ */ jsx(Container, { zIndex: manager?.zIndex, children }) : children;
+  return portal.current ? createPortal(
+    /* @__PURE__ */ jsx(PortalContextProvider, { value: portal.current, children: _children }),
+    portal.current
+  ) : /* @__PURE__ */ jsx(
+    "span",
     {
-      addRole: false,
-      status,
-      variant,
-      id: ids == null ? void 0 : ids.root,
-      alignItems: "start",
-      borderRadius: "md",
-      boxShadow: "lg",
-      paddingEnd: 8,
-      textAlign: "start",
-      width: "auto",
-      colorScheme,
-      children: [
-        /* @__PURE__ */ jsx(AlertIcon, { children: icon }),
-        /* @__PURE__ */ jsxs(chakra.div, { flex: "1", maxWidth: "100%", children: [
-          title && /* @__PURE__ */ jsx(AlertTitle, { id: ids == null ? void 0 : ids.title, children: title }),
-          description && /* @__PURE__ */ jsx(AlertDescription, { id: ids == null ? void 0 : ids.description, display: "block", children: description })
-        ] }),
-        isClosable && /* @__PURE__ */ jsx(
-          CloseButton,
-          {
-            size: "sm",
-            onClick: onClose,
-            position: "absolute",
-            insetEnd: 1,
-            top: 1
-          }
-        )
-      ]
+      ref: (el) => {
+        if (el)
+          setTempNode(el);
+      }
     }
   );
 };
-function createRenderToast(options = {}) {
-  const { render, toastComponent: ToastComponent = Toast } = options;
-  const renderToast = (props) => {
-    if (typeof render === "function") {
-      return render({ ...props, ...options });
-    }
-    return /* @__PURE__ */ jsx(ToastComponent, { ...props, ...options });
+const ContainerPortal = (props) => {
+  const { children, containerRef, appendToParentPortal } = props;
+  const containerEl = containerRef.current;
+  const host = containerEl ?? (typeof window !== "undefined" ? document.body : void 0);
+  const portal = useMemo$1(() => {
+    const node = containerEl?.ownerDocument.createElement("div");
+    if (node)
+      node.className = PORTAL_CLASSNAME;
+    return node;
+  }, [containerEl]);
+  const [, forceUpdate] = useState$1({});
+  useSafeLayoutEffect$1(() => forceUpdate({}), []);
+  useSafeLayoutEffect$1(() => {
+    if (!portal || !host)
+      return;
+    host.appendChild(portal);
+    return () => {
+      host.removeChild(portal);
+    };
+  }, [portal, host]);
+  if (host && portal) {
+    return createPortal(
+      /* @__PURE__ */ jsx(PortalContextProvider, { value: appendToParentPortal ? portal : null, children }),
+      portal
+    );
+  }
+  return null;
+};
+function Portal(props) {
+  const portalProps = {
+    appendToParentPortal: true,
+    ...props
   };
-  return renderToast;
+  const { containerRef, ...rest } = portalProps;
+  return containerRef ? /* @__PURE__ */ jsx(ContainerPortal, { containerRef, ...rest }) : /* @__PURE__ */ jsx(DefaultPortal, { ...rest });
 }
+Portal.className = PORTAL_CLASSNAME;
+Portal.selector = PORTAL_SELECTOR;
+Portal.displayName = "Portal";
 
-var [ToastOptionProvider, useToastOptionContext] = createContext$1({
+const [ToastOptionProvider, useToastOptionContext] = createContext({
   name: `ToastOptionsContext`,
   strict: false
 });
-var ToastProvider = (props) => {
-  const state = useSyncExternalStore$1(
+const ToastProvider = (props) => {
+  const state = useSyncExternalStore$4(
     toastStore.subscribe,
     toastStore.getState,
     toastStore.getState
@@ -43418,7 +46790,8 @@ var ToastProvider = (props) => {
   const {
     motionVariants,
     component: Component = ToastComponent,
-    portalProps
+    portalProps,
+    animatePresenceProps
   } = props;
   const stateKeys = Object.keys(state);
   const toastList = stateKeys.map((position) => {
@@ -43431,7 +46804,7 @@ var ToastProvider = (props) => {
         "aria-label": `Notifications-${position}`,
         id: `chakra-toast-manager-${position}`,
         style: getToastListStyle(position),
-        children: /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: toasts.map((toast) => /* @__PURE__ */ jsx(
+        children: /* @__PURE__ */ jsx(AnimatePresence, { ...animatePresenceProps, initial: false, children: toasts.map((toast) => /* @__PURE__ */ jsx(
           Component,
           {
             motionVariants,
@@ -43446,22 +46819,72 @@ var ToastProvider = (props) => {
   return /* @__PURE__ */ jsx(Portal, { ...portalProps, children: toastList });
 };
 
-var createChakraProvider = (providerTheme) => {
-  return function ChakraProvider2({
+const createProvider = (providerTheme) => {
+  return function ChakraProvider({
     children,
     theme = providerTheme,
     toastOptions,
     ...restProps
   }) {
-    return /* @__PURE__ */ jsxs(ChakraProvider$1, { theme, ...restProps, children: [
-      /* @__PURE__ */ jsx(ToastOptionProvider, { value: toastOptions == null ? void 0 : toastOptions.defaultOptions, children }),
+    return /* @__PURE__ */ jsxs(Provider, { theme, ...restProps, children: [
+      /* @__PURE__ */ jsx(ToastOptionProvider, { value: toastOptions?.defaultOptions, children }),
       /* @__PURE__ */ jsx(ToastProvider, { ...toastOptions })
     ] });
   };
 };
-var ChakraProvider = createChakraProvider(theme$1);
 
-var Text = forwardRef(function Text2(props, ref) {
+const ChakraProvider = createProvider(theme$1);
+
+const Box = chakra("div");
+Box.displayName = "Box";
+
+function isFunction(value) {
+  return typeof value === "function";
+}
+function pipe$1(...fns) {
+  return (v) => fns.reduce((a, b) => b(a), v);
+}
+const createExtendTheme = (theme2) => {
+  return function extendTheme2(...extensions) {
+    let overrides = [...extensions];
+    let activeTheme = extensions[extensions.length - 1];
+    if (isChakraTheme(activeTheme) && // this ensures backward compatibility
+    // previously only `extendTheme(override, activeTheme?)` was allowed
+    overrides.length > 1) {
+      overrides = overrides.slice(0, overrides.length - 1);
+    } else {
+      activeTheme = theme2;
+    }
+    return pipe$1(
+      ...overrides.map(
+        (extension) => (prevTheme) => isFunction(extension) ? extension(prevTheme) : mergeThemeOverride(prevTheme, extension)
+      )
+    )(activeTheme);
+  };
+};
+const extendTheme = createExtendTheme(theme$1);
+createExtendTheme(baseTheme);
+function mergeThemeOverride(...overrides) {
+  return mergeWith({}, ...overrides, mergeThemeCustomizer);
+}
+function mergeThemeCustomizer(source, override, key, object) {
+  if ((isFunction(source) || isFunction(override)) && Object.prototype.hasOwnProperty.call(object, key)) {
+    return (...args) => {
+      const sourceValue = isFunction(source) ? source(...args) : source;
+      const overrideValue = isFunction(override) ? override(...args) : override;
+      return mergeWith({}, sourceValue, overrideValue, mergeThemeCustomizer);
+    };
+  }
+  if (isObject(source) && isArray(override)) {
+    return override;
+  }
+  if (isArray(source) && isObject(override)) {
+    return override;
+  }
+  return void 0;
+}
+
+const Text = forwardRef(function Text2(props, ref) {
   const styles = useStyleConfig("Text", props);
   const { className, align, decoration, casing, ...rest } = omitThemingProps(props);
   const aliasedProps = compact({
@@ -43481,32 +46904,6 @@ var Text = forwardRef(function Text2(props, ref) {
   );
 });
 Text.displayName = "Text";
-
-var Box = chakra("div");
-Box.displayName = "Box";
-var Square = forwardRef(function Square2(props, ref) {
-  const { size, centerContent = true, ...rest } = props;
-  const styles = centerContent ? { display: "flex", alignItems: "center", justifyContent: "center" } : {};
-  return /* @__PURE__ */ jsx(
-    Box,
-    {
-      ref,
-      boxSize: size,
-      __css: {
-        ...styles,
-        flexShrink: 0,
-        flexGrow: 0
-      },
-      ...rest
-    }
-  );
-});
-Square.displayName = "Square";
-var Circle = forwardRef(function Circle2(props, ref) {
-  const { size, ...rest } = props;
-  return /* @__PURE__ */ jsx(Square, { size, ref, borderRadius: "9999px", ...rest });
-});
-Circle.displayName = "Circle";
 
 const createStoreImpl = (createState) => {
   let state;
@@ -43541,263 +46938,174 @@ const createStore = (createState) => createState ? createStoreImpl(createState) 
 
 /**
  * @license React
- * use-sync-external-store-shim.production.min.js
+ * use-sync-external-store-shim.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-function h(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var k="function"===typeof Object.is?Object.is:h,l=React__default.useState,m=React__default.useEffect,n=React__default.useLayoutEffect,p$1=React__default.useDebugValue;function q$1(a,b){var d=b(),f=l({inst:{value:d,getSnapshot:b}}),c=f[0].inst,g=f[1];n(function(){c.value=d;c.getSnapshot=b;r$1(c)&&g({inst:c});},[a,d,b]);m(function(){r$1(c)&&g({inst:c});return a(function(){r$1(c)&&g({inst:c});})},[a]);p$1(d);return d}
-function r$1(a){var b=a.getSnapshot;a=a.value;try{var d=b();return !k(a,d)}catch(f){return !0}}function t$1(a,b){return b()}var u$1="undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement?t$1:q$1;var useSyncExternalStore=void 0!==React__default.useSyncExternalStore?React__default.useSyncExternalStore:u$1;
 
-var useSyncExternalStoreShim_production_min = {
-	useSyncExternalStore: useSyncExternalStore
+function is$1(x, y) {
+  return (x === y && (0 !== x || 1 / x === 1 / y)) || (x !== x && y !== y);
+}
+var objectIs$1 = "function" === typeof Object.is ? Object.is : is$1,
+  useState = React__default.useState,
+  useEffect$1 = React__default.useEffect,
+  useLayoutEffect = React__default.useLayoutEffect,
+  useDebugValue$2 = React__default.useDebugValue;
+function useSyncExternalStore$2(subscribe, getSnapshot) {
+  var value = getSnapshot(),
+    _useState = useState({ inst: { value: value, getSnapshot: getSnapshot } }),
+    inst = _useState[0].inst,
+    forceUpdate = _useState[1];
+  useLayoutEffect(
+    function () {
+      inst.value = value;
+      inst.getSnapshot = getSnapshot;
+      checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+    },
+    [subscribe, value, getSnapshot]
+  );
+  useEffect$1(
+    function () {
+      checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+      return subscribe(function () {
+        checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+      });
+    },
+    [subscribe]
+  );
+  useDebugValue$2(value);
+  return value;
+}
+function checkIfSnapshotChanged(inst) {
+  var latestGetSnapshot = inst.getSnapshot;
+  inst = inst.value;
+  try {
+    var nextValue = latestGetSnapshot();
+    return !objectIs$1(inst, nextValue);
+  } catch (error) {
+    return !0;
+  }
+}
+function useSyncExternalStore$1(subscribe, getSnapshot) {
+  return getSnapshot();
+}
+var shim$1 =
+  "undefined" === typeof window ||
+  "undefined" === typeof window.document ||
+  "undefined" === typeof window.document.createElement
+    ? useSyncExternalStore$1
+    : useSyncExternalStore$2;
+var useSyncExternalStore$3 =
+  void 0 !== React__default.useSyncExternalStore ? React__default.useSyncExternalStore : shim$1;
+
+var useSyncExternalStoreShim_production = {
+	useSyncExternalStore: useSyncExternalStore$3
 };
 
 /**
  * @license React
  * use-sync-external-store-shim.development.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 var useSyncExternalStoreShim_development = createCommonjsModule(function (module, exports) {
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-if (
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart ===
-    'function'
-) {
-  __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-}
-          var React = React__default;
-
-var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-
-function error(format) {
-  {
-    {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
+"production" !== process.env.NODE_ENV &&
+  (function () {
+    function is(x, y) {
+      return (x === y && (0 !== x || 1 / x === 1 / y)) || (x !== x && y !== y);
+    }
+    function useSyncExternalStore$2(subscribe, getSnapshot) {
+      didWarnOld18Alpha ||
+        void 0 === React.startTransition ||
+        ((didWarnOld18Alpha = !0),
+        console.error(
+          "You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."
+        ));
+      var value = getSnapshot();
+      if (!didWarnUncachedGetSnapshot) {
+        var cachedValue = getSnapshot();
+        objectIs(value, cachedValue) ||
+          (console.error(
+            "The result of getSnapshot should be cached to avoid an infinite loop"
+          ),
+          (didWarnUncachedGetSnapshot = !0));
       }
-
-      printWarning('error', format, args);
-    }
-  }
-}
-
-function printWarning(level, format, args) {
-  // When changing this logic, you might want to also
-  // update consoleWithStackDev.www.js as well.
-  {
-    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    var stack = ReactDebugCurrentFrame.getStackAddendum();
-
-    if (stack !== '') {
-      format += '%s';
-      args = args.concat([stack]);
-    } // eslint-disable-next-line react-internal/safe-string-coercion
-
-
-    var argsWithFormat = args.map(function (item) {
-      return String(item);
-    }); // Careful: RN currently depends on this prefix
-
-    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
-    // breaks IE9: https://github.com/facebook/react/issues/13610
-    // eslint-disable-next-line react-internal/no-production-logging
-
-    Function.prototype.apply.call(console[level], console, argsWithFormat);
-  }
-}
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
-  ;
-}
-
-var objectIs = typeof Object.is === 'function' ? Object.is : is;
-
-// dispatch for CommonJS interop named imports.
-
-var useState = React.useState,
-    useEffect = React.useEffect,
-    useLayoutEffect = React.useLayoutEffect,
-    useDebugValue = React.useDebugValue;
-var didWarnOld18Alpha = false;
-var didWarnUncachedGetSnapshot = false; // Disclaimer: This shim breaks many of the rules of React, and only works
-// because of a very particular set of implementation details and assumptions
-// -- change any one of them and it will break. The most important assumption
-// is that updates are always synchronous, because concurrent rendering is
-// only available in versions of React that also have a built-in
-// useSyncExternalStore API. And we only use this shim when the built-in API
-// does not exist.
-//
-// Do not assume that the clever hacks used by this hook also work in general.
-// The point of this shim is to replace the need for hacks by other libraries.
-
-function useSyncExternalStore(subscribe, getSnapshot, // Note: The shim does not use getServerSnapshot, because pre-18 versions of
-// React do not expose a way to check if we're hydrating. So users of the shim
-// will need to track that themselves and return the correct value
-// from `getSnapshot`.
-getServerSnapshot) {
-  {
-    if (!didWarnOld18Alpha) {
-      if (React.startTransition !== undefined) {
-        didWarnOld18Alpha = true;
-
-        error('You are using an outdated, pre-release alpha of React 18 that ' + 'does not support useSyncExternalStore. The ' + 'use-sync-external-store shim will not work correctly. Upgrade ' + 'to a newer pre-release.');
-      }
-    }
-  } // Read the current snapshot from the store on every render. Again, this
-  // breaks the rules of React, and only works here because of specific
-  // implementation details, most importantly that updates are
-  // always synchronous.
-
-
-  var value = getSnapshot();
-
-  {
-    if (!didWarnUncachedGetSnapshot) {
-      var cachedValue = getSnapshot();
-
-      if (!objectIs(value, cachedValue)) {
-        error('The result of getSnapshot should be cached to avoid an infinite loop');
-
-        didWarnUncachedGetSnapshot = true;
-      }
-    }
-  } // Because updates are synchronous, we don't queue them. Instead we force a
-  // re-render whenever the subscribed state changes by updating an some
-  // arbitrary useState hook. Then, during render, we call getSnapshot to read
-  // the current value.
-  //
-  // Because we don't actually use the state returned by the useState hook, we
-  // can save a bit of memory by storing other stuff in that slot.
-  //
-  // To implement the early bailout, we need to track some things on a mutable
-  // object. Usually, we would put that in a useRef hook, but we can stash it in
-  // our useState hook instead.
-  //
-  // To force a re-render, we call forceUpdate({inst}). That works because the
-  // new object always fails an equality check.
-
-
-  var _useState = useState({
-    inst: {
-      value: value,
-      getSnapshot: getSnapshot
-    }
-  }),
-      inst = _useState[0].inst,
-      forceUpdate = _useState[1]; // Track the latest getSnapshot function with a ref. This needs to be updated
-  // in the layout phase so we can access it during the tearing check that
-  // happens on subscribe.
-
-
-  useLayoutEffect(function () {
-    inst.value = value;
-    inst.getSnapshot = getSnapshot; // Whenever getSnapshot or subscribe changes, we need to check in the
-    // commit phase if there was an interleaved mutation. In concurrent mode
-    // this can happen all the time, but even in synchronous mode, an earlier
-    // effect may have mutated the store.
-
-    if (checkIfSnapshotChanged(inst)) {
-      // Force a re-render.
-      forceUpdate({
-        inst: inst
+      cachedValue = useState({
+        inst: { value: value, getSnapshot: getSnapshot }
       });
+      var inst = cachedValue[0].inst,
+        forceUpdate = cachedValue[1];
+      useLayoutEffect(
+        function () {
+          inst.value = value;
+          inst.getSnapshot = getSnapshot;
+          checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+        },
+        [subscribe, value, getSnapshot]
+      );
+      useEffect(
+        function () {
+          checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+          return subscribe(function () {
+            checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });
+          });
+        },
+        [subscribe]
+      );
+      useDebugValue(value);
+      return value;
     }
-  }, [subscribe, value, getSnapshot]);
-  useEffect(function () {
-    // Check for changes right before subscribing. Subsequent changes will be
-    // detected in the subscription handler.
-    if (checkIfSnapshotChanged(inst)) {
-      // Force a re-render.
-      forceUpdate({
-        inst: inst
-      });
-    }
-
-    var handleStoreChange = function () {
-      // TODO: Because there is no cross-renderer API for batching updates, it's
-      // up to the consumer of this library to wrap their subscription event
-      // with unstable_batchedUpdates. Should we try to detect when this isn't
-      // the case and print a warning in development?
-      // The store changed. Check if the snapshot changed since the last time we
-      // read from the store.
-      if (checkIfSnapshotChanged(inst)) {
-        // Force a re-render.
-        forceUpdate({
-          inst: inst
-        });
+    function checkIfSnapshotChanged(inst) {
+      var latestGetSnapshot = inst.getSnapshot;
+      inst = inst.value;
+      try {
+        var nextValue = latestGetSnapshot();
+        return !objectIs(inst, nextValue);
+      } catch (error) {
+        return !0;
       }
-    }; // Subscribe to the store and return a clean-up function.
-
-
-    return subscribe(handleStoreChange);
-  }, [subscribe]);
-  useDebugValue(value);
-  return value;
-}
-
-function checkIfSnapshotChanged(inst) {
-  var latestGetSnapshot = inst.getSnapshot;
-  var prevValue = inst.value;
-
-  try {
-    var nextValue = latestGetSnapshot();
-    return !objectIs(prevValue, nextValue);
-  } catch (error) {
-    return true;
-  }
-}
-
-function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
-  // Note: The shim does not use getServerSnapshot, because pre-18 versions of
-  // React do not expose a way to check if we're hydrating. So users of the shim
-  // will need to track that themselves and return the correct value
-  // from `getSnapshot`.
-  return getSnapshot();
-}
-
-var canUseDOM = !!(typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined');
-
-var isServerEnvironment = !canUseDOM;
-
-var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore;
-var useSyncExternalStore$2 = React.useSyncExternalStore !== undefined ? React.useSyncExternalStore : shim;
-
-exports.useSyncExternalStore = useSyncExternalStore$2;
-          /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-if (
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop ===
-    'function'
-) {
-  __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-}
-        
+    }
+    function useSyncExternalStore$1(subscribe, getSnapshot) {
+      return getSnapshot();
+    }
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+      "function" ===
+        typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart &&
+      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+    var React = React__default,
+      objectIs = "function" === typeof Object.is ? Object.is : is,
+      useState = React.useState,
+      useEffect = React.useEffect,
+      useLayoutEffect = React.useLayoutEffect,
+      useDebugValue = React.useDebugValue,
+      didWarnOld18Alpha = !1,
+      didWarnUncachedGetSnapshot = !1,
+      shim =
+        "undefined" === typeof window ||
+        "undefined" === typeof window.document ||
+        "undefined" === typeof window.document.createElement
+          ? useSyncExternalStore$1
+          : useSyncExternalStore$2;
+    exports.useSyncExternalStore =
+      void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+      "function" ===
+        typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop &&
+      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
   })();
-}
 });
 
 var shim = createCommonjsModule(function (module) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = useSyncExternalStoreShim_production_min;
+  module.exports = useSyncExternalStoreShim_production;
 } else {
   module.exports = useSyncExternalStoreShim_development;
 }
@@ -43805,18 +47113,88 @@ if (process.env.NODE_ENV === 'production') {
 
 /**
  * @license React
- * use-sync-external-store-shim/with-selector.production.min.js
+ * use-sync-external-store-shim/with-selector.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-function p(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var q="function"===typeof Object.is?Object.is:p,r=shim.useSyncExternalStore,t=React__default.useRef,u=React__default.useEffect,v=React__default.useMemo,w=React__default.useDebugValue;
-var useSyncExternalStoreWithSelector$1=function(a,b,e,l,g){var c=t(null);if(null===c.current){var f={hasValue:!1,value:null};c.current=f;}else f=c.current;c=v(function(){function a(a){if(!c){c=!0;d=a;a=l(a);if(void 0!==g&&f.hasValue){var b=f.value;if(g(b,a))return k=b}return k=a}b=k;if(q(d,a))return b;var e=l(a);if(void 0!==g&&g(b,e))return b;d=a;return k=e}var c=!1,d,k,m=void 0===e?null:e;return [function(){return a(b())},null===m?void 0:function(){return a(m())}]},[b,e,l,g]);var d=r(a,c[0],c[1]);
-u(function(){f.hasValue=!0;f.value=d;},[d]);w(d);return d};
 
-var withSelector_production_min = {
+function is(x, y) {
+  return (x === y && (0 !== x || 1 / x === 1 / y)) || (x !== x && y !== y);
+}
+var objectIs = "function" === typeof Object.is ? Object.is : is,
+  useSyncExternalStore = shim.useSyncExternalStore,
+  useRef = React__default.useRef,
+  useEffect = React__default.useEffect,
+  useMemo = React__default.useMemo,
+  useDebugValue$1 = React__default.useDebugValue;
+var useSyncExternalStoreWithSelector$1 = function (
+  subscribe,
+  getSnapshot,
+  getServerSnapshot,
+  selector,
+  isEqual
+) {
+  var instRef = useRef(null);
+  if (null === instRef.current) {
+    var inst = { hasValue: !1, value: null };
+    instRef.current = inst;
+  } else inst = instRef.current;
+  instRef = useMemo(
+    function () {
+      function memoizedSelector(nextSnapshot) {
+        if (!hasMemo) {
+          hasMemo = !0;
+          memoizedSnapshot = nextSnapshot;
+          nextSnapshot = selector(nextSnapshot);
+          if (void 0 !== isEqual && inst.hasValue) {
+            var currentSelection = inst.value;
+            if (isEqual(currentSelection, nextSnapshot))
+              return (memoizedSelection = currentSelection);
+          }
+          return (memoizedSelection = nextSnapshot);
+        }
+        currentSelection = memoizedSelection;
+        if (objectIs(memoizedSnapshot, nextSnapshot)) return currentSelection;
+        var nextSelection = selector(nextSnapshot);
+        if (void 0 !== isEqual && isEqual(currentSelection, nextSelection))
+          return (memoizedSnapshot = nextSnapshot), currentSelection;
+        memoizedSnapshot = nextSnapshot;
+        return (memoizedSelection = nextSelection);
+      }
+      var hasMemo = !1,
+        memoizedSnapshot,
+        memoizedSelection,
+        maybeGetServerSnapshot =
+          void 0 === getServerSnapshot ? null : getServerSnapshot;
+      return [
+        function () {
+          return memoizedSelector(getSnapshot());
+        },
+        null === maybeGetServerSnapshot
+          ? void 0
+          : function () {
+              return memoizedSelector(maybeGetServerSnapshot());
+            }
+      ];
+    },
+    [getSnapshot, getServerSnapshot, selector, isEqual]
+  );
+  var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
+  useEffect(
+    function () {
+      inst.hasValue = !0;
+      inst.value = value;
+    },
+    [value]
+  );
+  useDebugValue$1(value);
+  return value;
+};
+
+var withSelector_production = {
 	useSyncExternalStoreWithSelector: useSyncExternalStoreWithSelector$1
 };
 
@@ -43824,171 +47202,105 @@ var withSelector_production_min = {
  * @license React
  * use-sync-external-store-shim/with-selector.development.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 var withSelector_development = createCommonjsModule(function (module, exports) {
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-if (
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart ===
-    'function'
-) {
-  __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-}
-          var React = React__default;
-var shim$1 = shim;
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
-  ;
-}
-
-var objectIs = typeof Object.is === 'function' ? Object.is : is;
-
-var useSyncExternalStore = shim$1.useSyncExternalStore;
-
-// for CommonJS interop.
-
-var useRef = React.useRef,
-    useEffect = React.useEffect,
-    useMemo = React.useMemo,
-    useDebugValue = React.useDebugValue; // Same as useSyncExternalStore, but supports selector and isEqual arguments.
-
-function useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, selector, isEqual) {
-  // Use this to track the rendered snapshot.
-  var instRef = useRef(null);
-  var inst;
-
-  if (instRef.current === null) {
-    inst = {
-      hasValue: false,
-      value: null
-    };
-    instRef.current = inst;
-  } else {
-    inst = instRef.current;
-  }
-
-  var _useMemo = useMemo(function () {
-    // Track the memoized state using closure variables that are local to this
-    // memoized instance of a getSnapshot function. Intentionally not using a
-    // useRef hook, because that state would be shared across all concurrent
-    // copies of the hook/component.
-    var hasMemo = false;
-    var memoizedSnapshot;
-    var memoizedSelection;
-
-    var memoizedSelector = function (nextSnapshot) {
-      if (!hasMemo) {
-        // The first time the hook is called, there is no memoized result.
-        hasMemo = true;
-        memoizedSnapshot = nextSnapshot;
-
-        var _nextSelection = selector(nextSnapshot);
-
-        if (isEqual !== undefined) {
-          // Even if the selector has changed, the currently rendered selection
-          // may be equal to the new selection. We should attempt to reuse the
-          // current value if possible, to preserve downstream memoizations.
-          if (inst.hasValue) {
-            var currentSelection = inst.value;
-
-            if (isEqual(currentSelection, _nextSelection)) {
-              memoizedSelection = currentSelection;
-              return currentSelection;
+"production" !== process.env.NODE_ENV &&
+  (function () {
+    function is(x, y) {
+      return (x === y && (0 !== x || 1 / x === 1 / y)) || (x !== x && y !== y);
+    }
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+      "function" ===
+        typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart &&
+      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+    var React = React__default,
+      shim$1 = shim,
+      objectIs = "function" === typeof Object.is ? Object.is : is,
+      useSyncExternalStore = shim$1.useSyncExternalStore,
+      useRef = React.useRef,
+      useEffect = React.useEffect,
+      useMemo = React.useMemo,
+      useDebugValue = React.useDebugValue;
+    exports.useSyncExternalStoreWithSelector = function (
+      subscribe,
+      getSnapshot,
+      getServerSnapshot,
+      selector,
+      isEqual
+    ) {
+      var instRef = useRef(null);
+      if (null === instRef.current) {
+        var inst = { hasValue: !1, value: null };
+        instRef.current = inst;
+      } else inst = instRef.current;
+      instRef = useMemo(
+        function () {
+          function memoizedSelector(nextSnapshot) {
+            if (!hasMemo) {
+              hasMemo = !0;
+              memoizedSnapshot = nextSnapshot;
+              nextSnapshot = selector(nextSnapshot);
+              if (void 0 !== isEqual && inst.hasValue) {
+                var currentSelection = inst.value;
+                if (isEqual(currentSelection, nextSnapshot))
+                  return (memoizedSelection = currentSelection);
+              }
+              return (memoizedSelection = nextSnapshot);
             }
+            currentSelection = memoizedSelection;
+            if (objectIs(memoizedSnapshot, nextSnapshot))
+              return currentSelection;
+            var nextSelection = selector(nextSnapshot);
+            if (void 0 !== isEqual && isEqual(currentSelection, nextSelection))
+              return (memoizedSnapshot = nextSnapshot), currentSelection;
+            memoizedSnapshot = nextSnapshot;
+            return (memoizedSelection = nextSelection);
           }
-        }
-
-        memoizedSelection = _nextSelection;
-        return _nextSelection;
-      } // We may be able to reuse the previous invocation's result.
-
-
-      // We may be able to reuse the previous invocation's result.
-      var prevSnapshot = memoizedSnapshot;
-      var prevSelection = memoizedSelection;
-
-      if (objectIs(prevSnapshot, nextSnapshot)) {
-        // The snapshot is the same as last time. Reuse the previous selection.
-        return prevSelection;
-      } // The snapshot has changed, so we need to compute a new selection.
-
-
-      // The snapshot has changed, so we need to compute a new selection.
-      var nextSelection = selector(nextSnapshot); // If a custom isEqual function is provided, use that to check if the data
-      // has changed. If it hasn't, return the previous selection. That signals
-      // to React that the selections are conceptually equal, and we can bail
-      // out of rendering.
-
-      // If a custom isEqual function is provided, use that to check if the data
-      // has changed. If it hasn't, return the previous selection. That signals
-      // to React that the selections are conceptually equal, and we can bail
-      // out of rendering.
-      if (isEqual !== undefined && isEqual(prevSelection, nextSelection)) {
-        return prevSelection;
-      }
-
-      memoizedSnapshot = nextSnapshot;
-      memoizedSelection = nextSelection;
-      return nextSelection;
-    }; // Assigning this to a constant so that Flow knows it can't change.
-
-
-    // Assigning this to a constant so that Flow knows it can't change.
-    var maybeGetServerSnapshot = getServerSnapshot === undefined ? null : getServerSnapshot;
-
-    var getSnapshotWithSelector = function () {
-      return memoizedSelector(getSnapshot());
+          var hasMemo = !1,
+            memoizedSnapshot,
+            memoizedSelection,
+            maybeGetServerSnapshot =
+              void 0 === getServerSnapshot ? null : getServerSnapshot;
+          return [
+            function () {
+              return memoizedSelector(getSnapshot());
+            },
+            null === maybeGetServerSnapshot
+              ? void 0
+              : function () {
+                  return memoizedSelector(maybeGetServerSnapshot());
+                }
+          ];
+        },
+        [getSnapshot, getServerSnapshot, selector, isEqual]
+      );
+      var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
+      useEffect(
+        function () {
+          inst.hasValue = !0;
+          inst.value = value;
+        },
+        [value]
+      );
+      useDebugValue(value);
+      return value;
     };
-
-    var getServerSnapshotWithSelector = maybeGetServerSnapshot === null ? undefined : function () {
-      return memoizedSelector(maybeGetServerSnapshot());
-    };
-    return [getSnapshotWithSelector, getServerSnapshotWithSelector];
-  }, [getSnapshot, getServerSnapshot, selector, isEqual]),
-      getSelection = _useMemo[0],
-      getServerSelection = _useMemo[1];
-
-  var value = useSyncExternalStore(subscribe, getSelection, getServerSelection);
-  useEffect(function () {
-    inst.hasValue = true;
-    inst.value = value;
-  }, [value]);
-  useDebugValue(value);
-  return value;
-}
-
-exports.useSyncExternalStoreWithSelector = useSyncExternalStoreWithSelector;
-          /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-if (
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop ===
-    'function'
-) {
-  __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-}
-        
+    "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+      "function" ===
+        typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop &&
+      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
   })();
-}
 });
 
 var withSelector = createCommonjsModule(function (module) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = withSelector_production_min;
+  module.exports = withSelector_production;
 } else {
   module.exports = withSelector_development;
 }
@@ -44032,7 +47344,7 @@ function createJSONStorage(getStorage, options) {
   let storage;
   try {
     storage = getStorage();
-  } catch (e) {
+  } catch (_e) {
     return;
   }
   const persistStorage = {
@@ -44102,7 +47414,7 @@ const oldImpl = (config, baseOptions) => (set, get, api) => {
   let storage;
   try {
     storage = options.getStorage();
-  } catch (e) {
+  } catch (_e) {
   }
   if (!storage) {
     return config(
@@ -44146,8 +47458,7 @@ const oldImpl = (config, baseOptions) => (set, get, api) => {
   let stateFromStorage;
   const hydrate = () => {
     var _a;
-    if (!storage)
-      return;
+    if (!storage) return;
     hasHydrated = false;
     hydrationListeners.forEach((cb) => cb(get()));
     const postRehydrationCallback = ((_a = options.onRehydrateStorage) == null ? void 0 : _a.call(options, get())) || void 0;
@@ -44270,8 +47581,7 @@ const newImpl = (config, baseOptions) => (set, get, api) => {
   let stateFromStorage;
   const hydrate = () => {
     var _a, _b;
-    if (!storage)
-      return;
+    if (!storage) return;
     hasHydrated = false;
     hydrationListeners.forEach((cb) => {
       var _a2;
@@ -44282,26 +47592,33 @@ const newImpl = (config, baseOptions) => (set, get, api) => {
       if (deserializedStorageValue) {
         if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options.version) {
           if (options.migrate) {
-            return options.migrate(
-              deserializedStorageValue.state,
-              deserializedStorageValue.version
-            );
+            return [
+              true,
+              options.migrate(
+                deserializedStorageValue.state,
+                deserializedStorageValue.version
+              )
+            ];
           }
           console.error(
             `State loaded from storage couldn't be migrated since no migrate function was provided`
           );
         } else {
-          return deserializedStorageValue.state;
+          return [false, deserializedStorageValue.state];
         }
       }
-    }).then((migratedState) => {
+      return [false, void 0];
+    }).then((migrationResult) => {
       var _a2;
+      const [migrated, migratedState] = migrationResult;
       stateFromStorage = options.merge(
         migratedState,
         (_a2 = get()) != null ? _a2 : configResult
       );
       set(stateFromStorage, true);
-      return setItem();
+      if (migrated) {
+        return setItem();
+      }
     }).then(() => {
       postRehydrationCallback == null ? void 0 : postRehydrationCallback(stateFromStorage, void 0);
       stateFromStorage = get();
@@ -44374,7 +47691,7 @@ var useThemeStore = create()(persist(function (set) { return ({
 function UploaderWrapper(_a) {
     var _this = this;
     var onSuccess = _a.onSuccess, setDataError = _a.setDataError; __rest$1(_a, ["onSuccess", "setDataError"]);
-    var _b = useState(false), loading = _b[0], setLoading = _b[1];
+    var _b = useState$1(false), loading = _b[0], setLoading = _b[1];
     var theme = useThemeStore(function (state) { return state.theme; });
     var _c = useDropzone({
         noClick: true,
@@ -44394,7 +47711,7 @@ function UploaderWrapper(_a) {
         },
         onDropAccepted: function (_a) {
             var file = _a[0];
-            return __awaiter(_this, void 0, void 0, function () {
+            return __awaiter$1(_this, void 0, void 0, function () {
                 return __generator(this, function (_b) {
                     setLoading(true);
                     onSuccess(file);
@@ -44415,7 +47732,7 @@ function useTemplateTable(fields) {
     if (!fields) {
         return [];
     }
-    var result = useMemo(function () {
+    var result = useMemo$1(function () {
         return fields.map(function (item) { return ({
             "Expected Column": (item === null || item === void 0 ? void 0 : item.description)
                 ? {
@@ -44465,8 +47782,8 @@ function Main(props) {
     // Stepper handler
     var _c = useStepNavigation(StepEnum.Upload, skipHeader), currentStep = _c.currentStep, setStep = _c.setStep, goNext = _c.goNext, goBack = _c.goBack, stepper = _c.stepper;
     // Error handling
-    var _d = useState(null), initializationError = _d[0], setInitializationError = _d[1];
-    var _e = useState(null), dataError = _e[0], setDataError = _e[1];
+    var _d = useState$1(null), initializationError = _d[0], setInitializationError = _d[1];
+    var _e = useState$1(null), dataError = _e[0], setDataError = _e[1];
     // File data
     var emptyData = {
         fileName: "",
@@ -44474,17 +47791,17 @@ function Main(props) {
         sheetList: [],
         errors: [],
     };
-    var _f = useState(emptyData), data = _f[0], setData = _f[1];
+    var _f = useState$1(emptyData), data = _f[0], setData = _f[1];
     // Header row selection state
-    var _g = useState(0), selectedHeaderRow = _g[0], setSelectedHeaderRow = _g[1];
+    var _g = useState$1(0), selectedHeaderRow = _g[0], setSelectedHeaderRow = _g[1];
     // Map of upload column index -> TemplateColumnMapping
-    var _h = useState({}), columnMapping = _h[0], setColumnMapping = _h[1];
+    var _h = useState$1({}), columnMapping = _h[0], setColumnMapping = _h[1];
     // Used in the final step to show a loading indicator while the data is submitting
-    var _j = useState(false), isSubmitting = _j[0], setIsSubmitting = _j[1];
-    var _k = useState({
+    var _j = useState$1(false), isSubmitting = _j[0], setIsSubmitting = _j[1];
+    var _k = useState$1({
         columns: [],
     }), parsedTemplate = _k[0], setParsedTemplate = _k[1];
-    useEffect(function () {
+    useEffect$2(function () {
         var _a = convertRawTemplate(template), parsedTemplate = _a[0], parsedTemplateError = _a[1];
         if (parsedTemplateError) {
             setInitializationError(parsedTemplateError);
@@ -44493,7 +47810,7 @@ function Main(props) {
             setParsedTemplate(parsedTemplate);
         }
     }, [template]);
-    useEffect(function () {
+    useEffect$2(function () {
         // TODO (client-sdk): Have the importer continue where left off if closed
         // Temporary solution to reload state if closed and opened again
         if (data.rows.length === 0 && currentStep !== StepEnum.Upload) {
@@ -44523,7 +47840,7 @@ function Main(props) {
     var renderContent = function () {
         switch (currentStep) {
             case StepEnum.Upload:
-                return (jsx(Uploader, { template: parsedTemplate, skipHeaderRowSelection: skipHeader || false, showDownloadTemplateButton: showDownloadTemplateButton, setDataError: setDataError, onSuccess: function (file) { return __awaiter(_this, void 0, void 0, function () {
+                return (jsx(Uploader, { template: parsedTemplate, skipHeaderRowSelection: skipHeader || false, showDownloadTemplateButton: showDownloadTemplateButton, setDataError: setDataError, onSuccess: function (file) { return __awaiter$1(_this, void 0, void 0, function () {
                         var fileType, reader, isNotBlankRow;
                         var _this = this;
                         return __generator(this, function (_a) {
@@ -44535,7 +47852,7 @@ function Main(props) {
                             }
                             reader = new FileReader();
                             isNotBlankRow = function (row) { return row.some(function (cell) { return cell.toString().trim() !== ""; }); };
-                            reader.onload = function (e) { return __awaiter(_this, void 0, void 0, function () {
+                            reader.onload = function (e) { return __awaiter$1(_this, void 0, void 0, function () {
                                 var bstr, workbook, sheetList, data_1, rows;
                                 var _a;
                                 return __generator(this, function (_b) {
@@ -44618,10 +47935,14 @@ function Main(props) {
                             num_rows: mappedRows.length,
                             num_columns: includedColumns.length,
                             error: null,
-                            // TODO (client-sdk): Either remove "name" or change it to the be the name of the original upload column
                             columns: includedColumns.map(function (_a) {
-                                var key = _a.key;
-                                return ({ key: key, name: key });
+                                var key = _a.key, name = _a.name, primary_key = _a.primary_key, merge_strategy = _a.merge_strategy;
+                                return ({
+                                    key: key,
+                                    name: name,
+                                    primary_key: primary_key,
+                                    merge_strategy: merge_strategy
+                                });
                             }),
                             rows: mappedRows,
                         };
@@ -44637,6 +47958,8 @@ function Main(props) {
     };
     return (jsxs("div", __assign$1({ className: style$8.wrapper }, { children: [jsx("div", { children: jsx(Stepper, __assign$1({}, stepper)) }), jsx("div", __assign$1({ className: style$8.content }, { children: renderContent() })), !!dataError && (jsxs("div", __assign$1({ className: style$8.status }, { children: [jsx("div", {}), jsx(Errors, { error: dataError, centered: true }), jsx("div", {})] }))), isModal && jsx(IconButton, { isRound: true, className: style$8.close, colorScheme: "secondary", "aria-label": "Close", icon: jsx(PiX, {}), onClick: requestClose })] })));
 }
+
+var isDevelopment = false;
 
 /*
 
@@ -44660,10 +47983,9 @@ styleSheet.flush()
 - empties the stylesheet of all its contents
 
 */
-// $FlowFixMe
+
 function sheetForTag(tag) {
   if (tag.sheet) {
-    // $FlowFixMe
     return tag.sheet;
   } // this weirdness brought to you by firefox
 
@@ -44672,10 +47994,13 @@ function sheetForTag(tag) {
 
   for (var i = 0; i < document.styleSheets.length; i++) {
     if (document.styleSheets[i].ownerNode === tag) {
-      // $FlowFixMe
       return document.styleSheets[i];
     }
-  }
+  } // this function should always return with a value
+  // TS can't understand it though so we make it stop complaining here
+
+
+  return undefined;
 }
 
 function createStyleElement(options) {
@@ -44716,7 +48041,7 @@ var StyleSheet = /*#__PURE__*/function () {
       _this.tags.push(tag);
     };
 
-    this.isSpeedy = options.speedy === undefined ? process.env.NODE_ENV === 'production' : options.speedy;
+    this.isSpeedy = options.speedy === undefined ? !isDevelopment : options.speedy;
     this.tags = [];
     this.ctr = 0;
     this.nonce = options.nonce; // key is the value of the data-emotion attribute, it's used to identify different sheets
@@ -44744,18 +48069,6 @@ var StyleSheet = /*#__PURE__*/function () {
 
     var tag = this.tags[this.tags.length - 1];
 
-    if (process.env.NODE_ENV !== 'production') {
-      var isImportRule = rule.charCodeAt(0) === 64 && rule.charCodeAt(1) === 105;
-
-      if (isImportRule && this._alreadyInsertedOrderInsensitiveRule) {
-        // this would only cause problem in speedy mode
-        // but we don't want enabling speedy to affect the observable behavior
-        // so we report this error at all times
-        console.error("You're attempting to insert the following rule:\n" + rule + '\n\n`@import` rules must be before all other types of rules in a stylesheet but other rules have already been inserted. Please ensure that `@import` rules are before all other rules.');
-      }
-      this._alreadyInsertedOrderInsensitiveRule = this._alreadyInsertedOrderInsensitiveRule || !isImportRule;
-    }
-
     if (this.isSpeedy) {
       var sheet = sheetForTag(tag);
 
@@ -44764,9 +48077,6 @@ var StyleSheet = /*#__PURE__*/function () {
         // the big drawback is that the css won't be editable in devtools
         sheet.insertRule(rule, sheet.cssRules.length);
       } catch (e) {
-        if (process.env.NODE_ENV !== 'production' && !/:(-moz-placeholder|-moz-focus-inner|-moz-focusring|-ms-input-placeholder|-moz-read-write|-moz-read-only|-ms-clear|-ms-expand|-ms-reveal){/.test(rule)) {
-          console.error("There was a problem inserting the following rule: \"" + rule + "\"", e);
-        }
       }
     } else {
       tag.appendChild(document.createTextNode(rule));
@@ -44776,16 +48086,13 @@ var StyleSheet = /*#__PURE__*/function () {
   };
 
   _proto.flush = function flush() {
-    // $FlowFixMe
     this.tags.forEach(function (tag) {
-      return tag.parentNode && tag.parentNode.removeChild(tag);
+      var _tag$parentNode;
+
+      return (_tag$parentNode = tag.parentNode) == null ? void 0 : _tag$parentNode.removeChild(tag);
     });
     this.tags = [];
     this.ctr = 0;
-
-    if (process.env.NODE_ENV !== 'production') {
-      this._alreadyInsertedOrderInsensitiveRule = false;
-    }
   };
 
   return StyleSheet;
@@ -44921,7 +48228,7 @@ function combine (array, callback) {
 var line = 1;
 var column = 1;
 var length = 0;
-var position = 0;
+var position$1 = 0;
 var character = 0;
 var characters = '';
 
@@ -44958,7 +48265,7 @@ function char () {
  * @return {number}
  */
 function prev () {
-	character = position > 0 ? charat(characters, --position) : 0;
+	character = position$1 > 0 ? charat(characters, --position$1) : 0;
 
 	if (column--, character === 10)
 		column = 1, line--;
@@ -44970,7 +48277,7 @@ function prev () {
  * @return {number}
  */
 function next () {
-	character = position < length ? charat(characters, position++) : 0;
+	character = position$1 < length ? charat(characters, position$1++) : 0;
 
 	if (column++, character === 10)
 		column = 1, line++;
@@ -44982,14 +48289,14 @@ function next () {
  * @return {number}
  */
 function peek () {
-	return charat(characters, position)
+	return charat(characters, position$1)
 }
 
 /**
  * @return {number}
  */
 function caret () {
-	return position
+	return position$1
 }
 
 /**
@@ -45034,7 +48341,7 @@ function token (type) {
  * @return {any[]}
  */
 function alloc (value) {
-	return line = column = 1, length = strlen(characters = value), position = 0, []
+	return line = column = 1, length = strlen(characters = value), position$1 = 0, []
 }
 
 /**
@@ -45050,7 +48357,7 @@ function dealloc (value) {
  * @return {string}
  */
 function delimit (type) {
-	return trim(slice(position - 1, delimiter(type === 91 ? type + 2 : type === 40 ? type + 1 : type)))
+	return trim(slice(position$1 - 1, delimiter(type === 91 ? type + 2 : type === 40 ? type + 1 : type)))
 }
 
 /**
@@ -45090,7 +48397,7 @@ function delimiter (type) {
 		switch (character) {
 			// ] ) " '
 			case type:
-				return position
+				return position$1
 			// " '
 			case 34: case 39:
 				if (type !== 34 && type !== 39)
@@ -45107,7 +48414,7 @@ function delimiter (type) {
 				break
 		}
 
-	return position
+	return position$1
 }
 
 /**
@@ -45124,7 +48431,7 @@ function commenter (type, index) {
 		else if (type + character === 42 + 42 && peek() === 47)
 			break
 
-	return '/*' + slice(index, position - 1) + '*' + from(type === 47 ? type : next())
+	return '/*' + slice(index, position$1 - 1) + '*' + from(type === 47 ? type : next())
 }
 
 /**
@@ -45135,7 +48442,7 @@ function identifier (index) {
 	while (!token(peek()))
 		next();
 
-	return slice(index, position)
+	return slice(index, position$1)
 }
 
 /**
@@ -45389,6 +48696,23 @@ function rulesheet (callback) {
 	}
 }
 
+var weakMemoize = function weakMemoize(func) {
+  var cache = new WeakMap();
+  return function (arg) {
+    if (cache.has(arg)) {
+      // Use non-null assertion because we just checked that the cache `has` it
+      // This allows us to remove `undefined` from the return value
+      return cache.get(arg);
+    }
+
+    var ret = func(arg);
+    cache.set(arg, ret);
+    return ret;
+  };
+};
+
+var isBrowser = typeof document !== 'undefined';
+
 var identifierWithPointTracking = function identifierWithPointTracking(begin, points, index) {
   var previous = 0;
   var character = 0;
@@ -45408,7 +48732,7 @@ var identifierWithPointTracking = function identifierWithPointTracking(begin, po
     next();
   }
 
-  return slice(begin, position);
+  return slice(begin, position$1);
 };
 
 var toRules = function toRules(parsed, points) {
@@ -45428,7 +48752,7 @@ var toRules = function toRules(parsed, points) {
           points[index] = 1;
         }
 
-        parsed[index] += identifierWithPointTracking(position - 1, points, index);
+        parsed[index] += identifierWithPointTracking(position$1 - 1, points, index);
         break;
 
       case 2:
@@ -45467,8 +48791,8 @@ var compat = function compat(element) {
     return;
   }
 
-  var value = element.value,
-      parent = element.parent;
+  var value = element.value;
+  var parent = element.parent;
   var isImplicitRule = element.column === parent.column && element.line === parent.line;
 
   while (parent.type !== 'rule') {
@@ -45511,114 +48835,6 @@ var removeLabel = function removeLabel(element) {
       element["return"] = '';
       element.value = '';
     }
-  }
-};
-var ignoreFlag = 'emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason';
-
-var isIgnoringComment = function isIgnoringComment(element) {
-  return element.type === 'comm' && element.children.indexOf(ignoreFlag) > -1;
-};
-
-var createUnsafeSelectorsAlarm = function createUnsafeSelectorsAlarm(cache) {
-  return function (element, index, children) {
-    if (element.type !== 'rule' || cache.compat) return;
-    var unsafePseudoClasses = element.value.match(/(:first|:nth|:nth-last)-child/g);
-
-    if (unsafePseudoClasses) {
-      var isNested = !!element.parent; // in nested rules comments become children of the "auto-inserted" rule and that's always the `element.parent`
-      //
-      // considering this input:
-      // .a {
-      //   .b /* comm */ {}
-      //   color: hotpink;
-      // }
-      // we get output corresponding to this:
-      // .a {
-      //   & {
-      //     /* comm */
-      //     color: hotpink;
-      //   }
-      //   .b {}
-      // }
-
-      var commentContainer = isNested ? element.parent.children : // global rule at the root level
-      children;
-
-      for (var i = commentContainer.length - 1; i >= 0; i--) {
-        var node = commentContainer[i];
-
-        if (node.line < element.line) {
-          break;
-        } // it is quite weird but comments are *usually* put at `column: element.column - 1`
-        // so we seek *from the end* for the node that is earlier than the rule's `element` and check that
-        // this will also match inputs like this:
-        // .a {
-        //   /* comm */
-        //   .b {}
-        // }
-        //
-        // but that is fine
-        //
-        // it would be the easiest to change the placement of the comment to be the first child of the rule:
-        // .a {
-        //   .b { /* comm */ }
-        // }
-        // with such inputs we wouldn't have to search for the comment at all
-        // TODO: consider changing this comment placement in the next major version
-
-
-        if (node.column < element.column) {
-          if (isIgnoringComment(node)) {
-            return;
-          }
-
-          break;
-        }
-      }
-
-      unsafePseudoClasses.forEach(function (unsafePseudoClass) {
-        console.error("The pseudo class \"" + unsafePseudoClass + "\" is potentially unsafe when doing server-side rendering. Try changing it to \"" + unsafePseudoClass.split('-child')[0] + "-of-type\".");
-      });
-    }
-  };
-};
-
-var isImportRule = function isImportRule(element) {
-  return element.type.charCodeAt(1) === 105 && element.type.charCodeAt(0) === 64;
-};
-
-var isPrependedWithRegularRules = function isPrependedWithRegularRules(index, children) {
-  for (var i = index - 1; i >= 0; i--) {
-    if (!isImportRule(children[i])) {
-      return true;
-    }
-  }
-
-  return false;
-}; // use this to remove incorrect elements from further processing
-// so they don't get handed to the `sheet` (or anything else)
-// as that could potentially lead to additional logs which in turn could be overhelming to the user
-
-
-var nullifyElement = function nullifyElement(element) {
-  element.type = '';
-  element.value = '';
-  element["return"] = '';
-  element.children = '';
-  element.props = '';
-};
-
-var incorrectImportAlarm = function incorrectImportAlarm(element, index, children) {
-  if (!isImportRule(element)) {
-    return;
-  }
-
-  if (element.parent) {
-    console.error("`@import` rules can't be nested inside other rules. Please move it to the top level and put it before regular rules. Keep in mind that they can only be used within global styles.");
-    nullifyElement(element);
-  } else if (isPrependedWithRegularRules(index, children)) {
-    console.error("`@import` rules can't be after other rules. Please put your `@import` rules before your other rules.");
-    nullifyElement(element);
   }
 };
 
@@ -45834,16 +49050,17 @@ var prefixer = function prefixer(element, index, children, callback) {
   }
 };
 
+var getServerStylisCache = isBrowser ? undefined : weakMemoize(function () {
+  return memoize$3(function () {
+    return {};
+  });
+});
 var defaultStylisPlugins = [prefixer];
 
 var createCache = function createCache(options) {
   var key = options.key;
 
-  if (process.env.NODE_ENV !== 'production' && !key) {
-    throw new Error("You have to configure `key` for your cache. Please make sure it's unique (and not equal to 'css') as it's used for linking styles to your cache.\n" + "If multiple caches share the same key they might \"fight\" for each other's style elements.");
-  }
-
-  if (key === 'css') {
+  if (isBrowser && key === 'css') {
     var ssrStyles = document.querySelectorAll("style[data-emotion]:not([data-s])"); // get SSRed styles out of the way of React's hydration
     // document.head is a safe place to move them to(though note document.head is not necessarily the last place they will be)
     // note this very very intentionally targets all style elements regardless of the key to ensure
@@ -45861,6 +49078,7 @@ var createCache = function createCache(options) {
       if (dataEmotionAttribute.indexOf(' ') === -1) {
         return;
       }
+
       document.head.appendChild(node);
       node.setAttribute('data-s', '');
     });
@@ -45868,23 +49086,16 @@ var createCache = function createCache(options) {
 
   var stylisPlugins = options.stylisPlugins || defaultStylisPlugins;
 
-  if (process.env.NODE_ENV !== 'production') {
-    // $FlowFixMe
-    if (/[^a-z-]/.test(key)) {
-      throw new Error("Emotion key must only contain lower case alphabetical characters and - but \"" + key + "\" was passed");
-    }
-  }
-
   var inserted = {};
   var container;
   var nodesToHydrate = [];
 
-  {
+  if (isBrowser) {
     container = options.container || document.head;
     Array.prototype.forEach.call( // this means we will ignore elements which don't have a space in them which
     // means that the style elements we're looking at are only Emotion 11 server-rendered style elements
     document.querySelectorAll("style[data-emotion^=\"" + key + " \"]"), function (node) {
-      var attrib = node.getAttribute("data-emotion").split(' '); // $FlowFixMe
+      var attrib = node.getAttribute("data-emotion").split(' ');
 
       for (var i = 1; i < attrib.length; i++) {
         inserted[attrib[i]] = true;
@@ -45898,28 +49109,9 @@ var createCache = function createCache(options) {
 
   var omnipresentPlugins = [compat, removeLabel];
 
-  if (process.env.NODE_ENV !== 'production') {
-    omnipresentPlugins.push(createUnsafeSelectorsAlarm({
-      get compat() {
-        return cache.compat;
-      }
-
-    }), incorrectImportAlarm);
-  }
-
-  {
+  if (!getServerStylisCache) {
     var currentSheet;
-    var finalizingPlugins = [stringify, process.env.NODE_ENV !== 'production' ? function (element) {
-      if (!element.root) {
-        if (element["return"]) {
-          currentSheet.insert(element["return"]);
-        } else if (element.value && element.type !== COMMENT) {
-          // insert empty rule in non-production environments
-          // so @emotion/jest can grab `key` from the (JS)DOM for caches without any rules inserted yet
-          currentSheet.insert(element.value + "{}");
-        }
-      }
-    } : rulesheet(function (rule) {
+    var finalizingPlugins = [stringify, rulesheet(function (rule) {
       currentSheet.insert(rule);
     })];
     var serializer = middleware(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
@@ -45931,18 +49123,59 @@ var createCache = function createCache(options) {
     _insert = function insert(selector, serialized, sheet, shouldCache) {
       currentSheet = sheet;
 
-      if (process.env.NODE_ENV !== 'production' && serialized.map !== undefined) {
-        currentSheet = {
-          insert: function insert(rule) {
-            sheet.insert(rule + serialized.map);
-          }
-        };
-      }
-
       stylis(selector ? selector + "{" + serialized.styles + "}" : serialized.styles);
 
       if (shouldCache) {
         cache.inserted[serialized.name] = true;
+      }
+    };
+  } else {
+    var _finalizingPlugins = [stringify];
+
+    var _serializer = middleware(omnipresentPlugins.concat(stylisPlugins, _finalizingPlugins));
+
+    var _stylis = function _stylis(styles) {
+      return serialize(compile(styles), _serializer);
+    };
+
+    var serverStylisCache = getServerStylisCache(stylisPlugins)(key);
+
+    var getRules = function getRules(selector, serialized) {
+      var name = serialized.name;
+
+      if (serverStylisCache[name] === undefined) {
+        serverStylisCache[name] = _stylis(selector ? selector + "{" + serialized.styles + "}" : serialized.styles);
+      }
+
+      return serverStylisCache[name];
+    };
+
+    _insert = function _insert(selector, serialized, sheet, shouldCache) {
+      var name = serialized.name;
+      var rules = getRules(selector, serialized);
+
+      if (cache.compat === undefined) {
+        // in regular mode, we don't set the styles on the inserted cache
+        // since we don't need to and that would be wasting memory
+        // we return them so that they are rendered in a style tag
+        if (shouldCache) {
+          cache.inserted[name] = true;
+        }
+
+        return rules;
+      } else {
+        // in compat mode, we put the styles on the inserted cache so
+        // that emotion-server can pull out the styles
+        // except when we don't want to cache it which was in Global but now
+        // is nowhere but we don't want to do a major right now
+        // and just in case we're going to leave the case here
+        // it's also not affecting client side bundle size
+        // so it's really not a big deal
+        if (shouldCache) {
+          cache.inserted[name] = rules;
+        } else {
+          return rules;
+        }
       }
     };
   }
@@ -45965,6 +49198,3298 @@ var createCache = function createCache(options) {
   cache.sheet.hydrate(nodesToHydrate);
   return cache;
 };
+
+/**
+ * Lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+var lodash_mergewith = createCommonjsModule(function (module, exports) {
+/** Used as the size to enable large array optimizations. */
+var LARGE_ARRAY_SIZE = 200;
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/** Used to detect hot functions by number of calls within a span of milliseconds. */
+var HOT_COUNT = 800,
+    HOT_SPAN = 16;
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    asyncTag = '[object AsyncFunction]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    nullTag = '[object Null]',
+    objectTag = '[object Object]',
+    proxyTag = '[object Proxy]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    undefinedTag = '[object Undefined]',
+    weakMapTag = '[object WeakMap]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/** Used to identify `toStringTag` values of typed arrays. */
+var typedArrayTags = {};
+typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+typedArrayTags[uint32Tag] = true;
+typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
+typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
+typedArrayTags[errorTag] = typedArrayTags[funcTag] =
+typedArrayTags[mapTag] = typedArrayTags[numberTag] =
+typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
+typedArrayTags[setTag] = typedArrayTags[stringTag] =
+typedArrayTags[weakMapTag] = false;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Detect free variable `exports`. */
+var freeExports = exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Detect free variable `process` from Node.js. */
+var freeProcess = moduleExports && freeGlobal.process;
+
+/** Used to access faster Node.js helpers. */
+var nodeUtil = (function() {
+  try {
+    // Use `util.types` for Node.js 10+.
+    var types = freeModule && freeModule.require && freeModule.require('util').types;
+
+    if (types) {
+      return types;
+    }
+
+    // Legacy `process.binding('util')` for Node.js < 10.
+    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+  } catch (e) {}
+}());
+
+/* Node.js helper references. */
+var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+/**
+ * A faster alternative to `Function#apply`, this function invokes `func`
+ * with the `this` binding of `thisArg` and the arguments of `args`.
+ *
+ * @private
+ * @param {Function} func The function to invoke.
+ * @param {*} thisArg The `this` binding of `func`.
+ * @param {Array} args The arguments to invoke `func` with.
+ * @returns {*} Returns the result of `func`.
+ */
+function apply(func, thisArg, args) {
+  switch (args.length) {
+    case 0: return func.call(thisArg);
+    case 1: return func.call(thisArg, args[0]);
+    case 2: return func.call(thisArg, args[0], args[1]);
+    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+  }
+  return func.apply(thisArg, args);
+}
+
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+/**
+ * The base implementation of `_.unary` without support for storing metadata.
+ *
+ * @private
+ * @param {Function} func The function to cap arguments for.
+ * @returns {Function} Returns the new capped function.
+ */
+function baseUnary(func) {
+  return function(value) {
+    return func(value);
+  };
+}
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype,
+    funcProto = Function.prototype,
+    objectProto = Object.prototype;
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = root['__core-js_shared__'];
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = (function() {
+  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+  return uid ? ('Symbol(src)_1.' + uid) : '';
+}());
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' +
+  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined,
+    Symbol = root.Symbol,
+    Uint8Array = root.Uint8Array,
+    allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined,
+    getPrototype = overArg(Object.getPrototypeOf, Object),
+    objectCreate = Object.create,
+    propertyIsEnumerable = objectProto.propertyIsEnumerable,
+    splice = arrayProto.splice,
+    symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+var defineProperty = (function() {
+  try {
+    var func = getNative(Object, 'defineProperty');
+    func({}, '', {});
+    return func;
+  } catch (e) {}
+}());
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+    nativeMax = Math.max,
+    nativeNow = Date.now;
+
+/* Built-in method references that are verified to be native. */
+var Map = getNative(root, 'Map'),
+    nativeCreate = getNative(Object, 'create');
+
+/**
+ * The base implementation of `_.create` without support for assigning
+ * properties to the created object.
+ *
+ * @private
+ * @param {Object} proto The object to inherit from.
+ * @returns {Object} Returns the new object.
+ */
+var baseCreate = (function() {
+  function object() {}
+  return function(proto) {
+    if (!isObject(proto)) {
+      return {};
+    }
+    if (objectCreate) {
+      return objectCreate(proto);
+    }
+    object.prototype = proto;
+    var result = new object;
+    object.prototype = undefined;
+    return result;
+  };
+}());
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+  this.size = 0;
+}
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  var result = this.has(key) && delete this.__data__[key];
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (nativeCreate) {
+    var result = data[key];
+    return result === HASH_UNDEFINED ? undefined : result;
+  }
+  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty.call(data, key);
+}
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  this.size += this.has(key) ? 0 : 1;
+  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+  return this;
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = hashClear;
+Hash.prototype['delete'] = hashDelete;
+Hash.prototype.get = hashGet;
+Hash.prototype.has = hashHas;
+Hash.prototype.set = hashSet;
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+  this.size = 0;
+}
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  --this.size;
+  return true;
+}
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return assocIndexOf(this.__data__, key) > -1;
+}
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    ++this.size;
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+// Add methods to `ListCache`.
+ListCache.prototype.clear = listCacheClear;
+ListCache.prototype['delete'] = listCacheDelete;
+ListCache.prototype.get = listCacheGet;
+ListCache.prototype.has = listCacheHas;
+ListCache.prototype.set = listCacheSet;
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+  var index = -1,
+      length = entries == null ? 0 : entries.length;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.size = 0;
+  this.__data__ = {
+    'hash': new Hash,
+    'map': new (Map || ListCache),
+    'string': new Hash
+  };
+}
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  var result = getMapData(this, key)['delete'](key);
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return getMapData(this, key).get(key);
+}
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return getMapData(this, key).has(key);
+}
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  var data = getMapData(this, key),
+      size = data.size;
+
+  data.set(key, value);
+  this.size += data.size == size ? 0 : 1;
+  return this;
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = mapCacheClear;
+MapCache.prototype['delete'] = mapCacheDelete;
+MapCache.prototype.get = mapCacheGet;
+MapCache.prototype.has = mapCacheHas;
+MapCache.prototype.set = mapCacheSet;
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  var data = this.__data__ = new ListCache(entries);
+  this.size = data.size;
+}
+
+/**
+ * Removes all key-value entries from the stack.
+ *
+ * @private
+ * @name clear
+ * @memberOf Stack
+ */
+function stackClear() {
+  this.__data__ = new ListCache;
+  this.size = 0;
+}
+
+/**
+ * Removes `key` and its value from the stack.
+ *
+ * @private
+ * @name delete
+ * @memberOf Stack
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function stackDelete(key) {
+  var data = this.__data__,
+      result = data['delete'](key);
+
+  this.size = data.size;
+  return result;
+}
+
+/**
+ * Gets the stack value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Stack
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function stackGet(key) {
+  return this.__data__.get(key);
+}
+
+/**
+ * Checks if a stack value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Stack
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function stackHas(key) {
+  return this.__data__.has(key);
+}
+
+/**
+ * Sets the stack `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Stack
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the stack cache instance.
+ */
+function stackSet(key, value) {
+  var data = this.__data__;
+  if (data instanceof ListCache) {
+    var pairs = data.__data__;
+    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+      pairs.push([key, value]);
+      this.size = ++data.size;
+      return this;
+    }
+    data = this.__data__ = new MapCache(pairs);
+  }
+  data.set(key, value);
+  this.size = data.size;
+  return this;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = stackClear;
+Stack.prototype['delete'] = stackDelete;
+Stack.prototype.get = stackGet;
+Stack.prototype.has = stackHas;
+Stack.prototype.set = stackSet;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  var isArr = isArray(value),
+      isArg = !isArr && isArguments(value),
+      isBuff = !isArr && !isArg && isBuffer(value),
+      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+      skipIndexes = isArr || isArg || isBuff || isType,
+      result = skipIndexes ? baseTimes(value.length, String) : [],
+      length = result.length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty.call(value, key)) &&
+        !(skipIndexes && (
+           // Safari 9 has enumerable `arguments.length` in strict mode.
+           key == 'length' ||
+           // Node.js 0.10 has enumerable non-index properties on buffers.
+           (isBuff && (key == 'offset' || key == 'parent')) ||
+           // PhantomJS 2 has enumerable non-index properties on typed arrays.
+           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+           // Skip index properties.
+           isIndex(key, length)
+        ))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * This function is like `assignValue` except that it doesn't assign
+ * `undefined` values.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignMergeValue(object, key, value) {
+  if ((value !== undefined && !eq(object[key], value)) ||
+      (value === undefined && !(key in object))) {
+    baseAssignValue(object, key, value);
+  }
+}
+
+/**
+ * Assigns `value` to `key` of `object` if the existing value is not equivalent
+ * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * for equality comparisons.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignValue(object, key, value) {
+  var objValue = object[key];
+  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+      (value === undefined && !(key in object))) {
+    baseAssignValue(object, key, value);
+  }
+}
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (eq(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/**
+ * The base implementation of `assignValue` and `assignMergeValue` without
+ * value checks.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function baseAssignValue(object, key, value) {
+  if (key == '__proto__' && defineProperty) {
+    defineProperty(object, key, {
+      'configurable': true,
+      'enumerable': true,
+      'value': value,
+      'writable': true
+    });
+  } else {
+    object[key] = value;
+  }
+}
+
+/**
+ * The base implementation of `baseForOwn` which iterates over `object`
+ * properties returned by `keysFunc` and invokes `iteratee` for each property.
+ * Iteratee functions may exit iteration early by explicitly returning `false`.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @returns {Object} Returns `object`.
+ */
+var baseFor = createBaseFor();
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+/**
+ * The base implementation of `_.isArguments`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ */
+function baseIsArguments(value) {
+  return isObjectLike(value) && baseGetTag(value) == argsTag;
+}
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!isObject(value) || isMasked(value)) {
+    return false;
+  }
+  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource(value));
+}
+
+/**
+ * The base implementation of `_.isTypedArray` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ */
+function baseIsTypedArray(value) {
+  return isObjectLike(value) &&
+    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+}
+
+/**
+ * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeysIn(object) {
+  if (!isObject(object)) {
+    return nativeKeysIn(object);
+  }
+  var isProto = isPrototype(object),
+      result = [];
+
+  for (var key in object) {
+    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * The base implementation of `_.merge` without support for multiple sources.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @param {number} srcIndex The index of `source`.
+ * @param {Function} [customizer] The function to customize merged values.
+ * @param {Object} [stack] Tracks traversed source values and their merged
+ *  counterparts.
+ */
+function baseMerge(object, source, srcIndex, customizer, stack) {
+  if (object === source) {
+    return;
+  }
+  baseFor(source, function(srcValue, key) {
+    stack || (stack = new Stack);
+    if (isObject(srcValue)) {
+      baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
+    }
+    else {
+      var newValue = customizer
+        ? customizer(safeGet(object, key), srcValue, (key + ''), object, source, stack)
+        : undefined;
+
+      if (newValue === undefined) {
+        newValue = srcValue;
+      }
+      assignMergeValue(object, key, newValue);
+    }
+  }, keysIn);
+}
+
+/**
+ * A specialized version of `baseMerge` for arrays and objects which performs
+ * deep merges and tracks traversed objects enabling objects with circular
+ * references to be merged.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @param {string} key The key of the value to merge.
+ * @param {number} srcIndex The index of `source`.
+ * @param {Function} mergeFunc The function to merge values.
+ * @param {Function} [customizer] The function to customize assigned values.
+ * @param {Object} [stack] Tracks traversed source values and their merged
+ *  counterparts.
+ */
+function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
+  var objValue = safeGet(object, key),
+      srcValue = safeGet(source, key),
+      stacked = stack.get(srcValue);
+
+  if (stacked) {
+    assignMergeValue(object, key, stacked);
+    return;
+  }
+  var newValue = customizer
+    ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+    : undefined;
+
+  var isCommon = newValue === undefined;
+
+  if (isCommon) {
+    var isArr = isArray(srcValue),
+        isBuff = !isArr && isBuffer(srcValue),
+        isTyped = !isArr && !isBuff && isTypedArray(srcValue);
+
+    newValue = srcValue;
+    if (isArr || isBuff || isTyped) {
+      if (isArray(objValue)) {
+        newValue = objValue;
+      }
+      else if (isArrayLikeObject(objValue)) {
+        newValue = copyArray(objValue);
+      }
+      else if (isBuff) {
+        isCommon = false;
+        newValue = cloneBuffer(srcValue, true);
+      }
+      else if (isTyped) {
+        isCommon = false;
+        newValue = cloneTypedArray(srcValue, true);
+      }
+      else {
+        newValue = [];
+      }
+    }
+    else if (isPlainObject(srcValue) || isArguments(srcValue)) {
+      newValue = objValue;
+      if (isArguments(objValue)) {
+        newValue = toPlainObject(objValue);
+      }
+      else if (!isObject(objValue) || isFunction(objValue)) {
+        newValue = initCloneObject(srcValue);
+      }
+    }
+    else {
+      isCommon = false;
+    }
+  }
+  if (isCommon) {
+    // Recursively merge objects and arrays (susceptible to call stack limits).
+    stack.set(srcValue, newValue);
+    mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+    stack['delete'](srcValue);
+  }
+  assignMergeValue(object, key, newValue);
+}
+
+/**
+ * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @returns {Function} Returns the new function.
+ */
+function baseRest(func, start) {
+  return setToString(overRest(func, start, identity), func + '');
+}
+
+/**
+ * The base implementation of `setToString` without support for hot loop shorting.
+ *
+ * @private
+ * @param {Function} func The function to modify.
+ * @param {Function} string The `toString` result.
+ * @returns {Function} Returns `func`.
+ */
+var baseSetToString = !defineProperty ? identity : function(func, string) {
+  return defineProperty(func, 'toString', {
+    'configurable': true,
+    'enumerable': false,
+    'value': constant(string),
+    'writable': true
+  });
+};
+
+/**
+ * Creates a clone of  `buffer`.
+ *
+ * @private
+ * @param {Buffer} buffer The buffer to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Buffer} Returns the cloned buffer.
+ */
+function cloneBuffer(buffer, isDeep) {
+  if (isDeep) {
+    return buffer.slice();
+  }
+  var length = buffer.length,
+      result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
+
+  buffer.copy(result);
+  return result;
+}
+
+/**
+ * Creates a clone of `arrayBuffer`.
+ *
+ * @private
+ * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+ * @returns {ArrayBuffer} Returns the cloned array buffer.
+ */
+function cloneArrayBuffer(arrayBuffer) {
+  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+  return result;
+}
+
+/**
+ * Creates a clone of `typedArray`.
+ *
+ * @private
+ * @param {Object} typedArray The typed array to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned typed array.
+ */
+function cloneTypedArray(typedArray, isDeep) {
+  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+}
+
+/**
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */
+function copyArray(source, array) {
+  var index = -1,
+      length = source.length;
+
+  array || (array = Array(length));
+  while (++index < length) {
+    array[index] = source[index];
+  }
+  return array;
+}
+
+/**
+ * Copies properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy properties from.
+ * @param {Array} props The property identifiers to copy.
+ * @param {Object} [object={}] The object to copy properties to.
+ * @param {Function} [customizer] The function to customize copied values.
+ * @returns {Object} Returns `object`.
+ */
+function copyObject(source, props, object, customizer) {
+  var isNew = !object;
+  object || (object = {});
+
+  var index = -1,
+      length = props.length;
+
+  while (++index < length) {
+    var key = props[index];
+
+    var newValue = customizer
+      ? customizer(object[key], source[key], key, object, source)
+      : undefined;
+
+    if (newValue === undefined) {
+      newValue = source[key];
+    }
+    if (isNew) {
+      baseAssignValue(object, key, newValue);
+    } else {
+      assignValue(object, key, newValue);
+    }
+  }
+  return object;
+}
+
+/**
+ * Creates a function like `_.assign`.
+ *
+ * @private
+ * @param {Function} assigner The function to assign values.
+ * @returns {Function} Returns the new assigner function.
+ */
+function createAssigner(assigner) {
+  return baseRest(function(object, sources) {
+    var index = -1,
+        length = sources.length,
+        customizer = length > 1 ? sources[length - 1] : undefined,
+        guard = length > 2 ? sources[2] : undefined;
+
+    customizer = (assigner.length > 3 && typeof customizer == 'function')
+      ? (length--, customizer)
+      : undefined;
+
+    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+      customizer = length < 3 ? undefined : customizer;
+      length = 1;
+    }
+    object = Object(object);
+    while (++index < length) {
+      var source = sources[index];
+      if (source) {
+        assigner(object, source, index, customizer);
+      }
+    }
+    return object;
+  });
+}
+
+/**
+ * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+ *
+ * @private
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseFor(fromRight) {
+  return function(object, iteratee, keysFunc) {
+    var index = -1,
+        iterable = Object(object),
+        props = keysFunc(object),
+        length = props.length;
+
+    while (length--) {
+      var key = props[fromRight ? length : ++index];
+      if (iteratee(iterable[key], key, iterable) === false) {
+        break;
+      }
+    }
+    return object;
+  };
+}
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData(map, key) {
+  var data = map.__data__;
+  return isKeyable(key)
+    ? data[typeof key == 'string' ? 'string' : 'hash']
+    : data.map;
+}
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+/**
+ * Initializes an object clone.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneObject(object) {
+  return (typeof object.constructor == 'function' && !isPrototype(object))
+    ? baseCreate(getPrototype(object))
+    : {};
+}
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  var type = typeof value;
+  length = length == null ? MAX_SAFE_INTEGER : length;
+
+  return !!length &&
+    (type == 'number' ||
+      (type != 'symbol' && reIsUint.test(value))) &&
+        (value > -1 && value % 1 == 0 && value < length);
+}
+
+/**
+ * Checks if the given arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+ *  else `false`.
+ */
+function isIterateeCall(value, index, object) {
+  if (!isObject(object)) {
+    return false;
+  }
+  var type = typeof index;
+  if (type == 'number'
+        ? (isArrayLike(object) && isIndex(index, object.length))
+        : (type == 'string' && index in object)
+      ) {
+    return eq(object[index], value);
+  }
+  return false;
+}
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value;
+  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+    ? (value !== '__proto__')
+    : (value === null);
+}
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && (maskSrcKey in func);
+}
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+  return value === proto;
+}
+
+/**
+ * This function is like
+ * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * except that it includes inherited enumerable properties.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function nativeKeysIn(object) {
+  var result = [];
+  if (object != null) {
+    for (var key in Object(object)) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+/**
+ * A specialized version of `baseRest` which transforms the rest array.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @param {Function} transform The rest array transform.
+ * @returns {Function} Returns the new function.
+ */
+function overRest(func, start, transform) {
+  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+  return function() {
+    var args = arguments,
+        index = -1,
+        length = nativeMax(args.length - start, 0),
+        array = Array(length);
+
+    while (++index < length) {
+      array[index] = args[start + index];
+    }
+    index = -1;
+    var otherArgs = Array(start + 1);
+    while (++index < start) {
+      otherArgs[index] = args[index];
+    }
+    otherArgs[start] = transform(array);
+    return apply(func, this, otherArgs);
+  };
+}
+
+/**
+ * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function safeGet(object, key) {
+  if (key === 'constructor' && typeof object[key] === 'function') {
+    return;
+  }
+
+  if (key == '__proto__') {
+    return;
+  }
+
+  return object[key];
+}
+
+/**
+ * Sets the `toString` method of `func` to return `string`.
+ *
+ * @private
+ * @param {Function} func The function to modify.
+ * @param {Function} string The `toString` result.
+ * @returns {Function} Returns `func`.
+ */
+var setToString = shortOut(baseSetToString);
+
+/**
+ * Creates a function that'll short out and invoke `identity` instead
+ * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+ * milliseconds.
+ *
+ * @private
+ * @param {Function} func The function to restrict.
+ * @returns {Function} Returns the new shortable function.
+ */
+function shortOut(func) {
+  var count = 0,
+      lastCalled = 0;
+
+  return function() {
+    var stamp = nativeNow(),
+        remaining = HOT_SPAN - (stamp - lastCalled);
+
+    lastCalled = stamp;
+    if (remaining > 0) {
+      if (++count >= HOT_COUNT) {
+        return arguments[0];
+      }
+    } else {
+      count = 0;
+    }
+    return func.apply(undefined, arguments);
+  };
+}
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to convert.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return (func + '');
+    } catch (e) {}
+  }
+  return '';
+}
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
+  return isObjectLike(value) && hasOwnProperty.call(value, 'callee') &&
+    !propertyIsEnumerable.call(value, 'callee');
+};
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction(value);
+}
+
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */
+function isArrayLikeObject(value) {
+  return isObjectLike(value) && isArrayLike(value);
+}
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  if (!isObject(value)) {
+    return false;
+  }
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 9 which returns 'object' for typed arrays and other constructors.
+  var tag = baseGetTag(value);
+  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
+    return false;
+  }
+  var proto = getPrototype(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+    funcToString.call(Ctor) == objectCtorString;
+}
+
+/**
+ * Checks if `value` is classified as a typed array.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @example
+ *
+ * _.isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * _.isTypedArray([]);
+ * // => false
+ */
+var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+/**
+ * Converts `value` to a plain object flattening inherited enumerable string
+ * keyed properties of `value` to own properties of the plain object.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {Object} Returns the converted plain object.
+ * @example
+ *
+ * function Foo() {
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.assign({ 'a': 1 }, new Foo);
+ * // => { 'a': 1, 'b': 2 }
+ *
+ * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+ * // => { 'a': 1, 'b': 2, 'c': 3 }
+ */
+function toPlainObject(value) {
+  return copyObject(value, keysIn(value));
+}
+
+/**
+ * Creates an array of the own and inherited enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keysIn(new Foo);
+ * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+ */
+function keysIn(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+}
+
+/**
+ * This method is like `_.merge` except that it accepts `customizer` which
+ * is invoked to produce the merged values of the destination and source
+ * properties. If `customizer` returns `undefined`, merging is handled by the
+ * method instead. The `customizer` is invoked with six arguments:
+ * (objValue, srcValue, key, object, source, stack).
+ *
+ * **Note:** This method mutates `object`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Object
+ * @param {Object} object The destination object.
+ * @param {...Object} sources The source objects.
+ * @param {Function} customizer The function to customize assigned values.
+ * @returns {Object} Returns `object`.
+ * @example
+ *
+ * function customizer(objValue, srcValue) {
+ *   if (_.isArray(objValue)) {
+ *     return objValue.concat(srcValue);
+ *   }
+ * }
+ *
+ * var object = { 'a': [1], 'b': [2] };
+ * var other = { 'a': [3], 'b': [4] };
+ *
+ * _.mergeWith(object, other, customizer);
+ * // => { 'a': [1, 3], 'b': [2, 4] }
+ */
+var mergeWith = createAssigner(function(object, source, srcIndex, customizer) {
+  baseMerge(object, source, srcIndex, customizer);
+});
+
+/**
+ * Creates a function that returns `value`.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Util
+ * @param {*} value The value to return from the new function.
+ * @returns {Function} Returns the new constant function.
+ * @example
+ *
+ * var objects = _.times(2, _.constant({ 'a': 1 }));
+ *
+ * console.log(objects);
+ * // => [{ 'a': 1 }, { 'a': 1 }]
+ *
+ * console.log(objects[0] === objects[1]);
+ * // => true
+ */
+function constant(value) {
+  return function() {
+    return value;
+  };
+}
+
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+/**
+ * This method returns `false`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {boolean} Returns `false`.
+ * @example
+ *
+ * _.times(2, _.stubFalse);
+ * // => [false, false]
+ */
+function stubFalse() {
+  return false;
+}
+
+module.exports = mergeWith;
+});
+
+// src/utils/create-transform.ts
+var isImportant = (value) => /!(important)?$/.test(value);
+var withoutImportant = (value) => typeof value === "string" ? value.replace(/!(important)?$/, "").trim() : value;
+var tokenToCSSVar = (scale, value) => (theme) => {
+  const valueStr = String(value);
+  const important = isImportant(valueStr);
+  const valueWithoutImportant = withoutImportant(valueStr);
+  const key = scale ? `${scale}.${valueWithoutImportant}` : valueWithoutImportant;
+  let transformed = isObject$2(theme.__cssMap) && key in theme.__cssMap ? theme.__cssMap[key].varRef : value;
+  transformed = withoutImportant(transformed);
+  return important ? `${transformed} !important` : transformed;
+};
+function createTransform(options) {
+  const { scale, transform: transform2, compose } = options;
+  const fn = (value, theme) => {
+    var _a;
+    const _value = tokenToCSSVar(scale, value)(theme);
+    let result = (_a = transform2 == null ? void 0 : transform2(_value, theme)) != null ? _a : _value;
+    if (compose) {
+      result = compose(result, theme);
+    }
+    return result;
+  };
+  return fn;
+}
+
+// src/utils/pipe.ts
+var pipe = (...fns) => (v) => fns.reduce((a, b) => b(a), v);
+
+// src/utils/prop-config.ts
+function toConfig(scale, transform2) {
+  return (property) => {
+    const result = { property, scale };
+    result.transform = createTransform({
+      scale,
+      transform: transform2
+    });
+    return result;
+  };
+}
+var getRtl = ({ rtl, ltr }) => (theme) => theme.direction === "rtl" ? rtl : ltr;
+function logical(options) {
+  const { property, scale, transform: transform2 } = options;
+  return {
+    scale,
+    property: getRtl(property),
+    transform: scale ? createTransform({
+      scale,
+      compose: transform2
+    }) : transform2
+  };
+}
+
+// src/utils/templates.ts
+var transformTemplate = [
+  "rotate(var(--chakra-rotate, 0))",
+  "scaleX(var(--chakra-scale-x, 1))",
+  "scaleY(var(--chakra-scale-y, 1))",
+  "skewX(var(--chakra-skew-x, 0))",
+  "skewY(var(--chakra-skew-y, 0))"
+];
+function getTransformTemplate() {
+  return [
+    "translateX(var(--chakra-translate-x, 0))",
+    "translateY(var(--chakra-translate-y, 0))",
+    ...transformTemplate
+  ].join(" ");
+}
+function getTransformGpuTemplate() {
+  return [
+    "translate3d(var(--chakra-translate-x, 0), var(--chakra-translate-y, 0), 0)",
+    ...transformTemplate
+  ].join(" ");
+}
+var filterTemplate = {
+  "--chakra-blur": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-brightness": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-contrast": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-grayscale": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-hue-rotate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-invert": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-saturate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-sepia": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-drop-shadow": "var(--chakra-empty,/*!*/ /*!*/)",
+  filter: [
+    "var(--chakra-blur)",
+    "var(--chakra-brightness)",
+    "var(--chakra-contrast)",
+    "var(--chakra-grayscale)",
+    "var(--chakra-hue-rotate)",
+    "var(--chakra-invert)",
+    "var(--chakra-saturate)",
+    "var(--chakra-sepia)",
+    "var(--chakra-drop-shadow)"
+  ].join(" ")
+};
+var backdropFilterTemplate = {
+  backdropFilter: [
+    "var(--chakra-backdrop-blur)",
+    "var(--chakra-backdrop-brightness)",
+    "var(--chakra-backdrop-contrast)",
+    "var(--chakra-backdrop-grayscale)",
+    "var(--chakra-backdrop-hue-rotate)",
+    "var(--chakra-backdrop-invert)",
+    "var(--chakra-backdrop-opacity)",
+    "var(--chakra-backdrop-saturate)",
+    "var(--chakra-backdrop-sepia)"
+  ].join(" "),
+  "--chakra-backdrop-blur": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-brightness": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-contrast": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-grayscale": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-hue-rotate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-invert": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-opacity": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-saturate": "var(--chakra-empty,/*!*/ /*!*/)",
+  "--chakra-backdrop-sepia": "var(--chakra-empty,/*!*/ /*!*/)"
+};
+function getRingTemplate(value) {
+  return {
+    "--chakra-ring-offset-shadow": `var(--chakra-ring-inset) 0 0 0 var(--chakra-ring-offset-width) var(--chakra-ring-offset-color)`,
+    "--chakra-ring-shadow": `var(--chakra-ring-inset) 0 0 0 calc(var(--chakra-ring-width) + var(--chakra-ring-offset-width)) var(--chakra-ring-color)`,
+    "--chakra-ring-width": value,
+    boxShadow: [
+      `var(--chakra-ring-offset-shadow)`,
+      `var(--chakra-ring-shadow)`,
+      `var(--chakra-shadow, 0 0 #0000)`
+    ].join(", ")
+  };
+}
+var flexDirectionTemplate = {
+  "row-reverse": {
+    space: "--chakra-space-x-reverse",
+    divide: "--chakra-divide-x-reverse"
+  },
+  "column-reverse": {
+    space: "--chakra-space-y-reverse",
+    divide: "--chakra-divide-y-reverse"
+  }
+};
+
+// src/utils/parse-gradient.ts
+var directionMap = {
+  "to-t": "to top",
+  "to-tr": "to top right",
+  "to-r": "to right",
+  "to-br": "to bottom right",
+  "to-b": "to bottom",
+  "to-bl": "to bottom left",
+  "to-l": "to left",
+  "to-tl": "to top left"
+};
+var valueSet = new Set(Object.values(directionMap));
+var globalSet = /* @__PURE__ */ new Set([
+  "none",
+  "-moz-initial",
+  "inherit",
+  "initial",
+  "revert",
+  "unset"
+]);
+var trimSpace = (str) => str.trim();
+function parseGradient(value, theme) {
+  if (value == null || globalSet.has(value))
+    return value;
+  const prevent = isCSSFunction(value) || globalSet.has(value);
+  if (!prevent)
+    return `url('${value}')`;
+  const regex = /(^[a-z-A-Z]+)\((.*)\)/g;
+  const results = regex.exec(value);
+  const type = results == null ? void 0 : results[1];
+  const values = results == null ? void 0 : results[2];
+  if (!type || !values)
+    return value;
+  const _type = type.includes("-gradient") ? type : `${type}-gradient`;
+  const [maybeDirection, ...stops] = values.split(",").map(trimSpace).filter(Boolean);
+  if ((stops == null ? void 0 : stops.length) === 0)
+    return value;
+  const direction = maybeDirection in directionMap ? directionMap[maybeDirection] : maybeDirection;
+  stops.unshift(direction);
+  const _values = stops.map((stop) => {
+    if (valueSet.has(stop))
+      return stop;
+    const firstStop = stop.indexOf(" ");
+    const [_color, _stop] = firstStop !== -1 ? [stop.substr(0, firstStop), stop.substr(firstStop + 1)] : [stop];
+    const _stopOrFunc = isCSSFunction(_stop) ? _stop : _stop && _stop.split(" ");
+    const key = `colors.${_color}`;
+    const color2 = key in theme.__cssMap ? theme.__cssMap[key].varRef : _color;
+    return _stopOrFunc ? [
+      color2,
+      ...Array.isArray(_stopOrFunc) ? _stopOrFunc : [_stopOrFunc]
+    ].join(" ") : color2;
+  });
+  return `${_type}(${_values.join(", ")})`;
+}
+var isCSSFunction = (value) => {
+  return typeof value === "string" && value.includes("(") && value.includes(")");
+};
+var gradientTransform = (value, theme) => parseGradient(value, theme != null ? theme : {});
+
+// src/utils/transform-functions.ts
+function isCssVar(value) {
+  return /^var\(--.+\)$/.test(value);
+}
+var analyzeCSSValue = (value) => {
+  const num = parseFloat(value.toString());
+  const unit = value.toString().replace(String(num), "");
+  return { unitless: !unit, value: num, unit };
+};
+var wrap = (str) => (value) => `${str}(${value})`;
+var transformFunctions = {
+  filter(value) {
+    return value !== "auto" ? value : filterTemplate;
+  },
+  backdropFilter(value) {
+    return value !== "auto" ? value : backdropFilterTemplate;
+  },
+  ring(value) {
+    return getRingTemplate(transformFunctions.px(value));
+  },
+  bgClip(value) {
+    return value === "text" ? { color: "transparent", backgroundClip: "text" } : { backgroundClip: value };
+  },
+  transform(value) {
+    if (value === "auto")
+      return getTransformTemplate();
+    if (value === "auto-gpu")
+      return getTransformGpuTemplate();
+    return value;
+  },
+  vh(value) {
+    return value === "$100vh" ? "var(--chakra-vh)" : value;
+  },
+  px(value) {
+    if (value == null)
+      return value;
+    const { unitless } = analyzeCSSValue(value);
+    return unitless || typeof value === "number" ? `${value}px` : value;
+  },
+  fraction(value) {
+    return !(typeof value === "number") || value > 1 ? value : `${value * 100}%`;
+  },
+  float(value, theme) {
+    const map = { left: "right", right: "left" };
+    return theme.direction === "rtl" ? map[value] : value;
+  },
+  degree(value) {
+    if (isCssVar(value) || value == null)
+      return value;
+    const unitless = typeof value === "string" && !value.endsWith("deg");
+    return typeof value === "number" || unitless ? `${value}deg` : value;
+  },
+  gradient: gradientTransform,
+  blur: wrap("blur"),
+  opacity: wrap("opacity"),
+  brightness: wrap("brightness"),
+  contrast: wrap("contrast"),
+  dropShadow: wrap("drop-shadow"),
+  grayscale: wrap("grayscale"),
+  hueRotate: (value) => wrap("hue-rotate")(transformFunctions.degree(value)),
+  invert: wrap("invert"),
+  saturate: wrap("saturate"),
+  sepia: wrap("sepia"),
+  bgImage(value) {
+    if (value == null)
+      return value;
+    const prevent = isCSSFunction(value) || globalSet.has(value);
+    return !prevent ? `url(${value})` : value;
+  },
+  outline(value) {
+    const isNoneOrZero = String(value) === "0" || String(value) === "none";
+    return value !== null && isNoneOrZero ? { outline: "2px solid transparent", outlineOffset: "2px" } : { outline: value };
+  },
+  flexDirection(value) {
+    var _a;
+    const { space: space2, divide: divide2 } = (_a = flexDirectionTemplate[value]) != null ? _a : {};
+    const result = { flexDirection: value };
+    if (space2)
+      result[space2] = 1;
+    if (divide2)
+      result[divide2] = 1;
+    return result;
+  }
+};
+
+// src/utils/index.ts
+var t = {
+  borderWidths: toConfig("borderWidths"),
+  borderStyles: toConfig("borderStyles"),
+  colors: toConfig("colors"),
+  borders: toConfig("borders"),
+  gradients: toConfig("gradients", transformFunctions.gradient),
+  radii: toConfig("radii", transformFunctions.px),
+  space: toConfig("space", pipe(transformFunctions.vh, transformFunctions.px)),
+  spaceT: toConfig("space", pipe(transformFunctions.vh, transformFunctions.px)),
+  degreeT(property) {
+    return { property, transform: transformFunctions.degree };
+  },
+  prop(property, scale, transform2) {
+    return {
+      property,
+      scale,
+      ...scale && {
+        transform: createTransform({ scale, transform: transform2 })
+      }
+    };
+  },
+  propT(property, transform2) {
+    return { property, transform: transform2 };
+  },
+  sizes: toConfig("sizes", pipe(transformFunctions.vh, transformFunctions.px)),
+  sizesT: toConfig("sizes", pipe(transformFunctions.vh, transformFunctions.fraction)),
+  shadows: toConfig("shadows"),
+  logical,
+  blur: toConfig("blur", transformFunctions.blur)
+};
+
+// src/config/background.ts
+var background = {
+  background: t.colors("background"),
+  backgroundColor: t.colors("backgroundColor"),
+  backgroundImage: t.gradients("backgroundImage"),
+  backgroundSize: true,
+  backgroundPosition: true,
+  backgroundRepeat: true,
+  backgroundAttachment: true,
+  backgroundClip: { transform: transformFunctions.bgClip },
+  bgSize: t.prop("backgroundSize"),
+  bgPosition: t.prop("backgroundPosition"),
+  bg: t.colors("background"),
+  bgColor: t.colors("backgroundColor"),
+  bgPos: t.prop("backgroundPosition"),
+  bgRepeat: t.prop("backgroundRepeat"),
+  bgAttachment: t.prop("backgroundAttachment"),
+  bgGradient: t.gradients("backgroundImage"),
+  bgClip: { transform: transformFunctions.bgClip }
+};
+Object.assign(background, {
+  bgImage: background.backgroundImage,
+  bgImg: background.backgroundImage
+});
+
+// src/config/border.ts
+var border = {
+  border: t.borders("border"),
+  borderWidth: t.borderWidths("borderWidth"),
+  borderStyle: t.borderStyles("borderStyle"),
+  borderColor: t.colors("borderColor"),
+  borderRadius: t.radii("borderRadius"),
+  borderTop: t.borders("borderTop"),
+  borderBlockStart: t.borders("borderBlockStart"),
+  borderTopLeftRadius: t.radii("borderTopLeftRadius"),
+  borderStartStartRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderTopLeftRadius",
+      rtl: "borderTopRightRadius"
+    }
+  }),
+  borderEndStartRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderBottomLeftRadius",
+      rtl: "borderBottomRightRadius"
+    }
+  }),
+  borderTopRightRadius: t.radii("borderTopRightRadius"),
+  borderStartEndRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderTopRightRadius",
+      rtl: "borderTopLeftRadius"
+    }
+  }),
+  borderEndEndRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: "borderBottomRightRadius",
+      rtl: "borderBottomLeftRadius"
+    }
+  }),
+  borderRight: t.borders("borderRight"),
+  borderInlineEnd: t.borders("borderInlineEnd"),
+  borderBottom: t.borders("borderBottom"),
+  borderBlockEnd: t.borders("borderBlockEnd"),
+  borderBottomLeftRadius: t.radii("borderBottomLeftRadius"),
+  borderBottomRightRadius: t.radii("borderBottomRightRadius"),
+  borderLeft: t.borders("borderLeft"),
+  borderInlineStart: {
+    property: "borderInlineStart",
+    scale: "borders"
+  },
+  borderInlineStartRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: ["borderTopLeftRadius", "borderBottomLeftRadius"],
+      rtl: ["borderTopRightRadius", "borderBottomRightRadius"]
+    }
+  }),
+  borderInlineEndRadius: t.logical({
+    scale: "radii",
+    property: {
+      ltr: ["borderTopRightRadius", "borderBottomRightRadius"],
+      rtl: ["borderTopLeftRadius", "borderBottomLeftRadius"]
+    }
+  }),
+  borderX: t.borders(["borderLeft", "borderRight"]),
+  borderInline: t.borders("borderInline"),
+  borderY: t.borders(["borderTop", "borderBottom"]),
+  borderBlock: t.borders("borderBlock"),
+  borderTopWidth: t.borderWidths("borderTopWidth"),
+  borderBlockStartWidth: t.borderWidths("borderBlockStartWidth"),
+  borderTopColor: t.colors("borderTopColor"),
+  borderBlockStartColor: t.colors("borderBlockStartColor"),
+  borderTopStyle: t.borderStyles("borderTopStyle"),
+  borderBlockStartStyle: t.borderStyles("borderBlockStartStyle"),
+  borderBottomWidth: t.borderWidths("borderBottomWidth"),
+  borderBlockEndWidth: t.borderWidths("borderBlockEndWidth"),
+  borderBottomColor: t.colors("borderBottomColor"),
+  borderBlockEndColor: t.colors("borderBlockEndColor"),
+  borderBottomStyle: t.borderStyles("borderBottomStyle"),
+  borderBlockEndStyle: t.borderStyles("borderBlockEndStyle"),
+  borderLeftWidth: t.borderWidths("borderLeftWidth"),
+  borderInlineStartWidth: t.borderWidths("borderInlineStartWidth"),
+  borderLeftColor: t.colors("borderLeftColor"),
+  borderInlineStartColor: t.colors("borderInlineStartColor"),
+  borderLeftStyle: t.borderStyles("borderLeftStyle"),
+  borderInlineStartStyle: t.borderStyles("borderInlineStartStyle"),
+  borderRightWidth: t.borderWidths("borderRightWidth"),
+  borderInlineEndWidth: t.borderWidths("borderInlineEndWidth"),
+  borderRightColor: t.colors("borderRightColor"),
+  borderInlineEndColor: t.colors("borderInlineEndColor"),
+  borderRightStyle: t.borderStyles("borderRightStyle"),
+  borderInlineEndStyle: t.borderStyles("borderInlineEndStyle"),
+  borderTopRadius: t.radii(["borderTopLeftRadius", "borderTopRightRadius"]),
+  borderBottomRadius: t.radii([
+    "borderBottomLeftRadius",
+    "borderBottomRightRadius"
+  ]),
+  borderLeftRadius: t.radii(["borderTopLeftRadius", "borderBottomLeftRadius"]),
+  borderRightRadius: t.radii([
+    "borderTopRightRadius",
+    "borderBottomRightRadius"
+  ])
+};
+Object.assign(border, {
+  rounded: border.borderRadius,
+  roundedTop: border.borderTopRadius,
+  roundedTopLeft: border.borderTopLeftRadius,
+  roundedTopRight: border.borderTopRightRadius,
+  roundedTopStart: border.borderStartStartRadius,
+  roundedTopEnd: border.borderStartEndRadius,
+  roundedBottom: border.borderBottomRadius,
+  roundedBottomLeft: border.borderBottomLeftRadius,
+  roundedBottomRight: border.borderBottomRightRadius,
+  roundedBottomStart: border.borderEndStartRadius,
+  roundedBottomEnd: border.borderEndEndRadius,
+  roundedLeft: border.borderLeftRadius,
+  roundedRight: border.borderRightRadius,
+  roundedStart: border.borderInlineStartRadius,
+  roundedEnd: border.borderInlineEndRadius,
+  borderStart: border.borderInlineStart,
+  borderEnd: border.borderInlineEnd,
+  borderTopStartRadius: border.borderStartStartRadius,
+  borderTopEndRadius: border.borderStartEndRadius,
+  borderBottomStartRadius: border.borderEndStartRadius,
+  borderBottomEndRadius: border.borderEndEndRadius,
+  borderStartRadius: border.borderInlineStartRadius,
+  borderEndRadius: border.borderInlineEndRadius,
+  borderStartWidth: border.borderInlineStartWidth,
+  borderEndWidth: border.borderInlineEndWidth,
+  borderStartColor: border.borderInlineStartColor,
+  borderEndColor: border.borderInlineEndColor,
+  borderStartStyle: border.borderInlineStartStyle,
+  borderEndStyle: border.borderInlineEndStyle
+});
+
+// src/config/color.ts
+var color = {
+  color: t.colors("color"),
+  textColor: t.colors("color"),
+  fill: t.colors("fill"),
+  stroke: t.colors("stroke")
+};
+
+// src/config/effect.ts
+var effect = {
+  boxShadow: t.shadows("boxShadow"),
+  mixBlendMode: true,
+  blendMode: t.prop("mixBlendMode"),
+  backgroundBlendMode: true,
+  bgBlendMode: t.prop("backgroundBlendMode"),
+  opacity: true
+};
+Object.assign(effect, {
+  shadow: effect.boxShadow
+});
+
+// src/config/filter.ts
+var filter = {
+  filter: { transform: transformFunctions.filter },
+  blur: t.blur("--chakra-blur"),
+  brightness: t.propT("--chakra-brightness", transformFunctions.brightness),
+  contrast: t.propT("--chakra-contrast", transformFunctions.contrast),
+  hueRotate: t.propT("--chakra-hue-rotate", transformFunctions.hueRotate),
+  invert: t.propT("--chakra-invert", transformFunctions.invert),
+  saturate: t.propT("--chakra-saturate", transformFunctions.saturate),
+  dropShadow: t.propT("--chakra-drop-shadow", transformFunctions.dropShadow),
+  backdropFilter: { transform: transformFunctions.backdropFilter },
+  backdropBlur: t.blur("--chakra-backdrop-blur"),
+  backdropBrightness: t.propT(
+    "--chakra-backdrop-brightness",
+    transformFunctions.brightness
+  ),
+  backdropContrast: t.propT("--chakra-backdrop-contrast", transformFunctions.contrast),
+  backdropHueRotate: t.propT(
+    "--chakra-backdrop-hue-rotate",
+    transformFunctions.hueRotate
+  ),
+  backdropInvert: t.propT("--chakra-backdrop-invert", transformFunctions.invert),
+  backdropSaturate: t.propT("--chakra-backdrop-saturate", transformFunctions.saturate)
+};
+
+// src/config/flexbox.ts
+var flexbox = {
+  alignItems: true,
+  alignContent: true,
+  justifyItems: true,
+  justifyContent: true,
+  flexWrap: true,
+  flexDirection: { transform: transformFunctions.flexDirection },
+  flex: true,
+  flexFlow: true,
+  flexGrow: true,
+  flexShrink: true,
+  flexBasis: t.sizes("flexBasis"),
+  justifySelf: true,
+  alignSelf: true,
+  order: true,
+  placeItems: true,
+  placeContent: true,
+  placeSelf: true,
+  gap: t.space("gap"),
+  rowGap: t.space("rowGap"),
+  columnGap: t.space("columnGap")
+};
+Object.assign(flexbox, {
+  flexDir: flexbox.flexDirection
+});
+
+// src/config/grid.ts
+var grid = {
+  gridGap: t.space("gridGap"),
+  gridColumnGap: t.space("gridColumnGap"),
+  gridRowGap: t.space("gridRowGap"),
+  gridColumn: true,
+  gridRow: true,
+  gridAutoFlow: true,
+  gridAutoColumns: true,
+  gridColumnStart: true,
+  gridColumnEnd: true,
+  gridRowStart: true,
+  gridRowEnd: true,
+  gridAutoRows: true,
+  gridTemplate: true,
+  gridTemplateColumns: true,
+  gridTemplateRows: true,
+  gridTemplateAreas: true,
+  gridArea: true
+};
+
+// src/config/interactivity.ts
+var interactivity = {
+  appearance: true,
+  cursor: true,
+  resize: true,
+  userSelect: true,
+  pointerEvents: true,
+  outline: { transform: transformFunctions.outline },
+  outlineOffset: true,
+  outlineColor: t.colors("outlineColor")
+};
+
+// src/config/layout.ts
+var layout = {
+  width: t.sizesT("width"),
+  inlineSize: t.sizesT("inlineSize"),
+  height: t.sizes("height"),
+  blockSize: t.sizes("blockSize"),
+  boxSize: t.sizes(["width", "height"]),
+  minWidth: t.sizes("minWidth"),
+  minInlineSize: t.sizes("minInlineSize"),
+  minHeight: t.sizes("minHeight"),
+  minBlockSize: t.sizes("minBlockSize"),
+  maxWidth: t.sizes("maxWidth"),
+  maxInlineSize: t.sizes("maxInlineSize"),
+  maxHeight: t.sizes("maxHeight"),
+  maxBlockSize: t.sizes("maxBlockSize"),
+  overflow: true,
+  overflowX: true,
+  overflowY: true,
+  overscrollBehavior: true,
+  overscrollBehaviorX: true,
+  overscrollBehaviorY: true,
+  display: true,
+  aspectRatio: true,
+  hideFrom: {
+    scale: "breakpoints",
+    transform: (value, theme) => {
+      var _a, _b, _c;
+      const breakpoint = (_c = (_b = (_a = theme.__breakpoints) == null ? void 0 : _a.get(value)) == null ? void 0 : _b.minW) != null ? _c : value;
+      const mq = `@media screen and (min-width: ${breakpoint})`;
+      return { [mq]: { display: "none" } };
+    }
+  },
+  hideBelow: {
+    scale: "breakpoints",
+    transform: (value, theme) => {
+      var _a, _b, _c;
+      const breakpoint = (_c = (_b = (_a = theme.__breakpoints) == null ? void 0 : _a.get(value)) == null ? void 0 : _b._minW) != null ? _c : value;
+      const mq = `@media screen and (max-width: ${breakpoint})`;
+      return { [mq]: { display: "none" } };
+    }
+  },
+  verticalAlign: true,
+  boxSizing: true,
+  boxDecorationBreak: true,
+  float: t.propT("float", transformFunctions.float),
+  objectFit: true,
+  objectPosition: true,
+  visibility: true,
+  isolation: true
+};
+Object.assign(layout, {
+  w: layout.width,
+  h: layout.height,
+  minW: layout.minWidth,
+  maxW: layout.maxWidth,
+  minH: layout.minHeight,
+  maxH: layout.maxHeight,
+  overscroll: layout.overscrollBehavior,
+  overscrollX: layout.overscrollBehaviorX,
+  overscrollY: layout.overscrollBehaviorY
+});
+
+// src/config/list.ts
+var list = {
+  listStyleType: true,
+  listStylePosition: true,
+  listStylePos: t.prop("listStylePosition"),
+  listStyleImage: true,
+  listStyleImg: t.prop("listStyleImage")
+};
+
+// src/get.ts
+function get(obj, path, fallback, index) {
+  const key = typeof path === "string" ? path.split(".") : [path];
+  for (index = 0; index < key.length; index += 1) {
+    if (!obj)
+      break;
+    obj = obj[key[index]];
+  }
+  return obj === void 0 ? fallback : obj;
+}
+var memoize = (fn) => {
+  const cache = /* @__PURE__ */ new WeakMap();
+  const memoizedFn = (obj, path, fallback, index) => {
+    if (typeof obj === "undefined") {
+      return fn(obj, path, fallback);
+    }
+    if (!cache.has(obj)) {
+      cache.set(obj, /* @__PURE__ */ new Map());
+    }
+    const map = cache.get(obj);
+    if (map.has(path)) {
+      return map.get(path);
+    }
+    const value = fn(obj, path, fallback, index);
+    map.set(path, value);
+    return value;
+  };
+  return memoizedFn;
+};
+var memoizedGet = memoize(get);
+
+// src/config/others.ts
+var srOnly = {
+  border: "0px",
+  clip: "rect(0, 0, 0, 0)",
+  width: "1px",
+  height: "1px",
+  margin: "-1px",
+  padding: "0px",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  position: "absolute"
+};
+var srFocusable = {
+  position: "static",
+  width: "auto",
+  height: "auto",
+  clip: "auto",
+  padding: "0",
+  margin: "0",
+  overflow: "visible",
+  whiteSpace: "normal"
+};
+var getWithPriority = (theme, key, styles) => {
+  const result = {};
+  const obj = memoizedGet(theme, key, {});
+  for (const prop in obj) {
+    const isInStyles = prop in styles && styles[prop] != null;
+    if (!isInStyles)
+      result[prop] = obj[prop];
+  }
+  return result;
+};
+var others = {
+  srOnly: {
+    transform(value) {
+      if (value === true)
+        return srOnly;
+      if (value === "focusable")
+        return srFocusable;
+      return {};
+    }
+  },
+  layerStyle: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority(theme, `layerStyles.${value}`, styles)
+  },
+  textStyle: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority(theme, `textStyles.${value}`, styles)
+  },
+  apply: {
+    processResult: true,
+    transform: (value, theme, styles) => getWithPriority(theme, value, styles)
+  }
+};
+
+// src/config/position.ts
+var position = {
+  position: true,
+  pos: t.prop("position"),
+  zIndex: t.prop("zIndex", "zIndices"),
+  inset: t.spaceT("inset"),
+  insetX: t.spaceT(["left", "right"]),
+  insetInline: t.spaceT("insetInline"),
+  insetY: t.spaceT(["top", "bottom"]),
+  insetBlock: t.spaceT("insetBlock"),
+  top: t.spaceT("top"),
+  insetBlockStart: t.spaceT("insetBlockStart"),
+  bottom: t.spaceT("bottom"),
+  insetBlockEnd: t.spaceT("insetBlockEnd"),
+  left: t.spaceT("left"),
+  insetInlineStart: t.logical({
+    scale: "space",
+    property: { ltr: "left", rtl: "right" }
+  }),
+  right: t.spaceT("right"),
+  insetInlineEnd: t.logical({
+    scale: "space",
+    property: { ltr: "right", rtl: "left" }
+  })
+};
+Object.assign(position, {
+  insetStart: position.insetInlineStart,
+  insetEnd: position.insetInlineEnd
+});
+
+// src/config/ring.ts
+var ring = {
+  ring: { transform: transformFunctions.ring },
+  ringColor: t.colors("--chakra-ring-color"),
+  ringOffset: t.prop("--chakra-ring-offset-width"),
+  ringOffsetColor: t.colors("--chakra-ring-offset-color"),
+  ringInset: t.prop("--chakra-ring-inset")
+};
+
+// src/config/space.ts
+var space = {
+  margin: t.spaceT("margin"),
+  marginTop: t.spaceT("marginTop"),
+  marginBlockStart: t.spaceT("marginBlockStart"),
+  marginRight: t.spaceT("marginRight"),
+  marginInlineEnd: t.spaceT("marginInlineEnd"),
+  marginBottom: t.spaceT("marginBottom"),
+  marginBlockEnd: t.spaceT("marginBlockEnd"),
+  marginLeft: t.spaceT("marginLeft"),
+  marginInlineStart: t.spaceT("marginInlineStart"),
+  marginX: t.spaceT(["marginInlineStart", "marginInlineEnd"]),
+  marginInline: t.spaceT("marginInline"),
+  marginY: t.spaceT(["marginTop", "marginBottom"]),
+  marginBlock: t.spaceT("marginBlock"),
+  padding: t.space("padding"),
+  paddingTop: t.space("paddingTop"),
+  paddingBlockStart: t.space("paddingBlockStart"),
+  paddingRight: t.space("paddingRight"),
+  paddingBottom: t.space("paddingBottom"),
+  paddingBlockEnd: t.space("paddingBlockEnd"),
+  paddingLeft: t.space("paddingLeft"),
+  paddingInlineStart: t.space("paddingInlineStart"),
+  paddingInlineEnd: t.space("paddingInlineEnd"),
+  paddingX: t.space(["paddingInlineStart", "paddingInlineEnd"]),
+  paddingInline: t.space("paddingInline"),
+  paddingY: t.space(["paddingTop", "paddingBottom"]),
+  paddingBlock: t.space("paddingBlock")
+};
+Object.assign(space, {
+  m: space.margin,
+  mt: space.marginTop,
+  mr: space.marginRight,
+  me: space.marginInlineEnd,
+  marginEnd: space.marginInlineEnd,
+  mb: space.marginBottom,
+  ml: space.marginLeft,
+  ms: space.marginInlineStart,
+  marginStart: space.marginInlineStart,
+  mx: space.marginX,
+  my: space.marginY,
+  p: space.padding,
+  pt: space.paddingTop,
+  py: space.paddingY,
+  px: space.paddingX,
+  pb: space.paddingBottom,
+  pl: space.paddingLeft,
+  ps: space.paddingInlineStart,
+  paddingStart: space.paddingInlineStart,
+  pr: space.paddingRight,
+  pe: space.paddingInlineEnd,
+  paddingEnd: space.paddingInlineEnd
+});
+
+// src/config/text-decoration.ts
+var textDecoration = {
+  textDecorationColor: t.colors("textDecorationColor"),
+  textDecoration: true,
+  textDecor: { property: "textDecoration" },
+  textDecorationLine: true,
+  textDecorationStyle: true,
+  textDecorationThickness: true,
+  textUnderlineOffset: true,
+  textShadow: t.shadows("textShadow")
+};
+
+// src/config/transform.ts
+var transform = {
+  clipPath: true,
+  transform: t.propT("transform", transformFunctions.transform),
+  transformOrigin: true,
+  translateX: t.spaceT("--chakra-translate-x"),
+  translateY: t.spaceT("--chakra-translate-y"),
+  skewX: t.degreeT("--chakra-skew-x"),
+  skewY: t.degreeT("--chakra-skew-y"),
+  scaleX: t.prop("--chakra-scale-x"),
+  scaleY: t.prop("--chakra-scale-y"),
+  scale: t.prop(["--chakra-scale-x", "--chakra-scale-y"]),
+  rotate: t.degreeT("--chakra-rotate")
+};
+
+// src/config/transition.ts
+var transition$1 = {
+  transition: true,
+  transitionDelay: true,
+  animation: true,
+  willChange: true,
+  transitionDuration: t.prop("transitionDuration", "transition.duration"),
+  transitionProperty: t.prop("transitionProperty", "transition.property"),
+  transitionTimingFunction: t.prop(
+    "transitionTimingFunction",
+    "transition.easing"
+  )
+};
+
+// src/config/typography.ts
+var typography$1 = {
+  fontFamily: t.prop("fontFamily", "fonts"),
+  fontSize: t.prop("fontSize", "fontSizes", transformFunctions.px),
+  fontWeight: t.prop("fontWeight", "fontWeights"),
+  lineHeight: t.prop("lineHeight", "lineHeights"),
+  letterSpacing: t.prop("letterSpacing", "letterSpacings"),
+  textAlign: true,
+  fontStyle: true,
+  textIndent: true,
+  wordBreak: true,
+  overflowWrap: true,
+  textOverflow: true,
+  textTransform: true,
+  whiteSpace: true,
+  isTruncated: {
+    transform(value) {
+      if (value === true) {
+        return {
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        };
+      }
+    }
+  },
+  noOfLines: {
+    static: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      //@ts-ignore
+      WebkitLineClamp: "var(--chakra-line-clamp)"
+    },
+    property: "--chakra-line-clamp"
+  }
+};
+
+// src/config/scroll.ts
+var scroll = {
+  scrollBehavior: true,
+  scrollSnapAlign: true,
+  scrollSnapStop: true,
+  scrollSnapType: true,
+  // scroll margin
+  scrollMargin: t.spaceT("scrollMargin"),
+  scrollMarginTop: t.spaceT("scrollMarginTop"),
+  scrollMarginBottom: t.spaceT("scrollMarginBottom"),
+  scrollMarginLeft: t.spaceT("scrollMarginLeft"),
+  scrollMarginRight: t.spaceT("scrollMarginRight"),
+  scrollMarginX: t.spaceT(["scrollMarginLeft", "scrollMarginRight"]),
+  scrollMarginY: t.spaceT(["scrollMarginTop", "scrollMarginBottom"]),
+  // scroll padding
+  scrollPadding: t.spaceT("scrollPadding"),
+  scrollPaddingTop: t.spaceT("scrollPaddingTop"),
+  scrollPaddingBottom: t.spaceT("scrollPaddingBottom"),
+  scrollPaddingLeft: t.spaceT("scrollPaddingLeft"),
+  scrollPaddingRight: t.spaceT("scrollPaddingRight"),
+  scrollPaddingX: t.spaceT(["scrollPaddingLeft", "scrollPaddingRight"]),
+  scrollPaddingY: t.spaceT(["scrollPaddingTop", "scrollPaddingBottom"])
+};
+function resolveReference(operand) {
+  if (isObject$2(operand) && operand.reference) {
+    return operand.reference;
+  }
+  return String(operand);
+}
+var toExpression = (operator, ...operands) => operands.map(resolveReference).join(` ${operator} `).replace(/calc/g, "");
+var add = (...operands) => `calc(${toExpression("+", ...operands)})`;
+var subtract = (...operands) => `calc(${toExpression("-", ...operands)})`;
+var multiply = (...operands) => `calc(${toExpression("*", ...operands)})`;
+var divide = (...operands) => `calc(${toExpression("/", ...operands)})`;
+var negate = (x) => {
+  const value = resolveReference(x);
+  if (value != null && !Number.isNaN(parseFloat(value))) {
+    return String(value).startsWith("-") ? String(value).slice(1) : `-${value}`;
+  }
+  return multiply(value, -1);
+};
+var calc = Object.assign(
+  (x) => ({
+    add: (...operands) => calc(add(x, ...operands)),
+    subtract: (...operands) => calc(subtract(x, ...operands)),
+    multiply: (...operands) => calc(multiply(x, ...operands)),
+    divide: (...operands) => calc(divide(x, ...operands)),
+    negate: () => calc(negate(x)),
+    toString: () => x.toString()
+  }),
+  {
+    add,
+    subtract,
+    multiply,
+    divide,
+    negate
+  }
+);
+
+// src/pseudos.ts
+var state = {
+  hover: (str, post) => `${str}:hover ${post}, ${str}[data-hover] ${post}`,
+  focus: (str, post) => `${str}:focus ${post}, ${str}[data-focus] ${post}`,
+  focusVisible: (str, post) => `${str}:focus-visible ${post}`,
+  focusWithin: (str, post) => `${str}:focus-within ${post}`,
+  active: (str, post) => `${str}:active ${post}, ${str}[data-active] ${post}`,
+  disabled: (str, post) => `${str}:disabled ${post}, ${str}[data-disabled] ${post}`,
+  invalid: (str, post) => `${str}:invalid ${post}, ${str}[data-invalid] ${post}`,
+  checked: (str, post) => `${str}:checked ${post}, ${str}[data-checked] ${post}`,
+  indeterminate: (str, post) => `${str}:indeterminate ${post}, ${str}[aria-checked=mixed] ${post}, ${str}[data-indeterminate] ${post}`,
+  readOnly: (str, post) => `${str}:read-only ${post}, ${str}[readonly] ${post}, ${str}[data-read-only] ${post}`,
+  expanded: (str, post) => `${str}:read-only ${post}, ${str}[aria-expanded=true] ${post}, ${str}[data-expanded] ${post}`,
+  placeholderShown: (str, post) => `${str}:placeholder-shown ${post}`
+};
+var toGroup = (fn) => merge((v) => fn(v, "&"), "[role=group]", "[data-group]", ".group");
+var toPeer = (fn) => merge((v) => fn(v, "~ &"), "[data-peer]", ".peer");
+var merge = (fn, ...selectors) => selectors.map(fn).join(", ");
+var pseudoSelectors = {
+  /**
+   * Styles for CSS selector `&:hover`
+   */
+  _hover: "&:hover, &[data-hover]",
+  /**
+   * Styles for CSS Selector `&:active`
+   */
+  _active: "&:active, &[data-active]",
+  /**
+   * Styles for CSS selector `&:focus`
+   *
+   */
+  _focus: "&:focus, &[data-focus]",
+  /**
+   * Styles for the highlighted state.
+   */
+  _highlighted: "&[data-highlighted]",
+  /**
+   * Styles to apply when a child of this element has received focus
+   * - CSS Selector `&:focus-within`
+   */
+  _focusWithin: "&:focus-within",
+  /**
+   * Styles to apply when this element has received focus via tabbing
+   * - CSS Selector `&:focus-visible`
+   */
+  _focusVisible: "&:focus-visible, &[data-focus-visible]",
+  /**
+   * Styles to apply when this element is disabled. The passed styles are applied to these CSS selectors:
+   * - `&[aria-disabled=true]`
+   * - `&:disabled`
+   * - `&[data-disabled]`
+   * - `&[disabled]`
+   */
+  _disabled: "&:disabled, &[disabled], &[aria-disabled=true], &[data-disabled]",
+  /**
+   * Styles for CSS Selector `&:readonly`
+   */
+  _readOnly: "&[aria-readonly=true], &[readonly], &[data-readonly]",
+  /**
+   * Styles for CSS selector `&::before`
+   *
+   * NOTE:When using this, ensure the `content` is wrapped in a backtick.
+   * @example
+   * ```jsx
+   * <Box _before={{content:`""` }}/>
+   * ```
+   */
+  _before: "&::before",
+  /**
+   * Styles for CSS selector `&::after`
+   *
+   * NOTE:When using this, ensure the `content` is wrapped in a backtick.
+   * @example
+   * ```jsx
+   * <Box _after={{content:`""` }}/>
+   * ```
+   */
+  _after: "&::after",
+  /**
+   * Styles for CSS selector `&:empty`
+   */
+  _empty: "&:empty",
+  /**
+   * Styles to apply when the ARIA attribute `aria-expanded` is `true`
+   * - CSS selector `&[aria-expanded=true]`
+   */
+  _expanded: "&[aria-expanded=true], &[data-expanded]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-checked` is `true`
+   * - CSS selector `&[aria-checked=true]`
+   */
+  _checked: "&[aria-checked=true], &[data-checked]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-grabbed` is `true`
+   * - CSS selector `&[aria-grabbed=true]`
+   */
+  _grabbed: "&[aria-grabbed=true], &[data-grabbed]",
+  /**
+   * Styles for CSS Selector `&[aria-pressed=true]`
+   * Typically used to style the current "pressed" state of toggle buttons
+   */
+  _pressed: "&[aria-pressed=true], &[data-pressed]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-invalid` is `true`
+   * - CSS selector `&[aria-invalid=true]`
+   */
+  _invalid: "&[aria-invalid=true], &[data-invalid]",
+  /**
+   * Styles for the valid state
+   * - CSS selector `&[data-valid], &[data-state=valid]`
+   */
+  _valid: "&[data-valid], &[data-state=valid]",
+  /**
+   * Styles for CSS Selector `&[aria-busy=true]` or `&[data-loading=true]`.
+   * Useful for styling loading states
+   */
+  _loading: "&[data-loading], &[aria-busy=true]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-selected` is `true`
+   *
+   * - CSS selector `&[aria-selected=true]`
+   */
+  _selected: "&[aria-selected=true], &[data-selected]",
+  /**
+   * Styles for CSS Selector `[hidden=true]`
+   */
+  _hidden: "&[hidden], &[data-hidden]",
+  /**
+   * Styles for CSS Selector `&:-webkit-autofill`
+   */
+  _autofill: "&:-webkit-autofill",
+  /**
+   * Styles for CSS Selector `&:nth-child(even)`
+   */
+  _even: "&:nth-of-type(even)",
+  /**
+   * Styles for CSS Selector `&:nth-child(odd)`
+   */
+  _odd: "&:nth-of-type(odd)",
+  /**
+   * Styles for CSS Selector `&:first-of-type`
+   */
+  _first: "&:first-of-type",
+  /**
+   * Styles for CSS selector `&::first-letter`
+   *
+   * NOTE: This selector is only applied for block-level elements and not preceded by an image or table.
+   * @example
+   * ```jsx
+   * <Text _firstLetter={{ textDecoration: 'underline' }}>Once upon a time</Text>
+   * ```
+   */
+  _firstLetter: "&::first-letter",
+  /**
+   * Styles for CSS Selector `&:last-of-type`
+   */
+  _last: "&:last-of-type",
+  /**
+   * Styles for CSS Selector `&:not(:first-of-type)`
+   */
+  _notFirst: "&:not(:first-of-type)",
+  /**
+   * Styles for CSS Selector `&:not(:last-of-type)`
+   */
+  _notLast: "&:not(:last-of-type)",
+  /**
+   * Styles for CSS Selector `&:visited`
+   */
+  _visited: "&:visited",
+  /**
+   * Used to style the active link in a navigation
+   * Styles for CSS Selector `&[aria-current=page]`
+   */
+  _activeLink: "&[aria-current=page]",
+  /**
+   * Used to style the current step within a process
+   * Styles for CSS Selector `&[aria-current=step]`
+   */
+  _activeStep: "&[aria-current=step]",
+  /**
+   * Styles to apply when the ARIA attribute `aria-checked` is `mixed`
+   * - CSS selector `&[aria-checked=mixed]`
+   */
+  _indeterminate: "&:indeterminate, &[aria-checked=mixed], &[data-indeterminate]",
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is hovered
+   */
+  _groupHover: toGroup(state.hover),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is hovered
+   */
+  _peerHover: toPeer(state.hover),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is focused
+   */
+  _groupFocus: toGroup(state.focus),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is focused
+   */
+  _peerFocus: toPeer(state.focus),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` has visible focus
+   */
+  _groupFocusVisible: toGroup(state.focusVisible),
+  /**
+   * Styles to apply when a sibling element with `.peer`or `data-peer` has visible focus
+   */
+  _peerFocusVisible: toPeer(state.focusVisible),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is active
+   */
+  _groupActive: toGroup(state.active),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is active
+   */
+  _peerActive: toPeer(state.active),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is disabled
+   */
+  _groupDisabled: toGroup(state.disabled),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` is disabled
+   */
+  _peerDisabled: toPeer(state.disabled),
+  /**
+   *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` is invalid
+   */
+  _groupInvalid: toGroup(state.invalid),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` is invalid
+   */
+  _peerInvalid: toPeer(state.invalid),
+  /**
+   * Styles to apply when a parent element with `.group`, `data-group` or `role=group` is checked
+   */
+  _groupChecked: toGroup(state.checked),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` is checked
+   */
+  _peerChecked: toPeer(state.checked),
+  /**
+   *  Styles to apply when a parent element with `.group`, `data-group` or `role=group` has focus within
+   */
+  _groupFocusWithin: toGroup(state.focusWithin),
+  /**
+   *  Styles to apply when a sibling element with `.peer` or `data-peer` has focus within
+   */
+  _peerFocusWithin: toPeer(state.focusWithin),
+  /**
+   * Styles to apply when a sibling element with `.peer` or `data-peer` has placeholder shown
+   */
+  _peerPlaceholderShown: toPeer(state.placeholderShown),
+  /**
+   * Styles for CSS Selector `&::placeholder`.
+   */
+  _placeholder: "&::placeholder",
+  /**
+   * Styles for CSS Selector `&:placeholder-shown`.
+   */
+  _placeholderShown: "&:placeholder-shown",
+  /**
+   * Styles for CSS Selector `&:fullscreen`.
+   */
+  _fullScreen: "&:fullscreen",
+  /**
+   * Styles for CSS Selector `&::selection`
+   */
+  _selection: "&::selection",
+  /**
+   * Styles for CSS Selector `[dir=rtl] &`
+   * It is applied when a parent element or this element has `dir="rtl"`
+   */
+  _rtl: "[dir=rtl] &, &[dir=rtl]",
+  /**
+   * Styles for CSS Selector `[dir=ltr] &`
+   * It is applied when a parent element or this element has `dir="ltr"`
+   */
+  _ltr: "[dir=ltr] &, &[dir=ltr]",
+  /**
+   * Styles for CSS Selector `@media (prefers-color-scheme: dark)`
+   * It is used when the user has requested the system use a light or dark color theme.
+   */
+  _mediaDark: "@media (prefers-color-scheme: dark)",
+  /**
+   * Styles for CSS Selector `@media (prefers-reduced-motion: reduce)`
+   * It is used when the user has requested the system to reduce the amount of animations.
+   */
+  _mediaReduceMotion: "@media (prefers-reduced-motion: reduce)",
+  /**
+   * Styles for when `data-theme` is applied to any parent of
+   * this component or element.
+   */
+  _dark: ".chakra-ui-dark &:not([data-theme]),[data-theme=dark] &:not([data-theme]),&[data-theme=dark]",
+  /**
+   * Styles for when `data-theme` is applied to any parent of
+   * this component or element.
+   */
+  _light: ".chakra-ui-light &:not([data-theme]),[data-theme=light] &:not([data-theme]),&[data-theme=light]",
+  /**
+   * Styles for the CSS Selector `&[data-orientation=horizontal]`
+   */
+  _horizontal: "&[data-orientation=horizontal]",
+  /**
+   * Styles for the CSS Selector `&[data-orientation=vertical]`
+   */
+  _vertical: "&[data-orientation=vertical]"
+};
+var pseudoPropNames = Object.keys(
+  pseudoSelectors
+);
+var systemProps = lodash_mergewith(
+  {},
+  background,
+  border,
+  color,
+  flexbox,
+  layout,
+  filter,
+  ring,
+  interactivity,
+  grid,
+  others,
+  position,
+  effect,
+  space,
+  scroll,
+  typography$1,
+  textDecoration,
+  transform,
+  list,
+  transition$1
+);
+Object.assign({}, space, layout, flexbox, grid, position);
+[...Object.keys(systemProps), ...pseudoPropNames];
+({ ...systemProps, ...pseudoSelectors });
+function defineStyleConfig(config) {
+  return config;
+}
 
 var Alert = defineStyleConfig({
     baseStyle: function (props) { return ({
@@ -46534,7 +53059,7 @@ var myCache = typeof window === "undefined" ? {} : createCache({
 var chakraTheme = extendTheme(theme);
 function ThemeProvider(_a) {
     var children = _a.children;
-    return (jsx(CacheProvider, __assign$1({ value: myCache }, { children: jsx(ChakraProvider, __assign$1({ resetCSS: false, disableGlobalStyle: true, theme: chakraTheme }, { children: jsx(IconContext.Provider, __assign$1({ value: { className: "react-icon", size: sizes$1.icon.medium } }, { children: children })) })) })));
+    return (jsx(CacheProvider, __assign$1({ value: myCache }, { children: jsx(ChakraProvider, __assign$1({ resetCSS: false, disableGlobalStyle: true, theme: chakraTheme }, { children: jsx(IconContext.Provider, __assign$1({ value: { className: "react-icon", size: sizes$o.icon.medium } }, { children: children })) })) })));
 }
 
 function Providers(_a) {
@@ -46548,11 +53073,11 @@ styleInject(css_248z$1);
 var css_248z = ".CSVImporter {\n  border: none;\n  background-color: transparent;\n  padding: 0 1rem;\n  border-radius: 1.2rem;\n  color: inherit;\n  cursor: pointer;\n  font-weight: 500;\n  font-size: 14px;\n  /* height: 2.4rem; */\n  display: inline-flex;\n  gap: 0.5rem;\n  align-items: center;\n  transition: filter 0.2s ease-out;\n}\n\n.CSVImporter svg {\n  display: block;\n}\n\n.CSVImporter svg path {\n  stroke: currentColor !important;\n}\n\n.CSVImporter:hover,\n.CSVImporter:active {\n  filter: brightness(1.2);\n}\n\n.CSVImporter-dialog::backdrop {\n  background-color: rgba(0, 0, 0, 0.85);\n}\n\n.CSVImporter-dialog {\n  border-radius: 1rem;\n  width: 80vw;\n  height: 100vh;\n  min-width: 907px;\n  border: none;\n  position: fixed;\n  inset: 0;\n  padding: 0;\n  margin: auto;\n}\n\n.CSVImporter-div {\n  border: none;\n  display: block;\n  width: 100%;\n  height: 98vh;\n  overflow-y: hidden;\n}\n\n@media (max-width: 768px) {\n  .CSVImporter-dialog {\n    width: 90vw;\n    min-width: 950px;\n  }\n}\n";
 styleInject(css_248z);
 
-var CSVImporter = forwardRef$1(function (importerProps, forwardRef) {
+var CSVImporter = forwardRef$2(function (importerProps, forwardRef) {
     var _a = importerProps.isModal, isModal = _a === void 0 ? true : _a, _b = importerProps.modalIsOpen, modalIsOpen = _b === void 0 ? true : _b, _c = importerProps.modalOnCloseTriggered, modalOnCloseTriggered = _c === void 0 ? function () { return null; } : _c, modalCloseOnOutsideClick = importerProps.modalCloseOnOutsideClick; importerProps.template; var _d = importerProps.darkMode, darkMode = _d === void 0 ? false : _d, _e = importerProps.primaryColor, primaryColor = _e === void 0 ? "#7a5ef8" : _e, className = importerProps.className; importerProps.onComplete; importerProps.customStyles; importerProps.showDownloadTemplateButton; importerProps.skipHeaderRowSelection; var props = __rest$1(importerProps, ["isModal", "modalIsOpen", "modalOnCloseTriggered", "modalCloseOnOutsideClick", "template", "darkMode", "primaryColor", "className", "onComplete", "customStyles", "showDownloadTemplateButton", "skipHeaderRowSelection"]);
-    var ref = forwardRef !== null && forwardRef !== void 0 ? forwardRef : useRef(null);
+    var ref = forwardRef !== null && forwardRef !== void 0 ? forwardRef : useRef$1(null);
     var current = ref === null || ref === void 0 ? void 0 : ref.current;
-    useEffect(function () {
+    useEffect$2(function () {
         var _a, _b;
         if (isModal && current) {
             if (modalIsOpen)
@@ -46566,12 +53091,12 @@ var CSVImporter = forwardRef$1(function (importerProps, forwardRef) {
     var domElementClass = ["csv-importer", "".concat(baseClass, "-").concat(isModal ? "dialog" : "div"), themeClass, className].filter(function (i) { return i; }).join(" ");
     // Set Light/Dark mode
     var setTheme = useThemeStore(function (state) { return state.setTheme; });
-    useEffect(function () {
+    useEffect$2(function () {
         var theme = darkMode ? "dark" : "light";
         setTheme(theme);
     }, [darkMode]);
     // Apply primary color
-    useEffect(function () {
+    useEffect$2(function () {
         if (primaryColor && isValidColor(primaryColor)) {
             var root = document.documentElement;
             root.style.setProperty("--color-primary", primaryColor);
@@ -46591,5 +53116,5 @@ var CSVImporter = forwardRef$1(function (importerProps, forwardRef) {
     return isModal ? (jsx("div", __assign$1({ className: "csvImporter" }, { children: jsx("dialog", __assign$1({}, elementProps, { children: jsx(ImporterComponent, {}) })) }))) : (jsx("div", __assign$1({}, elementProps, { children: jsx(ImporterComponent, {}) })));
 });
 
-export { CSVImporter };
+export { CSVImporter, MergeStrategies };
 //# sourceMappingURL=index.js.map

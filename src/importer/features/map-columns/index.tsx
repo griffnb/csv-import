@@ -40,6 +40,10 @@ export default function MapColumns({
     return requiredColumns.every((requiredColumn: any) => includedValues.some((includedValue: any) => includedValue.key === requiredColumn.key));
   };
 
+  const verifyPrimaryKeyColumns = (formValues: { [uploadColumnIndex: number]: TemplateColumnMapping }): boolean => {
+    return Object.values(formValues).some((column) => column.primary_key);
+  };
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -55,9 +59,15 @@ export default function MapColumns({
       {}
     );
 
+
     const isRequiredColumnsIncluded = verifyRequiredColumns(template, formValues);
     if (!isRequiredColumnsIncluded) {
       setError("Please include all required columns");
+      return;
+    }
+
+    if (!verifyPrimaryKeyColumns(formValues)) {
+      setError("Please select at least one primary key column");
       return;
     }
 
@@ -69,7 +79,7 @@ export default function MapColumns({
       <form onSubmit={onSubmit}>
         {data ? (
           <div className={style.tableWrapper}>
-            <Table data={rows} background="dark" fixHeader columnWidths={["20%", "30%", "30%", "20%"]} columnAlignments={["", "", "", "center"]} />
+            <Table data={rows} background="dark" fixHeader columnWidths={["15%", "20%", "20%", "12%", "12%", "21%"]} columnAlignments={["", "", "", "center", "center", "center"]} />
           </div>
         ) : (
           <>Loading...</>
