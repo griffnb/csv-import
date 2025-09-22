@@ -25848,7 +25848,8 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
     var handleUseChange = function (id, value) {
         setValues(function (prev) {
             var _a;
-            return (__assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, prev[id]), { include: !!prev[id].key && value }), _a)));
+            var current = prev[id];
+            return __assign$1(__assign$1({}, prev), (_a = {}, _a[id] = __assign$1(__assign$1({}, current), { include: !!current.key && value, primary_key: value ? current.primary_key : false }), _a));
         });
     };
     var handlePKChange = function (id, value) {
@@ -25887,7 +25888,7 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 },
                 "Primary Key": {
                     raw: false,
-                    content: (jsx(Checkbox, { checked: suggestion.primary_key || false, disabled: !suggestion.key || isLoading, onChange: function (e) { return handlePKChange(index, e.target.checked); } })),
+                    content: (jsx(Checkbox, { checked: suggestion.primary_key || false, disabled: !suggestion.key || !suggestion.include || isLoading, onChange: function (e) { return handlePKChange(index, e.target.checked); } })),
                 },
                 "Merge Strategy": {
                     raw: suggestion.merge_strategy || MergeStrategies.OVERWRITE,
