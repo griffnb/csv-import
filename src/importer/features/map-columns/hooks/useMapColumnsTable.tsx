@@ -110,11 +110,6 @@ export default function useMapColumnsTable(
       const suggestion = values?.[index] || {};
       const samples = sample_data.filter((d) => d);
 
-      // Find the template column to check if primary_key is required
-      const templateColumn = templateColumns.find(tc => tc.key === suggestion.key);
-      const isPrimaryKeyRequired = templateColumn?.primary_key;
-      const isFieldRequired = templateColumn?.required;
-
       return {
         "Your File Column": {
           raw: name || false,
@@ -148,7 +143,7 @@ export default function useMapColumnsTable(
           content: (
             <Checkbox
               checked={suggestion.include || false}
-              disabled={!suggestion.key || isLoading || isFieldRequired}
+              disabled={!suggestion.key || isLoading}
               onChange={(e) => handleUseChange(index, e.target.checked)}
             />
           ),
@@ -158,7 +153,7 @@ export default function useMapColumnsTable(
           content: (
             <Checkbox
               checked={suggestion.primary_key || false}
-              disabled={!suggestion.key || isLoading || isPrimaryKeyRequired}
+              disabled={!suggestion.key || isLoading}
               onChange={(e) => handlePKChange(index, e.target.checked)}
             />
           ),
