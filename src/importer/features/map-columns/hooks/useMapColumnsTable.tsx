@@ -93,7 +93,17 @@ export default function useMapColumnsTable(
   };
 
   const handleUseChange = (id: number, value: boolean) => {
-    setValues((prev) => ({ ...prev, [id]: { ...prev[id], include: !!prev[id].key && value } }));
+    setValues((prev) => {
+      const current = prev[id];
+      return {
+        ...prev,
+        [id]: {
+          ...current,
+          include: !!current.key && value,
+          primary_key: value ? current.primary_key : false,
+        },
+      };
+    });
   };
 
   const handlePKChange = (id: number, value: boolean) => {
@@ -153,7 +163,7 @@ export default function useMapColumnsTable(
           content: (
             <Checkbox
               checked={suggestion.primary_key || false}
-              disabled={!suggestion.key || isLoading}
+              disabled={!suggestion.key || !suggestion.include || isLoading}
               onChange={(e) => handlePKChange(index, e.target.checked)}
             />
           ),
