@@ -25868,10 +25868,6 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
             var name = uc.name, sample_data = uc.sample_data;
             var suggestion = (values === null || values === void 0 ? void 0 : values[index]) || {};
             var samples = sample_data.filter(function (d) { return d; });
-            // Find the template column to check if primary_key is required
-            var templateColumn = templateColumns.find(function (tc) { return tc.key === suggestion.key; });
-            var isPrimaryKeyRequired = templateColumn === null || templateColumn === void 0 ? void 0 : templateColumn.primary_key;
-            var isFieldRequired = templateColumn === null || templateColumn === void 0 ? void 0 : templateColumn.required;
             return {
                 "Your File Column": {
                     raw: name || false,
@@ -25887,11 +25883,11 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 },
                 Include: {
                     raw: false,
-                    content: (jsx(Checkbox, { checked: suggestion.include || false, disabled: !suggestion.key || isLoading || isFieldRequired, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
+                    content: (jsx(Checkbox, { checked: suggestion.include || false, disabled: !suggestion.key || isLoading, onChange: function (e) { return handleUseChange(index, e.target.checked); } })),
                 },
                 "Primary Key": {
                     raw: false,
-                    content: (jsx(Checkbox, { checked: suggestion.primary_key || false, disabled: !suggestion.key || isLoading || isPrimaryKeyRequired, onChange: function (e) { return handlePKChange(index, e.target.checked); } })),
+                    content: (jsx(Checkbox, { checked: suggestion.primary_key || false, disabled: !suggestion.key || isLoading, onChange: function (e) { return handlePKChange(index, e.target.checked); } })),
                 },
                 "Merge Strategy": {
                     raw: suggestion.merge_strategy || MergeStrategies.OVERWRITE,
