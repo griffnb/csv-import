@@ -9,6 +9,7 @@ declare const _default: import("@storybook/types").ComponentAnnotations<import("
     customStyles?: string | Record<string, string> | undefined;
     showDownloadTemplateButton?: boolean | undefined;
     skipHeaderRowSelection?: boolean | undefined;
+    disableMergeStrategy?: boolean | undefined;
 } & {
     isModal?: boolean | undefined;
     modalIsOpen?: boolean | undefined;
@@ -26,6 +27,7 @@ export declare const Importer: import("@storybook/types").AnnotatedStoryFn<impor
     customStyles?: string | Record<string, string> | undefined;
     showDownloadTemplateButton?: boolean | undefined;
     skipHeaderRowSelection?: boolean | undefined;
+    disableMergeStrategy?: boolean | undefined;
 } & {
     isModal?: boolean | undefined;
     modalIsOpen?: boolean | undefined;

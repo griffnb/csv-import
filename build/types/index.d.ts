@@ -17,6 +17,7 @@ export type CSVImporterProps = (HTMLAttributes<HTMLDialogElement> & HTMLAttribut
     customStyles?: Record<string, string> | string;
     showDownloadTemplateButton?: boolean;
     skipHeaderRowSelection?: boolean;
+    disableMergeStrategy?: boolean;
 } & ModalParams;
 export type CompleteData = {
     num_rows: number;

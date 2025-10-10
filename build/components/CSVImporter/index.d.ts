@@ -11,6 +11,7 @@ declare const CSVImporter: import("react").ForwardRefExoticComponent<import("rea
     customStyles?: string | Record<string, string> | undefined;
     showDownloadTemplateButton?: boolean | undefined;
     skipHeaderRowSelection?: boolean | undefined;
+    disableMergeStrategy?: boolean | undefined;
 } & {
     isModal?: boolean | undefined;
     modalIsOpen?: boolean | undefined;

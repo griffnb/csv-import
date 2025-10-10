@@ -25771,7 +25771,7 @@ function editDistance(s1, s2) {
     return costs[s2.length];
 }
 
-function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoading) {
+function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoading, disableMergeStrategy) {
     if (templateColumns === void 0) { templateColumns = []; }
     useEffect$2(function () {
         Object.keys(columnsValues).map(function (uploadColumnIndexStr) {
@@ -25892,7 +25892,7 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 },
                 "Merge Strategy": {
                     raw: suggestion.merge_strategy || MergeStrategies.OVERWRITE,
-                    content: (jsx(MergeStrategyDropdown, { value: suggestion.merge_strategy || MergeStrategies.OVERWRITE, disabled: !suggestion.key || !suggestion.include || isLoading, onChange: function (value) { return handleMergeStrategyChange(index, value); } })),
+                    content: (jsx(MergeStrategyDropdown, { value: suggestion.merge_strategy || MergeStrategies.OVERWRITE, disabled: !suggestion.key || !suggestion.include || isLoading || disableMergeStrategy, onChange: function (value) { return handleMergeStrategyChange(index, value); } })),
                 },
             };
         });
@@ -25902,7 +25902,7 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
 
 function MapColumns(_a) {
     var _b;
-    var template = _a.template, data = _a.data, columnMapping = _a.columnMapping, selectedHeaderRow = _a.selectedHeaderRow, skipHeaderRowSelection = _a.skipHeaderRowSelection, onSuccess = _a.onSuccess, onCancel = _a.onCancel, isSubmitting = _a.isSubmitting;
+    var template = _a.template, data = _a.data, columnMapping = _a.columnMapping, selectedHeaderRow = _a.selectedHeaderRow, skipHeaderRowSelection = _a.skipHeaderRowSelection, disableMergeStrategy = _a.disableMergeStrategy, onSuccess = _a.onSuccess, onCancel = _a.onCancel, isSubmitting = _a.isSubmitting;
     if (data.rows.length === 0) {
         return null;
     }
@@ -25916,15 +25916,12 @@ function MapColumns(_a) {
             sample_data: sample_data,
         };
     });
-    var _c = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting), rows = _c.rows, formValues = _c.formValues;
+    var _c = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting, disableMergeStrategy), rows = _c.rows, formValues = _c.formValues;
     var _d = useState$1(null), error = _d[0], setError = _d[1];
     var verifyRequiredColumns = function (template, formValues) {
         var requiredColumns = template.columns.filter(function (column) { return column.required; });
         var includedValues = Object.values(formValues).filter(function (value) { return value.include; });
         return requiredColumns.every(function (requiredColumn) { return includedValues.some(function (includedValue) { return includedValue.key === requiredColumn.key; }); });
-    };
-    var verifyPrimaryKeyColumns = function (formValues) {
-        return Object.values(formValues).some(function (column) { return column.primary_key; });
     };
     var onSubmit = function (e) {
         e.preventDefault();
@@ -25940,10 +25937,13 @@ function MapColumns(_a) {
             setError("Please include all required columns");
             return;
         }
-        if (!verifyPrimaryKeyColumns(formValues)) {
-            setError("Please select at least one primary key column");
-            return;
-        }
+        // Not needed in create mode
+        // Bring it back if this is aware of the modes
+        //
+        // if (!verifyPrimaryKeyColumns(formValues)) {
+        //   setError("Please select at least one primary key column");
+        //   return;
+        // }
         onSuccess(columns);
     };
     return (jsx("div", __assign$1({ className: style$2.content }, { children: jsxs("form", __assign$1({ onSubmit: onSubmit }, { children: [data ? (jsx("div", __assign$1({ className: style$2.tableWrapper }, { children: jsx(Table, { data: rows, background: "dark", fixHeader: true, columnWidths: ["15%", "20%", "20%", "12%", "12%", "21%"], columnAlignments: ["", "", "", "center", "center", "center"] }) }))) : (jsx(Fragment$1, { children: "Loading..." })), jsxs("div", __assign$1({ className: style$2.actions }, { children: [jsx(Button$1, __assign$1({ type: "button", colorScheme: "secondary", onClick: onCancel, isDisabled: isSubmitting }, { children: skipHeaderRowSelection ? "Cancel" : "Back" })), !!error && (jsx("div", __assign$1({ className: style$2.errorContainer }, { children: jsx(Errors, { error: error }) }))), jsx(Button$1, __assign$1({ colorScheme: "primary", isLoading: isSubmitting, type: "submit" }, { children: "Submit" }))] }))] })) })));
@@ -47772,7 +47772,7 @@ function Uploader(_a) {
 
 function Main(props) {
     var _this = this;
-    var _a = props.isModal, isModal = _a === void 0 ? true : _a, _b = props.modalOnCloseTriggered, modalOnCloseTriggered = _b === void 0 ? function () { return null; } : _b, template = props.template, onComplete = props.onComplete, customStyles = props.customStyles, showDownloadTemplateButton = props.showDownloadTemplateButton, skipHeaderRowSelection = props.skipHeaderRowSelection;
+    var _a = props.isModal, isModal = _a === void 0 ? true : _a, _b = props.modalOnCloseTriggered, modalOnCloseTriggered = _b === void 0 ? function () { return null; } : _b, template = props.template, onComplete = props.onComplete, customStyles = props.customStyles, showDownloadTemplateButton = props.showDownloadTemplateButton, skipHeaderRowSelection = props.skipHeaderRowSelection, disableMergeStrategy = props.disableMergeStrategy;
     var skipHeader = skipHeaderRowSelection !== null && skipHeaderRowSelection !== void 0 ? skipHeaderRowSelection : false;
     // Apply custom styles
     useCustomStyles(parseObjectOrStringJSON("customStyles", customStyles));
@@ -47906,7 +47906,7 @@ function Main(props) {
             case StepEnum.RowSelection:
                 return (jsx(RowSelection, { data: data, onCancel: reload, onSuccess: function () { return goNext(); }, selectedHeaderRow: selectedHeaderRow, setSelectedHeaderRow: setSelectedHeaderRow }));
             case StepEnum.MapColumns:
-                return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, onSuccess: function (columnMapping) {
+                return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, disableMergeStrategy: disableMergeStrategy, onSuccess: function (columnMapping) {
                         setIsSubmitting(true);
                         setColumnMapping(columnMapping);
                         var startIndex = (selectedHeaderRow || 0) + 1;

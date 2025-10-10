@@ -22,6 +22,7 @@ export type MapColumnsProps = {
     };
     selectedHeaderRow: number | null;
     skipHeaderRowSelection?: boolean;
+    disableMergeStrategy?: boolean;
     onSuccess: (columnMapping: {
         [index: number]: TemplateColumnMapping;
     }) => void;
