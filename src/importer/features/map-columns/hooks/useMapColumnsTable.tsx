@@ -12,7 +12,8 @@ export default function useMapColumnsTable(
   uploadColumns: UploadColumn[],
   templateColumns: TemplateColumn[] = [],
   columnsValues: { [uploadColumnIndex: number]: TemplateColumnMapping },
-  isLoading?: boolean
+  isLoading?: boolean,
+  disableMergeStrategy?: boolean
 ) {
 
   useEffect(() => {
@@ -173,7 +174,7 @@ export default function useMapColumnsTable(
           content: (
             <MergeStrategyDropdown
               value={suggestion.merge_strategy || MergeStrategies.OVERWRITE}
-              disabled={!suggestion.key || !suggestion.include || isLoading}
+              disabled={!suggestion.key || !suggestion.include || isLoading || disableMergeStrategy}
               onChange={(value) => handleMergeStrategyChange(index, value)}
             />
           ),

@@ -2,7 +2,7 @@ import { TemplateColumn, UploadColumn } from "../../../types";
 import { TemplateColumnMapping, MergeStrategy } from "../types";
 export default function useMapColumnsTable(uploadColumns: UploadColumn[], templateColumns: TemplateColumn[] | undefined, columnsValues: {
     [uploadColumnIndex: number]: TemplateColumnMapping;
-}, isLoading?: boolean): {
+}, isLoading?: boolean, disableMergeStrategy?: boolean): {
     rows: {
         "Your File Column": {
             raw: string | boolean;

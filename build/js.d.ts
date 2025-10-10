@@ -14,6 +14,7 @@ export declare function createCSVImporter(props: CreateImporterProps): {
         customStyles?: string | Record<string, string> | undefined;
         showDownloadTemplateButton?: boolean | undefined;
         skipHeaderRowSelection?: boolean | undefined;
+        disableMergeStrategy?: boolean | undefined;
     } & {
         isModal?: boolean | undefined;
         modalIsOpen?: boolean | undefined;

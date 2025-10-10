@@ -13,6 +13,7 @@ export default function MapColumns({
   columnMapping,
   selectedHeaderRow,
   skipHeaderRowSelection,
+  disableMergeStrategy,
   onSuccess,
   onCancel,
   isSubmitting,
@@ -31,7 +32,7 @@ export default function MapColumns({
       sample_data,
     };
   });
-  const { rows, formValues } = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting);
+  const { rows, formValues } = useMapColumnsTable(uploadColumns, template.columns, columnMapping, isSubmitting, disableMergeStrategy);
   const [error, setError] = useState<string | null>(null);
 
   const verifyRequiredColumns = (template: Template, formValues: { [uploadColumnIndex: number]: TemplateColumnMapping }): boolean => {
@@ -66,10 +67,13 @@ export default function MapColumns({
       return;
     }
 
-    if (!verifyPrimaryKeyColumns(formValues)) {
-      setError("Please select at least one primary key column");
-      return;
-    }
+    // Not needed in create mode
+    // Bring it back if this is aware of the modes
+    //
+    // if (!verifyPrimaryKeyColumns(formValues)) {
+    //   setError("Please select at least one primary key column");
+    //   return;
+    // }
 
     onSuccess(columns);
   };

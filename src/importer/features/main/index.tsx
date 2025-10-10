@@ -28,6 +28,7 @@ export default function Main(props: CSVImporterProps) {
     customStyles,
     showDownloadTemplateButton,
     skipHeaderRowSelection,
+    disableMergeStrategy,
   } = props;
   const skipHeader = skipHeaderRowSelection ?? false;
 
@@ -193,6 +194,7 @@ export default function Main(props: CSVImporterProps) {
             columnMapping={columnMapping}
             skipHeaderRowSelection={skipHeader}
             selectedHeaderRow={selectedHeaderRow}
+            disableMergeStrategy={disableMergeStrategy}
             onSuccess={(columnMapping) => {
               setIsSubmitting(true);
               setColumnMapping(columnMapping);
