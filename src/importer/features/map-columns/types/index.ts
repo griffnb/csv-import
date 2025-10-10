@@ -24,6 +24,7 @@ export type MapColumnsProps = {
   columnMapping: { [index: number]: TemplateColumnMapping };
   selectedHeaderRow: number | null;
   skipHeaderRowSelection?: boolean;
+  disableMergeStrategy?: boolean;
   onSuccess: (columnMapping: { [index: number]: TemplateColumnMapping }) => void;
   onCancel: () => void;
   isSubmitting: boolean;
