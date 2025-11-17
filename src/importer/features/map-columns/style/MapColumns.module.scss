@@ -23,12 +23,12 @@
   }
 }
 
+// Wrapper div for file column names to enable horizontal scrolling
 .fileColumn {
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  white-space: nowrap !important;
-  text-overflow: clip !important;
-  display: block !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: block;
   max-width: 100%;
   min-width: 0;
   
@@ -47,12 +47,6 @@
   
   &::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-secondary);
-  }
-
-  // Ensure any nested elements also don't get ellipsis
-  * {
-    text-overflow: clip !important;
-    overflow: visible !important;
   }
 }
 
