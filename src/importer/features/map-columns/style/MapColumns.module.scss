@@ -23,14 +23,12 @@
   }
 }
 
-// Wrapper div for file column names to enable horizontal scrolling
 .fileColumn {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   display: block;
-  max-width: 100%;
-  min-width: 0;
+  width: 100%;
   
   &::-webkit-scrollbar {
     height: 6px;
