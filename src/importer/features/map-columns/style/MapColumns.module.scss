@@ -27,7 +27,8 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  max-width: 100%;
+  display: block;
+  width: 100%;
   
   &::-webkit-scrollbar {
     height: 6px;
