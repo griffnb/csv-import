@@ -24,10 +24,13 @@
 }
 
 .fileColumn {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: clip !important;
+  display: block !important;
   max-width: 100%;
+  min-width: 0;
   
   &::-webkit-scrollbar {
     height: 6px;
@@ -44,6 +47,12 @@
   
   &::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-secondary);
+  }
+
+  // Ensure any nested elements also don't get ellipsis
+  * {
+    text-overflow: clip !important;
+    overflow: visible !important;
   }
 }
 
