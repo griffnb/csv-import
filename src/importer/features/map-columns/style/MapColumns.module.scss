@@ -23,6 +23,30 @@
   }
 }
 
+.fileColumn {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+  }
+}
+
 .samples {
   overflow: hidden;
   text-overflow: ellipsis;
