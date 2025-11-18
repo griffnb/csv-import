@@ -124,7 +124,7 @@ export default function useMapColumnsTable(
       return {
         "Your File Column": {
           raw: name || false,
-          content: name ? <div className={style.fileColumn}>{name}</div> : <em>- empty -</em>,
+          content: name ? <span title={name}>{name}</span> : <em>- empty -</em>,
         },
         "Your Sample Data": {
           raw: "",
