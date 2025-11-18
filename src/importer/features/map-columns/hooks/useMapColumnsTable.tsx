@@ -124,8 +124,11 @@ export default function useMapColumnsTable(
       return {
         "Your File Column": {
           raw: name || false,
-          content: name || <em>- empty -</em>,
-          tooltip: name || "",
+          content: (
+            <div title={name}>
+              {name}
+            </div>
+          )
         },
         "Your Sample Data": {
           raw: "",
