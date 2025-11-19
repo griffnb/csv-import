@@ -25309,6 +25309,10 @@ function MergeStrategyDropdown(_a) {
     return (jsx(Select$1, __assign$1({ value: value, disabled: disabled, onChange: function (e) { return onChange(e.target.value); }, size: "sm", variant: "outline", placeholder: disabled ? "Select column first" : undefined }, { children: mergeStrategyOptions.map(function (option) { return (jsx("option", __assign$1({ value: option.value }, { children: option.label }), option.value)); }) })));
 }
 
+var css_248z$4 = ".MapColumns-module_content__20ZZ4 {\n  height: 100%;\n}\n.MapColumns-module_content__20ZZ4 form {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  gap: var(--m);\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_tableWrapper___b5Fy {\n  display: flex;\n  height: 100%;\n  overflow-y: auto;\n  padding: 1px;\n  margin-right: -20px;\n  padding-right: 21px;\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_actions__YEtCJ {\n  display: flex;\n  justify-content: space-between;\n}\n\n.MapColumns-module_samples__3WzLx {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1;\n  white-space: nowrap;\n}\n.MapColumns-module_samples__3WzLx > small {\n  background-color: var(--color-input-background);\n  font-family: monospace;\n  padding: var(--m-xxxxs);\n  border-radius: var(--border-radius-1);\n  font-size: var(--font-size-xs);\n  display: inline-block;\n}\n.MapColumns-module_samples__3WzLx > small + small {\n  margin-left: var(--m-xxxxs);\n}\n\n.MapColumns-module_spinner__2-3WS {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1);\n}\n\n.MapColumns-module_errorContainer__1FAaD {\n  display: flex;\n  justify-content: center;\n  max-width: 60vw;\n}\n\n.MapColumns-module_schemalessTextInput__2JguD {\n  width: 210px;\n}";
+var style$2 = {"content":"MapColumns-module_content__20ZZ4","tableWrapper":"MapColumns-module_tableWrapper___b5Fy","actions":"MapColumns-module_actions__YEtCJ","samples":"MapColumns-module_samples__3WzLx","spinner":"MapColumns-module_spinner__2-3WS","errorContainer":"MapColumns-module_errorContainer__1FAaD","schemalessTextInput":"MapColumns-module_schemalessTextInput__2JguD"};
+styleInject(css_248z$4);
+
 function stringsSimilarity(s1, s2) {
     var words = s1.split(" ");
     var words2 = s2.split(" ");
@@ -25457,16 +25461,16 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
         return uploadColumns.map(function (uc, index) {
             var name = uc.name, sample_data = uc.sample_data;
             var suggestion = (values === null || values === void 0 ? void 0 : values[index]) || {};
-            sample_data.filter(function (d) { return d; });
+            var samples = sample_data.filter(function (d) { return d; });
             return {
                 "Your File Column": {
                     raw: name || false,
-                    content: (jsx("div", __assign$1({ title: name }, { children: name })))
+                    content: name || jsx("em", { children: "- empty -" }),
+                    tooltip: name || ""
                 },
                 "Your Sample Data": {
                     raw: "",
-                    content: name || jsx("em", { children: "- empty -" }),
-                    tooltip: name || ""
+                    content: (jsx("div", __assign$1({ title: samples.join(", "), className: style$2.samples }, { children: samples.map(function (d, i) { return (jsx("small", { children: d }, i)); }) }))),
                 },
                 "Destination Column": {
                     raw: "",
@@ -25489,10 +25493,6 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
     }, [values, isLoading]);
     return { rows: rows, formValues: values };
 }
-
-var css_248z$4 = ".MapColumns-module_content__20ZZ4 {\n  height: 100%;\n}\n.MapColumns-module_content__20ZZ4 form {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  gap: var(--m);\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_tableWrapper___b5Fy {\n  display: flex;\n  height: 100%;\n  overflow-y: auto;\n  padding: 1px;\n  margin-right: -20px;\n  padding-right: 21px;\n}\n.MapColumns-module_content__20ZZ4 form .MapColumns-module_actions__YEtCJ {\n  display: flex;\n  justify-content: space-between;\n}\n\n.MapColumns-module_samples__3WzLx {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1;\n  white-space: nowrap;\n}\n.MapColumns-module_samples__3WzLx > small {\n  background-color: var(--color-input-background);\n  font-family: monospace;\n  padding: var(--m-xxxxs);\n  border-radius: var(--border-radius-1);\n  font-size: var(--font-size-xs);\n  display: inline-block;\n}\n.MapColumns-module_samples__3WzLx > small + small {\n  margin-left: var(--m-xxxxs);\n}\n\n.MapColumns-module_spinner__2-3WS {\n  border: 1px solid var(--color-border);\n  margin-top: var(--m);\n  padding: var(--m);\n  border-radius: var(--border-radius-1);\n}\n\n.MapColumns-module_errorContainer__1FAaD {\n  display: flex;\n  justify-content: center;\n  max-width: 60vw;\n}\n\n.MapColumns-module_schemalessTextInput__2JguD {\n  width: 210px;\n}";
-var style$2 = {"content":"MapColumns-module_content__20ZZ4","tableWrapper":"MapColumns-module_tableWrapper___b5Fy","actions":"MapColumns-module_actions__YEtCJ","samples":"MapColumns-module_samples__3WzLx","spinner":"MapColumns-module_spinner__2-3WS","errorContainer":"MapColumns-module_errorContainer__1FAaD","schemalessTextInput":"MapColumns-module_schemalessTextInput__2JguD"};
-styleInject(css_248z$4);
 
 function MapColumns(_a) {
     var _b;
