@@ -1,74 +1,10 @@
 import type { ThemeConfig } from "./theme.types";
 declare const theme: {
-    styles: import("@chakra-ui/theme-tools/dist/component").Styles;
+    styles: Styles;
     config: ThemeConfig;
     components: {
-        Button: {
-            baseStyle?: {
-                fontWeight: string;
-                borderRadius: string;
-                height: string;
-                lineHeight: string;
-                fontSize: string;
-                border: string;
-                cursor: string;
-            } | undefined;
-            sizes?: {
-                sm: {
-                    fontSize: string;
-                    px: number;
-                    py: number;
-                };
-                md: {
-                    fontSize: string;
-                    px: number;
-                    py: number;
-                };
-            } | undefined;
-            variants?: {
-                solid: (props: import("@chakra-ui/styled-system").StyleFunctionProps) => {
-                    _hover: {
-                        backgroundColor: string;
-                    };
-                    color: string;
-                };
-            } | undefined;
-            defaultProps?: {
-                size?: "sm" | "md" | undefined;
-                variant?: "solid" | undefined;
-                colorScheme?: string | undefined;
-            } | undefined;
-        };
-        Alert: {
-            baseStyle?: ((props: import("@chakra-ui/styled-system").StyleFunctionProps) => {
-                container: {
-                    backgroundColor: string;
-                    border: string;
-                    borderRadius: string;
-                    fontWeight: string;
-                };
-                title: {
-                    color: string;
-                };
-                description: {
-                    color: string;
-                };
-                icon: {
-                    color: string;
-                };
-            }) | undefined;
-            sizes?: {
-                [key: string]: import("@chakra-ui/styled-system").SystemStyleInterpolation;
-            } | undefined;
-            variants?: {
-                [key: string]: import("@chakra-ui/styled-system").SystemStyleInterpolation;
-            } | undefined;
-            defaultProps?: {
-                size?: string | number | undefined;
-                variant?: string | number | undefined;
-                colorScheme?: string | undefined;
-            } | undefined;
-        };
+        Button: any;
+        Alert: any;
     };
     sizes: {
         container: {
