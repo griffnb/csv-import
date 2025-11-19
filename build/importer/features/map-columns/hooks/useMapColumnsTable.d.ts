@@ -6,7 +6,7 @@ export default function useMapColumnsTable(uploadColumns: UploadColumn[], templa
     rows: {
         "Your File Column": {
             raw: string | boolean;
-            content: string | import("react/jsx-runtime").JSX.Element;
+            content: import("react/jsx-runtime").JSX.Element;
         };
         "Your Sample Data": {
             raw: string;

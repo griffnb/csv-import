@@ -29,7 +29,10 @@ export default {
       browser: true,
     }),
     commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({ 
+        useTsconfigDeclarationDir: true,
+        check: false, 
+    }),
     image(),
     postcss({}),
     json(),

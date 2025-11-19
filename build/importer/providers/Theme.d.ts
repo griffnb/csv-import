@@ -1,5 +1,4 @@
 /// <reference types="react" />
-import { EmotionCache } from "@emotion/cache";
 import { ThemeProps } from "./types";
-export declare const myCache: EmotionCache;
+export declare const myCache: any;
 export default function ThemeProvider({ children }: ThemeProps): React.ReactElement;
