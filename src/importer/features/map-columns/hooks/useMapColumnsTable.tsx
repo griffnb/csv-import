@@ -132,13 +132,8 @@ export default function useMapColumnsTable(
         },
         "Your Sample Data": {
           raw: "",
-          content: (
-            <div title={samples.join(", ")} className={style.samples}>
-              {samples.map((d, i) => (
-                <small key={i}>{d}</small>
-              ))}
-            </div>
-          ),
+          content: name || <em>- empty -</em>,
+          tooltip: name || ""
         },
         "Destination Column": {
           raw: "",
