@@ -10,7 +10,8 @@ export default function useMapColumnsTable(uploadColumns: UploadColumn[], templa
         };
         "Your Sample Data": {
             raw: string;
-            content: import("react/jsx-runtime").JSX.Element;
+            content: string | import("react/jsx-runtime").JSX.Element;
+            tooltip: string;
         };
         "Destination Column": {
             raw: string;
