@@ -51,6 +51,9 @@ export default function Main(props: CSVImporterProps) {
   };
   const [data, setData] = useState<FileData>(emptyData);
 
+  // Store the uploaded file object for metadata
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
   // Header row selection state
   const [selectedHeaderRow, setSelectedHeaderRow] = useState<number | null>(0);
 
@@ -84,6 +87,7 @@ export default function Main(props: CSVImporterProps) {
   // Actions
   const reload = () => {
     setData(emptyData);
+    setUploadedFile(null);
     setSelectedHeaderRow(0);
     setColumnMapping({});
     setDataError(null);
@@ -119,6 +123,7 @@ export default function Main(props: CSVImporterProps) {
             setDataError={setDataError}
             onSuccess={async (file: File) => {
               setDataError(null);
+              setUploadedFile(file);
               const fileType = file.name.slice(file.name.lastIndexOf(".") + 1);
               if (!["csv", "xls", "xlsx"].includes(fileType)) {
                 setDataError("Only CSV, XLS, and XLSX files can be uploaded");
@@ -195,7 +200,7 @@ export default function Main(props: CSVImporterProps) {
             skipHeaderRowSelection={skipHeader}
             selectedHeaderRow={selectedHeaderRow}
             disableMergeStrategy={disableMergeStrategy}
-            onSuccess={(columnMapping) => {
+            onSuccess={async (columnMapping) => {
               setIsSubmitting(true);
               setColumnMapping(columnMapping);
 
@@ -219,6 +224,24 @@ export default function Main(props: CSVImporterProps) {
 
               const includedColumns = Object.values(columnMapping).filter(({ include }) => include);
 
+              // Convert file to base64 and extract metadata
+              let fileData = "";
+              if (uploadedFile) {
+                try {
+                  const arrayBuffer = await uploadedFile.arrayBuffer();
+                  const bytes = new Uint8Array(arrayBuffer);
+                  let binary = "";
+                  for (let i = 0; i < bytes.length; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                  }
+                  fileData = btoa(binary);
+                } catch (error) {
+                  console.error("Error converting file to base64:", error);
+                }
+              }
+
+              const fileExtension = uploadedFile?.name.slice(uploadedFile.name.lastIndexOf(".") + 1) || "";
+
               const onCompleteData = {
                 num_rows: mappedRows.length,
                 num_columns: includedColumns.length,
@@ -230,6 +253,14 @@ export default function Main(props: CSVImporterProps) {
                   merge_strategy 
                 })),
                 rows: mappedRows,
+                file: {
+                  name: uploadedFile?.name || "",
+                  extension: fileExtension,
+                  type: uploadedFile?.type || "",
+                  size: uploadedFile?.size || 0,
+                  lastModified: uploadedFile?.lastModified || 0,
+                  data: fileData,
+                },
               };
 
               onComplete && onComplete(onCompleteData);
