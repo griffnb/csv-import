@@ -47353,15 +47353,17 @@ function Main(props) {
         errors: [],
     };
     var _f = useState$1(emptyData), data = _f[0], setData = _f[1];
+    // Store the uploaded file object for metadata
+    var _g = useState$1(null), uploadedFile = _g[0], setUploadedFile = _g[1];
     // Header row selection state
-    var _g = useState$1(0), selectedHeaderRow = _g[0], setSelectedHeaderRow = _g[1];
+    var _h = useState$1(0), selectedHeaderRow = _h[0], setSelectedHeaderRow = _h[1];
     // Map of upload column index -> TemplateColumnMapping
-    var _h = useState$1({}), columnMapping = _h[0], setColumnMapping = _h[1];
+    var _j = useState$1({}), columnMapping = _j[0], setColumnMapping = _j[1];
     // Used in the final step to show a loading indicator while the data is submitting
-    var _j = useState$1(false), isSubmitting = _j[0], setIsSubmitting = _j[1];
-    var _k = useState$1({
+    var _k = useState$1(false), isSubmitting = _k[0], setIsSubmitting = _k[1];
+    var _l = useState$1({
         columns: [],
-    }), parsedTemplate = _k[0], setParsedTemplate = _k[1];
+    }), parsedTemplate = _l[0], setParsedTemplate = _l[1];
     useEffect$2(function () {
         var _a = convertRawTemplate(template), parsedTemplate = _a[0], parsedTemplateError = _a[1];
         if (parsedTemplateError) {
@@ -47381,6 +47383,7 @@ function Main(props) {
     // Actions
     var reload = function () {
         setData(emptyData);
+        setUploadedFile(null);
         setSelectedHeaderRow(0);
         setColumnMapping({});
         setDataError(null);
@@ -47406,6 +47409,7 @@ function Main(props) {
                         var _this = this;
                         return __generator(this, function (_a) {
                             setDataError(null);
+                            setUploadedFile(file);
                             fileType = file.name.slice(file.name.lastIndexOf(".") + 1);
                             if (!["csv", "xls", "xlsx"].includes(fileType)) {
                                 setDataError("Only CSV, XLS, and XLSX files can be uploaded");
@@ -47470,47 +47474,83 @@ function Main(props) {
             case StepEnum.RowSelection:
                 return (jsx(RowSelection, { data: data, onCancel: reload, onSuccess: function () { return goNext(); }, selectedHeaderRow: selectedHeaderRow, setSelectedHeaderRow: setSelectedHeaderRow }));
             case StepEnum.MapColumns:
-                return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, disableMergeStrategy: disableMergeStrategy, onSuccess: function (columnMapping) {
-                        setIsSubmitting(true);
-                        setColumnMapping(columnMapping);
-                        var startIndex = (selectedHeaderRow || 0) + 1;
-                        var mappedRows = [];
-                        data.rows.slice(startIndex).forEach(function (row) {
-                            var resultingRow = {
-                                index: row.index - startIndex,
-                                values: {},
-                            };
-                            row.values.forEach(function (value, valueIndex) {
-                                var mapping = columnMapping[valueIndex];
-                                if (mapping && mapping.include) {
-                                    resultingRow.values[mapping.key] = value;
-                                }
-                            });
-                            mappedRows.push(resultingRow);
+                return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, disableMergeStrategy: disableMergeStrategy, onSuccess: function (columnMapping) { return __awaiter(_this, void 0, void 0, function () {
+                        var startIndex, mappedRows, includedColumns, fileData, arrayBuffer, bytes, binary, i, error_1, fileExtension, onCompleteData;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    setIsSubmitting(true);
+                                    setColumnMapping(columnMapping);
+                                    startIndex = (selectedHeaderRow || 0) + 1;
+                                    mappedRows = [];
+                                    data.rows.slice(startIndex).forEach(function (row) {
+                                        var resultingRow = {
+                                            index: row.index - startIndex,
+                                            values: {},
+                                        };
+                                        row.values.forEach(function (value, valueIndex) {
+                                            var mapping = columnMapping[valueIndex];
+                                            if (mapping && mapping.include) {
+                                                resultingRow.values[mapping.key] = value;
+                                            }
+                                        });
+                                        mappedRows.push(resultingRow);
+                                    });
+                                    includedColumns = Object.values(columnMapping).filter(function (_a) {
+                                        var include = _a.include;
+                                        return include;
+                                    });
+                                    fileData = "";
+                                    if (!uploadedFile) return [3 /*break*/, 4];
+                                    _a.label = 1;
+                                case 1:
+                                    _a.trys.push([1, 3, , 4]);
+                                    return [4 /*yield*/, uploadedFile.arrayBuffer()];
+                                case 2:
+                                    arrayBuffer = _a.sent();
+                                    bytes = new Uint8Array(arrayBuffer);
+                                    binary = "";
+                                    for (i = 0; i < bytes.length; i++) {
+                                        binary += String.fromCharCode(bytes[i]);
+                                    }
+                                    fileData = btoa(binary);
+                                    return [3 /*break*/, 4];
+                                case 3:
+                                    error_1 = _a.sent();
+                                    console.error("Error converting file to base64:", error_1);
+                                    return [3 /*break*/, 4];
+                                case 4:
+                                    fileExtension = (uploadedFile === null || uploadedFile === void 0 ? void 0 : uploadedFile.name.slice(uploadedFile.name.lastIndexOf(".") + 1)) || "";
+                                    onCompleteData = {
+                                        num_rows: mappedRows.length,
+                                        num_columns: includedColumns.length,
+                                        error: null,
+                                        columns: includedColumns.map(function (_a) {
+                                            var key = _a.key, name = _a.name, primary_key = _a.primary_key, merge_strategy = _a.merge_strategy;
+                                            return ({
+                                                key: key,
+                                                name: name,
+                                                primary_key: primary_key,
+                                                merge_strategy: merge_strategy
+                                            });
+                                        }),
+                                        rows: mappedRows,
+                                        file: {
+                                            name: (uploadedFile === null || uploadedFile === void 0 ? void 0 : uploadedFile.name) || "",
+                                            extension: fileExtension,
+                                            type: (uploadedFile === null || uploadedFile === void 0 ? void 0 : uploadedFile.type) || "",
+                                            size: (uploadedFile === null || uploadedFile === void 0 ? void 0 : uploadedFile.size) || 0,
+                                            lastModified: (uploadedFile === null || uploadedFile === void 0 ? void 0 : uploadedFile.lastModified) || 0,
+                                            data: fileData,
+                                        },
+                                    };
+                                    onComplete && onComplete(onCompleteData);
+                                    setIsSubmitting(false);
+                                    goNext();
+                                    return [2 /*return*/];
+                            }
                         });
-                        var includedColumns = Object.values(columnMapping).filter(function (_a) {
-                            var include = _a.include;
-                            return include;
-                        });
-                        var onCompleteData = {
-                            num_rows: mappedRows.length,
-                            num_columns: includedColumns.length,
-                            error: null,
-                            columns: includedColumns.map(function (_a) {
-                                var key = _a.key, name = _a.name, primary_key = _a.primary_key, merge_strategy = _a.merge_strategy;
-                                return ({
-                                    key: key,
-                                    name: name,
-                                    primary_key: primary_key,
-                                    merge_strategy: merge_strategy
-                                });
-                            }),
-                            rows: mappedRows,
-                        };
-                        onComplete && onComplete(onCompleteData);
-                        setIsSubmitting(false);
-                        goNext();
-                    }, isSubmitting: isSubmitting, onCancel: skipHeader ? reload : function () { return goBack(StepEnum.RowSelection); } }));
+                    }); }, isSubmitting: isSubmitting, onCancel: skipHeader ? reload : function () { return goBack(StepEnum.RowSelection); } }));
             case StepEnum.Complete:
                 return jsx(Complete, { reload: reload, close: requestClose, isModal: isModal });
             default:
