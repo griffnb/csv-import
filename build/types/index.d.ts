@@ -25,7 +25,7 @@ export type UploadedFile = {
     type: string;
     size: number;
     lastModified: number;
-    data: string;
+    data: File;
 };
 export type CompleteData = {
     num_rows: number;
