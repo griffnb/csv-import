@@ -224,8 +224,6 @@ export default function Main(props: CSVImporterProps) {
 
               const includedColumns = Object.values(columnMapping).filter(({ include }) => include);
 
-              const fileExtension = uploadedFile!.name.slice(uploadedFile!.name.lastIndexOf(".") + 1);
-
               const onCompleteData = {
                 num_rows: mappedRows.length,
                 num_columns: includedColumns.length,
@@ -237,14 +235,7 @@ export default function Main(props: CSVImporterProps) {
                   merge_strategy 
                 })),
                 rows: mappedRows,
-                file: {
-                  name: uploadedFile!.name,
-                  extension: fileExtension,
-                  type: uploadedFile!.type,
-                  size: uploadedFile!.size,
-                  lastModified: uploadedFile!.lastModified,
-                  data: uploadedFile!,
-                },
+                file: uploadedFile!,
               };
 
               onComplete && onComplete(onCompleteData);

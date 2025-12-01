@@ -47475,7 +47475,7 @@ function Main(props) {
                 return (jsx(RowSelection, { data: data, onCancel: reload, onSuccess: function () { return goNext(); }, selectedHeaderRow: selectedHeaderRow, setSelectedHeaderRow: setSelectedHeaderRow }));
             case StepEnum.MapColumns:
                 return (jsx(MapColumns, { template: parsedTemplate, data: data, columnMapping: columnMapping, skipHeaderRowSelection: skipHeader, selectedHeaderRow: selectedHeaderRow, disableMergeStrategy: disableMergeStrategy, onSuccess: function (columnMapping) { return __awaiter(_this, void 0, void 0, function () {
-                        var startIndex, mappedRows, includedColumns, fileExtension, onCompleteData;
+                        var startIndex, mappedRows, includedColumns, onCompleteData;
                         return __generator(this, function (_a) {
                             setIsSubmitting(true);
                             setColumnMapping(columnMapping);
@@ -47498,7 +47498,6 @@ function Main(props) {
                                 var include = _a.include;
                                 return include;
                             });
-                            fileExtension = uploadedFile.name.slice(uploadedFile.name.lastIndexOf(".") + 1);
                             onCompleteData = {
                                 num_rows: mappedRows.length,
                                 num_columns: includedColumns.length,
@@ -47513,14 +47512,7 @@ function Main(props) {
                                     });
                                 }),
                                 rows: mappedRows,
-                                file: {
-                                    name: uploadedFile.name,
-                                    extension: fileExtension,
-                                    type: uploadedFile.type,
-                                    size: uploadedFile.size,
-                                    lastModified: uploadedFile.lastModified,
-                                    data: uploadedFile,
-                                },
+                                file: uploadedFile,
                             };
                             onComplete && onComplete(onCompleteData);
                             setIsSubmitting(false);

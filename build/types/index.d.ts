@@ -19,14 +19,6 @@ export type CSVImporterProps = (HTMLAttributes<HTMLDialogElement> & HTMLAttribut
     skipHeaderRowSelection?: boolean;
     disableMergeStrategy?: boolean;
 } & ModalParams;
-export type UploadedFile = {
-    name: string;
-    extension: string;
-    type: string;
-    size: number;
-    lastModified: number;
-    data: File;
-};
 export type CompleteData = {
     num_rows: number;
     num_columns: number;
@@ -38,7 +30,7 @@ export type CompleteData = {
         merge_strategy?: MergeStrategy;
     }[];
     rows: MappedRow[];
-    file: UploadedFile;
+    file: File;
 };
 export type MappedRow = {
     index: number;
