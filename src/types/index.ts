@@ -23,22 +23,13 @@ export type CSVImporterProps = (HTMLAttributes<HTMLDialogElement> & HTMLAttribut
 } & ModalParams;
 
 
-export type UploadedFile = {
-  name: string;
-  extension: string;
-  type: string;
-  size: number;
-  lastModified: number;
-  data: string; // base64 encoded file data
-}
-
 export type CompleteData = {
   num_rows: number;
   num_columns: number;
   error: string | null;
   columns: {key:string,name:string,primary_key?:boolean,merge_strategy?:MergeStrategy}[];
   rows: MappedRow[];
-  file: UploadedFile;
+  file: File;
 }
 
  export type MappedRow = {

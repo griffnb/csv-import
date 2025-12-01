@@ -224,24 +224,6 @@ export default function Main(props: CSVImporterProps) {
 
               const includedColumns = Object.values(columnMapping).filter(({ include }) => include);
 
-              // Convert file to base64 and extract metadata
-              let fileData = "";
-              if (uploadedFile) {
-                try {
-                  const arrayBuffer = await uploadedFile.arrayBuffer();
-                  const bytes = new Uint8Array(arrayBuffer);
-                  let binary = "";
-                  for (let i = 0; i < bytes.length; i++) {
-                    binary += String.fromCharCode(bytes[i]);
-                  }
-                  fileData = btoa(binary);
-                } catch (error) {
-                  console.error("Error converting file to base64:", error);
-                }
-              }
-
-              const fileExtension = uploadedFile?.name.slice(uploadedFile.name.lastIndexOf(".") + 1) || "";
-
               const onCompleteData = {
                 num_rows: mappedRows.length,
                 num_columns: includedColumns.length,
@@ -253,14 +235,7 @@ export default function Main(props: CSVImporterProps) {
                   merge_strategy 
                 })),
                 rows: mappedRows,
-                file: {
-                  name: uploadedFile?.name || "",
-                  extension: fileExtension,
-                  type: uploadedFile?.type || "",
-                  size: uploadedFile?.size || 0,
-                  lastModified: uploadedFile?.lastModified || 0,
-                  data: fileData,
-                },
+                file: uploadedFile!,
               };
 
               onComplete && onComplete(onCompleteData);
