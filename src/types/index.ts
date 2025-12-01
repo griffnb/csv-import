@@ -29,7 +29,7 @@ export type UploadedFile = {
   type: string;
   size: number;
   lastModified: number;
-  data: string; // base64 encoded file data
+  data: File;
 }
 
 export type CompleteData = {
