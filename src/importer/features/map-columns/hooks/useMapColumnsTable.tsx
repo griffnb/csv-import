@@ -40,19 +40,27 @@ export default function useMapColumnsTable(
     const usedTemplateColumns = new Set<string>();
     const initialObject: { [key: number]: TemplateColumnMapping } = {};
 
-    return uploadColumns.reduce((acc, uc) => {
+    // First pass: Find all exact matches (suggested mappings)
+    uploadColumns.forEach((uc) => {
       const matchedSuggestedTemplateColumn = templateColumns?.find((tc) => isSuggestedMapping(tc, uc.name));
 
       if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
         usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
-        acc[uc.index] = {
+        initialObject[uc.index] = {
           key: matchedSuggestedTemplateColumn.key,
           include: true,
           name: uc.name,
           primary_key: matchedSuggestedTemplateColumn.primary_key || false,
           merge_strategy: MergeStrategies.OVERWRITE
         };
-        return acc;
+      }
+    });
+
+    // Second pass: Find similar matches for remaining columns
+    uploadColumns.forEach((uc) => {
+      // Skip if already matched in first pass
+      if (initialObject[uc.index]) {
+        return;
       }
 
       const similarTemplateColumn = templateColumns?.find((tc) => {
@@ -63,7 +71,7 @@ export default function useMapColumnsTable(
         return false;
       });
 
-      acc[uc.index] = {
+      initialObject[uc.index] = {
         key: similarTemplateColumn?.key || "",
         include: !!similarTemplateColumn?.key,
         selected: !!similarTemplateColumn?.key,
@@ -71,8 +79,9 @@ export default function useMapColumnsTable(
         primary_key: !!similarTemplateColumn?.primary_key,
         merge_strategy: MergeStrategies.OVERWRITE
       };
-      return acc;
-    }, initialObject);
+    });
+
+    return initialObject;
   });
 
   const [selectedValues, setSelectedValues] = useState<{ key: string; selected: boolean | undefined }[]>(
@@ -140,14 +149,16 @@ export default function useMapColumnsTable(
         "Destination Column": {
           raw: "",
           content: (
-            <DropdownFields
-              options={templateFields}
-              value={suggestion.key}
-              placeholder="- Select one -"
-              onChange={(key: string) => handleTemplateChange(index, key)}
-              selectedValues={selectedValues}
-              updateSelectedValues={setSelectedValues}
-            />
+            <div style={{ width: '100%' }}>
+              <DropdownFields
+                options={templateFields}
+                value={suggestion.key}
+                placeholder="- Select one -"
+                onChange={(key: string) => handleTemplateChange(index, key)}
+                selectedValues={selectedValues}
+                updateSelectedValues={setSelectedValues}
+              />
+            </div>
           ),
         },
         Include: {

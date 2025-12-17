@@ -51,13 +51,15 @@ export default function DropdownFields({ options, value, placeholder, onChange, 
   };
 
   return (
-    <Input
-      options={filteredOptions}
-      value={selectedOption}
-      placeholder={placeholder}
-      variants={["small"]}
-      onChange={handleInputChange}
-      disabled={Object.keys(filteredOptions).length === 0}
-    />
+    <div style={{ width: '100%' }}>
+      <Input
+        options={filteredOptions}
+        value={selectedOption}
+        placeholder={placeholder}
+        variants={["small", "fluid"]}
+        onChange={handleInputChange}
+        disabled={Object.keys(filteredOptions).length === 0}
+      />
+    </div>
   );
 }

@@ -26,6 +26,10 @@
     font-size: inherit;
     accent-color: var(--color-primary);
   }
+
+  &.fluid {
+    width: 100%;
+  }
 }
 
 .label {
