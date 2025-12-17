@@ -40,9 +40,43 @@ export default function useMapColumnsTable(
     const usedTemplateColumns = new Set<string>();
     const initialObject: { [key: number]: TemplateColumnMapping } = {};
 
-    // First pass: Find all exact matches (suggested mappings)
-    uploadColumns.forEach((uc) => {
-      const matchedSuggestedTemplateColumn = templateColumns?.find((tc) => isSuggestedMapping(tc, uc.name));
+    // First pass: Find all exact name matches (case-insensitive)
+    for (const uc of uploadColumns) {
+      const exactMatchTemplateColumn = templateColumns?.find((tc) => {
+        if (!tc.key || usedTemplateColumns.has(tc.key)) {
+          return false;
+        }
+        // Check for exact key match
+        const tcKeyNormalized = tc.key.toLowerCase().replace(/_/g, " ");
+        const ucNameNormalized = uc.name.toLowerCase();
+        return tcKeyNormalized === ucNameNormalized || tc.key === uc.name;
+      });
+
+      if (exactMatchTemplateColumn && exactMatchTemplateColumn.key) {
+        usedTemplateColumns.add(exactMatchTemplateColumn.key);
+        initialObject[uc.index] = {
+          key: exactMatchTemplateColumn.key,
+          include: true,
+          name: uc.name,
+          primary_key: exactMatchTemplateColumn.primary_key || false,
+          merge_strategy: MergeStrategies.OVERWRITE
+        };
+      }
+    }
+
+    // Second pass: Find suggested mapping matches for remaining columns
+    for (const uc of uploadColumns) {
+      // Skip if already matched in first pass
+      if (initialObject[uc.index]) {
+        continue;
+      }
+
+      const matchedSuggestedTemplateColumn = templateColumns?.find((tc) => {
+        if (!tc.key || usedTemplateColumns.has(tc.key)) {
+          return false;
+        }
+        return isSuggestedMapping(tc, uc.name);
+      });
 
       if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
         usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
@@ -54,22 +88,25 @@ export default function useMapColumnsTable(
           merge_strategy: MergeStrategies.OVERWRITE
         };
       }
-    });
+    }
 
-    // Second pass: Find similar matches for remaining columns
-    uploadColumns.forEach((uc) => {
-      // Skip if already matched in first pass
+    // Third pass: Find similar matches for remaining columns
+    for (const uc of uploadColumns) {
+      // Skip if already matched in previous passes
       if (initialObject[uc.index]) {
-        return;
+        continue;
       }
 
       const similarTemplateColumn = templateColumns?.find((tc) => {
         if (tc.key && !usedTemplateColumns.has(tc.key) && checkSimilarity(tc.key, uc.name)) {
-          usedTemplateColumns.add(tc.key);
           return true;
         }
         return false;
       });
+
+      if (similarTemplateColumn && similarTemplateColumn.key) {
+        usedTemplateColumns.add(similarTemplateColumn.key);
+      }
 
       initialObject[uc.index] = {
         key: similarTemplateColumn?.key || "",
@@ -79,7 +116,7 @@ export default function useMapColumnsTable(
         primary_key: !!similarTemplateColumn?.primary_key,
         merge_strategy: MergeStrategies.OVERWRITE
       };
-    });
+    }
 
     return initialObject;
   });

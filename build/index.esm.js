@@ -25386,9 +25386,43 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
     var _a = useState$1(function () {
         var usedTemplateColumns = new Set();
         var initialObject = {};
-        // First pass: Find all exact matches (suggested mappings)
-        uploadColumns.forEach(function (uc) {
-            var matchedSuggestedTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) { return isSuggestedMapping(tc, uc.name); });
+        var _loop_1 = function (uc) {
+            var exactMatchTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) {
+                if (!tc.key || usedTemplateColumns.has(tc.key)) {
+                    return false;
+                }
+                // Check for exact key match
+                var tcKeyNormalized = tc.key.toLowerCase().replace(/_/g, " ");
+                var ucNameNormalized = uc.name.toLowerCase();
+                return tcKeyNormalized === ucNameNormalized || tc.key === uc.name;
+            });
+            if (exactMatchTemplateColumn && exactMatchTemplateColumn.key) {
+                usedTemplateColumns.add(exactMatchTemplateColumn.key);
+                initialObject[uc.index] = {
+                    key: exactMatchTemplateColumn.key,
+                    include: true,
+                    name: uc.name,
+                    primary_key: exactMatchTemplateColumn.primary_key || false,
+                    merge_strategy: MergeStrategies.OVERWRITE
+                };
+            }
+        };
+        // First pass: Find all exact name matches (case-insensitive)
+        for (var _i = 0, uploadColumns_1 = uploadColumns; _i < uploadColumns_1.length; _i++) {
+            var uc = uploadColumns_1[_i];
+            _loop_1(uc);
+        }
+        var _loop_2 = function (uc) {
+            // Skip if already matched in first pass
+            if (initialObject[uc.index]) {
+                return "continue";
+            }
+            var matchedSuggestedTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) {
+                if (!tc.key || usedTemplateColumns.has(tc.key)) {
+                    return false;
+                }
+                return isSuggestedMapping(tc, uc.name);
+            });
             if (matchedSuggestedTemplateColumn && matchedSuggestedTemplateColumn.key) {
                 usedTemplateColumns.add(matchedSuggestedTemplateColumn.key);
                 initialObject[uc.index] = {
@@ -25399,20 +25433,26 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                     merge_strategy: MergeStrategies.OVERWRITE
                 };
             }
-        });
-        // Second pass: Find similar matches for remaining columns
-        uploadColumns.forEach(function (uc) {
-            // Skip if already matched in first pass
+        };
+        // Second pass: Find suggested mapping matches for remaining columns
+        for (var _a = 0, uploadColumns_2 = uploadColumns; _a < uploadColumns_2.length; _a++) {
+            var uc = uploadColumns_2[_a];
+            _loop_2(uc);
+        }
+        var _loop_3 = function (uc) {
+            // Skip if already matched in previous passes
             if (initialObject[uc.index]) {
-                return;
+                return "continue";
             }
             var similarTemplateColumn = templateColumns === null || templateColumns === void 0 ? void 0 : templateColumns.find(function (tc) {
                 if (tc.key && !usedTemplateColumns.has(tc.key) && checkSimilarity(tc.key, uc.name)) {
-                    usedTemplateColumns.add(tc.key);
                     return true;
                 }
                 return false;
             });
+            if (similarTemplateColumn && similarTemplateColumn.key) {
+                usedTemplateColumns.add(similarTemplateColumn.key);
+            }
             initialObject[uc.index] = {
                 key: (similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.key) || "",
                 include: !!(similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.key),
@@ -25421,7 +25461,12 @@ function useMapColumnsTable(uploadColumns, templateColumns, columnsValues, isLoa
                 primary_key: !!(similarTemplateColumn === null || similarTemplateColumn === void 0 ? void 0 : similarTemplateColumn.primary_key),
                 merge_strategy: MergeStrategies.OVERWRITE
             };
-        });
+        };
+        // Third pass: Find similar matches for remaining columns
+        for (var _b = 0, uploadColumns_3 = uploadColumns; _b < uploadColumns_3.length; _b++) {
+            var uc = uploadColumns_3[_b];
+            _loop_3(uc);
+        }
         return initialObject;
     }), values = _a[0], setValues = _a[1];
     var _b = useState$1(Object.values(values).map(function (_a) {
